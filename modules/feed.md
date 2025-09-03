@@ -1,7 +1,5 @@
 # Feed
 
-* Als Nutzer möchte ich Einträge verschiedener Art posten können (Posts, Veranstaltungen, Gruppe, Angebote oder Nachfragen)
-
 ## Sortierung
 
 * Aktualität: Als Nutzer möchte ich Einträge nach ihrem Datum sortieren können, um die neusten Einträge zu sehen.
@@ -23,7 +21,6 @@
     * Bei Einträgen mit Standortdaten, ist eine Karte neben dem Eintrage (Zeigt Standort des Beitrags und alle weiteren geographischen Einträge, die verlinkt sind)
     * Bei Einträgen mit Medien, ist eine Gallery neben dem Eintrag (Zeigt alle Verknüpften Medien)
 * Auf mobilen Geräten soll der Eintrag in der Größe geändert werden können. Man kann ihn von unten in die Karte hineinziehen oder rausschieben.
-
 
 ## Input
 
