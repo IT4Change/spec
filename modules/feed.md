@@ -25,3 +25,14 @@
 * Auf mobilen Geräten soll der Eintrag in der Größe geändert werden können. Man kann ihn von unten in die Karte hineinziehen oder rausschieben.
 
 
+## Input
+
+Als Nutzer möchte ich eine Eingabemaske um ganz unterschiedlichen Eintrgäge machen können:
+
+* Titel
+* Text
+* Ort
+* Medien
+* Datum
+* Menschen
+* Tags / Kategorie
