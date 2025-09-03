@@ -27,12 +27,13 @@
 
 ## Input
 
-Als Nutzer möchte ich eine Eingabemaske um ganz unterschiedlichen Eintrgäge machen können:
+* Als Nutzer möchte ich Einträge verschiedener Art posten können (Posts, Veranstaltungen, Gruppe, Angebote oder Nachfragen)
 
-* Titel
-* Text
-* Ort
-* Medien
-* Datum
-* Menschen
-* Tags / Kategorie
+* Als Nutzer möchte ich unterschiedliche Angaben beim Erstellen eines Eintrags machen können:
+   * Titel
+   * Text
+   * Ort
+   * Medien
+   * Datum
+   * Menschen
+   * Tags / Kategorie
