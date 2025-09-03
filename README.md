@@ -21,7 +21,7 @@ Wir schaffen eine gemeinsame technische Grundlage für Projekte, die gesellschaf
 - **Frontend**: TypeScript + React/Vue/Angular Components
 - **Backend**: Microservices-Architektur
 - **Datenbank**: Graph Database
-- **Protokolle**: OAuth 2.0, CalDAV, ActivityPub, Murmurations, ...
+- **Protokolle**: GraphQL, OAuth 2.0, CalDAV, ActivityPub, Murmurations, ...
 - **Container**: Docker & Kubernetes für Deployment
 
 ### Kernkomponenten
@@ -96,49 +96,16 @@ local-change-platform/
 
 Wir freuen uns über Beiträge! Siehe [CONTRIBUTING.md](CONTRIBUTING.md) für Details.
 
-## 📊 Roadmap
-
-### Phase 1: Fundament (Q1 2025)
-- [ ] Projekt-Setup und Architektur
-- [ ] Kern-Datenmodell
-- [ ] Basis-Module (Calendar, Feed, Map)
-- [ ] Authentication-Service
-
-### Phase 2: Erweiterung (Q2 2025)
-- [ ] Groups & Projects Module
-- [ ] ActivityPub-Integration
-- [ ] Mobile Apps (React Native)
-- [ ] Föderations-Features
-
-### Phase 3: Skalierung (Q3 2025)
-- [ ] Marketplace-Modul
-- [ ] Governance-Tools
-- [ ] Performance-Optimierung
-- [ ] Multi-Tenancy-Support
-
-### Phase 4: Ökosystem (Q4 2025)
-- [ ] Plugin-Marketplace
-- [ ] Entwickler-Portal
-- [ ] Hosting-Service
-- [ ] Community-Building
-
 ## 🤝 Partner & Nutzer
 
 Organisationen, die unsere Plattform nutzen oder daran mitarbeiten:
 
-- [Utopia Map]
-- [ozelot.social]
+- [Utopia Map](https://github.com/utopia-os/utopia-map/)
+- [ozelot.social](https://github.com/Ocelot-Social-Community/ocelot.social)
 - [GeDANKE]
-- [Klanggarten Projektportal]
+- [Klanggarten Projektportal](https://github.com/klangarten1/projekt-portal)
 
 *Füge deine Organisation hinzu durch einen PR!*
-
-
-## 🙏 Danksagungen
-
-- Allen Contributor:innen und der Open-Source-Community
-- Projekten, die uns inspiriert haben
-- Lokalen Initiativen, die den Wandel vorantreiben
 
 ---
 
