@@ -9,4 +9,4 @@ Es gibt zwei Arten von Badeges / Attestations:
    * Teilgenommene Veranstaltungen
    * erstellte Medien / Posts
  * Andere Dinge müssen attestiert werden
- *   Timo hat 3 Meter holz gehackt
+   * Timo hat 3 Meter holz gehackt
