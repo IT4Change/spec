@@ -1,0 +1,2 @@
+## Pages
+- [Profil Prototyp - Flexible Detailansichten](/): Flexibles Profil-System für verschiedene Item-Typen mit konfigurierbaren Subkomponenten
