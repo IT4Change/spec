@@ -1,3 +1,4 @@
 
-roles
-capabilities
+* roles
+* capabilities
+* web of trust
