@@ -22,9 +22,16 @@
 * Ich möchte in meiner Gruppe einen gemeinsamen Kalender pflegen.
 * Ich möchte einen Kalender über einen Link teilen können.
 
+
+## Calender Service
+
+* CalDAV
+
 ## Notifiations
 
-* Ich möchte ...
+* Email
+* Telegram
+
 
 
 
