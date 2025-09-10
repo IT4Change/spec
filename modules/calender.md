@@ -37,9 +37,11 @@
 
 ----
 
-*Medien/Interaktion*
+*Interaktion*
 
 * Als Teilnehmer möchte ich Kommentare und Medien dem Event hinzufügen können.
+* Als Teilnehmer möchte ich vor Ort eine QR-Code scannen können, um meine Teilnahme zu bestätigen.
+* Als Veranstalter möchte ich Teilnehmern die Teilnahme bestätigen können. 
 
 
 
@@ -49,6 +51,7 @@
 * Als Nutzer möchte ich an bevorstehende Events erinnert werden.
   * Email
   * Telegram
+
 
 
 
