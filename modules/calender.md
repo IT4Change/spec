@@ -23,7 +23,7 @@
 
 *Synchronisation*
 
-* Ich möchte den Kalender mit anderen Kalender-Apps synchronisieren können um Veranstaltungen auf allen meinen Geräten sehen zu können.
+* Als Nutzer möchte ich den Kalender mit anderen Kalender-Clients synchronisieren können um Veranstaltungen auf allen meinen Geräten sehen zu können.
 * Ich möchte ich Events von externen Kalender-Apps importieren können.
 * Ich möchte einen Kalender über einen Link teilen können.
 
@@ -40,5 +40,6 @@
 * Als Nutzer möchte ich an bevorstehende Events erinnert werden.
   * Email
   * Telegram
+
 
 
