@@ -6,8 +6,7 @@
 
 * Als Veranstalter möchte ich Events erstellen können.
 * Als Veranstalter möchte ich andere Nutzer zu eine Event einladen können.
-* Als Nutzer möchte ich Events in einer Kalenderansicht sehen.
-* Als Nutzer möchte ich wissen was heute los ist.
+* Als Nutzer möchte ich Events in einer Kalenderansicht sehen, um zu sehen was los ist.
 
 ----
 
@@ -24,7 +23,7 @@
 *Synchronisation*
 
 * Als Nutzer möchte ich den Kalender mit anderen Kalender-Clients synchronisieren können um Veranstaltungen auf allen meinen Geräten sehen zu können.
-* Ich möchte ich Events von externen Kalender-Apps importieren können.
+* Ich möchte ich Events von externen Kalender-Clients importieren können.
 * Ich möchte einen Kalender über einen Link teilen können.
 
 ----
@@ -51,6 +50,7 @@
 * Als Nutzer möchte ich an bevorstehende Events erinnert werden.
   * Email
   * Telegram
+
 
 
 
