@@ -31,7 +31,7 @@
 
 * Als Teilnehmer möchte ich Kommentare und Medien dem Event hinzufügen können.
 * Ich möchte Zugriffsberechtigungen steuern können.
-* Ich möchte in meiner Gruppe einen gemeinsamen Kalender pflegen.
+* Als Gruppe möchte ich einen gemeinsamen Kalender pflegen.
 * Ich möchte nur bestimmten Gruppen und Freunde zu einer privaten Veranstaltung einladen können.
 
 
@@ -40,4 +40,5 @@
 * Als Nutzer möchte ich an bevorstehende Events erinnert werden.
   * Email
   * Telegram
+
 
