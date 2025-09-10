@@ -1,8 +1,6 @@
 # Calendar
 
-## Events
-
-*Basics*
+### *Basics*
 
 * Als Veranstalter möchte ich Events erstellen können.
 * Als Veranstalter möchte ich andere Nutzer zu eine Event einladen können.
@@ -10,7 +8,7 @@
 
 ----
 
-*Teilnehmerliste*
+### *Teilnehmerliste*
 
 * Als Teilnehmer möchte ich meine Teilnahme bestätigen können.
 * Als Teilnehmer möchte ich meine Teilnahme ablehnen können.
@@ -20,7 +18,7 @@
 
 ----
 
-*Synchronisation*
+### *Synchronisation*
 
 * Als Nutzer möchte ich den Kalender mit anderen Kalender-Clients synchronisieren können um Veranstaltungen auf allen meinen Geräten sehen zu können.
 * Ich möchte ich Events von externen Kalender-Clients importieren können.
@@ -28,7 +26,7 @@
 
 ----
 
-*Privatsphäre*
+### *Privatsphäre*
 
 * Ich möchte Zugriffsberechtigungen steuern können.
 * Als Gruppe möchte ich einen gemeinsamen Kalender pflegen.
@@ -36,7 +34,7 @@
 
 ----
 
-*Interaktion*
+### *Interaktion*
 
 * Als Teilnehmer möchte ich Kommentare und Medien dem Event hinzufügen können.
 * Als Teilnehmer möchte ich vor Ort eine QR-Code scannen können, um meine Teilnahme zu bestätigen.
@@ -45,13 +43,14 @@
 
 ----
 
- *Benachrichtigungen*
+### *Benachrichtigungen*
 
 * Als Nutzer möchte ich über neu erstellte Events informiert werden.
 * Als Nutzer möchte ich an bevorstehende Events erinnert werden.
 * Als Nutzer möchte ich Benachrichtigungen über unterschiedliche Kanäle erhalten:
   * Email
   * Telegram
+
 
 
 
