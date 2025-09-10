@@ -34,3 +34,10 @@
    * Datum
    * Menschen
    * Tags / Kategorie
+* Als Nutzer würe ich gerne eine Vorschau meines Beitrags ansehen können
+* Als Nutzermöchte ich sehen, wie mein Beitrag später im Feed aussieht (Teaser)
+* Als technisch nicht versierter Nutzer möchte ich nicht durch unnötige Button irritiert werden
+* Als Nutzer möchte ich einen Standort auf der Karte auswählen können
+* Als Nutzer möchte ich einen Standort nach seiner Adresse oder Koordinaten finden können
+* Ich möchte den Typ meines Eintrags während des Erstellen ändern können (z.B. einen Post beim Erstellen  zu einem Event machen)
+* Ich möchte den Typ meines Eintrags später ändern können (z.B. einen Post nachträglich zu einem Event machen)
