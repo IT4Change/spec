@@ -43,13 +43,16 @@
 * Als Veranstalter möchte ich Teilnehmern die Teilnahme bestätigen können. 
 
 
+----
 
+ *Benachrichtigungen*
 
-## Notifiations
-
+* Als Nutzer möchte ich über neu erstellte Events informiert werden.
 * Als Nutzer möchte ich an bevorstehende Events erinnert werden.
+* Als Nutzer möchte ich Benachrichtigungen über unterschiedliche Kanäle erhalten:
   * Email
   * Telegram
+
 
 
 
