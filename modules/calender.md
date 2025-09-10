@@ -7,6 +7,7 @@
 * Als Veranstalter möchte ich Events erstellen können.
 * Als Veranstalter möchte ich andere Nutzer zu eine Event einladen können.
 * Als Nutzer möchte ich Events in einer Kalenderansicht sehen.
+* Als Nutzer möchte ich wissen was heute los ist.
 
 ----
 
@@ -39,3 +40,4 @@
 * Als Nutzer möchte ich an bevorstehende Events erinnert werden.
   * Email
   * Telegram
+
