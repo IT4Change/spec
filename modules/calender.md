@@ -3,8 +3,8 @@
 ## Events
 
 * Als Veranstalter möchte ich Events erstellen können.
-* Als Nutzer möchte ich andere Nutzer zu eine Event einladen können.
-* Ich möchte Events in einer Kalenderansicht sehen.
+* Als Veranstalter möchte ich andere Nutzer zu eine Event einladen können.
+* Als Nutzer möchte ich Events in einer Kalenderansicht sehen.
 
 ----
 
@@ -25,5 +25,6 @@
 ## Notifiations
 
 * Ich möchte ...
+
 
 
