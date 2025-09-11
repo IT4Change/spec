@@ -25,5 +25,7 @@ Als Nutzer möchte ich beim erstellen eines Beitrags festlegen können, wer ihn 
 
 
 **DAC (Discretionary Access Control):** Besitzer vergibt Rechte frei an Benutzer oder Gruppen.
+
 **RBAC (Role-Based Access Control):** Rechte werden Rollen zugewiesen (z.B. Admin, User), Benutzer erhalten Rollen.
+
 **ABAC (Attribute-Based Access Control):** Rechte basierend auf Attributen (Benutzer, Ressource, Umgebung, z.B. Zeit, Ort).
