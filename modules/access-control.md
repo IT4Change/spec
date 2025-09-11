@@ -14,7 +14,7 @@ Als Nutzer möchte ich beim erstellen eines Beitrags festlegen können, wer ihn 
 
 ----
 
-## Fragen
+## Weitere Berechtigungen
 
 * Wer kann Medien in einem Beitrag posten/anhängen?
 * Wer kann Kommentare an einen Beitrag anhängen?
