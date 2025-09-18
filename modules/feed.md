@@ -41,3 +41,6 @@
 * Als Nutzer möchte ich einen Standort nach seiner Adresse oder Koordinaten finden können
 * Ich möchte den Typ meines Eintrags während des Erstellen ändern können (z.B. einen Post beim Erstellen  zu einem Event machen)
 * Ich möchte den Typ meines Eintrags später ändern können (z.B. einen Post nachträglich zu einem Event machen)
+
+* Als Nutzer möchte ich eine öffentlichen Beitrag erstellen können, damit ich den Link verteilen kann und jeder ihn direkt sehen kann.
+* Als Nutzer möchte ich einen privaten Post erstellen können, den nur meine Kontakte sehen können, wenn sie eingeloggt sind.
