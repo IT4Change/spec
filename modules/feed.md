@@ -1,10 +1,22 @@
 # Feed
 
-## Sortierung
+## Inhalt
+
+* Persönliches Profil
+* Veranstaltungen
+* Orte
+* Projekte / Gruppen
+* Angebote
+* Bedürfnisse
+* Tracks
+
+## Sortierung / Algorithmus / Zuammensetzung des Feeds
 
 * Aktualität: Als Nutzer möchte ich Einträge nach ihrem Datum sortieren können, um die neusten Einträge zu sehen.
 * Entfernung: Als Nutzer möchte ich Einträge nach der Entfernung von meinem Standort sortieren können, um zu sehen was in meiner Nähe los ist.
 * Persönliches Netzwerk: Als Nutzer möchte ich Einträge nach der Enternung im "Social Graph" sortieren können, um zu sehen was in meinem persönlichen Kreis los ist. 
+
+## Filter
 
 ## Verknüfung mit der Karte
 
@@ -22,25 +34,4 @@
     * Bei Einträgen mit Medien, ist eine Gallery neben dem Eintrag (Zeigt alle Verknüpften Medien)
 * Auf mobilen Geräten soll der Eintrag in der Größe geändert werden können. Man kann ihn von unten in die Karte hineinziehen oder rausschieben.
 
-## Input
 
-* Als Nutzer möchte ich Einträge verschiedener Art posten können (Posts, Veranstaltungen, Gruppe, Angebote oder Nachfragen)
-
-* Als Nutzer möchte ich unterschiedliche Angaben beim Erstellen eines Eintrags machen können:
-   * Titel
-   * Text
-   * Ort
-   * Medien
-   * Datum
-   * Menschen
-   * Tags / Kategorie
-* Als Nutzer würe ich gerne eine Vorschau meines Beitrags ansehen können
-* Als Nutzermöchte ich sehen, wie mein Beitrag später im Feed aussieht (Teaser)
-* Als technisch nicht versierter Nutzer möchte ich nicht durch unnötige Button irritiert werden
-* Als Nutzer möchte ich einen Standort auf der Karte auswählen können
-* Als Nutzer möchte ich einen Standort nach seiner Adresse oder Koordinaten finden können
-* Ich möchte den Typ meines Eintrags während des Erstellen ändern können (z.B. einen Post beim Erstellen  zu einem Event machen)
-* Ich möchte den Typ meines Eintrags später ändern können (z.B. einen Post nachträglich zu einem Event machen)
-
-* Als Nutzer möchte ich eine öffentlichen Beitrag erstellen können, damit ich den Link verteilen kann und jeder ihn direkt sehen kann.
-* Als Nutzer möchte ich einen privaten Post erstellen können, den nur meine Kontakte sehen können, wenn sie eingeloggt sind.
