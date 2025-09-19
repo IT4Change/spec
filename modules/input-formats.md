@@ -1,4 +1,25 @@
-# Input Formats
+# Input Formular
+
+* Als Nutzer möchte ich Einträge verschiedener Art posten können (Posts, Veranstaltungen, Gruppe, Angebote oder Nachfragen)
+
+* Als Nutzer möchte ich unterschiedliche Angaben beim Erstellen eines Eintrags machen können:
+   * Titel
+   * Text
+   * Ort
+   * Medien
+   * Datum
+   * Menschen
+   * Tags / Kategorie
+* Als Nutzer würe ich gerne eine Vorschau meines Beitrags ansehen können
+* Als Nutzermöchte ich sehen, wie mein Beitrag später im Feed aussieht (Teaser)
+* Als technisch nicht versierter Nutzer möchte ich nicht durch unnötige Button irritiert werden
+* Als Nutzer möchte ich einen Standort auf der Karte auswählen können
+* Als Nutzer möchte ich einen Standort nach seiner Adresse oder Koordinaten finden können
+* Ich möchte den Typ meines Eintrags während des Erstellen ändern können (z.B. einen Post beim Erstellen  zu einem Event machen)
+* Ich möchte den Typ meines Eintrags später ändern können (z.B. einen Post nachträglich zu einem Event machen)
+
+* Als Nutzer möchte ich eine öffentlichen Beitrag erstellen können, damit ich den Link verteilen kann und jeder ihn direkt sehen kann.
+* Als Nutzer möchte ich einen privaten Post erstellen können, den nur meine Kontakte sehen können, wenn sie eingeloggt sind.
 
 One approach to think about the platform we want to create is to figure out what kind of Data the users want to put into it.
 This document describes different user stories in how and why certain users want to contribute certain content.
