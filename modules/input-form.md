@@ -1,4 +1,4 @@
-# Input Formular
+# Input Form
 
 * Als Nutzer möchte ich Einträge verschiedener Art posten können (Posts, Veranstaltungen, Gruppe, Angebote oder Nachfragen)
 
@@ -21,12 +21,12 @@
 * Als Nutzer möchte ich eine öffentlichen Beitrag erstellen können, damit ich den Link verteilen kann und jeder ihn direkt sehen kann.
 * Als Nutzer möchte ich einen privaten Post erstellen können, den nur meine Kontakte sehen können, wenn sie eingeloggt sind.
 
-One approach to think about the platform we want to create is to figure out what kind of Data the users want to put into it.
-This document describes different user stories in how and why certain users want to contribute certain content.
 
-After an story based description, the document lists all types of content, including implicit content like authorship and in what combinations those datasets occur.
 
 ## User stories
+
+This user stories descripe how and why certain users want to contribute certain content. This stories descripe different types of content, including implicit content like authorship and in what combinations those datasets occur.
+
 
 ### US01 - Funny Video
 An user wants to post a Video he just found on the Internet. He downloaded the video and reuploads it on the platform.
