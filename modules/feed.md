@@ -1,15 +1,5 @@
 # Feed
 
-## Inhalt
-
-* Persönliches Profil
-* Veranstaltungen
-* Orte
-* Projekte / Gruppen
-* Angebote
-* Bedürfnisse
-* Tracks
-
 ## Sortierung / Algorithmus / Zuammensetzung des Feeds
 
 * Aktualität: Als Nutzer möchte ich Einträge nach ihrem Datum sortieren können, um die neusten Einträge zu sehen.
