@@ -3,7 +3,7 @@
 * Dann wenn vorhanden Standort (Gemeinde + Entferung)
 * Dannwenn vorhanden der Start-Zeitpunkt
 * Dann der Beschreibungstext (gekürzt)
-* dann in einer neuen Zeile der Ersteller des Beitrags mit Zeitpunkt des Postens des Beitrags in einer Zeile
+* Alle Beiträge beinhalten den Autor und das Erstellunszeitpunkt (z.B. vor 10Minuten, gestern, vor zwei Wochen + Tooltip mit konkreter Datum und Zeitangabe) in einer Zeile
 * Preview zeigt die Anzahl der Kommentare
   * Beim Klick auf die Kommentar-Link lande ich in der Detail Ansicht und das Kommentar-Input-Feld ist fokussiert
 * Beiträge haben Reaktionen (Herz, Daumen hoch, ... )
