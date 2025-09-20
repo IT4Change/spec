@@ -52,6 +52,9 @@
   * Telegram
 
 
+## layout
+
+* Der Kalender soll in seiner Ansicht zwischen Tag, Woche Monat und Liste umgeschaltet werden können.
 
 
 
