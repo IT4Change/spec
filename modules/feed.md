@@ -6,7 +6,6 @@
 * Entfernung: Als Nutzer möchte ich Einträge nach der Entfernung von meinem Standort sortieren können, um zu sehen was in meiner Nähe los ist.
 * Persönliches Netzwerk: Als Nutzer möchte ich Einträge nach der Enternung im "Social Graph" sortieren können, um zu sehen was in meinem persönlichen Kreis los ist. 
 
-## Filter
 
 ## Verknüfung mit der Karte
 
