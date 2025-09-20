@@ -1,25 +1,25 @@
-## Inhalts-Typen
+# Inhalts-Typen
 
-# Persönliches Profil
+## Persönliches Profil
 * Jeder Nutzer hat ein persönliches Profil
 
-# Veranstaltungen
+## Veranstaltungen
 * Ein Eintrag mit Start- und Endzeitpunkt (optional)
 
 * Vergangene Veranstaltungen weden nicht mehr auf der Karte dargestellt (evtl. Pufferzeit)
 
-# Projekte / Gruppen
+## Projekte / Gruppen
 * Hat Mitglieder
 * Hat Medien
 * Hat Updates (Feed)
 * Nutzer kann Mitgleid werden
 * Kann privaten Content haben (Nur für Teilnehmer) 
 
-# Angebote / Bedürfnisse
+## Angebote / Bedürfnisse
 * Hat Medien
 * Hat Text
 * Hat Owner
 
-# Media (Text, Photo, Viedeo, Audio)
+## Media (Text, Photo, Viedeo, Audio)
 * Text + ggf. Medien
 
