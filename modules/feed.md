@@ -10,7 +10,15 @@
 ## Verknüfung mit der Karte
 
 * Als Nutzer möchte ich Einträge auf der Karte im Feed gezeigt bekommen, um neue Einträge und Updates zu sehen.
-* Als Nutzer möchte ich beim bewegen und zoomen der Karte, Einträge sehen die aus dem jeweiligen Kartenausschnitt stammen, um zu sehen was in einer bestimmten Region los ist.
+* Beim Klick auf einen Beitrag mit Geostandort wird vom Feed auf die Karte gewechselt
+   * die Detailansicht legt sich über die Karte
+   * Der entspechende Marker wird auf der Karte zentriert
+   * Desktop
+      * Die Vorschau aus dem Feed expandiert zur Detailansicht, während sie auf die rechte Bildschirmhälfte (Heroanimation, hält den Fokus) wandert, während gleichzeit im hintergrund auf die karte gewechselt wird
+      * Links ist die Karte zu sehen
+   * Mobile
+      * Sie füllt die unteren 70% des Bildschrims
+      * Oben ist die Karte zu sehen
 
 ## Layout Ideen
 
