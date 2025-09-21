@@ -11,11 +11,11 @@ const BottomMenu = ({ currentView, setCurrentView }) => {
 
   return (
     <motion.div 
-      initial={{ y: 100 }}
-      animate={{ y: 0 }}
-      className="fixed bottom-0 left-0 right-0 bg-white/10 backdrop-blur-lg border-t border-white/20 md:hidden z-40"
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className="md:hidden w-full bg-white/10 backdrop-blur-lg border-t border-white/20 mt-auto"
     >
-      <div className="flex items-center justify-around py-2">
+      <div className="flex items-center justify-around py-2 pb-[env(safe-area-inset-bottom)]">
         {viewOptions.map((option) => {
           const Icon = option.icon;
           const isActive = currentView === option.id;

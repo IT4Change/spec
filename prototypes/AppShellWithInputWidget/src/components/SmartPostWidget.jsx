@@ -22,7 +22,7 @@ import TagsWidget from '@/components/widgets/TagsWidget';
 const POST_TYPES = {
   POST: 'Post',
   EVENT: 'Veranstaltung',
-  GROUP: 'Projekt/Gruppe',
+  GROUP: 'Projekt',
   AD: 'Anzeige',
 };
 

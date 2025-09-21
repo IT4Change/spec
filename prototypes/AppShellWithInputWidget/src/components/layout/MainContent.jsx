@@ -57,7 +57,7 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className={`relative ${isMapView ? 'p-0' : 'p-4 md:p-8'} pb-24 md:pb-8 h-[calc(100vh-4rem)] overflow-y-auto`}
+      className={`relative flex-1 min-h-0 ${isMapView ? 'p-0' : 'p-4 md:p-8'} overflow-y-auto`}
     >
       <div className={`${isMapView ? 'absolute top-4 right-4 z-[1001]' : 'flex justify-end mb-8 max-w-3xl mx-auto'}`}>
         <div className="flex items-center space-x-2">
