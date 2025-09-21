@@ -7,6 +7,7 @@
             * Profil
             * Einstllungen
             * Logout
+        * Indicator zum öffnen des User Menus
     * Auswahl der Ansicht (Feed, Karte oder Kalender)
         * Desktop: Icon + Text (horizontal)
         * Mobile: Nicht sichtbar (stattdessen Bottom Menü)
