@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useAnimation, useMotionValue } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import { useDrag } from '@use-gesture/react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -33,10 +33,6 @@ const PostDetailContent = ({ post, author, users, handleNotImplemented, onClose,
 
       <div className="p-6">
         <div className="flex items-center mb-4">
-          <Avatar className="h-12 w-12 mr-4">
-            <AvatarImage src={author.avatar} alt={author.name} />
-            <AvatarFallback>{author.name.substring(0, 2)}</AvatarFallback>
-          </Avatar>
           <div>
             <p className="font-semibold text-xl text-white">{author.name}</p>
             <TooltipProvider>
@@ -129,37 +125,65 @@ const PostDetail = ({ post, onClose, isModal }) => {
   const [author, setAuthor] = useState(null);
   const [users, setUsers] = useState({});
   const [isMobile, setIsMobile] = useState(false);
-
-  const initialHeight = window.innerHeight * 0.7;
-  const height = useMotionValue(initialHeight);
+  const getInitialHeight = () => (typeof window !== 'undefined' ? window.innerHeight * 0.65 : 600);
+  const [sheetHeight, setSheetHeight] = useState(getInitialHeight);
+  const [viewportHeight, setViewportHeight] = useState(
+    typeof window !== 'undefined' ? window.innerHeight : 800
+  );
   const controls = useAnimation();
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    controls.set({ height: sheetHeight });
+  }, [sheetHeight, controls]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof window === 'undefined') return;
+      setIsMobile(window.innerWidth < 768);
+      const nextHeight = window.innerHeight;
+      setViewportHeight(nextHeight);
+
+      const min = Math.max(220, nextHeight * 0.32);
+      const max = nextHeight * 0.95;
+      setSheetHeight(prev => Math.min(Math.max(prev, min), max));
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const dragBinder = useDrag(
-    ({ down, movement: [, my], velocity: [, vy], direction: [, dy] }) => {
-      if (down) {
-        height.set(initialHeight - my);
-      } else {
-        if (my > initialHeight * 0.5 || (vy > 0.5 && dy === 1)) {
+    ({ first, last, movement: [, my], memo }) => {
+      const startHeight = first || memo === undefined ? sheetHeight : memo;
+      const vh = typeof window !== 'undefined' ? window.innerHeight : viewportHeight;
+      const minHeight = Math.max(220, vh * 0.3);
+      const maxHeight = vh * 0.95;
+      const closeThreshold = vh * 0.12;
+      const rawHeight = startHeight - my;
+      const clampedHeight = Math.max(minHeight, Math.min(maxHeight, rawHeight));
+
+      if (first) {
+        controls.stop();
+      }
+
+      controls.set({ height: clampedHeight });
+
+      if (last) {
+        if (rawHeight < closeThreshold) {
           onClose();
-        } else if (my < -initialHeight * 0.3 || (vy < -0.5 && dy === -1)) {
-          controls.start({ height: window.innerHeight - 64 }); // Maximize (leave space for navbar)
         } else {
-          controls.start({ height: initialHeight }); // Snap back to initial
+          setSheetHeight(clampedHeight);
+          controls.start({
+            height: clampedHeight,
+            transition: { type: 'spring', stiffness: 260, damping: 30 },
+          });
         }
       }
+
+      return startHeight;
     },
-    {
-      from: () => [0, -height.get()],
-      bounds: { top: -(window.innerHeight - 64) },
-      rubberband: true,
-    }
+    { axis: 'y' }
   );
 
   useEffect(() => {
@@ -195,9 +219,9 @@ const PostDetail = ({ post, onClose, isModal }) => {
   if (isMobile) {
     return (
       <motion.div
-        style={{ height }}
+        initial={{ height: sheetHeight }}
         animate={controls}
-        transition={{ type: 'spring', damping: 40, stiffness: 400 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 30 }}
         className="w-full absolute bottom-0 shadow-2xl shadow-black/50"
       >
         <PostDetailContent post={post} author={author} users={users} handleNotImplemented={handleNotImplemented} onClose={onClose} dragBinder={dragBinder()} isMobile={true} />
