@@ -39,6 +39,7 @@ jobs:
           prototypes=(AppShell AppShellWithInputWidget InputWidget modules-hub Profiles)
           rm -rf gh-pages
           mkdir -p gh-pages
+          cp index.html gh-pages/index.html
           for dir in "${prototypes[@]}"; do
             echo "\n📦 Building $dir"
             pushd "prototypes/$dir" >/dev/null
