@@ -1,6 +1,6 @@
 # Inhalts-Typen
 
-## Persönliches Profil
+## Persönliche Profile
 * Jeder Nutzer hat ein persönliches Profil
 
 ## Veranstaltungen
