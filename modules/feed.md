@@ -1,5 +1,11 @@
 # Feed
 
+* Der Feed zeigt Previes von Beiträgen in einer vertikalen Liste
+* Der Feed zeigt neben Beiträgen auch automatisch generierte Meldungen
+  * Nutzer A ist dem Netzwerk begetreten
+  * Beitrag X wurde geupdatet
+  * Nutzer Y nimmt an Veranstaltung Z teil
+
 ## Sortierung / Algorithmus / Zuammensetzung des Feeds
 
 * Aktualität: Als Nutzer möchte ich Einträge nach ihrem Datum sortieren können, um die neusten Einträge zu sehen.
