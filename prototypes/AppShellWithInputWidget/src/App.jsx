@@ -114,7 +114,7 @@ function App() {
             <DropdownMenuTrigger asChild>
               <Button
                 size="icon"
-                className="fixed bottom-24 right-6 z-50 h-16 w-16 rounded-full bg-gradient-to-br from-purple-500 via-fuchsia-500 to-indigo-500 text-white shadow-[0_10px_30px_rgba(79,70,229,0.45)] hover:from-purple-500 hover:via-fuchsia-500 hover:to-indigo-600"
+                className="fixed bottom-24 md:bottom-4 right-4 z-50 h-16 w-16 rounded-full bg-gradient-to-br from-purple-500 via-fuchsia-500 to-indigo-500 text-white shadow-[0_10px_30px_rgba(79,70,229,0.45)] hover:from-purple-500 hover:via-fuchsia-500 hover:to-indigo-600"
               >
                 <Plus className="w-6 h-6" />
                 <span className="sr-only">Beitragstyp auswählen</span>

@@ -18,15 +18,17 @@ const MapController = ({ center, detailWidth, detailHeight, isMobile }) => {
   const map = useMap();
   useEffect(() => {
     if (center) {
-      const xOffset = isMobile ? 0 : -detailWidth / 2;
-      const yOffset = isMobile ? -detailHeight / 2 : 0;
-      
-      map.flyTo(center, 15, {
+      const zoom = Math.max(map.getZoom(), 15);
+      const centerPoint = map.project(center, zoom);
+      const offsetX = detailWidth ? detailWidth / 2 : 0;
+      const offsetY = isMobile && detailHeight ? detailHeight / 2 : 0;
+      const targetPoint = L.point(centerPoint.x + offsetX, centerPoint.y + offsetY/1.2);
+      const targetLatLng = map.unproject(targetPoint, zoom);
+
+      map.flyTo(targetLatLng, zoom, {
         animate: true,
-        duration: 1.5
+        duration: 1.25,
       });
-      
-      map.panBy([xOffset, yOffset], { animate: true, duration: 1.5 });
     }
   }, [center, detailWidth, detailHeight, isMobile, map]);
   return null;
@@ -35,13 +37,21 @@ const MapController = ({ center, detailWidth, detailHeight, isMobile }) => {
 const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPost, onCloseDetail }) => {
   const [mapCenter, setMapCenter] = useState([52.52, 13.405]);
   const [isMobile, setIsMobile] = useState(false);
+  const [viewportHeight, setViewportHeight] = useState(() => (typeof window !== 'undefined' ? window.innerHeight : 800));
+  const detailContainerRef = useRef(null);
+  const [detailSize, setDetailSize] = useState({ width: 0, height: 0 });
   const postsWithLocation = posts.filter(post => post.location);
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const handleResize = () => {
+      if (typeof window === 'undefined') return;
+      setIsMobile(window.innerWidth < 768);
+      setViewportHeight(window.innerHeight);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -56,8 +66,41 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
     setMapCenter([post.location.lat, post.location.lon]);
   };
 
+  useEffect(() => {
+    const node = detailContainerRef.current;
+    if (!node) {
+      setDetailSize({ width: 0, height: 0 });
+      return undefined;
+    }
+
+    if (typeof ResizeObserver === 'undefined') {
+      setDetailSize({ width: node.clientWidth, height: node.clientHeight });
+      return undefined;
+    }
+
+    const observer = new ResizeObserver((entries) => {
+      const entry = entries[0];
+      if (entry) {
+        const { width, height } = entry.contentRect;
+        setDetailSize({ width, height });
+      }
+    });
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, [selectedPost]);
+
   const detailWidth = isMobile ? 0 : 450;
-  const detailHeight = isMobile ? window.innerHeight * 0.3 : 0; // 70vh panel, so center in top 30%
+  const computeSheetHeight = (vh) => {
+    const min = Math.max(220, vh * 0.32);
+    const max = Math.max(min + 40, vh - 64);
+    const target = vh * 0.65;
+    return Math.min(Math.max(target, min), max);
+  };
+  const measuredHeight = detailSize.height || computeSheetHeight(viewportHeight);
+  const detailHeight = isMobile ? measuredHeight : 0;
+  const measuredWidth = detailSize.width || detailWidth;
+  const controllerDetailWidth = isMobile ? 0 : measuredWidth;
 
   return (
     <div className="h-full w-full relative overflow-hidden">
@@ -66,7 +109,7 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <MapController center={mapCenter} detailWidth={detailWidth} detailHeight={detailHeight} isMobile={isMobile} />
+        <MapController center={mapCenter} detailWidth={controllerDetailWidth} detailHeight={detailHeight} isMobile={isMobile} />
         {postsWithLocation.map(post => (
           <Marker 
             key={post.id} 
@@ -78,14 +121,7 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
           >
             <Popup>
               <div className="w-48">
-                <h3 className="font-bold text-base mb-2">{post.title}</h3>
-                {post.media && post.media[0]?.type === 'image' && (
-                  <img src={post.media[0].url} alt={post.title} className="h-24 w-full object-cover rounded-md mb-2" />
-                )}
-                <p className="text-xs line-clamp-2 mb-2">{post.content}</p>
-                <Button size="sm" className="w-full" onClick={() => onSelectPost(post)}>
-                  Details anzeigen
-                </Button>
+                <h3 className="font-bold text-base mb-2 text-center">{post.title}</h3>
               </div>
             </Popup>
           </Marker>
@@ -96,14 +132,19 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
         {selectedPost && selectedPost.location && (
           <motion.div
             layoutId={`post-card-${selectedPost.id}`}
-            className="absolute z-[1002] bottom-0 right-0 md:top-0 w-full md:w-[450px] h-full pointer-events-none"
+            className="absolute inset-0 z-[1002] pointer-events-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="w-full h-full pointer-events-auto">
-              <PostDetail post={selectedPost} onClose={onCloseDetail} isModal={false} />
+            <div className="flex h-full w-full items-end justify-center md:items-stretch md:justify-end">
+              <div
+                className="pointer-events-auto w-full md:w-[450px]"
+                ref={detailContainerRef}
+              >
+                <PostDetail post={selectedPost} onClose={onCloseDetail} isModal={false} />
+              </div>
             </div>
           </motion.div>
         )}
