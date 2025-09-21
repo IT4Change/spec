@@ -43,7 +43,7 @@ jobs:
             echo "\n📦 Building $dir"
             pushd "prototypes/$dir" >/dev/null
             npm ci
-            npm run build -- --base="/${dir}/"
+            npm run build -- --base="/spec/${dir}/"
             popd >/dev/null
             mkdir -p "gh-pages/$dir"
             cp -R "prototypes/$dir/dist/." "gh-pages/$dir/"
