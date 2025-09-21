@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'prototypes/**'
+      - '.github/workflows/deploy-prototypes.yml'
 
 permissions:
   contents: write
