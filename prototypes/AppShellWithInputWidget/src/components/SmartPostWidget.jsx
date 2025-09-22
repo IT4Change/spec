@@ -238,7 +238,7 @@ const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
                         isTextWidget={isTextWidget}
                         autoFocus={isTextWidget}
                       />
-                       {!isTextWidget && (
+                       {!isTextWidget && !POST_TYPE_DEFAULT_WIDGETS[postType].includes(widgetType) && (
                         <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-slate-400 hover:text-white hover:bg-slate-700/50" onClick={() => toggleWidget(widgetType)}>
                           <Trash2 className="w-4 h-4" />
                         </Button>
