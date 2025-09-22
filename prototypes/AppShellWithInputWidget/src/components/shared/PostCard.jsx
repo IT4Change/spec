@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { MessageCircle, Heart, ThumbsUp, Calendar, MapPin, Clock } from 'lucide-react';
+import { MessageCircle, Plus, Calendar, MapPin, Clock } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { toast } from '@/components/ui/use-toast';
+import EmojiReactionPicker from '@/components/ui/EmojiReactionPicker';
 
 const PostCard = ({ post }) => {
   const [author, setAuthor] = useState(null);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [reactions, setReactions] = useState(post.reactions || {});
 
   useEffect(() => {
     const users = JSON.parse(localStorage.getItem('users'));
@@ -22,6 +25,19 @@ const PostCard = ({ post }) => {
       title: "🚧 Feature nicht implementiert",
       description: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀"
     });
+  };
+
+  const handleEmojiSelect = (emoji) => {
+    const newReactions = { ...reactions };
+    newReactions[emoji] = (newReactions[emoji] || 0) + 1;
+    setReactions(newReactions);
+  };
+
+  const handleReactionClick = (emoji, e) => {
+    e.stopPropagation();
+    const newReactions = { ...reactions };
+    newReactions[emoji] = (newReactions[emoji] || 0) + 1;
+    setReactions(newReactions);
   };
 
   const getPostTypePill = () => {
@@ -97,14 +113,47 @@ const PostCard = ({ post }) => {
         </div>
 
         <div className="flex justify-between items-center pt-4 border-t border-white/20">
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="sm" className="text-white/60 hover:text-white" onClick={handleNotImplemented}>
-              <Heart className="h-4 w-4 mr-2" /> {post.reactions['❤️'] || 0}
+          <div className="flex items-center space-x-2 flex-wrap relative">
+            {/* Display existing reactions */}
+            {Object.entries(reactions).map(([emoji, count]) => (
+              <Button
+                key={emoji}
+                variant="ghost"
+                size="sm"
+                className="text-white hover:text-white bg-white/10 hover:bg-white/20 rounded-full px-3 py-1 h-8"
+                onClick={(e) => handleReactionClick(emoji, e)}
+              >
+                <span className="mr-1 opacity-100">{emoji}</span>
+                <span className="text-xs text-white/90">{count}</span>
+              </Button>
+            ))}
+
+            {/* Add reaction button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-white/60 hover:text-white bg-white/10 hover:bg-white/20 rounded-full h-8 w-8 p-0"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowEmojiPicker(!showEmojiPicker);
+              }}
+            >
+              <Plus className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="sm" className="text-white/60 hover:text-white" onClick={handleNotImplemented}>
-              <ThumbsUp className="h-4 w-4 mr-2" /> {post.reactions['👍'] || 0}
-            </Button>
+
+            {/* Emoji picker */}
+            <AnimatePresence>
+              {showEmojiPicker && (
+                <EmojiReactionPicker
+                  onEmojiSelect={handleEmojiSelect}
+                  onClose={() => setShowEmojiPicker(false)}
+                  reactions={reactions}
+                  className="bottom-full left-0 mb-2"
+                />
+              )}
+            </AnimatePresence>
           </div>
+
           <Button variant="ghost" size="sm" className="text-white/60 hover:text-white" onClick={handleNotImplemented}>
             <MessageCircle className="h-4 w-4 mr-2" /> {post.comments.length} Kommentare
           </Button>
