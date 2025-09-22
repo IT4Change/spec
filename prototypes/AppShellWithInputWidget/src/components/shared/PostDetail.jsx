@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import { useDrag } from '@use-gesture/react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
-import { Heart, ThumbsUp, X, Calendar, MapPin, Users, Send } from 'lucide-react';
+import { Plus, X, Calendar, MapPin, Users, Send } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { toast } from '@/components/ui/use-toast';
 import { Input } from '@/components/ui/input';
+import EmojiReactionPicker from '@/components/ui/EmojiReactionPicker';
 
-const PostDetailContent = ({ post, author, users, handleNotImplemented, onClose, dragBinder, isMobile }) => (
+const PostDetailContent = ({ post, author, users, handleNotImplemented, onClose, dragBinder, isMobile, reactions, onEmojiSelect, onReactionClick, showEmojiPicker, setShowEmojiPicker }) => (
   <div className="bg-slate-900/80 backdrop-blur-lg border-purple-500/50 text-white w-full h-full flex flex-col rounded-t-2xl md:rounded-none">
     {isMobile && (
       <div {...dragBinder} className="w-full py-4 flex justify-center items-center touch-none cursor-grab active:cursor-grabbing">
@@ -74,13 +75,45 @@ const PostDetailContent = ({ post, author, users, handleNotImplemented, onClose,
           )}
         </div>
 
-        <div className="flex items-center space-x-4 mb-6">
-          <Button variant="ghost" size="sm" className="text-white/60 hover:text-white" onClick={handleNotImplemented}>
-            <Heart className="h-4 w-4 mr-2" /> {post.reactions['❤️'] || 0}
+        <div className="flex items-center space-x-2 flex-wrap mb-6 relative">
+          {/* Display existing reactions */}
+          {Object.entries(reactions).map(([emoji, count]) => (
+            <Button
+              key={emoji}
+              variant="ghost"
+              size="sm"
+              className="text-white hover:text-white bg-white/10 hover:bg-white/20 rounded-full px-3 py-1 h-8"
+              onClick={(e) => onReactionClick(emoji, e)}
+            >
+              <span className="mr-1 opacity-100">{emoji}</span>
+              <span className="text-xs text-white/90">{count}</span>
+            </Button>
+          ))}
+
+          {/* Add reaction button */}
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-white/60 hover:text-white bg-white/10 hover:bg-white/20 rounded-full h-8 w-8 p-0"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowEmojiPicker(!showEmojiPicker);
+            }}
+          >
+            <Plus className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="sm" className="text-white/60 hover:text-white" onClick={handleNotImplemented}>
-            <ThumbsUp className="h-4 w-4 mr-2" /> {post.reactions['👍'] || 0}
-          </Button>
+
+          {/* Emoji picker */}
+          <AnimatePresence>
+            {showEmojiPicker && (
+              <EmojiReactionPicker
+                onEmojiSelect={onEmojiSelect}
+                onClose={() => setShowEmojiPicker(false)}
+                reactions={reactions}
+                className="top-full left-0 mt-2"
+              />
+            )}
+          </AnimatePresence>
         </div>
 
         <div className="border-t border-white/20 pt-6">
@@ -125,6 +158,8 @@ const PostDetail = ({ post, onClose, isModal }) => {
   const [author, setAuthor] = useState(null);
   const [users, setUsers] = useState({});
   const [isMobile, setIsMobile] = useState(false);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [reactions, setReactions] = useState(post.reactions || {});
   const getInitialHeight = () => (typeof window !== 'undefined' ? window.innerHeight * 0.65 : 600);
   const [sheetHeight, setSheetHeight] = useState(getInitialHeight);
   const [viewportHeight, setViewportHeight] = useState(
@@ -202,6 +237,19 @@ const PostDetail = ({ post, onClose, isModal }) => {
     });
   };
 
+  const handleEmojiSelect = (emoji) => {
+    const newReactions = { ...reactions };
+    newReactions[emoji] = (newReactions[emoji] || 0) + 1;
+    setReactions(newReactions);
+  };
+
+  const handleReactionClick = (emoji, e) => {
+    e.stopPropagation();
+    const newReactions = { ...reactions };
+    newReactions[emoji] = (newReactions[emoji] || 0) + 1;
+    setReactions(newReactions);
+  };
+
   if (!author) return null;
 
   if (isModal) {
@@ -209,7 +257,19 @@ const PostDetail = ({ post, onClose, isModal }) => {
       <Dialog open={true} onOpenChange={onClose}>
         <DialogContent className="bg-transparent border-none text-white p-0 max-w-3xl w-full max-h-[90vh] flex flex-col shadow-none">
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="rounded-lg overflow-hidden">
-            <PostDetailContent post={post} author={author} users={users} handleNotImplemented={handleNotImplemented} onClose={onClose} isMobile={false} />
+            <PostDetailContent
+              post={post}
+              author={author}
+              users={users}
+              handleNotImplemented={handleNotImplemented}
+              onClose={onClose}
+              isMobile={false}
+              reactions={reactions}
+              onEmojiSelect={handleEmojiSelect}
+              onReactionClick={handleReactionClick}
+              showEmojiPicker={showEmojiPicker}
+              setShowEmojiPicker={setShowEmojiPicker}
+            />
           </motion.div>
         </DialogContent>
       </Dialog>
@@ -224,7 +284,20 @@ const PostDetail = ({ post, onClose, isModal }) => {
         transition={{ type: 'spring', stiffness: 260, damping: 30 }}
         className="w-full absolute bottom-0 shadow-2xl shadow-black/50"
       >
-        <PostDetailContent post={post} author={author} users={users} handleNotImplemented={handleNotImplemented} onClose={onClose} dragBinder={dragBinder()} isMobile={true} />
+        <PostDetailContent
+          post={post}
+          author={author}
+          users={users}
+          handleNotImplemented={handleNotImplemented}
+          onClose={onClose}
+          dragBinder={dragBinder()}
+          isMobile={true}
+          reactions={reactions}
+          onEmojiSelect={handleEmojiSelect}
+          onReactionClick={handleReactionClick}
+          showEmojiPicker={showEmojiPicker}
+          setShowEmojiPicker={setShowEmojiPicker}
+        />
       </motion.div>
     );
   }
@@ -232,7 +305,19 @@ const PostDetail = ({ post, onClose, isModal }) => {
   return (
     <div className="w-full h-full md:h-full md:max-h-full md:rounded-none overflow-hidden shadow-2xl shadow-black/50 md:border-l md:border-purple-500/30">
        <div className="w-full h-full">
-         <PostDetailContent post={post} author={author} users={users} handleNotImplemented={handleNotImplemented} onClose={onClose} isMobile={false} />
+         <PostDetailContent
+           post={post}
+           author={author}
+           users={users}
+           handleNotImplemented={handleNotImplemented}
+           onClose={onClose}
+           isMobile={false}
+           reactions={reactions}
+           onEmojiSelect={handleEmojiSelect}
+           onReactionClick={handleReactionClick}
+           showEmojiPicker={showEmojiPicker}
+           setShowEmojiPicker={setShowEmojiPicker}
+         />
        </div>
     </div>
   );
