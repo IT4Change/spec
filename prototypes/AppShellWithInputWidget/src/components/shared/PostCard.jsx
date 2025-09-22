@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { MessageCircle, Plus, Calendar, MapPin, Clock } from 'lucide-react';
+import { MessageCircle, Plus, Share2, Calendar, MapPin, Clock } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { toast } from '@/components/ui/use-toast';
@@ -58,7 +58,6 @@ const PostCard = ({ post }) => {
   return (
     <motion.div
       className="bg-purple-900/50 backdrop-blur-lg rounded-xl border border-purple-400/30 overflow-hidden cursor-pointer relative shadow-2xl shadow-purple-900/50"
-      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
     >
       {post.media && post.media[0]?.type === 'image' && (
         <div className="h-48 w-full overflow-hidden relative">
@@ -154,9 +153,14 @@ const PostCard = ({ post }) => {
             </AnimatePresence>
           </div>
 
-          <Button variant="ghost" size="sm" className="text-white/60 hover:text-white" onClick={handleNotImplemented}>
-            <MessageCircle className="h-4 w-4 mr-2" /> {post.comments.length} Kommentare
-          </Button>
+          <div className="flex items-center space-x-2">
+            <Button variant="ghost" size="sm" className="text-white/60 hover:text-white" onClick={handleNotImplemented}>
+              <Share2 className="h-4 w-4 mr-2" /> Teilen
+            </Button>
+            <Button variant="ghost" size="sm" className="text-white/60 hover:text-white" onClick={handleNotImplemented}>
+              <MessageCircle className="h-4 w-4 mr-2" /> {post.comments.length} Kommentare
+            </Button>
+          </div>
         </div>
       </div>
     </motion.div>
