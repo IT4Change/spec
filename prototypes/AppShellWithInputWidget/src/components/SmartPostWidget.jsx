@@ -6,7 +6,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { 
-  Type, Image as ImageIcon, MapPin, Calendar, Users, Tag, Globe, Lock, Send, Trash2, Eye, Edit
+  Type, Image as ImageIcon, MapPin, Calendar, Users, Tag, Globe, Lock, Send, Trash2, Eye, Edit, X
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -120,15 +120,31 @@ const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
       data: widgetData,
       createdAt: new Date().toISOString(),
     };
+    
+    // Add location for events if available
+    if (postType === POST_TYPES.EVENT && widgetData.location) {
+      post.location = widgetData.location;
+    }
+    
     console.log("Submitting post:", post);
     const existingPosts = JSON.parse(localStorage.getItem('socialPosts') || '[]');
     localStorage.setItem('socialPosts', JSON.stringify([post, ...existingPosts]));
     toast({ title: "Eintrag erstellt!", description: "Dein Eintrag wurde erfolgreich gespeichert." });
+    
+    // Clear form
     setPostType(POST_TYPES.POST);
     setActiveWidgets(POST_TYPE_DEFAULT_WIDGETS[POST_TYPES.POST]);
     setWidgetData({});
+    
+    // Call onClose with success flag and post data
     if (typeof onClose === 'function') {
-      onClose();
+      onClose(true, post);
+    }
+  };
+
+  const handleCancel = () => {
+    if (typeof onClose === 'function') {
+      onClose(false);
     }
   };
 
@@ -142,35 +158,45 @@ const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
   };
 
   return (
-    <div className="bg-slate-800/50 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-700 w-full overflow-hidden">
-      <div className="p-4 border-b border-slate-700 flex justify-between items-center">
-        {showPreview ? (
-          <h2 className="text-lg font-semibold text-white">{postType} - Vorschau</h2>
-        ) : (
-          <Tabs value={postType} onValueChange={setPostType} className="w-full">
-            <TabsList>
-              {Object.values(POST_TYPES).map(type => (
-                <TabsTrigger key={type} value={type}>{type}</TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
-        )}
-        <Button variant="ghost" onClick={() => setShowPreview(!showPreview)} className="text-sm text-slate-300 hover:text-white ml-4 flex-shrink-0">
-          {showPreview ? <Edit className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
-          {showPreview ? 'Bearbeiten' : 'Vorschau'}
-        </Button>
+    <div className="h-full flex flex-col">
+      <div className="bg-slate-900/80 backdrop-blur-xl border-b border-slate-700">
+        <div className="max-w-3xl mx-auto p-4 flex justify-between items-center">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={handleCancel} 
+            className="text-slate-300 hover:text-white mr-4"
+          >
+            <X className="w-5 h-5" />
+          </Button>
+        <div className="flex-1">
+          {showPreview ? (
+            <h2 className="text-lg font-semibold text-white">{postType} - Vorschau</h2>
+          ) : (
+            <Tabs value={postType} onValueChange={setPostType} className="w-full">
+              <TabsList>
+                {Object.values(POST_TYPES).map(type => (
+                  <TabsTrigger key={type} value={type}>{type}</TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
+          )}
+        </div>
+        </div>
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={showPreview ? 'preview' : 'form'}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.2 }}
-        >
+      <div className="flex-1 overflow-y-auto bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={showPreview ? 'preview' : 'form'}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="min-h-full"
+          >
           {showPreview ? (
-            <div className="p-6 prose prose-invert max-w-none prose-headings:text-slate-100 prose-p:text-slate-300 prose-a:text-purple-400 prose-strong:text-white">
+            <div className="max-w-3xl mx-auto px-4 py-6 prose prose-invert max-w-none prose-headings:text-slate-100 prose-p:text-slate-300 prose-a:text-purple-400 prose-strong:text-white">
               {widgetData.title && <h1>{widgetData.title}</h1>}
               {widgetData.text && <ReactMarkdown remarkPlugins={[remarkGfm]}>{widgetData.text}</ReactMarkdown>}
               {widgetData.media && widgetData.media.length > 0 && (
@@ -184,7 +210,7 @@ const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
               {widgetData.tags && widgetData.tags.length > 0 && <p><strong>Tags:</strong> {widgetData.tags.map(t => `#${t}`).join(' ')}</p>}
             </div>
           ) : (
-            <div className="p-4 sm:p-6 space-y-4">
+            <div className="max-w-3xl mx-auto px-4 py-6 space-y-4">
               <AnimatePresence>
                 {WIDGET_ORDER.map(widgetType => {
                   if (!activeWidgets.includes(widgetType)) return null;
@@ -222,10 +248,12 @@ const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
               </AnimatePresence>
             </div>
           )}
-        </motion.div>
-      </AnimatePresence>
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      <div className="p-4 bg-slate-900/50 border-t border-slate-700 flex justify-between items-center rounded-b-2xl">
+      <div className="bg-slate-900/50 border-t border-slate-700">
+        <div className="max-w-3xl mx-auto p-4 flex justify-between items-center">
         <div className="flex items-center space-x-3">
           <Switch id="visibility-switch" checked={isPublic} onCheckedChange={setIsPublic} />
           <Label htmlFor="visibility-switch" className="flex items-center text-sm text-slate-300 cursor-pointer">
@@ -234,13 +262,18 @@ const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
           </Label>
         </div>
         <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white hover:bg-slate-700/50" onClick={() => { setWidgetData({}); setActiveWidgets(POST_TYPE_DEFAULT_WIDGETS[postType])}}>
-                <Trash2 className="w-4 h-4" />
+            <Button 
+              variant="outline" 
+              onClick={handleCancel} 
+              className="text-slate-300 border-slate-600 hover:bg-slate-700/50"
+            >
+              Abbrechen
             </Button>
             <Button onClick={handleSubmit} className="bg-purple-600 hover:bg-purple-700 text-white font-bold">
                 <Send className="w-4 h-4 mr-2" />
                 {postType === POST_TYPES.POST ? 'Posten' : 'Erstellen'}
             </Button>
+        </div>
         </div>
       </div>
     </div>
