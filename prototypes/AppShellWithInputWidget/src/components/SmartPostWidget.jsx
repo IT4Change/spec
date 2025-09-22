@@ -236,6 +236,7 @@ const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
                         availableWidgets={WIDGET_ORDER.filter(w => !activeWidgets.includes(w) && WIDGET_CONFIG[w].icon)}
                         onToggleWidget={toggleWidget}
                         isTextWidget={isTextWidget}
+                        autoFocus={isTextWidget}
                       />
                        {!isTextWidget && (
                         <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-slate-400 hover:text-white hover:bg-slate-700/50" onClick={() => toggleWidget(widgetType)}>

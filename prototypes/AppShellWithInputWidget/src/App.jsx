@@ -56,6 +56,11 @@ function App() {
     setCurrentView(view);
   }
 
+  const handleCreatePostFromFeed = () => {
+    // Default to POST type when creating from feed
+    handleComposerLaunch(POST_TYPES.POST);
+  };
+
   const handleComposerLaunch = (type) => {
     // Store current scroll position before opening composer
     const scrollElement = document.querySelector('.overflow-y-auto');
@@ -133,6 +138,7 @@ function App() {
                 onCloseDetail={handleCloseDetail}
                 postToOpenOnMap={postToOpenOnMap}
                 setSelectedPost={setSelectedPost}
+                onCreatePost={handleCreatePostFromFeed}
               />
             </motion.div>
           </div>
@@ -168,8 +174,16 @@ function App() {
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
-          <DialogContent className="max-w-full w-screen h-screen border-none bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 p-0 shadow-none rounded-none m-0" showCloseButton={false}>
-            <div className="h-full overflow-y-auto flex flex-col">
+          <DialogContent 
+            className="max-w-full w-screen h-screen border-none bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 p-0 shadow-none rounded-none m-0" 
+            showCloseButton={false}
+          >
+            <motion.div 
+              className="h-full overflow-y-auto flex flex-col"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
+            >
               <DndProvider backend={HTML5Backend}>
                 <SmartPostWidget
                   key={composerPostType}
@@ -177,7 +191,7 @@ function App() {
                   onClose={handleComposerClose}
                 />
               </DndProvider>
-            </div>
+            </motion.div>
           </DialogContent>
         </Dialog>
 

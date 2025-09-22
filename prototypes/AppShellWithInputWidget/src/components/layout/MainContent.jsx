@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, postToOpenOnMap, setSelectedPost }) => {
+const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, postToOpenOnMap, setSelectedPost, onCreatePost }) => {
   const [posts, setPosts] = useState([]);
   const [sortOrder, setSortOrder] = useState('chronological');
 
@@ -35,7 +35,7 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
   const getViewContent = () => {
     switch (currentView) {
       case 'feed':
-        return <FeedView posts={posts} sortOrder={sortOrder} onSelectPost={onSelectPost} />;
+        return <FeedView posts={posts} sortOrder={sortOrder} onSelectPost={onSelectPost} onCreatePost={onCreatePost} />;
       case 'map':
         return <MapView posts={posts} onSelectPost={onSelectPost} postToOpen={postToOpenOnMap} setSelectedPost={setSelectedPost} selectedPost={selectedPost} onCloseDetail={onCloseDetail} />;
       case 'calendar':
