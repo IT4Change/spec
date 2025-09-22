@@ -51,7 +51,7 @@ const mockPosts = [
     reactions: { '❤️': 5 },
     comments: [],
     media: [
-      { type: 'image', url: 'https://images.unsplash.com/photo-1621997890019-b27aa13a41a3?w=500&q=80' }
+      { type: 'image', url: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=500&q=80' }
     ]
   },
 ];
