@@ -81,7 +81,7 @@ function TopNav({ view, onViewChange, onToggleSidebar, isSidebarOpen, onOpenFilt
           className="hidden md:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-4 text-sm font-semibold text-slate-950 shadow-lg shadow-primary/20"
         >
           <Plus className="h-4 w-4" />
-          Beitrag erstellen
+          Eintrag erstellen
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

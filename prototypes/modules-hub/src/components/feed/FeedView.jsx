@@ -17,7 +17,7 @@ function FeedView({ entries, onOpenEntry, sort, onChangeSort }) {
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-xl font-semibold text-white">Community Feed</h2>
-            <p className="text-sm text-slate-400">Neue Beiträge, Events und Quests in deinem Umfeld</p>
+            <p className="text-sm text-slate-400">Neue Einträge, Events und Quests in deinem Umfeld</p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             {sortOptions.map(({ id, label, icon: Icon }) => (
@@ -47,7 +47,7 @@ function FeedView({ entries, onOpenEntry, sort, onChangeSort }) {
           ))}
           {entries.length === 0 && (
             <div className="rounded-3xl border border-slate-800/60 bg-slate-900/60 p-12 text-center text-slate-400">
-              Keine Beiträge für deine aktuelle Filterkombination.
+              Keine Einträge für deine aktuelle Filterkombination.
             </div>
           )}
         </div>

@@ -34,7 +34,7 @@ const Badges = () => {
     },
     {
       id: 4,
-      name: 'Super Beitrag',
+      name: 'Super Eintrag',
       description: '50 Community-Punkte erreicht',
       icon: Award,
       color: 'from-purple-500 to-pink-600',

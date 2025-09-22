@@ -64,7 +64,7 @@ function CreateEntryDialog({ open, onOpenChange }) {
         <form className="grid gap-6 md:grid-cols-[1.2fr_1fr]" onSubmit={handleSubmit}>
           <div className="space-y-6">
             <header className="space-y-1">
-              <h2 className="text-xl font-semibold text-white">Neuen Beitrag erstellen</h2>
+              <h2 className="text-xl font-semibold text-white">Neuen Eintrag erstellen</h2>
               <p className="text-sm text-slate-400">Wähle den passenden Typ und bestimme, welche Daten im Feed, auf der Karte oder im Kalender auftauchen.</p>
             </header>
 
@@ -94,7 +94,7 @@ function CreateEntryDialog({ open, onOpenChange }) {
                     value={draft.title}
                     onChange={(event) => updateField('title', event.target.value)}
                     className="w-full bg-transparent text-sm text-white outline-none"
-                    placeholder="Titel deines Beitrags"
+                    placeholder="Titel deines Eintrags"
                   />
                 </div>
               </div>
@@ -231,7 +231,7 @@ function CreateEntryDialog({ open, onOpenChange }) {
               </div>
             </div>
             <Button type="submit" className="mt-auto w-full rounded-full" size="lg">
-              Beitrag als Entwurf speichern
+              Eintrag als Entwurf speichern
             </Button>
           </aside>
         </form>

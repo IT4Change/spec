@@ -1,9 +1,9 @@
 # Feed
 
-* Der Feed zeigt Previes von Beiträgen in einer vertikalen Liste
-* Der Feed zeigt neben Beiträgen auch automatisch generierte Meldungen
+* Der Feed zeigt Previes von Einträgen in einer vertikalen Liste
+* Der Feed zeigt neben Einträgen auch automatisch generierte Meldungen
   * Nutzer A ist dem Netzwerk begetreten
-  * Beitrag X wurde geupdatet
+  * Eintrag X wurde geupdatet
   * Nutzer Y nimmt an Veranstaltung Z teil
 
 ## Sortierung / Algorithmus / Zuammensetzung des Feeds
@@ -15,8 +15,7 @@
 
 ## Verknüfung mit der Karte
 
-* Als Nutzer möchte ich Einträge auf der Karte im Feed gezeigt bekommen, um neue Einträge und Updates zu sehen.
-* Beim Klick auf einen Beitrag mit Geostandort wird vom Feed auf die Karte gewechselt
+* Beim Klick auf einen Eintrag mit Geostandort wird vom Feed auf die Karte gewechselt
    * die Detailansicht legt sich über die Karte
    * Der entspechende Marker wird auf der Karte zentriert
    * Desktop
@@ -29,12 +28,9 @@
 ## Layout Ideen
 
 * Einspaltiger Feed für bessere Übersicht
-* Beiträge werden über dem Feed geöffnet
-* Beiträge haben Kommentare und Antworten auf Kommentare
-* Beiträge haben Reaktionen (Herz, Daumen hoch, ... )
-* Auf großen Bildschirmen wird der Einträge über den halben Bildschirm angezeigt
-    * Bei Einträgen mit Standortdaten, ist eine Karte neben dem Eintrage (Zeigt Standort des Beitrags und alle weiteren geographischen Einträge, die verlinkt sind)
-    * Bei Einträgen mit Medien, ist eine Gallery neben dem Eintrag (Zeigt alle Verknüpften Medien)
-* Auf mobilen Geräten soll der Eintrag in der Größe geändert werden können. Man kann ihn von unten in die Karte hineinziehen oder rausschieben.
+* Einträge ohne Geostandort werden über dem Feed geöffnet
+* Einträge haben Kommentare und Antworten auf Kommentare
+* Einträge haben Reaktionen (Herz, Daumen hoch, ... )
+
 
 

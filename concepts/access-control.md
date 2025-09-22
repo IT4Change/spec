@@ -1,11 +1,11 @@
-Als Nutzer möchte ich beim erstellen eines Beitrags festlegen können, wer ihn sehen kann
+Als Nutzer möchte ich beim erstellen eines Eintrags festlegen können, wer ihn sehen kann
 
 * Freunde (Alle oder Bestimmte)
 * Gruppen (Alle oder Bestimmte)
 * Jeder mit link/secret/einladung
 * Jeder (öffentlich)
 
-Als Nutzer möchte ich beim erstellen eines Beitrags festlegen können, wer ihn bearbeiten kann
+Als Nutzer möchte ich beim erstellen eines Eintrags festlegen können, wer ihn bearbeiten kann
 
 * Freunde (Alle oder Bestimmte)
 * Gruppen (Alle oder Bestimmte)
@@ -16,8 +16,8 @@ Als Nutzer möchte ich beim erstellen eines Beitrags festlegen können, wer ihn 
 
 ## Weitere Berechtigungen
 
-* Wer kann Medien in einem Beitrag posten/anhängen?
-* Wer kann Kommentare an einen Beitrag anhängen?
+* Wer kann Medien in einem Eintrag posten/anhängen?
+* Wer kann Kommentare an einen Eintrag anhängen?
 
 ----
 

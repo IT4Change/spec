@@ -115,7 +115,7 @@ const SmartPostWidget = () => {
     console.log("Submitting post:", post);
     const existingPosts = JSON.parse(localStorage.getItem('socialPosts') || '[]');
     localStorage.setItem('socialPosts', JSON.stringify([post, ...existingPosts]));
-    toast({ title: "Beitrag erstellt!", description: "Dein Beitrag wurde erfolgreich gespeichert." });
+    toast({ title: "Eintrag erstellt!", description: "Dein Eintrag wurde erfolgreich gespeichert." });
     setPostType(POST_TYPES.POST);
     setActiveWidgets(POST_TYPE_DEFAULT_WIDGETS[POST_TYPES.POST]);
     setWidgetData({});

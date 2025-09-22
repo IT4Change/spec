@@ -43,7 +43,7 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
           <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 border border-white/20 text-center h-full flex flex-col justify-center items-center">
             <Calendar className="h-16 w-16 text-green-400 mx-auto mb-4" />
             <h2 className="text-white text-2xl font-semibold mb-2">Kalender Ansicht</h2>
-            <p className="text-white/60">Hier würde der Kalender mit Beiträgen angezeigt werden, die ein Datum haben.</p>
+            <p className="text-white/60">Hier würde der Kalender mit Einträgen angezeigt werden, die ein Datum haben.</p>
           </div>
         );
       default:
@@ -107,7 +107,7 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
           <DropdownMenuItem onClick={handleNotImplemented} className="cursor-pointer">Veranstaltung erstellen</DropdownMenuItem>
           <DropdownMenuItem onClick={handleNotImplemented} className="cursor-pointer">Projekt/Gruppe erstellen</DropdownMenuItem>
           <DropdownMenuItem onClick={handleNotImplemented} className="cursor-pointer">Angebot/Bedürfnis erstellen</DropdownMenuItem>
-          <DropdownMenuItem onClick={handleNotImplemented} className="cursor-pointer">Medienbeitrag erstellen</DropdownMenuItem>
+          <DropdownMenuItem onClick={handleNotImplemented} className="cursor-pointer">MedienEintrag erstellen</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 

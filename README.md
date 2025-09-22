@@ -92,9 +92,9 @@ local-change-platform/
 - **GeoJSON**: Geografische Datenformate
 
 
-## 👥 Beitragen
+## 👥 Eintragen
 
-Wir freuen uns über Beiträge! Siehe [CONTRIBUTING.md](CONTRIBUTING.md) für Details.
+Wir freuen uns über Einträge! Siehe [CONTRIBUTING.md](CONTRIBUTING.md) für Details.
 
 ## 🤝 Partner & Nutzer
 

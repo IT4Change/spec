@@ -1,14 +1,14 @@
 # Input Form
 
-* Als Nutzer möchte ich Einträge verschiedener Art posten können (siehe [Beitrags-Types](item-types.md))
-* Als Nutzer möchte ich gerne zu einer Vorschau meines Beitrags (Detailansicht und/oder Preview) wechseln können
+* Als Nutzer möchte ich Einträge verschiedener Art posten können (siehe [Eintrags-Types](../concepts/item-types.md))
+* Als Nutzer möchte ich gerne zu einer Vorschau meines Eintrags (Detailansicht und/oder Preview) wechseln können
 * Als technisch nicht versierter Nutzer möchte ich nicht durch unnötige Button irritiert werden
 * Ich möchte den Typ meines Eintrags während des Erstellen ändern können (z.B. einen Post beim Erstellen  zu einer Veranstaltung oder Projekt machen)
 * Ich möchte den Typ meines Eintrags später ändern können (z.B. einen Post nachträglich zu einem Event machen)
 
 ## Input Widgets
 
-* Das Inputformular soll je nach Context (Beitrags-Typ) aus unterschiedlichen Widgets/Input-Elmenten zusammengesetzt werden
+* Das Inputformular soll je nach Context (Eintrags-Typ) aus unterschiedlichen Widgets/Input-Elmenten zusammengesetzt werden
   * Post
     * Text
   * Veranstaltung
@@ -25,12 +25,12 @@
     * Titel
     * Text
     * Tags
-* Ganz oben im Formular soll über ein Tab-Menü der Typ des Beitrags gewählt werden können (dieser definiert die angezeigten Input-Elemente) 
+* Ganz oben im Formular soll über ein Tab-Menü der Typ des Eintrags gewählt werden können (dieser definiert die angezeigten Input-Elemente) 
 * Es sollen bei Bedarf zusätzliche Input-Elemente hinzugefügt werden können
 * Nicht benötigte Input-Elemente sollen entfernt werden können
 * Die Input Elemente haben eine feste Reihenfolge. Neu hinzugefügte Elmente werden an der ensprechenden Stelle hinzugefügt (Title, Text, Medien, Zeit, Ort, Menschen, Tags)
 * Unten im Textfeld (dieses ist in jedem Fall immer Sichtbar) befinden sich kleine Icons, die die nicht angezeigten Input-Elemente definieren. Beim Klick auf ein solches Icon öffnet sich das entsprechende Input-Element und das Icon verschwindet. Beim entfernen, des entsprechenden Input-Elements aus dem Formular, wird das Icon wieder eingeblendet.
-* Es soll immer die Sichtbarkeit des Beitrags (öffentlich, privat) gewählt werden können
+* Es soll immer die Sichtbarkeit des Eintrags (öffentlich, privat) gewählt werden können
 
 ### Titel
 * Sollte immer oben als erstes Widget über dem Text platziert werden.
@@ -38,7 +38,7 @@
 ### Text
 * Ich möchte den Text strukturieren (H1, H2, H3, Aufzählung, Quoute, Image) mit hilfe einer Leiste am oberen Rand des Textfelds
 * Markdown soll automatisch erkannt werden
-* Über "@" soll ein beliebiger User/Beitrag verlinkt werden können (Autovervollständigung bestehender User und Beiträge)
+* Über "@" soll ein beliebiger User/Eintrag verlinkt werden können (Autovervollständigung bestehender User und Einträge)
 * Über "#" soll ein Hashtag/Schlagwort generiert und gesetzt werden können (Autovervollständigung für existierende Schlagworte)
   
 ### Ort
@@ -75,7 +75,7 @@
 
 ### Sichtbarkeit
 
-* Als Nutzer möchte ich eine öffentlichen Beitrag erstellen können, damit ich den Link verteilen kann und auch Gäste ihn direkt sehen kann.
+* Als Nutzer möchte ich eine öffentlichen Eintrag erstellen können, damit ich den Link verteilen kann und auch Gäste ihn direkt sehen kann.
 * Als Nutzer möchte ich einen privaten Post erstellen können, den nur User aus meinem Netzwerk sehen können, wenn sie eingeloggt sind.
 
 ## Designs
