@@ -27,6 +27,8 @@ function App() {
   const [postToOpenOnMap, setPostToOpenOnMap] = useState(null);
   const [isComposerOpen, setIsComposerOpen] = useState(false);
   const [composerPostType, setComposerPostType] = useState(POST_TYPES.POST);
+  const [previousView, setPreviousView] = useState('feed');
+  const [previousScrollPosition, setPreviousScrollPosition] = useState(0);
 
   useEffect(() => {
     initializeMockData();
@@ -55,8 +57,40 @@ function App() {
   }
 
   const handleComposerLaunch = (type) => {
+    // Store current scroll position before opening composer
+    const scrollElement = document.querySelector('.overflow-y-auto');
+    if (scrollElement) {
+      setPreviousScrollPosition(scrollElement.scrollTop);
+    }
+    setPreviousView(currentView);
     setComposerPostType(type);
     setIsComposerOpen(true);
+  };
+
+  const handleComposerClose = (postCreated = false, postData = null) => {
+    setIsComposerOpen(false);
+    
+    if (postCreated && postData) {
+      // Navigate based on post type
+      if (postData.postType === POST_TYPES.EVENT && postData.data.location) {
+        // For events with location, go to map view
+        setPostToOpenOnMap(postData);
+        setCurrentView('map');
+      } else {
+        // For all other posts, go to feed
+        setCurrentView('feed');
+      }
+    } else {
+      // On cancel, return to previous view and restore scroll
+      setCurrentView(previousView);
+      // Restore scroll position after view change
+      setTimeout(() => {
+        const scrollElement = document.querySelector('.overflow-y-auto');
+        if (scrollElement) {
+          scrollElement.scrollTop = previousScrollPosition;
+        }
+      }, 100);
+    }
   };
 
   return (
@@ -109,7 +143,9 @@ function App() {
           setCurrentView={handleViewChange}
         />
 
-        <Dialog open={isComposerOpen} onOpenChange={setIsComposerOpen}>
+        <Dialog open={isComposerOpen} onOpenChange={(open) => {
+          if (!open) handleComposerClose(false);
+        }}>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
@@ -132,13 +168,13 @@ function App() {
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
-          <DialogContent className="max-w-3xl sm:max-w-4xl w-[95vw] border-none bg-transparent p-0 shadow-none">
-            <div className="max-h-[85vh] overflow-y-auto p-2 sm:p-4">
+          <DialogContent className="max-w-full w-screen h-screen border-none bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 p-0 shadow-none rounded-none m-0" showCloseButton={false}>
+            <div className="h-full overflow-y-auto flex flex-col">
               <DndProvider backend={HTML5Backend}>
                 <SmartPostWidget
                   key={composerPostType}
                   initialPostType={composerPostType}
-                  onClose={() => setIsComposerOpen(false)}
+                  onClose={handleComposerClose}
                 />
               </DndProvider>
             </div>
