@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { 
   Bold, Italic, Heading1, Heading2, Heading3, List, Quote, 
@@ -13,7 +14,17 @@ const WIDGET_CONFIG = {
   'tags': { icon: Tag, label: 'Tags' },
 };
 
-const TextWidget = ({ value = '', onChange, onMention, availableWidgets, onToggleWidget, isTextWidget }) => {
+const TextWidget = ({ value = '', onChange, onMention, availableWidgets, onToggleWidget, isTextWidget, autoFocus = false }) => {
+  const textareaRef = useRef(null);
+
+  useEffect(() => {
+    if (autoFocus && textareaRef.current) {
+      // Small delay to ensure the animation has started
+      setTimeout(() => {
+        textareaRef.current.focus();
+      }, 100);
+    }
+  }, [autoFocus]);
   
   const handleTextChange = (e) => {
     const text = e.target.value;
@@ -57,12 +68,20 @@ const TextWidget = ({ value = '', onChange, onMention, availableWidgets, onToggl
         <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white hover:bg-slate-700/50" onClick={() => applyFormat('list')}><List className="w-4 h-4" /></Button>
         <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white hover:bg-slate-700/50" onClick={() => applyFormat('quote')}><Quote className="w-4 h-4" /></Button>
       </div>
-      <textarea
+      <motion.textarea
+        ref={textareaRef}
+        layoutId="text-input-hero"
         value={value}
         onChange={handleTextChange}
-        placeholder="Was gibt's Neues?"
-        className="w-full p-4 bg-transparent border-none focus:ring-0 placeholder-slate-400 text-white resize-none min-h-[120px]"
+        placeholder="Was möchtest du teilen?"
+        className="w-full p-4 bg-transparent border-none focus:outline-none focus:ring-0 placeholder-slate-400 text-white resize-none min-h-[120px]"
         rows={5}
+        transition={{
+          layout: {
+            duration: 0.4,
+            ease: [0.4, 0, 0.2, 1]
+          }
+        }}
       />
       {isTextWidget && availableWidgets.length > 0 && (
         <div className="p-2 border-t border-slate-700 flex items-center space-x-2">

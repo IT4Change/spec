@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import PostCard from '@/components/shared/PostCard';
 
-const FeedView = ({ posts, sortOrder, onSelectPost }) => {
+const FeedView = ({ posts, sortOrder, onSelectPost, onCreatePost }) => {
 
   const sortedPosts = [...posts].sort((a, b) => {
     if (sortOrder === 'distance') {
@@ -17,6 +17,20 @@ const FeedView = ({ posts, sortOrder, onSelectPost }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
+      {/* Create Post Placeholder */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        onClick={onCreatePost}
+        className="bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 cursor-text transition-all duration-200 hover:bg-slate-800/60 hover:border-slate-600 p-4"
+      >
+        <motion.div
+          layoutId="text-input-hero"
+          className="text-slate-500 text-base"
+        >
+          Was möchtest du teilen?
+        </motion.div>
+      </motion.div>
       {sortedPosts.map((post, index) => (
         <motion.div
           key={post.id}
