@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/layout/Navbar';
@@ -29,10 +29,62 @@ function App() {
   const [composerPostType, setComposerPostType] = useState(POST_TYPES.POST);
   const [previousView, setPreviousView] = useState('feed');
   const [previousScrollPosition, setPreviousScrollPosition] = useState(0);
+  const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+  const hideTimeoutRef = useRef(null);
+  const showTimeoutRef = useRef(null);
 
   useEffect(() => {
     initializeMockData();
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Clear show timeout when scrolling starts
+      if (showTimeoutRef.current) {
+        clearTimeout(showTimeoutRef.current);
+        showTimeoutRef.current = null;
+      }
+
+      // Start hide timeout if not already running
+      if (!hideTimeoutRef.current) {
+        // Only trigger fade-out if user scrolls for more than 2000ms continuously
+        hideTimeoutRef.current = setTimeout(() => {
+          setIsButtonVisible(false);
+        }, 500);
+      }
+
+      // Set timeout to show button after scrolling stops
+      showTimeoutRef.current = setTimeout(() => {
+        // Clear hide timeout since scrolling stopped
+        if (hideTimeoutRef.current) {
+          clearTimeout(hideTimeoutRef.current);
+          hideTimeoutRef.current = null;
+        }
+        setIsButtonVisible(true);
+      }, 800); // 800ms delay after scrolling stops
+    };
+
+    // Find the scrollable element in MainContent
+    const scrollElement = document.querySelector('main.overflow-y-auto');
+
+    if (scrollElement) {
+      scrollElement.addEventListener('scroll', handleScroll);
+    }
+
+    // Cleanup
+    return () => {
+      if (scrollElement) {
+        scrollElement.removeEventListener('scroll', handleScroll);
+      }
+      if (hideTimeoutRef.current) {
+        clearTimeout(hideTimeoutRef.current);
+      }
+      if (showTimeoutRef.current) {
+        clearTimeout(showTimeoutRef.current);
+      }
+    };
+  }, [currentView]);
 
   const handleSelectPost = (post) => {
     if (post.location) {
@@ -152,17 +204,23 @@ function App() {
         <Dialog open={isComposerOpen} onOpenChange={(open) => {
           if (!open) handleComposerClose(false);
         }}>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                size="icon"
-                className="fixed bottom-24 md:bottom-4 right-4 z-50 h-16 w-16 rounded-full bg-gradient-to-br from-purple-500 via-fuchsia-500 to-indigo-500 text-white shadow-[0_10px_30px_rgba(79,70,229,0.45)] hover:from-purple-500 hover:via-fuchsia-500 hover:to-indigo-600"
-              >
-                <Plus className="w-6 h-6" />
-                <span className="sr-only">Eintragstyp auswählen</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent side="top" align="end" sideOffset={12} className="mb-3 min-w-[220px]">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isButtonVisible ? 1 : 0.3 }}
+            transition={{ duration: 1 }}
+            className="fixed bottom-24 md:bottom-4 right-4 z-50"
+          >
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      size="icon"
+                      className="h-16 w-16 rounded-full bg-gradient-to-br from-purple-500 via-fuchsia-500 to-indigo-500 text-white shadow-[0_10px_30px_rgba(79,70,229,0.45)] hover:from-purple-500 hover:via-fuchsia-500 hover:to-indigo-600"
+                    >
+                      <Plus className="w-6 h-6" />
+                      <span className="sr-only">Eintragstyp auswählen</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent side="top" align="end" sideOffset={12} className="mb-3 min-w-[220px]">
               {Object.values(POST_TYPES).map((type) => (
                 <DropdownMenuItem
                   key={type}
@@ -172,8 +230,9 @@ function App() {
                   {type}
                 </DropdownMenuItem>
               ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+          </motion.div>
           <DialogContent 
             className="max-w-full w-screen h-screen border-none bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 p-0 shadow-none rounded-none m-0" 
             showCloseButton={false}
