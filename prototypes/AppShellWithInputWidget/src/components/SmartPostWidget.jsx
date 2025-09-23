@@ -2,7 +2,6 @@ import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { 
@@ -169,17 +168,25 @@ const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
           >
             <X className="w-5 h-5" />
           </Button>
-        <div className="flex-1">
+        <div className="flex-1 flex items-center justify-left">
           {showPreview ? (
             <h2 className="text-lg font-semibold text-white">{postType} - Vorschau</h2>
           ) : (
-            <Tabs value={postType} onValueChange={setPostType} className="w-full">
-              <TabsList>
-                {Object.values(POST_TYPES).map(type => (
-                  <TabsTrigger key={type} value={type}>{type}</TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
+            <div className="inline-flex items-center space-x-1 bg-white/10 backdrop-blur-sm rounded-full p-1">
+              {Object.values(POST_TYPES).map(type => (
+                <button
+                  key={type}
+                  onClick={() => setPostType(type)}
+                  className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
+                    postType === type
+                      ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
+                      : 'text-white/60 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  {type}
+                </button>
+              ))}
+            </div>
           )}
         </div>
         </div>
