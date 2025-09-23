@@ -157,7 +157,7 @@ function App() {
         <meta name="description" content="Modern responsive dashboard with navigation, sidebar and bottom menu" />
       </Helmet>
       
-      <div className="min-h-screen h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 overflow-hidden flex flex-col">
+      <div className="min-h-dvh h-dvh bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 overflow-hidden flex flex-col">
         <Navbar 
           currentView={currentView}
           setCurrentView={handleViewChange}
