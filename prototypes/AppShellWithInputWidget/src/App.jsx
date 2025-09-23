@@ -157,7 +157,7 @@ function App() {
         <meta name="description" content="Modern responsive dashboard with navigation, sidebar and bottom menu" />
       </Helmet>
       
-      <div className="min-h-dvh h-dvh bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 overflow-hidden flex flex-col">
+      <div className="h-dvh bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 overflow-hidden flex flex-col">
         <Navbar 
           currentView={currentView}
           setCurrentView={handleViewChange}
@@ -234,7 +234,7 @@ function App() {
                 </DropdownMenu>
           </motion.div>
           <DialogContent 
-            className="max-w-full w-screen h-screen border-none bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 p-0 shadow-none rounded-none m-0" 
+            className="max-w-full w-screen h-dvh border-none bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 p-0 shadow-none rounded-none m-0" 
             showCloseButton={false}
           >
             <motion.div 

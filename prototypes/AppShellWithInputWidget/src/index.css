@@ -37,7 +37,6 @@ body {
   @apply bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 text-white;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  height: 100dvh;
 }
 
 /* Custom scrollbar */
