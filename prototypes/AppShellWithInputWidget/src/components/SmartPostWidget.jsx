@@ -189,6 +189,10 @@ const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
             </div>
           )}
         </div>
+        <Button variant="ghost" onClick={() => setShowPreview(!showPreview)} className="text-sm text-slate-300 hover:text-white ml-4 flex-shrink-0">
+          {showPreview ? <Edit className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
+          {showPreview ? 'Bearbeiten' : 'Vorschau'}
+        </Button>
         </div>
       </div>
 
