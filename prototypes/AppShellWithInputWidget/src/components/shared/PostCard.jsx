@@ -111,8 +111,19 @@ const PostCard = ({ post }) => {
           </TooltipProvider>
         </div>
 
-        <div className="flex justify-between items-center pt-4 border-t border-white/20">
-          <div className="flex items-center space-x-2 flex-wrap relative">
+        <div className="pt-4 border-t border-white/20 flex flex-wrap gap-2 justify-between">
+          {/* Actions - stay at bottom right */}
+          <div className="flex items-center space-x-2 flex-shrink-0 ml-auto order-2">
+            <Button variant="ghost" size="sm" className="text-white/60 hover:text-white" onClick={handleNotImplemented}>
+              <Share2 className="h-4 w-4 mr-2" /> Teilen
+            </Button>
+            <Button variant="ghost" size="sm" className="text-white/60 hover:text-white" onClick={handleNotImplemented}>
+              <MessageCircle className="h-4 w-4 mr-2" /> {post.comments.length} Kommentare
+            </Button>
+          </div>
+
+          {/* Reactions - will wrap to top when needed */}
+          <div className="flex items-center space-x-2 flex-wrap relative order-1">
             {/* Display existing reactions */}
             {Object.entries(reactions).map(([emoji, count]) => (
               <Button
@@ -151,15 +162,6 @@ const PostCard = ({ post }) => {
                 />
               )}
             </AnimatePresence>
-          </div>
-
-          <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="sm" className="text-white/60 hover:text-white" onClick={handleNotImplemented}>
-              <Share2 className="h-4 w-4 mr-2" /> Teilen
-            </Button>
-            <Button variant="ghost" size="sm" className="text-white/60 hover:text-white" onClick={handleNotImplemented}>
-              <MessageCircle className="h-4 w-4 mr-2" /> {post.comments.length} Kommentare
-            </Button>
           </div>
         </div>
       </div>
