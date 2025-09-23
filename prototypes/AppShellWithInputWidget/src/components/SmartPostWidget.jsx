@@ -207,7 +207,7 @@ const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
             className="min-h-full"
           >
           {showPreview ? (
-            <div className="max-w-3xl mx-auto px-4 py-6 prose prose-invert max-w-none prose-headings:text-slate-100 prose-p:text-slate-300 prose-a:text-purple-400 prose-strong:text-white">
+            <div className="max-w-3xl mx-auto px-4 py-6 prose prose-invert prose-headings:text-slate-100 prose-p:text-slate-300 prose-a:text-purple-400 prose-strong:text-white">
               {widgetData.title && <h1>{widgetData.title}</h1>}
               {widgetData.text && <ReactMarkdown remarkPlugins={[remarkGfm]}>{widgetData.text}</ReactMarkdown>}
               {widgetData.media && widgetData.media.length > 0 && (

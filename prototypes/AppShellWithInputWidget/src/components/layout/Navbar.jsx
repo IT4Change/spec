@@ -86,7 +86,7 @@ const Navbar = ({ currentView, setCurrentView, sidebarOpen, setSidebarOpen }) =>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56 bg-white/95 backdrop-blur-lg border border-white/20" align="end">
+          <DropdownMenuContent className="w-56 backdrop-blur-lg border border-white/20" align="end">
             <DropdownMenuItem 
               onClick={() => handleUserMenuClick('profile')}
               className="flex items-center space-x-2 cursor-pointer"
