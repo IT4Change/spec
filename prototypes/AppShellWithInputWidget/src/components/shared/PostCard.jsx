@@ -57,7 +57,7 @@ const PostCard = ({ post }) => {
 
   return (
     <motion.div
-      className="bg-purple-900/50 backdrop-blur-lg rounded-xl border border-purple-400/30 overflow-hidden cursor-pointer relative shadow-2xl shadow-purple-900/50"
+      className="bg-purple-900/50 backdrop-blur-lg rounded-lg border border-purple-400/30 overflow-hidden cursor-pointer relative shadow-2xl shadow-purple-900/50"
     >
       {post.media && post.media[0]?.type === 'image' && (
         <div className="h-48 w-full overflow-hidden relative">

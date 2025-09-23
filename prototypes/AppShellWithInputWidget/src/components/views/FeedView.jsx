@@ -22,7 +22,7 @@ const FeedView = ({ posts, sortOrder, onSelectPost, onCreatePost }) => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         onClick={onCreatePost}
-        className="bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 cursor-text transition-all duration-200 hover:bg-slate-800/60 hover:border-slate-600 p-4"
+        className="bg-slate-800/50 backdrop-blur-sm rounded-lg border border-slate-700/50 cursor-text transition-all duration-200 hover:bg-slate-800/60 hover:border-slate-600 p-4"
       >
         <motion.div
           layoutId="text-input-hero"
