@@ -21,10 +21,10 @@ const Navbar = ({ currentView, setCurrentView, sidebarOpen, setSidebarOpen }) =>
   };
 
   return (
-    <motion.nav
+    <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-[1001] bg-white/10 backdrop-blur-lg border-b border-white/20"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-lg border-b border-white/20"
     >
       <div className="flex items-center justify-between px-4 py-3">
         {/* Left Section */}
