@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useAnimation, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import { useDrag } from '@use-gesture/react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -12,11 +12,26 @@ import { toast } from '@/components/ui/use-toast';
 import { Input } from '@/components/ui/input';
 import EmojiReactionPicker from '@/components/ui/EmojiReactionPicker';
 
-const PostDetailContent = ({ post, author, users, handleNotImplemented, onClose, dragBinder, isMobile, reactions, onEmojiSelect, onReactionClick, showEmojiPicker, setShowEmojiPicker }) => (
+const PostDetailContent = ({ post, author, users, handleNotImplemented, onClose, dragBinder, isMobile, reactions, onEmojiSelect, onReactionClick, showEmojiPicker, setShowEmojiPicker, isDragging, panelState }) => (
   <div className="bg-slate-900/80 backdrop-blur-lg border-purple-500/50 text-white w-full h-full flex flex-col rounded-t-2xl md:rounded-none">
     {isMobile && (
-      <div {...dragBinder} className="w-full py-4 flex justify-center items-center touch-none cursor-grab active:cursor-grabbing">
-        <div className="w-10 h-1.5 bg-white/30 rounded-full" />
+      <div {...dragBinder} className="w-full py-6 flex justify-center items-center touch-none cursor-grab active:cursor-grabbing bg-slate-900/90 border-b border-white/10">
+        <div className={`w-12 h-1.5 rounded-full transition-all duration-200 ${
+          isDragging
+            ? 'bg-purple-400 w-16 h-2'
+            : 'bg-white/40'
+        }`} />
+        {/* State indicator dots */}
+        <div className="absolute right-4 top-6 flex space-x-1">
+          {['small', 'medium', 'maximized'].map((state) => (
+            <div
+              key={state}
+              className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                panelState === state ? 'bg-purple-400' : 'bg-white/20'
+              }`}
+            />
+          ))}
+        </div>
       </div>
     )}
     
@@ -160,16 +175,62 @@ const PostDetail = ({ post, onClose, isModal }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [reactions, setReactions] = useState(post.reactions || {});
-  const getInitialHeight = () => (typeof window !== 'undefined' ? window.innerHeight * 0.65 : 600);
-  const [sheetHeight, setSheetHeight] = useState(getInitialHeight);
+  const [panelState, setPanelState] = useState('medium');
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const [viewportHeight, setViewportHeight] = useState(
     typeof window !== 'undefined' ? window.innerHeight : 800
   );
-  const controls = useAnimation();
 
-  useEffect(() => {
-    controls.set({ height: sheetHeight });
-  }, [sheetHeight, controls]);
+  // Motion value for real-time panel positioning
+  const y = useMotionValue(`${100 - 65}%`); // Start at medium position
+
+  // Get y position percentage for each state
+  const getStateYPosition = (state) => {
+    switch (state) {
+      case 'small': return `${100 - 30}%`;    // 30% height
+      case 'medium': return `${100 - 65}%`;   // 65% height
+      case 'maximized': return '0%';          // Full screen
+      case 'closed': return '100%';           // Hidden
+      default: return `${100 - 65}%`;
+    }
+  };
+
+  // Animation variants for smooth transitions
+  const panelVariants = {
+    closed: {
+      y: '100%',
+      opacity: 0,
+      transition: { type: 'spring', stiffness: 300, damping: 30 }
+    },
+    small: {
+      y: `${100 - 30}%`,
+      opacity: 1,
+      transition: { type: 'spring', stiffness: 300, damping: 30 }
+    },
+    medium: {
+      y: `${100 - 65}%`,
+      opacity: 1,
+      transition: { type: 'spring', stiffness: 300, damping: 30 }
+    },
+    maximized: {
+      y: '0%', // Full screen
+      opacity: 1,
+      transition: { type: 'spring', stiffness: 300, damping: 30 }
+    }
+  };
+
+  const snapToState = (targetState) => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setPanelState(targetState);
+
+    // Animate to target position
+    const targetPosition = getStateYPosition(targetState);
+    y.set(targetPosition);
+
+    setTimeout(() => setIsAnimating(false), 300);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -177,10 +238,6 @@ const PostDetail = ({ post, onClose, isModal }) => {
       setIsMobile(window.innerWidth < 768);
       const nextHeight = window.innerHeight;
       setViewportHeight(nextHeight);
-
-      const min = Math.max(220, nextHeight * 0.32);
-      const max = nextHeight * 0.95;
-      setSheetHeight(prev => Math.min(Math.max(prev, min), max));
     };
 
     handleResize();
@@ -189,37 +246,107 @@ const PostDetail = ({ post, onClose, isModal }) => {
   }, []);
 
   const dragBinder = useDrag(
-    ({ first, last, movement: [, my], memo }) => {
-      const startHeight = first || memo === undefined ? sheetHeight : memo;
-      const vh = typeof window !== 'undefined' ? window.innerHeight : viewportHeight;
-      const minHeight = Math.max(220, vh * 0.3);
-      const maxHeight = vh * 0.95;
-      const closeThreshold = vh * 0.12;
-      const rawHeight = startHeight - my;
-      const clampedHeight = Math.max(minHeight, Math.min(maxHeight, rawHeight));
+    ({ first, last, movement: [, my], velocity: [, vy], memo }) => {
+      if (isAnimating) return memo;
 
       if (first) {
-        controls.stop();
+        setIsDragging(true);
+        // Get current actual position from motion value, not panel state
+        const currentPosition = y.get();
+        let initialY;
+
+        if (typeof currentPosition === 'string' && currentPosition.includes('%')) {
+          initialY = parseFloat(currentPosition.replace('%', ''));
+        } else {
+          // Fallback to state-based position if motion value is not set properly
+          const statePosition = getStateYPosition(panelState);
+          initialY = parseFloat(statePosition.replace('%', ''));
+        }
+
+        return { startY: initialY, startState: panelState };
       }
 
-      controls.set({ height: clampedHeight });
+      // Calculate new position based on drag movement
+      const startY = memo?.startY || 35; // Default to medium (35% from top)
+      const dragOffset = (my / viewportHeight) * 100; // Convert pixels to percentage
+      const newY = Math.max(0, Math.min(85, startY + dragOffset)); // Limit: 0% (full) to 85% (15% height)
+
+      // Allow free positioning during drag
+      if (!last) {
+        // Update panel position in real-time
+        y.set(`${newY}%`);
+        return { startY, newY, startState: memo?.startState || panelState };
+      }
 
       if (last) {
-        if (rawHeight < closeThreshold) {
+        setIsDragging(false);
+        const velocityThreshold = 500; // pixels per second
+        const isQuickSwipe = Math.abs(vy) > velocityThreshold;
+
+        // Determine target state based on velocity and position
+        let targetState = panelState;
+
+        // Check for close threshold first (15% height = 85% from top)
+        if (newY >= 85) {
           onClose();
-        } else {
-          setSheetHeight(clampedHeight);
-          controls.start({
-            height: clampedHeight,
-            transition: { type: 'spring', stiffness: 260, damping: 30 },
-          });
+          return memo;
         }
+
+        // Only snap at edges - free scaling in between
+        if (isQuickSwipe) {
+          // Quick swipe - use velocity direction for edge snapping only
+          if (vy > 0 && newY < 10) {
+            // Quick swipe down from very top - stay where dragged (no snap)
+            // But ensure motion value sync happens after drag ends
+            setTimeout(() => {
+              // Sync after a brief delay to avoid race condition
+              y.set(`${newY}%`);
+            }, 10);
+            return memo;
+          } else if (vy < 0 && newY > 75) {
+            // Quick swipe up from near bottom - snap to maximized
+            targetState = 'maximized';
+          } else {
+            // No snapping for middle area quick swipes - stay where dragged
+            setTimeout(() => {
+              y.set(`${newY}%`);
+            }, 10);
+            return memo;
+          }
+        } else {
+          // Slow drag - only snap at extreme edges
+          if (newY < 5) {
+            targetState = 'maximized'; // Very top edge - snap to maximized
+          } else if (newY > 80) {
+            // Near close threshold - but don't snap, let user position freely
+            setTimeout(() => {
+              y.set(`${newY}%`);
+            }, 10);
+            return memo;
+          } else {
+            // Free positioning in middle - no snapping
+            setTimeout(() => {
+              y.set(`${newY}%`);
+            }, 10);
+            return memo;
+          }
+        }
+
+        snapToState(targetState);
       }
 
-      return startHeight;
+      return { startY, newY, startState: memo?.startState || panelState };
     },
-    { axis: 'y' }
+    { axis: 'y', rubberband: true }
   );
+
+  // Update motion value when panel state changes (but not during drag)
+  useEffect(() => {
+    if (!isDragging) {
+      const targetPosition = getStateYPosition(panelState);
+      y.set(targetPosition);
+    }
+  }, [panelState, isDragging]);
 
   useEffect(() => {
     const storedUsers = JSON.parse(localStorage.getItem('users'));
@@ -278,27 +405,36 @@ const PostDetail = ({ post, onClose, isModal }) => {
 
   if (isMobile) {
     return (
-      <motion.div
-        initial={{ height: sheetHeight }}
-        animate={controls}
-        transition={{ type: 'spring', stiffness: 260, damping: 30 }}
-        className="w-full absolute bottom-0 shadow-2xl shadow-black/50"
-      >
-        <PostDetailContent
-          post={post}
-          author={author}
-          users={users}
-          handleNotImplemented={handleNotImplemented}
-          onClose={onClose}
-          dragBinder={dragBinder()}
-          isMobile={true}
-          reactions={reactions}
-          onEmojiSelect={handleEmojiSelect}
-          onReactionClick={handleReactionClick}
-          showEmojiPicker={showEmojiPicker}
-          setShowEmojiPicker={setShowEmojiPicker}
-        />
-      </motion.div>
+      <>
+        {/* Mobile Panel - No backdrop overlay to keep map interactive */}
+        <motion.div
+          initial="closed"
+          animate={panelState}
+          exit="closed"
+          variants={panelVariants}
+          className="fixed inset-0 z-[1003] pointer-events-none"
+          style={{ y }}
+        >
+          <div className="absolute inset-0 pointer-events-auto">
+            <PostDetailContent
+              post={post}
+              author={author}
+              users={users}
+              handleNotImplemented={handleNotImplemented}
+              onClose={onClose}
+              dragBinder={dragBinder()}
+              isMobile={true}
+              reactions={reactions}
+              onEmojiSelect={handleEmojiSelect}
+              onReactionClick={handleReactionClick}
+              showEmojiPicker={showEmojiPicker}
+              setShowEmojiPicker={setShowEmojiPicker}
+              isDragging={isDragging}
+              panelState={panelState}
+            />
+          </div>
+        </motion.div>
+      </>
     );
   }
 

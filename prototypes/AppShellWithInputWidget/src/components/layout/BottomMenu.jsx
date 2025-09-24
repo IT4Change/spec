@@ -10,10 +10,10 @@ const BottomMenu = ({ currentView, setCurrentView }) => {
   ];
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="md:hidden w-full bg-white/10 backdrop-blur-lg border-t border-white/20 mt-auto"
+      className="md:hidden w-full bg-white/10 backdrop-blur-lg border-t border-white/20 mt-auto z-[1000]"
     >
       <div className="flex items-center justify-around py-2 pb-[env(safe-area-inset-bottom)]">
         {viewOptions.map((option) => {
