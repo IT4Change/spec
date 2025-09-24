@@ -157,8 +157,8 @@ const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
   };
 
   return (
-    <div className="h-full flex flex-col">
-      <div className="bg-slate-900/80 backdrop-blur-xl border-b border-slate-700">
+    <div className="h-full flex flex-col overflow-x-hidden">
+      <div className="bg-slate-900/80 backdrop-blur-xl border-b border-slate-700 overflow-x-auto">
         <div className="max-w-3xl mx-auto p-4 flex justify-between items-center">
           <Button 
             variant="ghost" 
