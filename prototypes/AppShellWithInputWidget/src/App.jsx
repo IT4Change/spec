@@ -30,6 +30,7 @@ function App() {
   const [previousView, setPreviousView] = useState('feed');
   const [previousScrollPosition, setPreviousScrollPosition] = useState(0);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
+  const [navigationSource, setNavigationSource] = useState(null);
 
   const hideTimeoutRef = useRef(null);
   const showTimeoutRef = useRef(null);
@@ -87,24 +88,37 @@ function App() {
   }, [currentView]);
 
   const handleSelectPost = (post) => {
-    if (post.location) {
-      setPostToOpenOnMap(post);
-      setCurrentView('map');
-      // setSelectedPost is handled by MapView to sync with animation
-    } else {
-      setSelectedPost(post);
-    }
+    // Always open posts in overlay mode, regardless of location
+    setSelectedPost(post);
   };
 
   const handleCloseDetail = () => {
     setSelectedPost(null);
     setPostToOpenOnMap(null);
   };
+
+  const handleSwitchToMapView = (post) => {
+    // Switch from overlay to full map view for a post with location
+    // Set postToOpenOnMap and switch view immediately
+    // MapView's useEffect will handle setting selectedPost
+    setNavigationSource('feed'); // Track that we came from feed
+    setPostToOpenOnMap(post);
+    setCurrentView('map');
+  };
+
+  const handleBackToFeed = () => {
+    // Return to feed from map view
+    setCurrentView('feed');
+    setNavigationSource(null);
+    setPostToOpenOnMap(null);
+    // Keep selectedPost to show the modal in feed view
+  };
   
   const handleViewChange = (view) => {
     // Close detail view when changing main view
     handleCloseDetail();
     setIsComposerOpen(false);
+    setNavigationSource(null); // Clear navigation source on manual view change
     setCurrentView(view);
   }
 
@@ -176,21 +190,24 @@ function App() {
               )}
             </AnimatePresence>
 
-            <motion.div 
+            <motion.div
               className="flex-1 flex flex-col min-h-0"
-              animate={{ 
-                marginLeft: sidebarOpen ? '320px' : '0px' 
+              animate={{
+                marginLeft: sidebarOpen ? '320px' : '0px'
               }}
               transition={{ type: "spring", damping: 30, stiffness: 250 }}
             >
-              <MainContent 
-                currentView={currentView} 
+              <MainContent
+                currentView={currentView}
                 onSelectPost={handleSelectPost}
                 selectedPost={selectedPost}
                 onCloseDetail={handleCloseDetail}
                 postToOpenOnMap={postToOpenOnMap}
                 setSelectedPost={setSelectedPost}
                 onCreatePost={handleCreatePostFromFeed}
+                onSwitchToMapView={handleSwitchToMapView}
+                onBackToFeed={handleBackToFeed}
+                showBackToFeed={navigationSource === 'feed'}
               />
             </motion.div>
           </div>

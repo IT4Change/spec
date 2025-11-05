@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { AnimatePresence, motion } from 'framer-motion';
 import PostDetail from '@/components/shared/PostDetail';
 import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
 import L from 'leaflet';
 
 const icon = L.icon({
@@ -34,7 +35,7 @@ const MapController = ({ center, detailWidth, detailHeight, isMobile }) => {
   return null;
 };
 
-const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPost, onCloseDetail }) => {
+const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPost, onCloseDetail, onBackToFeed, showBackToFeed }) => {
   const [mapCenter, setMapCenter] = useState([52.52, 13.405]);
   const [isMobile, setIsMobile] = useState(false);
   const [viewportHeight, setViewportHeight] = useState(() => (typeof window !== 'undefined' ? window.innerHeight : 800));
@@ -127,7 +128,20 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
           </Marker>
         ))}
       </MapContainer>
-      
+
+      {/* Floating back button when PostDetail is closed */}
+      {showBackToFeed && !selectedPost && (
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={onBackToFeed}
+          className="absolute top-4 left-4 z-[1001] bg-slate-800/80 border-white/20 text-white hover:bg-slate-700/80 backdrop-blur-sm"
+        >
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          <span className="hidden md:inline">Feed</span>
+        </Button>
+      )}
+
       <AnimatePresence>
         {selectedPost && selectedPost.location && (
           <motion.div
@@ -143,7 +157,7 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
                 className="pointer-events-auto w-full md:w-[450px]"
                 ref={detailContainerRef}
               >
-                <PostDetail post={selectedPost} onClose={onCloseDetail} isModal={false} />
+                <PostDetail post={selectedPost} onClose={onCloseDetail} isModal={false} onBackToFeed={onBackToFeed} showBackToFeed={showBackToFeed} />
               </div>
             </div>
           </motion.div>

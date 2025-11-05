@@ -5,14 +5,15 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
-import { Plus, X, Calendar, MapPin, Users, Send } from 'lucide-react';
+import { Plus, X, Calendar, MapPin, Users, Send, Map, ArrowLeft } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { toast } from '@/components/ui/use-toast';
 import { Input } from '@/components/ui/input';
 import EmojiReactionPicker from '@/components/ui/EmojiReactionPicker';
+import MapPreview from '@/components/shared/MapPreview';
 
-const PostDetailContent = ({ post, author, users, handleNotImplemented, onClose, dragBinder, isMobile, reactions, onEmojiSelect, onReactionClick, showEmojiPicker, setShowEmojiPicker, isDragging, panelState }) => (
+const PostDetailContent = ({ post, author, users, handleNotImplemented, onClose, dragBinder, isMobile, reactions, onEmojiSelect, onReactionClick, showEmojiPicker, setShowEmojiPicker, isDragging, panelState, onSwitchToMapView, onBackToFeed, showBackToFeed }) => (
   <div className="bg-slate-900/80 backdrop-blur-lg border-purple-500/50 text-white w-full h-full flex flex-col rounded-t-2xl md:rounded-none">
     {isMobile && (
       <div {...dragBinder} className="w-full py-6 flex justify-center items-center touch-none cursor-grab active:cursor-grabbing bg-slate-900/90 border-b border-white/10">
@@ -34,7 +35,19 @@ const PostDetailContent = ({ post, author, users, handleNotImplemented, onClose,
         </div>
       </div>
     )}
-    
+
+    {showBackToFeed && (
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={onBackToFeed}
+        className="absolute top-2 left-2 text-white bg-black/30 hover:bg-black/60 z-20"
+      >
+        <ArrowLeft className="h-4 w-4 mr-2" />
+        <span className="hidden md:inline">Zurück zum Feed</span>
+      </Button>
+    )}
+
     <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-white bg-black/30 hover:bg-black/60 z-20" onClick={onClose}>
       <X className="h-5 w-5" />
     </Button>
@@ -68,6 +81,23 @@ const PostDetailContent = ({ post, author, users, handleNotImplemented, onClose,
 
         <h1 className="text-3xl font-bold text-white mb-4">{post.title}</h1>
         <p className="text-white/80 mb-6 whitespace-pre-wrap">{post.content}</p>
+
+        {/* Map preview for posts with location - only show in modal mode */}
+        {post.location && onSwitchToMapView && (
+          <div className="mb-6 relative">
+            <div className="h-48 w-full rounded-lg overflow-hidden border border-white/20">
+              <MapPreview location={post.location} />
+            </div>
+            <Button
+              onClick={() => onSwitchToMapView(post)}
+              className="absolute bottom-4 right-4 bg-purple-600/90 hover:bg-purple-700 text-white backdrop-blur-sm shadow-lg z-[1000] pointer-events-auto"
+              size="sm"
+            >
+              <Map className="h-4 w-4 mr-2" />
+              Zur Karte
+            </Button>
+          </div>
+        )}
 
         <div className="flex flex-wrap gap-4 mb-6 text-sm">
           {post.type === 'event' && post.startTime && (
@@ -169,7 +199,7 @@ const PostDetailContent = ({ post, author, users, handleNotImplemented, onClose,
   </div>
 );
 
-const PostDetail = ({ post, onClose, isModal }) => {
+const PostDetail = ({ post, onClose, isModal, onSwitchToMapView, onBackToFeed, showBackToFeed }) => {
   const [author, setAuthor] = useState(null);
   const [users, setUsers] = useState({});
   const [isMobile, setIsMobile] = useState(false);
@@ -396,6 +426,9 @@ const PostDetail = ({ post, onClose, isModal }) => {
               onReactionClick={handleReactionClick}
               showEmojiPicker={showEmojiPicker}
               setShowEmojiPicker={setShowEmojiPicker}
+              onSwitchToMapView={onSwitchToMapView}
+              onBackToFeed={onBackToFeed}
+              showBackToFeed={showBackToFeed}
             />
           </motion.div>
         </DialogContent>
@@ -431,6 +464,9 @@ const PostDetail = ({ post, onClose, isModal }) => {
               setShowEmojiPicker={setShowEmojiPicker}
               isDragging={isDragging}
               panelState={panelState}
+              onSwitchToMapView={onSwitchToMapView}
+              onBackToFeed={onBackToFeed}
+              showBackToFeed={showBackToFeed}
             />
           </div>
         </motion.div>
@@ -453,6 +489,9 @@ const PostDetail = ({ post, onClose, isModal }) => {
            onReactionClick={handleReactionClick}
            showEmojiPicker={showEmojiPicker}
            setShowEmojiPicker={setShowEmojiPicker}
+           onSwitchToMapView={onSwitchToMapView}
+           onBackToFeed={onBackToFeed}
+           showBackToFeed={showBackToFeed}
          />
        </div>
     </div>

@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, postToOpenOnMap, setSelectedPost, onCreatePost }) => {
+const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, postToOpenOnMap, setSelectedPost, onCreatePost, onSwitchToMapView, onBackToFeed, showBackToFeed }) => {
   const [posts, setPosts] = useState([]);
   const [sortOrder, setSortOrder] = useState('chronological');
 
@@ -30,14 +30,14 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
   };
 
   const isMapView = currentView === 'map';
-  const showDetailAsModal = selectedPost && !selectedPost.location;
+  const showDetailAsModal = selectedPost && currentView !== 'map'; // Only show modal when not in map view
 
   const getViewContent = () => {
     switch (currentView) {
       case 'feed':
         return <FeedView posts={posts} sortOrder={sortOrder} onSelectPost={onSelectPost} onCreatePost={onCreatePost} />;
       case 'map':
-        return <MapView posts={posts} onSelectPost={onSelectPost} postToOpen={postToOpenOnMap} setSelectedPost={setSelectedPost} selectedPost={selectedPost} onCloseDetail={onCloseDetail} />;
+        return <MapView posts={posts} onSelectPost={onSelectPost} postToOpen={postToOpenOnMap} setSelectedPost={setSelectedPost} selectedPost={selectedPost} onCloseDetail={onCloseDetail} onBackToFeed={onBackToFeed} showBackToFeed={showBackToFeed} />;
       case 'calendar':
         return (
           <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 border border-white/20 text-center h-full flex flex-col justify-center items-center">
@@ -93,7 +93,7 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
 
       <AnimatePresence>
         {showDetailAsModal && (
-          <PostDetail post={selectedPost} onClose={onCloseDetail} isModal={true} />
+          <PostDetail post={selectedPost} onClose={onCloseDetail} isModal={true} onSwitchToMapView={onSwitchToMapView} />
         )}
       </AnimatePresence>
     </motion.main>
