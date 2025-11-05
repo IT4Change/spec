@@ -95,10 +95,28 @@ function App() {
   const handleCloseDetail = () => {
     setSelectedPost(null);
     setPostToOpenOnMap(null);
+
+    // Restore scroll position if we came from feed and are now back in feed
+    if (navigationSource === 'feed' && currentView === 'feed') {
+      setTimeout(() => {
+        const scrollElement = document.querySelector('.overflow-y-auto');
+        if (scrollElement) {
+          scrollElement.scrollTop = previousScrollPosition;
+        }
+        // Clear navigation source after restoring scroll
+        setNavigationSource(null);
+      }, 100);
+    }
   };
 
   const handleSwitchToMapView = (post) => {
     // Switch from overlay to full map view for a post with location
+    // Save current scroll position before switching
+    const scrollElement = document.querySelector('.overflow-y-auto');
+    if (scrollElement) {
+      setPreviousScrollPosition(scrollElement.scrollTop);
+    }
+
     // Set postToOpenOnMap and switch view immediately
     // MapView's useEffect will handle setting selectedPost
     setNavigationSource('feed'); // Track that we came from feed
@@ -109,7 +127,7 @@ function App() {
   const handleBackToFeed = () => {
     // Return to feed from map view
     setCurrentView('feed');
-    setNavigationSource(null);
+    // Keep navigationSource so scroll can be restored when closing detail
     setPostToOpenOnMap(null);
     // Keep selectedPost to show the modal in feed view
   };
