@@ -19,6 +19,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useNotifications } from '@/hooks/useNotifications';
+import NotificationPanel from '@/components/notifications/NotificationPanel';
 
 function App() {
   const [currentView, setCurrentView] = useState('feed');
@@ -31,12 +33,33 @@ function App() {
   const [previousScrollPosition, setPreviousScrollPosition] = useState(0);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [navigationSource, setNavigationSource] = useState(null);
+  const [notificationPanelOpen, setNotificationPanelOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const hideTimeoutRef = useRef(null);
   const showTimeoutRef = useRef(null);
 
+  // Notification system
+  const {
+    notifications,
+    unreadCount,
+    markAllAsRead,
+    toggleNotificationRead,
+    markAsRead,
+  } = useNotifications();
+
   useEffect(() => {
     initializeMockData();
+  }, []);
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -131,6 +154,35 @@ function App() {
     setPostToOpenOnMap(null);
     // Keep selectedPost to show the modal in feed view
   };
+
+  const handleNotificationClick = (notification) => {
+    // Mark as read when clicked
+    markAsRead(notification.id);
+
+    // Close notification panel
+    setNotificationPanelOpen(false);
+
+    // Navigate based on notification
+    if (notification.postId) {
+      const posts = JSON.parse(localStorage.getItem('posts')) || [];
+      const post = posts.find(p => p.id === notification.postId);
+
+      if (post) {
+        // Open post in appropriate view
+        if (post.location && post.type === 'event') {
+          // Events with location open in map
+          setCurrentView('map');
+          setPostToOpenOnMap(post);
+        } else {
+          // Other posts open in feed modal
+          if (currentView !== 'feed') {
+            setCurrentView('feed');
+          }
+          setSelectedPost(post);
+        }
+      }
+    }
+  };
   
   const handleViewChange = (view) => {
     // Close detail view when changing main view
@@ -190,11 +242,19 @@ function App() {
       </Helmet>
       
       <div className="h-dvh bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 overflow-hidden flex flex-col">
-        <Navbar 
+        <Navbar
           currentView={currentView}
           setCurrentView={handleViewChange}
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
+          notifications={notifications}
+          unreadCount={unreadCount}
+          notificationPanelOpen={notificationPanelOpen}
+          setNotificationPanelOpen={setNotificationPanelOpen}
+          onNotificationClick={handleNotificationClick}
+          markAllAsRead={markAllAsRead}
+          toggleNotificationRead={toggleNotificationRead}
+          isMobile={isMobile}
         />
 
         <div className="flex-1 flex flex-col min-h-0">
@@ -231,10 +291,23 @@ function App() {
           </div>
         </div>
 
-        <BottomMenu 
+        <BottomMenu
           currentView={currentView}
           setCurrentView={handleViewChange}
         />
+
+        {/* Mobile notification panel */}
+        {isMobile && (
+          <NotificationPanel
+            notifications={notifications}
+            isOpen={notificationPanelOpen}
+            onClose={() => setNotificationPanelOpen(false)}
+            onMarkAllRead={markAllAsRead}
+            onToggleRead={toggleNotificationRead}
+            onNotificationClick={handleNotificationClick}
+            isMobile={true}
+          />
+        )}
 
         <Dialog open={isComposerOpen} onOpenChange={(open) => {
           if (!open) handleComposerClose(false);

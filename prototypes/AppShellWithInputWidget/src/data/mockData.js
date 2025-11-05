@@ -1,4 +1,5 @@
 import { subDays, subHours, subMinutes } from 'date-fns';
+import { initializeNotifications } from './mockNotifications';
 
 const mockUsers = {
   'user-1': { name: 'Lena Weber', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face' },
@@ -63,4 +64,6 @@ export const initializeMockData = () => {
   if (!localStorage.getItem('posts')) {
     localStorage.setItem('posts', JSON.stringify(mockPosts));
   }
+  // Initialize notifications
+  initializeNotifications();
 };

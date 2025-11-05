@@ -5,8 +5,23 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { toast } from '@/components/ui/use-toast';
+import NotificationBell from '@/components/notifications/NotificationBell';
+import NotificationPanel from '@/components/notifications/NotificationPanel';
 
-const Navbar = ({ currentView, setCurrentView, sidebarOpen, setSidebarOpen }) => {
+const Navbar = ({
+  currentView,
+  setCurrentView,
+  sidebarOpen,
+  setSidebarOpen,
+  notifications,
+  unreadCount,
+  notificationPanelOpen,
+  setNotificationPanelOpen,
+  onNotificationClick,
+  markAllAsRead,
+  toggleNotificationRead,
+  isMobile
+}) => {
   const viewOptions = [
     { id: 'feed', label: 'Feed', icon: Rss },
     { id: 'map', label: 'Karte', icon: Map },
@@ -74,18 +89,42 @@ const Navbar = ({ currentView, setCurrentView, sidebarOpen, setSidebarOpen }) =>
           })}
         </div>
 
-        {/* Right Section - User Menu */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-              <Avatar className="h-10 w-10 border-2 border-white/30">
-                <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="User" />
-                <AvatarFallback className="bg-gradient-to-r from-purple-500 to-pink-500 text-white">
-                  JD
-                </AvatarFallback>
-              </Avatar>
-            </Button>
-          </DropdownMenuTrigger>
+        {/* Right Section - Notifications & User Menu */}
+        <div className="flex items-center space-x-2">
+          {/* Notification Bell */}
+          <div className="relative" data-notification-bell>
+            <NotificationBell
+              unreadCount={unreadCount}
+              onClick={() => setNotificationPanelOpen(!notificationPanelOpen)}
+              isOpen={notificationPanelOpen}
+            />
+
+            {/* Desktop Notification Panel */}
+            {!isMobile && (
+              <NotificationPanel
+                notifications={notifications}
+                isOpen={notificationPanelOpen}
+                onClose={() => setNotificationPanelOpen(false)}
+                onMarkAllRead={markAllAsRead}
+                onToggleRead={toggleNotificationRead}
+                onNotificationClick={onNotificationClick}
+                isMobile={false}
+              />
+            )}
+          </div>
+
+          {/* User Menu */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+                <Avatar className="h-10 w-10 border-2 border-white/30">
+                  <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="User" />
+                  <AvatarFallback className="bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+                    JD
+                  </AvatarFallback>
+                </Avatar>
+              </Button>
+            </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 backdrop-blur-lg border border-white/20" align="end">
             <DropdownMenuItem 
               onClick={() => handleUserMenuClick('profile')}
@@ -110,7 +149,8 @@ const Navbar = ({ currentView, setCurrentView, sidebarOpen, setSidebarOpen }) =>
               <span>Logout</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
-        </DropdownMenu>
+          </DropdownMenu>
+        </div>
       </div>
     </motion.nav>
   );
