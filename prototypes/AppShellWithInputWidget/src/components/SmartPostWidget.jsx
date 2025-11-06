@@ -54,12 +54,26 @@ const POST_TYPE_DEFAULT_WIDGETS = {
 
 const WIDGET_ORDER = [WIDGET_TYPES.TITLE, WIDGET_TYPES.TEXT, WIDGET_TYPES.MEDIA, WIDGET_TYPES.DATE, WIDGET_TYPES.LOCATION, WIDGET_TYPES.PEOPLE, WIDGET_TYPES.TAGS];
 
-const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
+const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST, initialData = null }) => {
   const [postType, setPostType] = useState(initialPostType);
   const [activeWidgets, setActiveWidgets] = useState(
     POST_TYPE_DEFAULT_WIDGETS[initialPostType] || POST_TYPE_DEFAULT_WIDGETS[POST_TYPES.POST]
   );
-  const [widgetData, setWidgetData] = useState({});
+  const [widgetData, setWidgetData] = useState(() => {
+    // Pre-fill widgetData with initialData if provided
+    if (initialData) {
+      const data = {};
+      // Pre-fill date widget if startTime and endTime are provided
+      if (initialData.startTime && initialData.endTime) {
+        data.date = {
+          start: initialData.startTime,
+          end: initialData.endTime,
+        };
+      }
+      return data;
+    }
+    return {};
+  });
   const [isPublic, setIsPublic] = useState(true);
   const [showPreview, setShowPreview] = useState(false);
 
@@ -68,6 +82,21 @@ const SmartPostWidget = ({ onClose, initialPostType = POST_TYPES.POST }) => {
       setPostType(initialPostType);
     }
   }, [initialPostType]);
+
+  // Handle initialData changes
+  useEffect(() => {
+    if (initialData) {
+      const newData = { ...widgetData };
+      // Pre-fill date widget if startTime and endTime are provided
+      if (initialData.startTime && initialData.endTime) {
+        newData.date = {
+          start: initialData.startTime,
+          end: initialData.endTime,
+        };
+      }
+      setWidgetData(newData);
+    }
+  }, [initialData]);
 
   useEffect(() => {
     const newWidgets = POST_TYPE_DEFAULT_WIDGETS[postType];

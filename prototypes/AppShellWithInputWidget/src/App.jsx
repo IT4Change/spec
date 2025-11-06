@@ -29,8 +29,10 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
   const [postToOpenOnMap, setPostToOpenOnMap] = useState(null);
+  const [postToOpenOnCalendar, setPostToOpenOnCalendar] = useState(null);
   const [isComposerOpen, setIsComposerOpen] = useState(false);
   const [composerPostType, setComposerPostType] = useState(POST_TYPES.POST);
+  const [composerInitialData, setComposerInitialData] = useState(null);
   const [previousView, setPreviousView] = useState('feed');
   const [previousScrollPosition, setPreviousScrollPosition] = useState(0);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
@@ -233,7 +235,7 @@ function App() {
     handleComposerLaunch(POST_TYPES.POST);
   };
 
-  const handleComposerLaunch = (type) => {
+  const handleComposerLaunch = (type, initialData = null) => {
     // Store current scroll position before opening composer
     const scrollElement = document.querySelector('.overflow-y-auto');
     if (scrollElement) {
@@ -241,18 +243,47 @@ function App() {
     }
     setPreviousView(currentView);
     setComposerPostType(type);
+    setComposerInitialData(initialData);
     setIsComposerOpen(true);
+  };
+
+  const handleCreateEvent = (startTime) => {
+    // Quick create event from calendar
+    const endTime = new Date(startTime);
+    endTime.setHours(endTime.getHours() + 1); // Default 1 hour duration
+
+    // Convert to datetime-local format (YYYY-MM-DDTHH:mm) for input field
+    const formatDateTimeLocal = (date) => {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      return `${year}-${month}-${day}T${hours}:${minutes}`;
+    };
+
+    const initialData = {
+      startTime: formatDateTimeLocal(startTime),
+      endTime: formatDateTimeLocal(endTime),
+    };
+
+    handleComposerLaunch(POST_TYPES.EVENT, initialData);
   };
 
   const handleComposerClose = (postCreated = false, postData = null) => {
     setIsComposerOpen(false);
-    
+    setComposerInitialData(null); // Reset initial data
+
     if (postCreated && postData) {
       // Navigate based on post type
       if (postData.postType === POST_TYPES.EVENT && postData.data.location) {
         // For events with location, go to map view
         setPostToOpenOnMap(postData);
         setCurrentView('map');
+      } else if (postData.postType === POST_TYPES.EVENT) {
+        // For events without location, go to calendar view
+        setPostToOpenOnCalendar(postData);
+        setCurrentView('calendar');
       } else {
         // For all other posts, go to feed
         setCurrentView('feed');
@@ -320,8 +351,10 @@ function App() {
                 selectedPost={selectedPost}
                 onCloseDetail={handleCloseDetail}
                 postToOpenOnMap={postToOpenOnMap}
+                postToOpenOnCalendar={postToOpenOnCalendar}
                 setSelectedPost={setSelectedPost}
                 onCreatePost={handleCreatePostFromFeed}
+                onCreateEvent={handleCreateEvent}
                 onSwitchToMapView={handleSwitchToMapView}
                 onBackToFeed={handleBackToFeed}
                 showBackToFeed={navigationSource === 'feed'}
@@ -423,8 +456,9 @@ function App() {
             >
               <DndProvider backend={HTML5Backend}>
                 <SmartPostWidget
-                  key={composerPostType}
+                  key={`${composerPostType}-${composerInitialData ? composerInitialData.startTime : 'no-data'}`}
                   initialPostType={composerPostType}
+                  initialData={composerInitialData}
                   onClose={handleComposerClose}
                 />
               </DndProvider>
