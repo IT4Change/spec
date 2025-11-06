@@ -21,6 +21,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { useNotifications } from '@/hooks/useNotifications';
 import NotificationPanel from '@/components/notifications/NotificationPanel';
+import { useMessages } from '@/hooks/useMessages';
+import MessagingWidget from '@/components/messages/MessagingWidget';
 
 function App() {
   const [currentView, setCurrentView] = useState('feed');
@@ -34,6 +36,7 @@ function App() {
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [navigationSource, setNavigationSource] = useState(null);
   const [notificationPanelOpen, setNotificationPanelOpen] = useState(false);
+  const [isMessagingOpen, setIsMessagingOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   const hideTimeoutRef = useRef(null);
@@ -47,6 +50,23 @@ function App() {
     toggleNotificationRead,
     markAsRead,
   } = useNotifications();
+
+  // Messaging system
+  const {
+    conversations,
+    messages,
+    totalUnreadCount,
+    activeConversationId,
+    setActiveConversationId,
+    getConversationMessages,
+    sendMessage,
+    markConversationAsRead,
+    toggleReaction,
+    togglePin,
+    toggleMute,
+    createDirectConversation,
+    createGroupConversation,
+  } = useMessages();
 
   useEffect(() => {
     initializeMockData();
@@ -183,6 +203,22 @@ function App() {
       }
     }
   };
+
+  const handleSelectConversation = (conversationId) => {
+    setActiveConversationId(conversationId);
+    if (conversationId) {
+      // Mark conversation as read when opened
+      markConversationAsRead(conversationId);
+    }
+  };
+
+  const handleCloseMessaging = () => {
+    setIsMessagingOpen(false);
+    // Reset active conversation when closing
+    setTimeout(() => {
+      setActiveConversationId(null);
+    }, 200);
+  };
   
   const handleViewChange = (view) => {
     // Close detail view when changing main view
@@ -255,6 +291,9 @@ function App() {
           markAllAsRead={markAllAsRead}
           toggleNotificationRead={toggleNotificationRead}
           isMobile={isMobile}
+          totalUnreadCount={totalUnreadCount}
+          isMessagingOpen={isMessagingOpen}
+          onOpenMessaging={() => setIsMessagingOpen(true)}
         />
 
         <div className="flex-1 flex flex-col min-h-0">
@@ -295,6 +334,37 @@ function App() {
           currentView={currentView}
           setCurrentView={handleViewChange}
         />
+
+        {/* Messaging Widget Dialog */}
+        <Dialog open={isMessagingOpen} onOpenChange={(open) => {
+          if (!open) handleCloseMessaging();
+        }}>
+          <DialogContent
+            className="max-w-full w-screen h-dvh border-none bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 p-0 shadow-none rounded-none m-0"
+            showCloseButton={false}
+          >
+            <motion.div
+              className="h-full overflow-y-auto flex flex-col"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
+            >
+              <MessagingWidget
+                conversations={conversations}
+                messages={messages}
+                activeConversationId={activeConversationId}
+                onSelectConversation={handleSelectConversation}
+                onSendMessage={sendMessage}
+                onReact={toggleReaction}
+                onTogglePin={togglePin}
+                onToggleMute={toggleMute}
+                onCreateDirect={createDirectConversation}
+                onCreateGroup={createGroupConversation}
+                onClose={handleCloseMessaging}
+              />
+            </motion.div>
+          </DialogContent>
+        </Dialog>
 
         {/* Mobile notification panel */}
         {isMobile && (

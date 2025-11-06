@@ -7,6 +7,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { toast } from '@/components/ui/use-toast';
 import NotificationBell from '@/components/notifications/NotificationBell';
 import NotificationPanel from '@/components/notifications/NotificationPanel';
+import MessageButton from '@/components/messages/MessageButton';
 
 const Navbar = ({
   currentView,
@@ -20,7 +21,11 @@ const Navbar = ({
   onNotificationClick,
   markAllAsRead,
   toggleNotificationRead,
-  isMobile
+  isMobile,
+  // Messaging props
+  totalUnreadCount,
+  isMessagingOpen,
+  onOpenMessaging,
 }) => {
   const viewOptions = [
     { id: 'feed', label: 'Feed', icon: Rss },
@@ -89,8 +94,15 @@ const Navbar = ({
           })}
         </div>
 
-        {/* Right Section - Notifications & User Menu */}
+        {/* Right Section - Messages, Notifications & User Menu */}
         <div className="flex items-center space-x-2">
+          {/* Message Button */}
+          <MessageButton
+            unreadCount={totalUnreadCount}
+            onClick={onOpenMessaging}
+            isOpen={isMessagingOpen}
+          />
+
           {/* Notification Bell */}
           <div className="relative" data-notification-bell>
             <NotificationBell

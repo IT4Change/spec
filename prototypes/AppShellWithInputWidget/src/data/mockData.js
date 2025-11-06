@@ -1,10 +1,18 @@
 import { subDays, subHours, subMinutes } from 'date-fns';
 import { initializeNotifications } from './mockNotifications';
+import { initializeMessages } from './mockMessages';
 
 const mockUsers = {
   'user-1': { name: 'Lena Weber', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face' },
   'user-2': { name: 'Max Schmidt', avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face' },
   'user-3': { name: 'Julia Klein', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face' },
+  'user-4': { name: 'Thomas Müller', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face' },
+  'user-5': { name: 'Sarah Fischer', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face' },
+  'user-6': { name: 'Michael Wagner', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face' },
+  'user-7': { name: 'Anna Becker', avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop&crop=face' },
+  'user-8': { name: 'David Hoffmann', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face' },
+  'user-9': { name: 'Emma Schulz', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face' },
+  'user-10': { name: 'Felix Richter', avatar: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop&crop=face' },
 };
 
 const mockPosts = [
@@ -66,4 +74,8 @@ export const initializeMockData = () => {
   }
   // Initialize notifications
   initializeNotifications();
+  // Initialize messages
+  initializeMessages();
 };
+
+export { mockUsers };
