@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { AnimatePresence, motion } from 'framer-motion';
-import PostDetail from '@/components/shared/PostDetail';
+import ProfileView from '@/components/profile/ProfileView';
+import { postToProfileData } from '@/lib/profileAdapter';
+import { generateProfileConfig } from '@/lib/profileConfig';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import L from 'leaflet';
@@ -39,9 +41,15 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
   const [mapCenter, setMapCenter] = useState([52.52, 13.405]);
   const [isMobile, setIsMobile] = useState(false);
   const [viewportHeight, setViewportHeight] = useState(() => (typeof window !== 'undefined' ? window.innerHeight : 800));
+  const [users, setUsers] = useState({});
   const detailContainerRef = useRef(null);
   const [detailSize, setDetailSize] = useState({ width: 0, height: 0 });
   const postsWithLocation = posts.filter(post => post.location);
+
+  useEffect(() => {
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || {};
+    setUsers(storedUsers);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -145,21 +153,20 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
       <AnimatePresence>
         {selectedPost && selectedPost.location && (
           <motion.div
-            layoutId={`post-card-${selectedPost.id}`}
-            className="absolute inset-0 z-[1002] pointer-events-none"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            ref={detailContainerRef}
+            initial={{ opacity: 0, x: 450 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 450 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="fixed top-0 right-0 h-full w-full md:w-[450px] z-[1002]"
           >
-            <div className="flex h-full w-full items-end justify-center md:items-stretch md:justify-end">
-              <div
-                className="pointer-events-auto w-full md:w-[450px]"
-                ref={detailContainerRef}
-              >
-                <PostDetail post={selectedPost} onClose={onCloseDetail} isModal={false} onBackToFeed={onBackToFeed} showBackToFeed={showBackToFeed} />
-              </div>
-            </div>
+            <ProfileView
+              data={postToProfileData(selectedPost, users, posts)}
+              config={generateProfileConfig(selectedPost)}
+              isModal={false}
+              onClose={onCloseDetail}
+              navigationSource={showBackToFeed ? 'feed' : null}
+            />
           </motion.div>
         )}
       </AnimatePresence>

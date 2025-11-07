@@ -6,7 +6,9 @@ import { toast } from '@/components/ui/use-toast';
 import FeedView from '@/components/views/FeedView';
 import MapView from '@/components/views/MapView';
 import CalendarView from '@/components/views/CalendarView';
-import PostDetail from '@/components/shared/PostDetail';
+import ProfileView from '@/components/profile/ProfileView';
+import { postToProfileData } from '@/lib/profileAdapter';
+import { generateProfileConfig } from '@/lib/profileConfig';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,11 +18,14 @@ import {
 
 const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, postToOpenOnMap, postToOpenOnCalendar, setSelectedPost, onCreatePost, onSwitchToMapView, onBackToFeed, showBackToFeed, onCreateEvent }) => {
   const [posts, setPosts] = useState([]);
+  const [users, setUsers] = useState({});
   const [sortOrder, setSortOrder] = useState('chronological');
 
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || {};
     setPosts(storedPosts);
+    setUsers(storedUsers);
   }, []);
 
   const handleNotImplemented = () => {
@@ -90,7 +95,14 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
 
       <AnimatePresence>
         {showDetailAsModal && (
-          <PostDetail post={selectedPost} onClose={onCloseDetail} isModal={true} onSwitchToMapView={onSwitchToMapView} />
+          <ProfileView
+            data={postToProfileData(selectedPost, users, posts)}
+            config={generateProfileConfig(selectedPost)}
+            isModal={true}
+            onClose={onCloseDetail}
+            onSwitchToMap={() => onSwitchToMapView(selectedPost)}
+            navigationSource={null}
+          />
         )}
       </AnimatePresence>
     </motion.main>

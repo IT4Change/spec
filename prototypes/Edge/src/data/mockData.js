@@ -3,19 +3,168 @@ import { initializeNotifications } from './mockNotifications';
 import { initializeMessages } from './mockMessages';
 
 const mockUsers = {
-  'user-1': { name: 'Lena Weber', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face' },
-  'user-2': { name: 'Max Schmidt', avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face' },
-  'user-3': { name: 'Julia Klein', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face' },
+  'user-1': {
+    name: 'Lena Weber',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
+    banner: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=200&fit=crop',
+    bio: '# Über mich\n\nHallo! Ich bin **Lena** und liebe es, neue Menschen kennenzulernen und gemeinsam Projekte zu verwirklichen. Als *Yoga-Lehrerin* bringe ich gerne Ruhe und Achtsamkeit in unsere Community.\n\n## Meine Interessen\n- Yoga & Meditation\n- Nachhaltigkeit\n- Community Building',
+    contactInfo: { email: 'lena@example.com', phone: '+49 30 12345678', website: 'https://lena-yoga.de' },
+    badges: ['Community-Organisatorin', 'Yoga-Lehrerin', 'Früher Vogel']
+  },
+  'user-2': {
+    name: 'Max Schmidt',
+    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face',
+    banner: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=200&fit=crop',
+    bio: '# Hey, ich bin Max!\n\nSoftware-Entwickler und **Community-Enthusiast**. Ich organisiere gerne Events und helfe bei technischen Projekten.\n\n## Skills\n- Web Development\n- Community Management\n- Eventplanung',
+    contactInfo: { email: 'max@example.com', phone: '+49 30 23456789' },
+    badges: ['Technik-Experte', 'Event-Organisator', 'Hilfsbereiter Nachbar']
+  },
+  'user-3': {
+    name: 'Julia Klein',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face',
+    banner: 'https://images.unsplash.com/photo-1495954484750-af469f2f9be5?w=800&h=200&fit=crop',
+    bio: 'Handwerkerin mit Herz! Ich teile gerne meine Werkzeuge und mein Wissen.',
+    contactInfo: { email: 'julia@example.com' },
+    badges: ['Handwerk-Profi', 'Teilen macht Freude']
+  },
   'user-4': { name: 'Thomas Müller', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face' },
   'user-5': { name: 'Sarah Fischer', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face' },
   'user-6': { name: 'Michael Wagner', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face' },
   'user-7': { name: 'Anna Becker', avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop&crop=face' },
-  'user-8': { name: 'David Hoffmann', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face' },
+  'user-8': {
+    name: 'David Hoffmann',
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face',
+    banner: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=200&fit=crop',
+    bio: '# Coding & Teaching\n\nPassionierter **Programmierer** und Lehrer. Ich gebe gerne mein Wissen weiter und helfe Anfängern beim Einstieg in die Webentwicklung.\n\n## Expertise\n- JavaScript & React\n- Python\n- Teaching & Mentoring',
+    contactInfo: { email: 'david@coding-berlin.de', website: 'https://coding-berlin.de' },
+    badges: ['Code-Mentor', 'JavaScript-Ninja', 'Geduldiger Lehrer']
+  },
   'user-9': { name: 'Emma Schulz', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face' },
   'user-10': { name: 'Felix Richter', avatar: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop&crop=face' },
 };
 
 const mockPosts = [
+  // Person Profile 1: Lena Weber
+  {
+    id: 'person-1',
+    type: 'person',
+    authorId: 'user-1',
+    createdAt: subDays(new Date(), 30).toISOString(),
+    title: 'Lena Weber',
+    content: '# Über mich\n\nHallo! Ich bin **Lena** und liebe es, neue Menschen kennenzulernen und gemeinsam Projekte zu verwirklichen. Als *Yoga-Lehrerin* bringe ich gerne Ruhe und Achtsamkeit in unsere Community.\n\n## Meine Interessen\n- Yoga & Meditation\n- Nachhaltigkeit\n- Community Building\n\n## Ich biete\n- Kostenlose Yoga-Sessions im Park\n- Meditationsworkshops\n- Beratung zu achtsamer Lebensführung',
+    location: { lat: 52.520, lon: 13.401, name: 'Prenzlauer Berg, Berlin' },
+    reactions: { '❤️': 45, '👍': 32 },
+    comments: [
+      { id: 'c-p1-1', authorId: 'user-2', text: 'Super dass du dabei bist!', createdAt: subDays(new Date(), 5).toISOString(), replies: [] },
+    ],
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1588286840104-8957b019727f?w=500&q=80' }
+    ],
+    contactInfo: { email: 'lena@example.com', phone: '+49 30 12345678', website: 'https://lena-yoga.de' },
+    badges: ['Community-Organisatorin', 'Yoga-Lehrerin', 'Früher Vogel'],
+    projects: ['post-2', 'post-garden'],
+    comingEvents: ['post-1', 'post-event-2']
+  },
+
+  // Quest 1: Nachbarschaftshilfe Einkaufen
+  {
+    id: 'quest-1',
+    type: 'quest',
+    authorId: 'user-5',
+    createdAt: subDays(new Date(), 2).toISOString(),
+    title: 'Nachbarschaftshilfe: Einkaufen',
+    content: '# Hilfe beim Einkaufen gesucht\n\nIch suche jemanden, der mir **einmal wöchentlich** beim Einkaufen helfen kann. Aufgrund meiner eingeschränkten Mobilität fällt mir das schwer.\n\n## Details\n- Jeden Donnerstag vormittag\n- Einkauf im nahegelegenen Supermarkt\n- Kleine Aufwandsentschädigung möglich\n\n## Was ich biete\n- 15€ pro Einsatz\n- Nette Gespräche bei einer Tasse Kaffee\n- Dankbarkeit und gute Gesellschaft',
+    location: { lat: 52.516, lon: 13.396, name: 'Mitte, Berlin' },
+    reactions: { '❤️': 12, '👍': 8 },
+    comments: [
+      { id: 'c-q1-1', authorId: 'user-2', text: 'Ich kann donnerstags helfen!', createdAt: subHours(new Date(), 3).toISOString(), replies: [] },
+    ],
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80' }
+    ],
+    questDetails: {
+      difficulty: 'Einfach',
+      timeRequired: '1-2 Stunden',
+      reward: '15€ pro Einsatz'
+    }
+  },
+
+  // Quest 2: Garten-Hilfe
+  {
+    id: 'quest-2',
+    type: 'quest',
+    authorId: 'user-7',
+    createdAt: subHours(new Date(), 12).toISOString(),
+    title: 'Hilfe beim Umgraben des Gartens',
+    content: '# Garten-Hilfe gesucht!\n\nIch brauche **kräftige Unterstützung** beim Umgraben meines Gemüsegartens. Die Arbeit ist körperlich anstrengend, aber zusammen schaffen wir das!\n\n## Was zu tun ist\n- Ca. 50m² umgraben\n- Unkraut entfernen\n- Kompost einarbeiten\n\n## Belohnung\n- Frisches Bio-Gemüse aus dem Garten\n- Gemeinsames Mittagessen\n- Garten-Know-how zum Mitnehmen',
+    location: { lat: 52.509, lon: 13.393, name: 'Kreuzberg, Berlin' },
+    reactions: { '💪': 5, '👍': 7 },
+    comments: [],
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&q=80' }
+    ],
+    questDetails: {
+      difficulty: 'Mittel',
+      timeRequired: '4-5 Stunden',
+      reward: 'Bio-Gemüse + Mittagessen'
+    }
+  },
+
+  // Enhanced Project with Crowdfunding
+  {
+    id: 'post-garden',
+    type: 'project',
+    authorId: 'user-2',
+    createdAt: subDays(new Date(), 14).toISOString(),
+    title: 'Community-Garten Projekt',
+    content: '# Gemeinsam gärtnern in der Stadt\n\nWir bauen einen **Community Garden** auf! Unser Ziel ist es, einen Ort zu schaffen, wo Nachbarn zusammenkommen und gemeinsam Gemüse anbauen können.\n\n## Unsere Vision\n- Nachhaltiger Anbau von Bio-Gemüse\n- Bildungsangebote für Kinder\n- Stärkung der Nachbarschaft\n- Grüne Oase mitten in der Stadt\n\n## Was wir vorhaben\n- Hochbeete bauen\n- Bewässerungssystem installieren\n- Geräteschuppen errichten\n- Sitzgelegenheiten schaffen\n\n## Mach mit!\nWir treffen uns jeden Samstag um 10 Uhr am Garten.',
+    members: ['user-1', 'user-2', 'user-3', 'user-6', 'user-10'],
+    location: { lat: 52.518, lon: 13.398, name: 'Volkspark Friedrichshain, Berlin' },
+    reactions: { '🌱': 52, '❤️': 38, '👍': 45 },
+    comments: [
+      { id: 'c-pg-1', authorId: 'user-4', text: 'Großartiges Projekt! Wann kann ich vorbeikommen?', createdAt: subDays(new Date(), 3).toISOString(), replies: [] },
+      { id: 'c-pg-2', authorId: 'user-9', text: 'Ich bringe Saatgut mit!', createdAt: subDays(new Date(), 2).toISOString(), replies: [] },
+    ],
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=500&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1611843467160-25afb8df1074?w=500&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1592419044706-39796d40f98c?w=500&q=80' }
+    ],
+    crowdfunding: {
+      raised: 3250,
+      goal: 5000,
+      donors: 42,
+      donations: [
+        { amount: 50, donor: 'Anonymous', date: subDays(new Date(), 1).toISOString() },
+        { amount: 100, donor: 'Maria K.', date: subDays(new Date(), 3).toISOString() },
+        { amount: 25, donor: 'Peter S.', date: subDays(new Date(), 5).toISOString() },
+        { amount: 200, donor: 'Green Berlin e.V.', date: subDays(new Date(), 7).toISOString() }
+      ]
+    }
+  },
+
+  // Enhanced Offer with detailed info
+  {
+    id: 'offer-webdesign',
+    type: 'offer',
+    authorId: 'user-8',
+    createdAt: subDays(new Date(), 5).toISOString(),
+    title: 'Webdesign Services für lokale Projekte',
+    content: '# Professionelles Webdesign\n\nIch biete **maßgeschneiderte Webdesign-Lösungen** speziell für Community-Projekte und lokale Initiativen zu fairen Preisen.\n\n## Meine Services\n- Responsive Webdesign\n- Modern und barrierefrei\n- SEO-optimiert\n- Wartung und Support\n\n## Besonders geeignet für\n- Nachbarschaftsinitiativen\n- Community-Projekte\n- Kleine Vereine\n- Lokale Unternehmen\n\n## Warum ich?\n- 10 Jahre Erfahrung\n- Faire Preise für Community-Projekte\n- Persönlicher Support\n- Lokaler Ansprechpartner',
+    location: { lat: 52.512, lon: 13.395, name: 'Friedrichshain, Berlin' },
+    reactions: { '💻': 18, '👍': 22 },
+    comments: [
+      { id: 'c-ow-1', authorId: 'user-2', text: 'Perfekt! Können wir für unser Gartenprojekt sprechen?', createdAt: subDays(new Date(), 1).toISOString(), replies: [] },
+    ],
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&q=80' }
+    ],
+    contactInfo: { email: 'david@coding-berlin.de', website: 'https://coding-berlin.de' }
+  },
+
   // Event 1: Yoga im Park (Tomorrow morning)
   {
     id: 'post-1',
@@ -34,7 +183,14 @@ const mockPosts = [
     ],
     media: [
       { type: 'image', url: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80' }
-    ]
+    ],
+    eventDetails: {
+      participants: [
+        { id: 'user-2', name: 'Max Schmidt', status: 'confirmed' },
+        { id: 'user-3', name: 'Julia Klein', status: 'confirmed' },
+        { id: 'user-5', name: 'Sarah Fischer', status: 'invited' }
+      ]
+    }
   },
 
   // Event 2: Community Meeting (In 3 days, evening)
