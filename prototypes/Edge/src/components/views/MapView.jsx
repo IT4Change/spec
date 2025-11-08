@@ -154,11 +154,11 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
         {selectedPost && selectedPost.location && (
           <motion.div
             ref={detailContainerRef}
-            initial={{ opacity: 0, x: 450 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 450 }}
+            initial={isMobile ? { opacity: 1 } : { opacity: 0, x: 450 }}
+            animate={isMobile ? { opacity: 1 } : { opacity: 1, x: 0 }}
+            exit={isMobile ? { opacity: 1 } : { opacity: 0, x: 450 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed right-0 w-full md:w-[450px] z-[1002] pointer-events-none" style={{ top: '69px' }}
+            className={`fixed right-0 w-full md:w-[450px] z-[1002] ${isMobile ? 'pointer-events-none' : ''}`} style={{ top: '69px' }}
           >
             <ProfileView
               data={postToProfileData(selectedPost, users, posts)}

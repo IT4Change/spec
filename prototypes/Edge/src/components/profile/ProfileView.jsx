@@ -175,8 +175,8 @@ const ProfileView = ({
   const { scrollY } = useScroll({ container: scrollRef });
   const { toast } = useToast();
 
-  // Motion value for mobile bottom sheet
-  const y = useMotionValue(`${100 - 65}%`);
+  // Motion value for mobile bottom sheet - start at bottom (100%)
+  const y = useMotionValue('100%');
 
   // Get y position for each state
   const getStateYPosition = (state) => {
@@ -272,7 +272,7 @@ const ProfileView = ({
           setDisplayMode(prev => prev === 'sidebar' ? 'draggable' : prev);
         } else {
           // Switched to desktop
-          setDisplayMode(prev => prev === 'draggable' ? 'overlay' : prev);
+          setDisplayMode(prev => prev === 'draggable' ? (isModal ? 'overlay' : 'sidebar') : prev);
         }
       }
     };
@@ -356,7 +356,13 @@ const ProfileView = ({
   // Initialize position on mount only
   useEffect(() => {
     const targetPosition = getStateYPosition(panelState);
-    y.set(targetPosition);
+    // Animate from bottom to target position on mount
+    animate(y, targetPosition, {
+      type: 'spring',
+      stiffness: 300,
+      damping: 30,
+      duration: 0.3
+    });
   }, []); // Only run on mount
 
   useMotionValueEvent(scrollY, "change", (latest) => {

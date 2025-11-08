@@ -67,20 +67,25 @@ const ProfileHeader = ({ data, showBanner, onClose, navigationSource, displayMod
 
   // Get icon for display mode switch button
   const getSwitchIcon = () => {
-    if (isMobile) {
-      // Mobile: draggable ↔ overlay
-      return displayMode === 'draggable' ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />;
+    if (displayMode === 'draggable') {
+      // Draggable mode: show maximize icon to switch to overlay
+      return <Maximize2 className="h-4 w-4" />;
+    } else if (displayMode === 'overlay') {
+      // Overlay mode: show minimize icon
+      return <Minimize2 className="h-4 w-4" />;
     } else {
-      // Desktop: overlay ↔ sidebar
-      return displayMode === 'overlay' ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />;
+      // Sidebar mode: show maximize icon to switch to overlay
+      return <Maximize2 className="h-4 w-4" />;
     }
   };
 
   const getSwitchTooltip = () => {
-    if (isMobile) {
-      return displayMode === 'draggable' ? 'Vollbild' : 'Minimieren';
+    if (displayMode === 'draggable') {
+      return 'Vollbild';
+    } else if (displayMode === 'overlay') {
+      return isMobile ? 'Minimieren' : 'Seitenleiste';
     } else {
-      return displayMode === 'overlay' ? 'Seitenleiste' : 'Overlay';
+      return 'Overlay';
     }
   };
 
