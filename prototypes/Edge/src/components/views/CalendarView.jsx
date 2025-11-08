@@ -19,6 +19,7 @@ const CalendarView = ({
   setSelectedPost,
   selectedPost,
   onCloseDetail,
+  onSwitchToMapView,
   onBackToFeed,
   showBackToFeed,
   onCreateEvent,
@@ -138,11 +139,6 @@ const CalendarView = ({
     }
   };
 
-  const handleSwitchToMapView = (post) => {
-    // This would be implemented to switch to map view with the event
-    console.log('Switch to map view for:', post);
-  };
-
   // Count active filters
   const activeFilterCount =
     (3 - filters.eventTypes.length) +
@@ -239,8 +235,8 @@ const CalendarView = ({
                 onClose={onCloseDetail}
                 navigationSource={showBackToFeed ? 'feed' : null}
                 onSwitchToMap={
-                  selectedPost.location
-                    ? () => handleSwitchToMapView(selectedPost)
+                  selectedPost.location && onSwitchToMapView
+                    ? () => onSwitchToMapView(selectedPost)
                     : undefined
                 }
               />
@@ -268,8 +264,8 @@ const CalendarView = ({
                   onClose={onCloseDetail}
                   navigationSource={showBackToFeed ? 'feed' : null}
                   onSwitchToMap={
-                    selectedPost.location
-                      ? () => handleSwitchToMapView(selectedPost)
+                    selectedPost.location && onSwitchToMapView
+                      ? () => onSwitchToMapView(selectedPost)
                       : undefined
                   }
                 />

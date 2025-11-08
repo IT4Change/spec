@@ -16,7 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, postToOpenOnMap, postToOpenOnCalendar, setSelectedPost, onCreatePost, onSwitchToMapView, onBackToFeed, showBackToFeed, onCreateEvent }) => {
+const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, postToOpenOnMap, postToOpenOnCalendar, setSelectedPost, onCreatePost, onSwitchToMapView, onBackToFeed, onBackToCalendar, showBackToFeed, showBackToCalendar, onCreateEvent }) => {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState({});
   const [sortOrder, setSortOrder] = useState('chronological');
@@ -47,9 +47,9 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
       case 'feed':
         return <FeedView posts={posts} sortOrder={sortOrder} onSelectPost={onSelectPost} onCreatePost={onCreatePost} />;
       case 'map':
-        return <MapView posts={posts} onSelectPost={onSelectPost} postToOpen={postToOpenOnMap} setSelectedPost={setSelectedPost} selectedPost={selectedPost} onCloseDetail={onCloseDetail} onBackToFeed={onBackToFeed} showBackToFeed={showBackToFeed} />;
+        return <MapView posts={posts} onSelectPost={onSelectPost} postToOpen={postToOpenOnMap} setSelectedPost={setSelectedPost} selectedPost={selectedPost} onCloseDetail={onCloseDetail} onBackToFeed={onBackToFeed} onBackToCalendar={onBackToCalendar} showBackToFeed={showBackToFeed} showBackToCalendar={showBackToCalendar} />;
       case 'calendar':
-        return <CalendarView posts={posts} onSelectPost={onSelectPost} postToOpen={postToOpenOnCalendar} setSelectedPost={setSelectedPost} selectedPost={selectedPost} onCloseDetail={onCloseDetail} onBackToFeed={onBackToFeed} showBackToFeed={showBackToFeed} onCreateEvent={onCreateEvent} />;
+        return <CalendarView posts={posts} onSelectPost={onSelectPost} postToOpen={postToOpenOnCalendar} setSelectedPost={setSelectedPost} selectedPost={selectedPost} onCloseDetail={onCloseDetail} onSwitchToMapView={onSwitchToMapView} onBackToFeed={onBackToFeed} showBackToFeed={showBackToFeed} onCreateEvent={onCreateEvent} />;
       default:
         return null;
     }

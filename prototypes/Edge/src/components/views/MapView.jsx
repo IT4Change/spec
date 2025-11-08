@@ -37,7 +37,7 @@ const MapController = ({ center, detailWidth, detailHeight, isMobile }) => {
   return null;
 };
 
-const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPost, onCloseDetail, onBackToFeed, showBackToFeed }) => {
+const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPost, onCloseDetail, onBackToFeed, onBackToCalendar, showBackToFeed, showBackToCalendar }) => {
   const [mapCenter, setMapCenter] = useState([52.52, 13.405]);
   const [isMobile, setIsMobile] = useState(false);
   const [viewportHeight, setViewportHeight] = useState(() => (typeof window !== 'undefined' ? window.innerHeight : 800));
@@ -137,9 +137,9 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
         ))}
       </MapContainer>
 
-      {/* Back button - only visible when profile is open and user came from feed */}
+      {/* Back button - visible when profile is open and user came from feed OR calendar */}
       <AnimatePresence>
-        {showBackToFeed && selectedPost && (
+        {selectedPost && (showBackToFeed || showBackToCalendar) && (
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -151,11 +151,13 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
             <Button
               variant="outline"
               size="sm"
-              onClick={onBackToFeed}
+              onClick={showBackToFeed ? onBackToFeed : onBackToCalendar}
               className="bg-slate-800/80 border-white/20 text-white hover:bg-slate-700/80 backdrop-blur-sm"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              <span className="hidden md:inline">Feed</span>
+              <span className="hidden md:inline">
+                {showBackToFeed ? 'Feed' : 'Calendar'}
+              </span>
             </Button>
           </motion.div>
         )}

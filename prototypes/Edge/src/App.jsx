@@ -155,7 +155,7 @@ function App() {
   };
 
   const handleSwitchToMapView = (post) => {
-    // Switch from overlay to full map view for a post with location
+    // Switch from current view to full map view for a post with location
     // Save current scroll position before switching
     const scrollElement = document.querySelector('.overflow-y-auto');
     if (scrollElement) {
@@ -164,7 +164,12 @@ function App() {
 
     // Set postToOpenOnMap and switch view immediately
     // MapView's useEffect will handle setting selectedPost
-    setNavigationSource('feed'); // Track that we came from feed
+    // Track where we came from (feed or calendar)
+    if (currentView === 'feed') {
+      setNavigationSource('feed');
+    } else if (currentView === 'calendar') {
+      setNavigationSource('calendar');
+    }
     setPostToOpenOnMap(post);
     setCurrentView('map');
   };
@@ -173,6 +178,12 @@ function App() {
     // Return to feed from map view
     setCurrentView('feed');
     // Keep navigationSource so scroll can be restored when closing detail
+    setPostToOpenOnMap(null);
+  };
+
+  const handleBackToCalendar = () => {
+    // Return to calendar from map view
+    setCurrentView('calendar');
     setPostToOpenOnMap(null);
     // Keep selectedPost to show the modal in feed view
   };
@@ -357,7 +368,9 @@ function App() {
                 onCreateEvent={handleCreateEvent}
                 onSwitchToMapView={handleSwitchToMapView}
                 onBackToFeed={handleBackToFeed}
+                onBackToCalendar={handleBackToCalendar}
                 showBackToFeed={navigationSource === 'feed'}
+                showBackToCalendar={navigationSource === 'calendar'}
               />
             </motion.div>
           </div>
