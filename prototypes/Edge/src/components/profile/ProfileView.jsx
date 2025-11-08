@@ -46,7 +46,7 @@ const ProfileContent = ({
   displayMode,
   onSwitchDisplayMode
 }) => (
-  <div className="bg-purple-900/50 backdrop-blur-lg w-full h-full flex flex-col rounded-t-2xl md:rounded-none relative">
+  <div className="bg-purple-900 w-full h-full flex flex-col rounded-t-2xl md:rounded-none relative">
     {/* Drag handle for mobile bottom sheet */}
     {isMobile && dragBinder && (
       <div {...dragBinder} className="w-full py-6 flex justify-center items-center touch-none cursor-grab active:cursor-grabbing bg-slate-800/40 border-b border-white/20">
