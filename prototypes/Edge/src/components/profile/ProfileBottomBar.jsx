@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ThumbsUp, Heart, ArrowLeft, Send } from 'lucide-react';
+import { ArrowLeft, Send, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
+import EmojiReactionPicker from '@/components/ui/EmojiReactionPicker';
 import { cn } from '@/lib/utils';
 
 const ProfileBottomBar = ({
@@ -16,6 +17,7 @@ const ProfileBottomBar = ({
 }) => {
   const [isCommentMode, setIsCommentMode] = useState(false);
   const [commentText, setCommentText] = useState('');
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   // Auto-resize textarea
   useEffect(() => {
@@ -68,6 +70,16 @@ const ProfileBottomBar = ({
     }
   };
 
+  const handleEmojiSelect = (emoji) => {
+    onReaction(emoji);
+    setShowEmojiPicker(false);
+  };
+
+  const handleReactionClick = (emoji, e) => {
+    e.stopPropagation();
+    onReaction(emoji);
+  };
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -87,32 +99,50 @@ const ProfileBottomBar = ({
                   animate={{ opacity: 1, width: 'auto' }}
                   exit={{ opacity: 0, width: 0 }}
                   transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                  className="flex items-center gap-2 overflow-hidden"
+                  className="flex items-center gap-2 relative"
+                  style={{ overflow: 'visible' }}
                 >
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => onReaction('likes')}
-                    className={cn(
-                      "flex items-center gap-2 transition-colors",
-                      reactions.userLiked ? 'text-purple-400 bg-purple-500/20' : 'text-white/70 hover:bg-white/10'
-                    )}
-                  >
-                    <ThumbsUp className="h-5 w-5" />
-                    <span className="font-medium">{reactions.likes}</span>
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => onReaction('hearts')}
-                    className={cn(
-                      "flex items-center gap-2 transition-colors",
-                      reactions.userHearted ? 'text-red-400 bg-red-500/20' : 'text-white/70 hover:bg-white/10'
-                    )}
-                  >
-                    <Heart className="h-5 w-5" />
-                    <span className="font-medium">{reactions.hearts}</span>
-                  </Button>
+                  {/* Display existing reactions */}
+                  {Object.entries(reactions).map(([emoji, count]) => (
+                    <Button
+                      key={emoji}
+                      variant="ghost"
+                      size="sm"
+                      className="text-white hover:text-white bg-white/10 hover:bg-white/20 rounded-full px-3 py-1 h-8"
+                      onClick={(e) => handleReactionClick(emoji, e)}
+                    >
+                      <span className="mr-1 opacity-100">{emoji}</span>
+                      <span className="text-xs text-white/90">{count}</span>
+                    </Button>
+                  ))}
+
+                  {/* Add reaction button */}
+                  <div className="relative">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-white/60 hover:text-white bg-white/10 hover:bg-white/20 rounded-full h-8 w-8 p-0 flex items-center justify-center"
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setShowEmojiPicker(!showEmojiPicker);
+                      }}
+                    >
+                      <Plus className="h-4 w-4" />
+                    </Button>
+
+                    {/* Emoji picker */}
+                    <AnimatePresence>
+                      {showEmojiPicker && (
+                        <EmojiReactionPicker
+                          onEmojiSelect={handleEmojiSelect}
+                          onClose={() => setShowEmojiPicker(false)}
+                          reactions={reactions}
+                          className="bottom-full left-1/2 -translate-x-1/2 mb-3"
+                        />
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>

@@ -143,12 +143,7 @@ const ProfileView = ({
   navigationSource = null
 }) => {
   const [showBanner, setShowBanner] = useState(true);
-  const [reactions, setReactions] = useState({
-    likes: data.reactions?.likes || 12,
-    hearts: data.reactions?.hearts || 5,
-    userLiked: false,
-    userHearted: false
-  });
+  const [reactions, setReactions] = useState(data.reactions || {});
   const [isMobile, setIsMobile] = useState(false);
   const [panelState, setPanelState] = useState('medium');
   const [isAnimating, setIsAnimating] = useState(false);
@@ -305,20 +300,15 @@ const ProfileView = ({
     }
   });
   
-  const handleReaction = (type) => {
+  const handleReaction = (emoji) => {
     setReactions(prev => {
-        const userActionKey = `user${type.charAt(0).toUpperCase() + type.slice(1)}d`;
-        const alreadyActed = prev[userActionKey];
-        const change = alreadyActed ? -1 : 1;
+        const newReactions = { ...prev };
+        newReactions[emoji] = (newReactions[emoji] || 0) + 1;
         toast({
-            title: `❤️ Reaktion ${alreadyActed ? 'entfernt' : 'hinzugefügt'}`,
-            description: `Du hast ${alreadyActed ? 'dein' : 'ein'} ${type === 'likes' ? 'Like' : 'Herz'} ${alreadyActed ? 'zurückgenommen' : 'gegeben'}.`,
+            title: `${emoji} Reaktion hinzugefügt`,
+            description: `Du hast mit ${emoji} reagiert.`,
         });
-        return {
-            ...prev,
-            [type]: prev[type] + change,
-            [userActionKey]: !alreadyActed
-        };
+        return newReactions;
     });
   };
   

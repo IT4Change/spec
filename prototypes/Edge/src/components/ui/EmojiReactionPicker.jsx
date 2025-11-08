@@ -416,9 +416,9 @@ const EmojiReactionPicker = ({ onEmojiSelect, onClose, reactions = {}, className
   return (
     <motion.div
       ref={pickerRef}
-      initial={{ opacity: 0, scale: 0.9, y: 10 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.9, y: 10 }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.2 }}
       className={`absolute z-50 bg-slate-800 border border-slate-600 rounded-lg shadow-xl flex flex-col ${className}`}
       style={{ width: '320px', height: '400px' }}

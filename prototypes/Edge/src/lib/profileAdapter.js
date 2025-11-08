@@ -148,7 +148,7 @@ export const postToProfileData = (post, users, allPosts = []) => {
     distance: location ? calculateDistance(location.lat, location.lon) : null,
     text: post.content,
     images: post.media?.map(m => m.url) || [],
-    reactions: convertReactions(post.reactions),
+    reactions: post.reactions || {},
     comments: convertComments(post.comments, users),
     location: location // Keep original location for map
   };
