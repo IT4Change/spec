@@ -5,7 +5,7 @@ import { de } from 'date-fns/locale';
 import { Calendar, MapPin, Clock } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-const ListView = ({ events, onEventClick }) => {
+const ListView = ({ events, onEventClick, selectedEventId }) => {
   // Group events by date
   const eventsByDate = events.reduce((acc, event) => {
     // Skip events with invalid startTime
@@ -105,6 +105,8 @@ const ListView = ({ events, onEventClick }) => {
                 return null;
               }
 
+              const isSelected = event.id === selectedEventId;
+
               return (
                 <motion.button
                   key={event.id}
@@ -112,9 +114,11 @@ const ListView = ({ events, onEventClick }) => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: (groupIdx * 0.1) + (eventIdx * 0.05) }}
                   onClick={() => onEventClick(event)}
-                  className={`w-full text-left p-4 rounded-lg border transition-all hover:scale-[1.02] ${getEventTypeColor(
-                    event.type
-                  )}`}
+                  className={`w-full text-left p-4 rounded-lg border transition-all hover:scale-[1.02] ${
+                    isSelected
+                      ? 'bg-cyan-400/20 border-cyan-300 ring-2 ring-cyan-300 shadow-lg shadow-cyan-400/50'
+                      : getEventTypeColor(event.type)
+                  }`}
                 >
                   <div className="flex items-start gap-3">
                     {/* Author Avatar */}

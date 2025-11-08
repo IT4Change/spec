@@ -4,7 +4,7 @@ import { format, parseISO, getHours, getMinutes, differenceInMinutes, isValid } 
 import { de } from 'date-fns/locale';
 import { Clock, MapPin } from 'lucide-react';
 
-const DayView = ({ currentDate, events, onEventClick, onSlotClick }) => {
+const DayView = ({ currentDate, events, onEventClick, onSlotClick, selectedEventId }) => {
   // Time slots (6 AM to 11 PM, 30 min intervals)
   const timeSlots = Array.from({ length: 36 }, (_, i) => {
     const hour = Math.floor(i / 2) + 6;
@@ -44,7 +44,10 @@ const DayView = ({ currentDate, events, onEventClick, onSlotClick }) => {
   }, {});
 
   // Get event type color
-  const getEventColor = (type) => {
+  const getEventColor = (type, isSelected) => {
+    if (isSelected) {
+      return 'bg-cyan-400/90 hover:bg-cyan-500 border-cyan-300 ring-2 ring-cyan-300';
+    }
     switch (type) {
       case 'event':
         return 'bg-purple-500/90 hover:bg-purple-600 border-purple-400';
@@ -132,6 +135,7 @@ const DayView = ({ currentDate, events, onEventClick, onSlotClick }) => {
                     return null;
                   }
                   const eventHeight = getEventHeight(event);
+                  const isSelected = event.id === selectedEventId;
 
                   return (
                     <motion.button
@@ -144,8 +148,9 @@ const DayView = ({ currentDate, events, onEventClick, onSlotClick }) => {
                         onEventClick(event);
                       }}
                       className={`w-full text-left p-3 rounded-lg border-l-4 transition-all mb-2 ${getEventColor(
-                        event.type
-                      )}`}
+                        event.type,
+                        isSelected
+                      )} ${isSelected ? 'shadow-lg shadow-cyan-400/50 scale-[1.03]' : ''}`}
                       style={{ height: `${eventHeight}px` }}
                     >
                       <div className="flex flex-col h-full">

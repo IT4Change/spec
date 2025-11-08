@@ -15,7 +15,7 @@ import {
 import { de } from 'date-fns/locale';
 import EventIndicator from './EventIndicator';
 
-const MonthView = ({ currentDate, events, onEventClick, onDateClick }) => {
+const MonthView = ({ currentDate, events, onEventClick, onDateClick, selectedEventId }) => {
   // Get all days to display in the calendar grid
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(currentDate);
@@ -98,6 +98,7 @@ const MonthView = ({ currentDate, events, onEventClick, onDateClick }) => {
                 events={dayEvents}
                 onClick={onEventClick}
                 compact={dayEvents.length > 2}
+                selectedEventId={selectedEventId}
               />
             </motion.div>
           );

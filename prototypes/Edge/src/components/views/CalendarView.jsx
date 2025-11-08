@@ -187,6 +187,7 @@ const CalendarView = ({
                   events={filteredEvents}
                   onEventClick={handleEventClick}
                   onDateClick={handleDateClick}
+                  selectedEventId={selectedPost?.id}
                 />
               )}
 
@@ -196,6 +197,7 @@ const CalendarView = ({
                   events={filteredEvents}
                   onEventClick={handleEventClick}
                   onSlotClick={handleSlotClick}
+                  selectedEventId={selectedPost?.id}
                 />
               )}
 
@@ -205,6 +207,7 @@ const CalendarView = ({
                   events={filteredEvents}
                   onEventClick={handleEventClick}
                   onSlotClick={handleSlotClick}
+                  selectedEventId={selectedPost?.id}
                 />
               )}
 
@@ -212,6 +215,7 @@ const CalendarView = ({
                 <ListView
                   events={filteredEvents}
                   onEventClick={handleEventClick}
+                  selectedEventId={selectedPost?.id}
                 />
               )}
             </motion.div>

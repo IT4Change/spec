@@ -13,7 +13,7 @@ import {
 } from 'date-fns';
 import { de } from 'date-fns/locale';
 
-const WeekView = ({ currentDate, events, onEventClick, onSlotClick }) => {
+const WeekView = ({ currentDate, events, onEventClick, onSlotClick, selectedEventId }) => {
   const weekStart = startOfWeek(currentDate, { weekStartsOn: 1 });
   const weekEnd = endOfWeek(currentDate, { weekStartsOn: 1 });
   const weekDays = eachDayOfInterval({ start: weekStart, end: weekEnd });
@@ -41,7 +41,10 @@ const WeekView = ({ currentDate, events, onEventClick, onSlotClick }) => {
   }, {});
 
   // Get event type color
-  const getEventColor = (type) => {
+  const getEventColor = (type, isSelected) => {
+    if (isSelected) {
+      return 'bg-cyan-400 hover:bg-cyan-500 ring-2 ring-cyan-300';
+    }
     switch (type) {
       case 'event':
         return 'bg-purple-500 hover:bg-purple-600';
@@ -120,6 +123,7 @@ const WeekView = ({ currentDate, events, onEventClick, onSlotClick }) => {
                         return null;
                       }
 
+                      const isSelected = event.id === selectedEventId;
                       return (
                         <motion.button
                           key={event.id}
@@ -131,8 +135,9 @@ const WeekView = ({ currentDate, events, onEventClick, onSlotClick }) => {
                             onEventClick(event);
                           }}
                           className={`w-full text-left px-2 py-1 rounded text-xs font-medium text-white mb-1 transition-colors ${getEventColor(
-                            event.type
-                          )}`}
+                            event.type,
+                            isSelected
+                          )} ${isSelected ? 'shadow-lg shadow-cyan-400/50 scale-[1.03]' : ''}`}
                           style={{ marginTop: `${(minutes / 60) * 40}px` }}
                         >
                           <div className="truncate">{event.title}</div>
