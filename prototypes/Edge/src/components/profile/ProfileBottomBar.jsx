@@ -58,7 +58,7 @@ const ProfileBottomBar = ({
           animate={{ y: 0 }}
           exit={{ y: '100%' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="absolute bottom-0 left-0 right-0 z-30 border-t bg-white shadow-lg"
+          className="absolute bottom-0 left-0 right-0 z-30 border-t border-white/20 bg-slate-800/90 backdrop-blur-lg shadow-lg shadow-black/50"
         >
           <motion.div
             layout
@@ -83,7 +83,7 @@ const ProfileBottomBar = ({
                       onClick={() => onReaction('likes')}
                       className={cn(
                         "flex items-center gap-2 transition-colors",
-                        reactions.userLiked ? 'text-blue-600 bg-blue-100' : 'text-gray-600 hover:bg-blue-50'
+                        reactions.userLiked ? 'text-purple-400 bg-purple-500/20' : 'text-white/70 hover:bg-white/10'
                       )}
                     >
                       <ThumbsUp className="h-5 w-5" />
@@ -95,7 +95,7 @@ const ProfileBottomBar = ({
                       onClick={() => onReaction('hearts')}
                       className={cn(
                         "flex items-center gap-2 transition-colors",
-                        reactions.userHearted ? 'text-red-600 bg-red-100' : 'text-gray-600 hover:bg-red-50'
+                        reactions.userHearted ? 'text-red-400 bg-red-500/20' : 'text-white/70 hover:bg-white/10'
                       )}
                     >
                       <Heart className="h-5 w-5" />

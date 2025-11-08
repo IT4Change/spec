@@ -14,7 +14,7 @@ const ProfileReactionsBar = ({ reactions, commentsCount, onReaction, onCommentCl
           animate={{ y: 0 }}
           exit={{ y: '100%' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="absolute bottom-0 left-0 right-0 z-20 border-t bg-white"
+          className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/20 bg-slate-800/90 backdrop-blur-lg"
         >
           <div className="flex items-center justify-between gap-4 p-3">
             <div className="flex items-center gap-2">
@@ -24,7 +24,7 @@ const ProfileReactionsBar = ({ reactions, commentsCount, onReaction, onCommentCl
                 onClick={() => onReaction('likes')}
                 className={cn(
                   "flex items-center gap-2 transition-colors",
-                  reactions.userLiked ? 'text-blue-600 bg-blue-100' : 'text-gray-600 hover:bg-blue-50'
+                  reactions.userLiked ? 'text-purple-400 bg-purple-500/20' : 'text-white/70 hover:bg-white/10'
                 )}
               >
                 <ThumbsUp className="h-5 w-5" />
@@ -36,7 +36,7 @@ const ProfileReactionsBar = ({ reactions, commentsCount, onReaction, onCommentCl
                 onClick={() => onReaction('hearts')}
                 className={cn(
                     "flex items-center gap-2 transition-colors",
-                    reactions.userHearted ? 'text-red-600 bg-red-100' : 'text-gray-600 hover:bg-red-50'
+                    reactions.userHearted ? 'text-red-400 bg-red-500/20' : 'text-white/70 hover:bg-white/10'
                 )}
               >
                 <Heart className="h-5 w-5" />
@@ -47,7 +47,7 @@ const ProfileReactionsBar = ({ reactions, commentsCount, onReaction, onCommentCl
               variant="outline"
               size="sm"
               onClick={onCommentClick}
-              className="flex items-center gap-2 text-gray-600 hover:bg-gray-100"
+              className="flex items-center gap-2 text-white/70 hover:bg-white/10"
             >
               <MessageCircle className="h-5 w-5" />
               <span className="font-medium">{commentsCount}</span>

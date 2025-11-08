@@ -18,7 +18,7 @@ const ProfileNavDots = ({ components, scrollContainerRef }) => {
 
   return (
     <div className="absolute right-2 top-1/2 -translate-y-1/2 z-10">
-      <div className="flex flex-col items-center gap-2 p-1 bg-white/50 backdrop-blur-sm rounded-full">
+      <div className="flex flex-col items-center gap-2 p-1 bg-slate-800/70 backdrop-blur-sm rounded-full">
         {components.map((component) => (
           <ScrollLink
             key={component.key}
@@ -30,7 +30,7 @@ const ProfileNavDots = ({ components, scrollContainerRef }) => {
             containerId="profile-scroll-container"
             onSetActive={() => setActiveDot(component.key)}
             className="w-2 h-2 rounded-full bg-gray-400 cursor-pointer transition-all hover:bg-purple-500 relative group"
-            activeClass="bg-purple-600 scale-150"
+            activeClass="bg-pink-500 scale-150"
           >
             <span className="absolute right-full top-1/2 -translate-y-1/2 mr-3 px-2 py-1 bg-gray-800 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
               {component.name}

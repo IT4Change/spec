@@ -75,8 +75,8 @@ const ContactInfo = ({ contactInfo }) => {
   return (
     <div>
       <div className="flex items-center gap-2 mb-4">
-        <Mail className="h-5 w-5 text-purple-600" />
-        <h3 className="text-lg font-semibold text-gray-900">Kontakt</h3>
+        <Mail className="h-5 w-5 text-purple-400" />
+        <h3 className="text-lg font-semibold text-white">Kontakt</h3>
       </div>
 
       <div className="space-y-3">
@@ -84,14 +84,14 @@ const ContactInfo = ({ contactInfo }) => {
           const IconComponent = item.icon;
           
           return (
-            <div key={item.type} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+            <div key={item.type} className="flex items-center gap-3 p-3 bg-slate-800/40 backdrop-blur-sm rounded-lg border border-white/10">
               <div className="flex-shrink-0">
-                <IconComponent className="h-4 w-4 text-purple-600" />
+                <IconComponent className="h-4 w-4 text-purple-400" />
               </div>
-              
+
               <div className="flex-1 min-w-0">
-                <div className="text-xs text-gray-500 mb-1">{item.label}</div>
-                <div className="text-sm font-medium text-gray-900 truncate">
+                <div className="text-xs text-white/60 mb-1">{item.label}</div>
+                <div className="text-sm font-medium text-white truncate">
                   {item.display}
                 </div>
               </div>

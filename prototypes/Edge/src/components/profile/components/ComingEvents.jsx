@@ -50,25 +50,25 @@ const ComingEvents = ({ events }) => {
   return (
     <div>
       <div className="flex items-center gap-2 mb-4">
-        <Calendar className="h-5 w-5 text-purple-600" />
-        <h3 className="text-lg font-semibold text-gray-900">Kommende Events</h3>
+        <Calendar className="h-5 w-5 text-purple-400" />
+        <h3 className="text-lg font-semibold text-white">Kommende Events</h3>
       </div>
 
       <div className="space-y-3">
         {mockEvents.map((event) => (
-          <div 
-            key={event.id} 
-            className="p-3 border border-gray-200 rounded-lg hover:border-purple-300 hover:bg-purple-50 transition-colors cursor-pointer"
+          <div
+            key={event.id}
+            className="p-3 border border-white/20 rounded-lg hover:border-purple-400/50 hover:bg-white/10 transition-colors cursor-pointer backdrop-blur-sm"
             onClick={() => handleEventClick(event.id)}
           >
             <div className="flex justify-between items-start mb-2">
-              <h4 className="font-medium text-gray-900">{event.title}</h4>
-              <span className="text-sm font-medium text-purple-600">
+              <h4 className="font-medium text-white">{event.title}</h4>
+              <span className="text-sm font-medium text-purple-400">
                 {formatDate(event.date)}
               </span>
             </div>
             
-            <div className="space-y-1 text-sm text-gray-600">
+            <div className="space-y-1 text-sm text-white/70">
               <div className="flex items-center gap-2">
                 <Clock className="h-3 w-3" />
                 <span>{event.time}</span>

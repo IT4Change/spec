@@ -43,21 +43,21 @@ const EventFunctions = ({ eventDetails }) => {
   return (
     <div>
       <div className="flex items-center gap-2 mb-4">
-        <Calendar className="h-5 w-5 text-purple-600" />
-        <h3 className="text-lg font-semibold text-gray-900">Event Details</h3>
+        <Calendar className="h-5 w-5 text-purple-400" />
+        <h3 className="text-lg font-semibold text-white">Event Details</h3>
       </div>
 
       {/* Date and Time */}
-      <div className="bg-purple-50 rounded-lg p-4 mb-4">
+      <div className="bg-purple-900/30 backdrop-blur-sm rounded-lg p-4 mb-4 border border-purple-400/20">
         <div className="flex items-center gap-2 mb-2">
-          <Calendar className="h-4 w-4 text-purple-600" />
-          <span className="font-medium text-gray-900">
+          <Calendar className="h-4 w-4 text-purple-400" />
+          <span className="font-medium text-white">
             {formatDate(eventDetails.startDate)}
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <Clock className="h-4 w-4 text-purple-600" />
-          <span className="text-gray-700">
+          <Clock className="h-4 w-4 text-purple-400" />
+          <span className="text-white/80">
             {eventDetails.startTime}
             {eventDetails.endTime && ` - ${eventDetails.endTime}`}
           </span>
@@ -65,9 +65,9 @@ const EventFunctions = ({ eventDetails }) => {
       </div>
 
       {/* Join Button */}
-      <Button 
+      <Button
         onClick={handleJoin}
-        className="w-full mb-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+        className="w-full mb-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
       >
         <UserPlus className="h-4 w-4 mr-2" />
         Am Event teilnehmen
@@ -77,15 +77,15 @@ const EventFunctions = ({ eventDetails }) => {
       {eventDetails.participants && eventDetails.participants.length > 0 && (
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <Users className="h-4 w-4 text-gray-600" />
-            <span className="font-medium text-gray-900">
+            <Users className="h-4 w-4 text-white/70" />
+            <span className="font-medium text-white">
               Teilnehmer ({eventDetails.participants.length})
             </span>
           </div>
           <div className="space-y-2">
             {eventDetails.participants.map((participant, index) => (
-              <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
-                <span className="text-sm font-medium text-gray-900">
+              <div key={index} className="flex items-center justify-between p-2 bg-slate-800/40 backdrop-blur-sm rounded-lg border border-white/10">
+                <span className="text-sm font-medium text-white">
                   {participant.name}
                 </span>
                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(participant.status)}`}>

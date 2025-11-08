@@ -43,10 +43,10 @@ const ProfileContent = ({
   isDragging,
   panelState
 }) => (
-  <div className="bg-white w-full h-full flex flex-col rounded-t-2xl md:rounded-none relative">
+  <div className="bg-purple-900/50 backdrop-blur-lg w-full h-full flex flex-col rounded-t-2xl md:rounded-none relative">
     {/* Drag handle for mobile bottom sheet */}
     {isMobile && dragBinder && (
-      <div {...dragBinder} className="w-full py-6 flex justify-center items-center touch-none cursor-grab active:cursor-grabbing bg-white border-b border-gray-200">
+      <div {...dragBinder} className="w-full py-6 flex justify-center items-center touch-none cursor-grab active:cursor-grabbing bg-slate-800/40 border-b border-white/20">
         <div className={`w-12 h-1.5 rounded-full transition-all duration-200 ${
           isDragging
             ? 'bg-purple-400 w-16 h-2'
@@ -413,7 +413,7 @@ const ProfileView = ({
   if (isModal) {
     return (
       <Dialog open={true} onOpenChange={onClose}>
-        <DialogContent className="bg-transparent border-none p-0 max-w-3xl w-full h-[90vh] max-h-[90vh] shadow-none" style={{ display: 'block' }}>
+        <DialogContent showCloseButton={false} className="bg-transparent border-none p-0 max-w-3xl w-full h-[90vh] max-h-[90vh] shadow-none" style={{ display: 'block' }}>
           <DialogTitle className="sr-only">
             {data.title || data.name || 'Profile Details'}
           </DialogTitle>

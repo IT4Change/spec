@@ -22,8 +22,8 @@ const Comments = ({ comments: initialComments }) => {
   return (
     <div>
       <div className="flex items-center gap-2 mb-4">
-        <MessageCircle className="h-5 w-5 text-purple-600" />
-        <h3 className="text-lg font-semibold text-gray-900">Kommentare</h3>
+        <MessageCircle className="h-5 w-5 text-purple-400" />
+        <h3 className="text-lg font-semibold text-white">Kommentare</h3>
       </div>
 
       <div className="space-y-4 mb-4">
@@ -40,19 +40,19 @@ const Comments = ({ comments: initialComments }) => {
                 src={authorAvatar || "https://images.unsplash.com/photo-1554829954-117d7897bf34"}
               />
               <div className="flex-1">
-                <div className="bg-gray-50 rounded-lg p-3">
+                <div className="bg-slate-800/40 backdrop-blur-sm rounded-lg p-3 border border-white/10">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-medium text-sm text-gray-900">{authorName}</span>
-                    <span className="text-xs text-gray-500">{comment.time}</span>
+                    <span className="font-medium text-sm text-white">{authorName}</span>
+                    <span className="text-xs text-white/60">{comment.time}</span>
                   </div>
-                  <p className="text-sm text-gray-700">{comment.text}</p>
+                  <p className="text-sm text-white/80">{comment.text}</p>
                 </div>
               </div>
             </div>
           );
         })}
         {mockComments.length === 0 && (
-            <p className="text-sm text-gray-500 text-center py-4">Noch keine Kommentare vorhanden. Sei der Erste!</p>
+            <p className="text-sm text-white/60 text-center py-4">Noch keine Kommentare vorhanden. Sei der Erste!</p>
         )}
       </div>
     </div>

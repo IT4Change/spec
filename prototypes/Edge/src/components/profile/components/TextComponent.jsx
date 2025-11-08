@@ -7,9 +7,9 @@ const TextComponent = ({ text }) => {
   // Simple Markdown parser for basic formatting
   const parseMarkdown = (text) => {
     return text
-      .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-bold mb-4 text-gray-900">$1</h1>')
-      .replace(/^## (.*$)/gim, '<h2 class="text-xl font-semibold mb-3 text-gray-800">$1</h2>')
-      .replace(/^### (.*$)/gim, '<h3 class="text-lg font-medium mb-2 text-gray-700">$1</h3>')
+      .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-bold mb-4 text-white">$1</h1>')
+      .replace(/^## (.*$)/gim, '<h2 class="text-xl font-semibold mb-3 text-white/90">$1</h2>')
+      .replace(/^### (.*$)/gim, '<h3 class="text-lg font-medium mb-2 text-white/80">$1</h3>')
       .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
       .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
       .replace(/^- (.*$)/gim, '<li class="ml-4">$1</li>')
@@ -22,8 +22,8 @@ const TextComponent = ({ text }) => {
 
   return (
     <div className="prose prose-sm max-w-none">
-      <div 
-        className="text-gray-700 leading-relaxed"
+      <div
+        className="text-white/80 leading-relaxed"
         dangerouslySetInnerHTML={{ __html: wrappedText }}
       />
     </div>

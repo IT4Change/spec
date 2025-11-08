@@ -40,8 +40,8 @@ const MediaGallery = ({ images = [] }) => {
   return (
     <div>
       <div className="flex items-center gap-2 mb-4">
-        <ImageIcon className="h-5 w-5 text-purple-600" />
-        <h3 className="text-lg font-semibold text-gray-900">Media Gallery</h3>
+        <ImageIcon className="h-5 w-5 text-purple-400" />
+        <h3 className="text-lg font-semibold text-white">Media Gallery</h3>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

@@ -73,7 +73,7 @@ const ProfileHeader = ({ data, showBanner, onClose, navigationSource }) => {
           onClick={onClose}
           size="icon"
           variant="ghost"
-          className="absolute top-3 right-3 z-50 bg-white/90 hover:bg-white shadow-md rounded-full"
+          className="absolute top-3 right-3 z-50 bg-slate-800/90 hover:bg-slate-800 text-white shadow-md rounded-full"
         >
           {navigationSource === 'feed' ? <ArrowLeft className="h-4 w-4" /> : <X className="h-4 w-4" />}
         </Button>
@@ -83,7 +83,7 @@ const ProfileHeader = ({ data, showBanner, onClose, navigationSource }) => {
         animate={{ height: showBanner && data.banner ? '8rem' : 0, opacity: showBanner && data.banner ? 1 : 0 }}
         initial={false}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className="bg-gradient-to-r from-purple-500 to-blue-500 relative overflow-hidden"
+        className="bg-gradient-to-r from-purple-500 to-pink-500 relative overflow-hidden"
       >
         {data.banner && (
           <>
@@ -93,7 +93,7 @@ const ProfileHeader = ({ data, showBanner, onClose, navigationSource }) => {
         )}
       </motion.div>
 
-      <div className="p-6 pb-4 bg-white border-b border-gray-100">
+      <div className="p-6 pb-4 bg-slate-800/40 backdrop-blur-sm border-b border-white/20">
         <div className="flex items-start gap-4">
           <div className="flex flex-col items-center flex-shrink-0">
              <motion.div 
@@ -101,11 +101,11 @@ const ProfileHeader = ({ data, showBanner, onClose, navigationSource }) => {
               animate={{ marginTop: showBanner && data.banner ? '-2rem' : '0rem' }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
-              <div className="w-16 h-16 rounded-full bg-white p-1 shadow-lg">
+              <div className="w-16 h-16 rounded-full bg-slate-800 p-1 shadow-lg">
                 {data.avatar ? (
                   <img alt={data.name} className="w-full h-full rounded-full object-cover" src={data.avatar} />
                 ) : (
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
                     <User className="h-8 w-8 text-white" />
                   </div>
                 )}
@@ -116,8 +116,8 @@ const ProfileHeader = ({ data, showBanner, onClose, navigationSource }) => {
 
           <div className="flex-1 pt-2">
             <div className="float-left">
-              <h1 className="text-xl font-bold text-gray-900 mb-1">{data.name}</h1>
-              <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
+              <h1 className="text-xl font-bold text-white mb-1">{data.name}</h1>
+              <div className="flex items-center gap-2 text-sm text-white/70 mb-3">
                 <MapPin className="h-4 w-4 flex-shrink-0" />
                 <span>{data.address}</span>
               </div>

@@ -25,7 +25,7 @@ const Badges = ({ badges }) => {
       name: 'Community Helfer',
       description: '10 Nachbarschaftshilfen abgeschlossen',
       icon: Shield,
-      color: 'from-blue-500 to-purple-600',
+      color: 'from-purple-500 to-pink-500',
       earned: true,
       earnedDate: '2024-02-15'
     },
@@ -68,8 +68,8 @@ const Badges = ({ badges }) => {
   return (
     <div>
       <div className="flex items-center gap-2 mb-4">
-        <Award className="h-5 w-5 text-purple-600" />
-        <h3 className="text-lg font-semibold text-gray-900">Badges & Erfolge</h3>
+        <Award className="h-5 w-5 text-purple-400" />
+        <h3 className="text-lg font-semibold text-white">Badges & Erfolge</h3>
       </div>
 
       <div className="grid grid-cols-2 gap-3">
@@ -77,26 +77,26 @@ const Badges = ({ badges }) => {
           const IconComponent = badge.icon;
           
           return (
-            <div 
-              key={badge.id} 
+            <div
+              key={badge.id}
               className={`p-3 rounded-lg border-2 transition-all ${
-                badge.earned 
-                  ? 'border-transparent bg-gradient-to-br ' + badge.color + ' text-white shadow-lg' 
-                  : 'border-gray-200 bg-gray-50 text-gray-600'
+                badge.earned
+                  ? 'border-transparent bg-gradient-to-br ' + badge.color + ' text-white shadow-lg'
+                  : 'border-white/20 bg-slate-800/40 text-white/70'
               }`}
             >
               <div className="text-center">
                 <div className={`w-12 h-12 mx-auto mb-2 rounded-full flex items-center justify-center ${
-                  badge.earned ? 'bg-white/20' : 'bg-gray-200'
+                  badge.earned ? 'bg-white/20' : 'bg-white/10'
                 }`}>
-                  <IconComponent className={`h-6 w-6 ${badge.earned ? 'text-white' : 'text-gray-400'}`} />
+                  <IconComponent className={`h-6 w-6 ${badge.earned ? 'text-white' : 'text-white/50'}`} />
                 </div>
-                
-                <h4 className={`font-medium text-sm mb-1 ${badge.earned ? 'text-white' : 'text-gray-900'}`}>
+
+                <h4 className={`font-medium text-sm mb-1 ${badge.earned ? 'text-white' : 'text-white'}`}>
                   {badge.name}
                 </h4>
-                
-                <p className={`text-xs mb-2 ${badge.earned ? 'text-white/90' : 'text-gray-600'}`}>
+
+                <p className={`text-xs mb-2 ${badge.earned ? 'text-white/90' : 'text-white/70'}`}>
                   {badge.description}
                 </p>
 
@@ -106,11 +106,11 @@ const Badges = ({ badges }) => {
                   </div>
                 ) : (
                   <div className="space-y-1">
-                    <div className={`text-xs ${badge.earned ? 'text-white/80' : 'text-gray-500'}`}>
+                    <div className={`text-xs ${badge.earned ? 'text-white/80' : 'text-white/60'}`}>
                       {badge.progress}/{badge.total}
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-1">
-                      <div 
+                    <div className="w-full bg-slate-700 rounded-full h-1">
+                      <div
                         className="bg-purple-500 h-1 rounded-full transition-all duration-500"
                         style={{ width: `${(badge.progress / badge.total) * 100}%` }}
                       ></div>
@@ -124,7 +124,7 @@ const Badges = ({ badges }) => {
       </div>
 
       <div className="mt-4 text-center">
-        <span className="text-sm text-gray-500">
+        <span className="text-sm text-white/60">
           {mockBadges.filter(b => b.earned).length} von {mockBadges.length} Badges erhalten
         </span>
       </div>

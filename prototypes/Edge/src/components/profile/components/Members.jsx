@@ -41,8 +41,8 @@ const Members = ({ members }) => {
     <div>
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <Users className="h-5 w-5 text-purple-600" />
-          <h3 className="text-lg font-semibold text-gray-900">Mitglieder</h3>
+          <Users className="h-5 w-5 text-purple-400" />
+          <h3 className="text-lg font-semibold text-white">Mitglieder</h3>
         </div>
         <Button size="sm" onClick={handleJoinGroup}>
           <UserPlus className="h-4 w-4 mr-1" />
@@ -52,7 +52,7 @@ const Members = ({ members }) => {
 
       <div className="space-y-3">
         {mockMembers.map((member, index) => (
-          <div key={member.id || index} className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg transition-colors">
+          <div key={member.id || index} className="flex items-center gap-3 p-2 hover:bg-white/10 rounded-lg transition-colors">
             <div className="relative">
               <img
                 alt={member.name}
@@ -60,12 +60,12 @@ const Members = ({ members }) => {
                 src={member.avatar || "https://images.unsplash.com/photo-1652841190565-b96e0acbae17"}
               />
               {member.status && (
-                <div className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-white ${getStatusColor(member.status)}`}></div>
+                <div className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-slate-800 ${getStatusColor(member.status)}`}></div>
               )}
             </div>
             <div className="flex-1">
-              <div className="font-medium text-sm text-gray-900">{member.name}</div>
-              {member.role && <div className="text-xs text-gray-500">{member.role}</div>}
+              <div className="font-medium text-sm text-white">{member.name}</div>
+              {member.role && <div className="text-xs text-white/60">{member.role}</div>}
             </div>
           </div>
         ))}

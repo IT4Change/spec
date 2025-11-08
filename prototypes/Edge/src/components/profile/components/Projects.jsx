@@ -59,41 +59,41 @@ const Projects = ({ projects }) => {
   return (
     <div>
       <div className="flex items-center gap-2 mb-4">
-        <Briefcase className="h-5 w-5 text-purple-600" />
-        <h3 className="text-lg font-semibold text-gray-900">Projekte</h3>
+        <Briefcase className="h-5 w-5 text-purple-400" />
+        <h3 className="text-lg font-semibold text-white">Projekte</h3>
       </div>
 
       <div className="space-y-4">
         {mockProjects.map((project) => (
-          <div 
-            key={project.id} 
-            className="p-4 border border-gray-200 rounded-lg hover:border-purple-300 hover:bg-purple-50 transition-colors cursor-pointer"
+          <div
+            key={project.id}
+            className="p-4 border border-white/20 rounded-lg hover:border-purple-400/50 hover:bg-white/10 transition-colors cursor-pointer backdrop-blur-sm"
             onClick={() => handleProjectClick(project.id)}
           >
             <div className="flex justify-between items-start mb-2">
-              <h4 className="font-medium text-gray-900">{project.title}</h4>
+              <h4 className="font-medium text-white">{project.title}</h4>
               <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(project.status)}`}>
                 {project.status}
               </span>
             </div>
-            
-            <p className="text-sm text-gray-600 mb-3">{project.description}</p>
+
+            <p className="text-sm text-white/70 mb-3">{project.description}</p>
 
             {/* Progress Bar */}
             <div className="mb-3">
-              <div className="flex justify-between text-xs text-gray-500 mb-1">
+              <div className="flex justify-between text-xs text-white/60 mb-1">
                 <span>Fortschritt</span>
                 <span>{project.progress}%</span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  className="bg-gradient-to-r from-purple-500 to-blue-500 h-2 rounded-full transition-all duration-500"
+              <div className="w-full bg-slate-700 rounded-full h-2">
+                <div
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-500"
                   style={{ width: `${project.progress}%` }}
                 ></div>
               </div>
             </div>
 
-            <div className="flex justify-between items-center text-sm text-gray-600">
+            <div className="flex justify-between items-center text-sm text-white/70">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-1">
                   <Users className="h-3 w-3" />

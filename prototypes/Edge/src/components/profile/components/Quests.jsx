@@ -68,35 +68,35 @@ const Quests = ({ questDetails }) => {
     return (
       <div>
         <div className="flex items-center gap-2 mb-4">
-          <Target className="h-5 w-5 text-purple-600" />
-          <h3 className="text-lg font-semibold text-gray-900">Quest Details</h3>
+          <Target className="h-5 w-5 text-purple-400" />
+          <h3 className="text-lg font-semibold text-white">Quest Details</h3>
         </div>
 
-        <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-4 mb-4">
+        <div className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 backdrop-blur-sm rounded-lg p-4 mb-4 border border-purple-400/20">
           <div className="grid grid-cols-1 gap-3">
-            <div className="flex items-center gap-2">
-              <Star className="h-4 w-4 text-purple-600" />
+            <div className="flex items-center gap-2 text-white">
+              <Star className="h-4 w-4 text-purple-400" />
               <span className="font-medium">Schwierigkeit:</span>
               <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(questDetails.difficulty)}`}>
                 {questDetails.difficulty}
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-purple-600" />
+            <div className="flex items-center gap-2 text-white">
+              <Clock className="h-4 w-4 text-purple-400" />
               <span className="font-medium">Zeitaufwand:</span>
-              <span className="text-gray-700">{questDetails.timeRequired}</span>
+              <span className="text-white/80">{questDetails.timeRequired}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Award className="h-4 w-4 text-purple-600" />
+            <div className="flex items-center gap-2 text-white">
+              <Award className="h-4 w-4 text-purple-400" />
               <span className="font-medium">Belohnung:</span>
-              <span className="text-gray-700">{questDetails.reward}</span>
+              <span className="text-white/80">{questDetails.reward}</span>
             </div>
           </div>
         </div>
 
-        <Button 
+        <Button
           onClick={() => handleQuestClick('current')}
-          className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+          className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
         >
           <Target className="h-4 w-4 mr-2" />
           Quest annehmen
@@ -109,25 +109,25 @@ const Quests = ({ questDetails }) => {
   return (
     <div>
       <div className="flex items-center gap-2 mb-4">
-        <Target className="h-5 w-5 text-purple-600" />
-        <h3 className="text-lg font-semibold text-gray-900">Verfügbare Quests</h3>
+        <Target className="h-5 w-5 text-purple-400" />
+        <h3 className="text-lg font-semibold text-white">Verfügbare Quests</h3>
       </div>
 
       <div className="space-y-3">
         {mockQuests.map((quest) => (
-          <div 
-            key={quest.id} 
-            className="p-3 border border-gray-200 rounded-lg hover:border-purple-300 hover:bg-purple-50 transition-colors cursor-pointer"
+          <div
+            key={quest.id}
+            className="p-3 border border-white/20 rounded-lg hover:border-purple-400/50 hover:bg-white/10 transition-colors cursor-pointer backdrop-blur-sm"
             onClick={() => handleQuestClick(quest.id)}
           >
             <div className="flex justify-between items-start mb-2">
-              <h4 className="font-medium text-gray-900">{quest.title}</h4>
+              <h4 className="font-medium text-white">{quest.title}</h4>
               <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(quest.status)}`}>
                 {quest.status}
               </span>
             </div>
-            
-            <p className="text-sm text-gray-600 mb-3">{quest.description}</p>
+
+            <p className="text-sm text-white/70 mb-3">{quest.description}</p>
 
             <div className="flex flex-wrap gap-2 text-xs">
               <span className={`px-2 py-1 rounded-full font-medium ${getDifficultyColor(quest.difficulty)}`}>
