@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThumbsUp, Heart, ArrowLeft, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 
@@ -16,8 +17,25 @@ const ProfileBottomBar = ({
   const [isCommentMode, setIsCommentMode] = useState(false);
   const [commentText, setCommentText] = useState('');
 
+  // Auto-resize textarea
+  useEffect(() => {
+    if (inputRef.current && isCommentMode) {
+      inputRef.current.style.height = 'auto';
+      const scrollHeight = inputRef.current.scrollHeight;
+      // Max height of 120px (approximately 5 lines)
+      inputRef.current.style.height = `${Math.min(scrollHeight, 120)}px`;
+    }
+  }, [commentText, isCommentMode]);
+
   const handleFocus = () => {
     setIsCommentMode(true);
+  };
+
+  const handleBlur = () => {
+    // Only exit comment mode if there's no text
+    if (!commentText.trim()) {
+      setIsCommentMode(false);
+    }
   };
 
   const handleBack = (e) => {
@@ -60,65 +78,54 @@ const ProfileBottomBar = ({
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className="absolute bottom-0 left-0 right-0 z-30 border-t border-white/20 bg-slate-800/90 backdrop-blur-lg shadow-lg shadow-black/50"
         >
-          <motion.div
-            layout
-            transition={{ duration: 0.2 }}
-            className="flex items-center gap-3 p-3"
-          >
-            <AnimatePresence mode="wait">
-              {!isCommentMode ? (
-                // Default State: Reactions + Compact Input
+          <div className="flex items-center gap-3 p-3">
+            {/* Reaction buttons - fade out when in comment mode */}
+            <AnimatePresence>
+              {!isCommentMode && (
                 <motion.div
-                  key="default"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                  className="flex items-center justify-between w-full gap-3"
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: 'auto' }}
+                  exit={{ opacity: 0, width: 0 }}
+                  transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                  className="flex items-center gap-2 overflow-hidden"
                 >
-                  <div className="flex items-center gap-2">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => onReaction('likes')}
-                      className={cn(
-                        "flex items-center gap-2 transition-colors",
-                        reactions.userLiked ? 'text-purple-400 bg-purple-500/20' : 'text-white/70 hover:bg-white/10'
-                      )}
-                    >
-                      <ThumbsUp className="h-5 w-5" />
-                      <span className="font-medium">{reactions.likes}</span>
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => onReaction('hearts')}
-                      className={cn(
-                        "flex items-center gap-2 transition-colors",
-                        reactions.userHearted ? 'text-red-400 bg-red-500/20' : 'text-white/70 hover:bg-white/10'
-                      )}
-                    >
-                      <Heart className="h-5 w-5" />
-                      <span className="font-medium">{reactions.hearts}</span>
-                    </Button>
-                  </div>
-                  <Input
-                    ref={inputRef}
-                    onFocus={handleFocus}
-                    placeholder="Kommentar schreiben..."
-                    className="flex-1"
-                    readOnly
-                  />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => onReaction('likes')}
+                    className={cn(
+                      "flex items-center gap-2 transition-colors",
+                      reactions.userLiked ? 'text-purple-400 bg-purple-500/20' : 'text-white/70 hover:bg-white/10'
+                    )}
+                  >
+                    <ThumbsUp className="h-5 w-5" />
+                    <span className="font-medium">{reactions.likes}</span>
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => onReaction('hearts')}
+                    className={cn(
+                      "flex items-center gap-2 transition-colors",
+                      reactions.userHearted ? 'text-red-400 bg-red-500/20' : 'text-white/70 hover:bg-white/10'
+                    )}
+                  >
+                    <Heart className="h-5 w-5" />
+                    <span className="font-medium">{reactions.hearts}</span>
+                  </Button>
                 </motion.div>
-              ) : (
-                // Comment Mode: Back + Expanded Input + Send
+              )}
+            </AnimatePresence>
+
+            {/* Back button - appears when in comment mode */}
+            <AnimatePresence>
+              {isCommentMode && (
                 <motion.div
-                  key="comment"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                  className="flex items-center gap-3 w-full"
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: 'auto' }}
+                  exit={{ opacity: 0, width: 0 }}
+                  transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                  className="overflow-hidden"
                 >
                   <Button
                     variant="ghost"
@@ -128,28 +135,50 @@ const ProfileBottomBar = ({
                   >
                     <ArrowLeft className="h-5 w-5" />
                   </Button>
-                  <Input
-                    ref={inputRef}
-                    value={commentText}
-                    onChange={(e) => setCommentText(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    placeholder="Schreibe einen Kommentar..."
-                    className="flex-1"
-                    autoFocus
-                  />
-                  <Button
-                    variant="default"
-                    size="icon"
-                    onMouseDown={handleSend}
-                    disabled={!commentText.trim()}
-                    className="flex-shrink-0"
-                  >
-                    <Send className="h-5 w-5" />
-                  </Button>
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
+
+            {/* Input - grows to fill space */}
+            <motion.div
+              layout
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              className="flex-1"
+            >
+              {isCommentMode ? (
+                <Textarea
+                  ref={inputRef}
+                  value={commentText}
+                  onChange={(e) => setCommentText(e.target.value)}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Schreibe einen Kommentar..."
+                  className="w-full resize-none min-h-[40px] max-h-[120px] overflow-y-auto transition-[height] duration-150 ease-out"
+                  autoFocus
+                  rows={1}
+                />
+              ) : (
+                <Input
+                  onFocus={handleFocus}
+                  placeholder="Kommentar schreiben..."
+                  className="w-full"
+                  readOnly
+                />
+              )}
+            </motion.div>
+
+            {/* Send button - always visible */}
+            <Button
+              variant="default"
+              size="icon"
+              onMouseDown={handleSend}
+              disabled={!isCommentMode || !commentText.trim()}
+              className="flex-shrink-0"
+            >
+              <Send className="h-5 w-5" />
+            </Button>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
