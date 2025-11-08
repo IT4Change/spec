@@ -137,18 +137,29 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
         ))}
       </MapContainer>
 
-      {/* Floating back button when PostDetail is closed */}
-      {showBackToFeed && !selectedPost && (
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={onBackToFeed}
-          className="absolute top-4 left-4 z-[1001] bg-slate-800/80 border-white/20 text-white hover:bg-slate-700/80 backdrop-blur-sm"
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          <span className="hidden md:inline">Feed</span>
-        </Button>
-      )}
+      {/* Back button - only visible when profile is open and user came from feed */}
+      <AnimatePresence>
+        {showBackToFeed && selectedPost && (
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-[85px] z-[1001] md:right-[466px]"
+            style={{ top: '85px' }}
+          >
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onBackToFeed}
+              className="bg-slate-800/80 border-white/20 text-white hover:bg-slate-700/80 backdrop-blur-sm"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              <span className="hidden md:inline">Feed</span>
+            </Button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {selectedPost && selectedPost.location && (
@@ -166,6 +177,7 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
               isModal={false}
               onClose={onCloseDetail}
               navigationSource={showBackToFeed ? 'feed' : null}
+              isInMapView={true}
             />
           </motion.div>
         )}

@@ -88,7 +88,7 @@ const ProfileBottomBar = ({
           animate={{ y: 0 }}
           exit={{ y: '100%' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="absolute bottom-0 left-0 right-0 z-30 border-t border-white/20 bg-slate-800/90 backdrop-blur-lg shadow-lg shadow-black/50"
+          className="absolute bottom-0 left-0 right-0 z-[500] border-t border-white/20 bg-slate-800/90 backdrop-blur-lg shadow-lg shadow-black/50"
         >
           <div className="flex items-center gap-3 p-3">
             {/* Reaction buttons - fade out when in comment mode */}

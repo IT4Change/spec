@@ -19,6 +19,7 @@ import Badges from '@/components/profile/components/Badges';
 import ContactInfo from '@/components/profile/components/ContactInfo';
 import { useToast } from '@/components/ui/use-toast';
 import MapPreview from '@/components/shared/MapPreview';
+import MapComponent from '@/components/profile/components/MapComponent';
 import ProfileBottomBar from '@/components/profile/ProfileBottomBar';
 import { cn } from '@/lib/utils';
 
@@ -125,7 +126,7 @@ const ProfileContent = ({
               </ScrollElement>
             </div>
           )}
-          <div className="h-28"></div>
+          <div className="h-40"></div>
         </div>
       </div>
     </div>
@@ -149,7 +150,8 @@ const ProfileView = ({
   onClose,
   onSwitchToMap,
   navigationSource = null,
-  onDisplayModeChange
+  onDisplayModeChange,
+  isInMapView = false
 }) => {
   const [showBanner, setShowBanner] = useState(true);
   const [reactions, setReactions] = useState(data.reactions || {});
@@ -412,18 +414,8 @@ const ProfileView = ({
 
   const componentsConfig = [
     { key: 'text', component: TextComponent, props: { text: data.text }, name: 'Über' },
-    {
-      key: 'map',
-      component: MapPreview,
-      props: {
-        location: data.location,
-        onSwitchToMap: onSwitchToMap
-      },
-      name: 'Karte',
-      condition: !!data.location // Only show if there's location data
-    },
+    { key: 'eventFunctions', component: EventFunctions, props: { eventDetails: data.eventDetails, location: data.location, onSwitchToMap: onSwitchToMap, isInMapView: isInMapView }, name: 'Event' },
     { key: 'mediaGallery', component: MediaGallery, props: { images: data.images || [] }, name: 'Galerie' },
-    { key: 'eventFunctions', component: EventFunctions, props: { eventDetails: data.eventDetails }, name: 'Event' },
     { key: 'crowdfunding', component: Crowdfunding, props: { crowdfunding: data.crowdfunding }, name: 'Funding' },
     { key: 'members', component: Members, props: { members: data.members }, name: 'Mitglieder' },
     { key: 'comingEvents', component: ComingEvents, props: { events: data.comingEvents }, name: 'Events' },

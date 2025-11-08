@@ -3,8 +3,9 @@ import React from 'react';
 import { Calendar, Clock, Users, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
+import MapComponent from './MapComponent';
 
-const EventFunctions = ({ eventDetails }) => {
+const EventFunctions = ({ eventDetails, location, onSwitchToMap, isInMapView }) => {
   if (!eventDetails) return null;
 
   const handleJoin = () => {
@@ -75,7 +76,7 @@ const EventFunctions = ({ eventDetails }) => {
 
       {/* Participants */}
       {eventDetails.participants && eventDetails.participants.length > 0 && (
-        <div>
+        <div className="mb-4">
           <div className="flex items-center gap-2 mb-3">
             <Users className="h-4 w-4 text-white/70" />
             <span className="font-medium text-white">
@@ -95,6 +96,11 @@ const EventFunctions = ({ eventDetails }) => {
             ))}
           </div>
         </div>
+      )}
+
+      {/* Map Preview - only show if location exists and not already in map view */}
+      {location && !isInMapView && (
+        <MapComponent location={location} onSwitchToMap={onSwitchToMap} />
       )}
     </div>
   );
