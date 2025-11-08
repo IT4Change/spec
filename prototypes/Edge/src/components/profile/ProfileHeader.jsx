@@ -69,14 +69,12 @@ const ProfileHeader = ({ data, showBanner, onClose, navigationSource }) => {
     <div className="relative z-10">
       {/* Close/Back Button */}
       {onClose && (
-        <Button
+        <button
           onClick={onClose}
-          size="icon"
-          variant="ghost"
-          className="absolute top-3 right-3 z-50 bg-slate-800/90 hover:bg-slate-800 text-white shadow-md rounded-full"
+          className="absolute top-3 right-3 z-50 bg-slate-800/90 hover:bg-slate-800 text-white shadow-md rounded-full w-10 h-10 flex items-center justify-center transition-colors"
         >
           {navigationSource === 'feed' ? <ArrowLeft className="h-4 w-4" /> : <X className="h-4 w-4" />}
-        </Button>
+        </button>
       )}
 
       <motion.div
