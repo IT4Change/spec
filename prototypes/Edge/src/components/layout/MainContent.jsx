@@ -65,7 +65,7 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
     >
       {/* Feed view with potential sidebar */}
       {isFeedView ? (
-        <div className="flex h-[calc(100%+2rem)] md:h-[calc(100%+4rem)] w-[calc(100%+2rem)] md:w-[calc(100%+4rem)] -m-4 md:-m-8">
+        <div className="flex h-full w-[calc(100%+2rem)] md:w-[calc(100%+4rem)] -mx-4 md:-mx-8 overflow-hidden">
           {/* Feed content */}
           <div className="flex-1 overflow-y-auto p-4 md:p-8">
             {/* Only show controls for feed view */}
