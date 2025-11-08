@@ -88,9 +88,9 @@ const ProfileBottomBar = ({
           animate={{ y: 0 }}
           exit={{ y: '100%' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="absolute bottom-0 left-0 right-0 z-[500] border-t border-white/20 bg-slate-800/90 backdrop-blur-lg shadow-lg shadow-black/50"
+          className="absolute bottom-0 left-0 right-0 z-[500] border-t border-purple-400/30 bg-gradient-to-t from-slate-900/98 via-slate-800/95 to-slate-800/90 backdrop-blur-xl shadow-2xl shadow-black/60"
         >
-          <div className="flex items-center gap-3 p-3">
+          <div className="flex items-center gap-3 p-4">
             {/* Reaction buttons - fade out when in comment mode */}
             <AnimatePresence>
               {!isCommentMode && (
@@ -108,7 +108,7 @@ const ProfileBottomBar = ({
                       key={emoji}
                       variant="ghost"
                       size="sm"
-                      className="text-white hover:text-white bg-white/10 hover:bg-white/20 rounded-full px-3 py-1 h-8"
+                      className="text-white hover:text-white bg-purple-500/20 hover:bg-purple-400/30 border border-purple-400/20 hover:border-purple-300/40 rounded-full px-3 py-1 h-8 transition-all"
                       onClick={(e) => handleReactionClick(emoji, e)}
                     >
                       <span className="mr-1 opacity-100">{emoji}</span>
@@ -121,7 +121,7 @@ const ProfileBottomBar = ({
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="text-white/60 hover:text-white bg-white/10 hover:bg-white/20 rounded-full h-8 w-8 p-0 flex items-center justify-center"
+                      className="text-purple-200/70 hover:text-white bg-purple-500/20 hover:bg-purple-400/30 border border-purple-400/20 hover:border-purple-300/40 rounded-full h-8 w-8 p-0 flex items-center justify-center transition-all"
                       onMouseDown={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
@@ -204,9 +204,9 @@ const ProfileBottomBar = ({
               size="icon"
               onMouseDown={handleSend}
               disabled={!isCommentMode || !commentText.trim()}
-              className="flex-shrink-0"
+              className="flex-shrink-0 bg-gradient-to-r from-purple-500 to-fuchsia-500 hover:from-purple-600 hover:to-fuchsia-600 disabled:from-slate-700 disabled:to-slate-700 disabled:opacity-50 shadow-lg shadow-purple-500/30 transition-all"
             >
-              <Send className="h-5 w-5" />
+              <Send className="h-5 w-5 text-white" />
             </Button>
           </div>
         </motion.div>
