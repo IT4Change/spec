@@ -1,11 +1,8 @@
 
-import React, { useState } from 'react';
-import { MessageCircle, Send } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { toast } from '@/components/ui/use-toast';
+import React from 'react';
+import { MessageCircle } from 'lucide-react';
 
-const Comments = ({ comments: initialComments, inputRef }) => {
-  const [newComment, setNewComment] = useState('');
+const Comments = ({ comments: initialComments }) => {
   
   const mockComments = initialComments || [
     {
@@ -21,16 +18,6 @@ const Comments = ({ comments: initialComments, inputRef }) => {
       text: 'Ich würde gerne mitmachen. Wo kann ich mich melden?'
     },
   ];
-
-  const handleSubmitComment = () => {
-    if (!newComment.trim()) return;
-    
-    toast({
-      title: "💬 Kommentar hinzufügen",
-      description: "🚧 Diese Funktion ist noch nicht implementiert—aber keine Sorge! Du kannst sie in deinem nächsten Prompt anfordern! 🚀"
-    });
-    setNewComment('');
-  };
 
   return (
     <div>
@@ -67,25 +54,6 @@ const Comments = ({ comments: initialComments, inputRef }) => {
         {mockComments.length === 0 && (
             <p className="text-sm text-gray-500 text-center py-4">Noch keine Kommentare vorhanden. Sei der Erste!</p>
         )}
-      </div>
-
-      <div className="flex gap-2">
-        <input
-          ref={inputRef}
-          type="text"
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          placeholder="Schreibe einen Kommentar..."
-          className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
-          onKeyPress={(e) => e.key === 'Enter' && handleSubmitComment()}
-        />
-        <Button 
-          onClick={handleSubmitComment}
-          size="sm"
-          disabled={!newComment.trim()}
-        >
-          <Send className="h-4 w-4" />
-        </Button>
       </div>
     </div>
   );

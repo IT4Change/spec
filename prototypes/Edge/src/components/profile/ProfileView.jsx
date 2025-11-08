@@ -19,6 +19,7 @@ import Badges from '@/components/profile/components/Badges';
 import ContactInfo from '@/components/profile/components/ContactInfo';
 import { useToast } from '@/components/ui/use-toast';
 import MapPreview from '@/components/shared/MapPreview';
+import ProfileBottomBar from '@/components/profile/ProfileBottomBar';
 
 // Profile content component that will be reused across different modes
 const ProfileContent = ({
@@ -27,6 +28,7 @@ const ProfileContent = ({
   showBanner,
   reactions,
   handleReaction,
+  handleCommentSubmit,
   handleScrollToComments,
   scrollRef,
   commentsRef,
@@ -41,7 +43,7 @@ const ProfileContent = ({
   isDragging,
   panelState
 }) => (
-  <div className="bg-white w-full h-full flex flex-col rounded-t-2xl md:rounded-none">
+  <div className="bg-white w-full h-full flex flex-col rounded-t-2xl md:rounded-none relative">
     {/* Drag handle for mobile bottom sheet */}
     {isMobile && dragBinder && (
       <div {...dragBinder} className="w-full py-6 flex justify-center items-center touch-none cursor-grab active:cursor-grabbing bg-white border-b border-gray-200">
@@ -69,10 +71,6 @@ const ProfileContent = ({
       showBanner={showBanner}
       onClose={onClose}
       navigationSource={navigationSource}
-      reactions={reactions}
-      onReaction={handleReaction}
-      commentsCount={data.comments?.length || 0}
-      onCommentClick={handleScrollToComments}
     />
 
     {config.navigation === 'tabs' && activeComponents.length > 0 && (
@@ -119,10 +117,20 @@ const ProfileContent = ({
               </ScrollElement>
             </div>
           )}
-          <div className="h-20"></div>
+          <div className="h-28"></div>
         </div>
       </div>
     </div>
+
+    {/* Fixed Bottom Bar */}
+    <ProfileBottomBar
+      reactions={reactions}
+      commentsCount={data.comments?.length || 0}
+      onReaction={handleReaction}
+      inputRef={commentInputRef}
+      onCommentSubmit={handleCommentSubmit}
+      isVisible={true}
+    />
   </div>
 );
 
@@ -314,6 +322,16 @@ const ProfileView = ({
     });
   };
   
+  const handleCommentSubmit = (commentText) => {
+    // Add the new comment to the data
+    toast({
+      title: "💬 Kommentar hinzugefügt",
+      description: "Dein Kommentar wurde erfolgreich gepostet.",
+    });
+    // TODO: Implement actual comment submission logic
+    console.log('Comment submitted:', commentText);
+  };
+
   const handleScrollToComments = () => {
     scroller.scrollTo('comments', {
       duration: 800,
@@ -379,6 +397,7 @@ const ProfileView = ({
     showBanner,
     reactions,
     handleReaction,
+    handleCommentSubmit,
     handleScrollToComments,
     scrollRef,
     commentsRef,

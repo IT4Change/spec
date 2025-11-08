@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Navigation, User, Share2, Facebook, Twitter, Mail, Link as LinkIcon, MessageCircle, UserPlus, CalendarPlus, PlusCircle, Target, X, ArrowLeft, ThumbsUp, Heart } from 'lucide-react';
+import { MapPin, Navigation, User, Share2, Facebook, Twitter, Mail, Link as LinkIcon, MessageCircle, UserPlus, CalendarPlus, PlusCircle, Target, X, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { toast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
 
-const ProfileHeader = ({ data, showBanner, onClose, navigationSource, reactions, onReaction, commentsCount, onCommentClick }) => {
+const ProfileHeader = ({ data, showBanner, onClose, navigationSource }) => {
 
   const ctaConfig = {
     person: { text: 'Verbinden', icon: UserPlus },
@@ -148,50 +148,6 @@ const ProfileHeader = ({ data, showBanner, onClose, navigationSource, reactions,
             </div>
           </div>
         </div>
-
-        {/* Reactions and Comments Bar */}
-        {reactions && onReaction && (
-          <div className="flex items-center justify-between gap-4 px-6 py-3 border-t border-gray-100">
-            <div className="flex items-center gap-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => onReaction('likes')}
-                className={cn(
-                  "flex items-center gap-2 transition-colors",
-                  reactions.userLiked ? 'text-blue-600 bg-blue-100' : 'text-gray-600 hover:bg-blue-50'
-                )}
-              >
-                <ThumbsUp className="h-4 w-4" />
-                <span className="font-medium text-sm">{reactions.likes}</span>
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => onReaction('hearts')}
-                className={cn(
-                  "flex items-center gap-2 transition-colors",
-                  reactions.userHearted ? 'text-red-600 bg-red-100' : 'text-gray-600 hover:bg-red-50'
-                )}
-              >
-                <Heart className="h-4 w-4" />
-                <span className="font-medium text-sm">{reactions.hearts}</span>
-              </Button>
-            </div>
-            {onCommentClick && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={onCommentClick}
-                className="flex items-center gap-2 text-gray-600 hover:bg-gray-100"
-              >
-                <MessageCircle className="h-4 w-4" />
-                <span className="font-medium text-sm">{commentsCount || 0}</span>
-                <span className="hidden sm:inline text-sm">Kommentare</span>
-              </Button>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );
