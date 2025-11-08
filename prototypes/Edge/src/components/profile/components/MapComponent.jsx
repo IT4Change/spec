@@ -14,7 +14,7 @@ const MapComponent = ({ location, onSwitchToMap }) => {
       {onSwitchToMap && (
         <Button
           onClick={onSwitchToMap}
-          className="absolute bottom-4 right-4 bg-purple-600/90 hover:bg-purple-700 text-white backdrop-blur-sm shadow-lg z-50 pointer-events-auto"
+          className="absolute bottom-4 right-4 bg-purple-600/90 hover:bg-purple-700 text-white backdrop-blur-sm shadow-lg z-[500] pointer-events-auto"
           size="sm"
         >
           <Map className="h-4 w-4 mr-2" />

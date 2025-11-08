@@ -7,7 +7,9 @@ import MonthView from '@/components/calendar/MonthView';
 import WeekView from '@/components/calendar/WeekView';
 import DayView from '@/components/calendar/DayView';
 import ListView from '@/components/calendar/ListView';
-import PostDetail from '@/components/shared/PostDetail';
+import ProfileView from '@/components/profile/ProfileView';
+import { postToProfileData } from '@/lib/profileAdapter';
+import { generateProfileConfig } from '@/lib/profileConfig';
 import ConfirmEventDialog from '@/components/calendar/ConfirmEventDialog';
 
 const CalendarView = ({
@@ -31,7 +33,14 @@ const CalendarView = ({
   });
   const [isMobile, setIsMobile] = useState(false);
   const [confirmDialogDate, setConfirmDialogDate] = useState(null);
+  const [users, setUsers] = useState({});
   const sidebarRef = useRef(null);
+
+  // Load users data
+  useEffect(() => {
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || {};
+    setUsers(storedUsers);
+  }, []);
 
   // Detect mobile
   useEffect(() => {
@@ -163,57 +172,86 @@ const CalendarView = ({
         onFiltersChange={setFilters}
       />
 
-      {/* Calendar Views */}
-      <div className="flex-1 overflow-hidden relative">
+      {/* Calendar Views with Sidebar Layout */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Calendar content */}
+        <div className="flex-1 overflow-hidden relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={viewMode}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.2 }}
+              className="h-full"
+            >
+              {viewMode === 'month' && (
+                <MonthView
+                  currentDate={currentDate}
+                  events={filteredEvents}
+                  onEventClick={handleEventClick}
+                  onDateClick={handleDateClick}
+                />
+              )}
+
+              {viewMode === 'week' && (
+                <WeekView
+                  currentDate={currentDate}
+                  events={filteredEvents}
+                  onEventClick={handleEventClick}
+                  onSlotClick={handleSlotClick}
+                />
+              )}
+
+              {viewMode === 'day' && (
+                <DayView
+                  currentDate={currentDate}
+                  events={filteredEvents}
+                  onEventClick={handleEventClick}
+                  onSlotClick={handleSlotClick}
+                />
+              )}
+
+              {viewMode === 'list' && (
+                <ListView
+                  events={filteredEvents}
+                  onEventClick={handleEventClick}
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Sidebar Profile (Desktop) */}
         <AnimatePresence mode="wait">
-          <motion.div
-            key={viewMode}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.2 }}
-            className="h-full"
-          >
-            {viewMode === 'month' && (
-              <MonthView
-                currentDate={currentDate}
-                events={filteredEvents}
-                onEventClick={handleEventClick}
-                onDateClick={handleDateClick}
+          {selectedPost && !isMobile && (
+            <motion.div
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: 450, opacity: 1 }}
+              exit={{ width: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="flex-shrink-0 h-full border-l border-white/20 overflow-hidden"
+            >
+              <ProfileView
+                data={postToProfileData(selectedPost, users, posts)}
+                config={generateProfileConfig(selectedPost)}
+                isModal={false}
+                onClose={onCloseDetail}
+                navigationSource={showBackToFeed ? 'feed' : null}
+                onSwitchToMap={
+                  selectedPost.location
+                    ? () => handleSwitchToMapView(selectedPost)
+                    : undefined
+                }
               />
-            )}
-
-            {viewMode === 'week' && (
-              <WeekView
-                currentDate={currentDate}
-                events={filteredEvents}
-                onEventClick={handleEventClick}
-                onSlotClick={handleSlotClick}
-              />
-            )}
-
-            {viewMode === 'day' && (
-              <DayView
-                currentDate={currentDate}
-                events={filteredEvents}
-                onEventClick={handleEventClick}
-                onSlotClick={handleSlotClick}
-              />
-            )}
-
-            {viewMode === 'list' && (
-              <ListView
-                events={filteredEvents}
-                onEventClick={handleEventClick}
-              />
-            )}
-          </motion.div>
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
 
-      {/* PostDetail Sidebar (Desktop & Mobile) */}
+      {/* Mobile Profile (Bottom Sheet / Overlay) */}
       <AnimatePresence>
-        {selectedPost && (
+        {selectedPost && isMobile && (
           <motion.div
             className="absolute inset-0 z-[1002] pointer-events-none"
             initial={{ opacity: 0 }}
@@ -221,18 +259,15 @@ const CalendarView = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="flex h-full w-full items-end justify-center md:items-stretch md:justify-end">
-              <div
-                className="pointer-events-auto w-full md:w-[450px]"
-                ref={sidebarRef}
-              >
-                <PostDetail
-                  post={selectedPost}
+            <div className="flex h-full w-full items-end justify-center">
+              <div className="pointer-events-auto w-full" ref={sidebarRef}>
+                <ProfileView
+                  data={postToProfileData(selectedPost, users, posts)}
+                  config={generateProfileConfig(selectedPost)}
+                  isModal={true}
                   onClose={onCloseDetail}
-                  isModal={false}
-                  onBackToFeed={onBackToFeed}
-                  showBackToFeed={showBackToFeed}
-                  onSwitchToMapView={
+                  navigationSource={showBackToFeed ? 'feed' : null}
+                  onSwitchToMap={
                     selectedPost.location
                       ? () => handleSwitchToMapView(selectedPost)
                       : undefined
