@@ -20,6 +20,7 @@ import ContactInfo from '@/components/profile/components/ContactInfo';
 import { useToast } from '@/components/ui/use-toast';
 import MapPreview from '@/components/shared/MapPreview';
 import ProfileBottomBar from '@/components/profile/ProfileBottomBar';
+import { cn } from '@/lib/utils';
 
 // Profile content component that will be reused across different modes
 const ProfileContent = ({
@@ -41,7 +42,9 @@ const ProfileContent = ({
   dragBinder,
   isMobile,
   isDragging,
-  panelState
+  panelState,
+  displayMode,
+  onSwitchDisplayMode
 }) => (
   <div className="bg-purple-900/50 backdrop-blur-lg w-full h-full flex flex-col rounded-t-2xl md:rounded-none relative">
     {/* Drag handle for mobile bottom sheet */}
@@ -71,6 +74,9 @@ const ProfileContent = ({
       showBanner={showBanner}
       onClose={onClose}
       navigationSource={navigationSource}
+      displayMode={displayMode}
+      onSwitchDisplayMode={onSwitchDisplayMode}
+      isMobile={isMobile}
     />
 
     {config.navigation === 'tabs' && activeComponents.length > 0 && (
@@ -140,7 +146,8 @@ const ProfileView = ({
   isModal = true,
   onClose,
   onSwitchToMap,
-  navigationSource = null
+  navigationSource = null,
+  onDisplayModeChange
 }) => {
   const [showBanner, setShowBanner] = useState(true);
   const [reactions, setReactions] = useState(data.reactions || {});
@@ -151,6 +158,14 @@ const ProfileView = ({
   const [viewportHeight, setViewportHeight] = useState(
     typeof window !== 'undefined' ? window.innerHeight : 800
   );
+
+  // Display mode state: 'overlay' | 'sidebar' | 'draggable'
+  const [displayMode, setDisplayMode] = useState(() => {
+    if (typeof window === 'undefined') return isModal ? 'overlay' : 'sidebar';
+    const mobile = window.innerWidth < 768;
+    if (mobile) return isModal ? 'draggable' : 'overlay';
+    return isModal ? 'overlay' : 'sidebar';
+  });
 
   const scrollRef = useRef(null);
   const commentsRef = useRef(null);
@@ -205,17 +220,45 @@ const ProfileView = ({
     setTimeout(() => setIsAnimating(false), 300);
   };
 
+  // Handle display mode switching
+  const handleSwitchDisplayMode = () => {
+    if (isMobile) {
+      // Mobile: Toggle between draggable and overlay
+      const newMode = displayMode === 'draggable' ? 'overlay' : 'draggable';
+      setDisplayMode(newMode);
+      onDisplayModeChange?.(newMode);
+    } else {
+      // Desktop: Toggle between overlay and sidebar
+      const newMode = displayMode === 'overlay' ? 'sidebar' : 'overlay';
+      setDisplayMode(newMode);
+      onDisplayModeChange?.(newMode);
+    }
+  };
+
   useEffect(() => {
     const handleResize = () => {
       if (typeof window === 'undefined') return;
-      setIsMobile(window.innerWidth < 768);
+      const wasMobile = isMobile;
+      const nowMobile = window.innerWidth < 768;
+      setIsMobile(nowMobile);
       setViewportHeight(window.innerHeight);
+
+      // Adjust display mode when switching between mobile/desktop
+      if (wasMobile !== nowMobile) {
+        if (nowMobile) {
+          // Switched to mobile
+          setDisplayMode(prev => prev === 'sidebar' ? 'draggable' : prev);
+        } else {
+          // Switched to desktop
+          setDisplayMode(prev => prev === 'draggable' ? 'overlay' : prev);
+        }
+      }
     };
 
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [isMobile]);
 
   const dragBinder = useDrag(
     ({ first, last, movement: [, my], velocity: [, vy], memo }) => {
@@ -396,74 +439,92 @@ const ProfileView = ({
     commentsComponent,
     onClose,
     navigationSource,
-    onSwitchToMap
+    onSwitchToMap,
+    displayMode,
+    onSwitchDisplayMode: handleSwitchDisplayMode,
+    isMobile
   };
 
-  // MODAL MODE (Feed overlay)
-  if (isModal) {
-    return (
-      <Dialog open={true} onOpenChange={onClose}>
-        <DialogContent showCloseButton={false} className="bg-transparent border-none p-0 max-w-3xl w-full h-[90vh] max-h-[90vh] shadow-none" style={{ display: 'block' }}>
-          <DialogTitle className="sr-only">
-            {data.title || data.name || 'Profile Details'}
-          </DialogTitle>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="rounded-lg overflow-hidden h-full"
+  // Render based on display mode
+  switch (displayMode) {
+    case 'overlay':
+      return (
+        <Dialog open={true} onOpenChange={onClose}>
+          <DialogContent
+            showCloseButton={false}
+            className={cn(
+              "bg-transparent border-none p-0 shadow-none",
+              isMobile
+                ? "w-full h-screen max-w-full max-h-screen m-0"
+                : "max-w-[95vw] w-full h-[95vh] max-h-[95vh]"
+            )}
+            style={{ display: 'block' }}
           >
+            <DialogTitle className="sr-only">
+              {data.title || data.name || 'Profile Details'}
+            </DialogTitle>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              className="rounded-lg overflow-hidden h-full"
+            >
+              <ProfileContent
+                {...contentProps}
+                dragBinder={null}
+                isDragging={false}
+                panelState={null}
+              />
+            </motion.div>
+          </DialogContent>
+        </Dialog>
+      );
+
+    case 'draggable':
+      return (
+        <motion.div
+          initial="closed"
+          animate={panelState}
+          exit="closed"
+          variants={panelVariants}
+          className="fixed inset-0 z-[1003] pointer-events-none"
+          style={{ y }}
+        >
+          <div className="absolute inset-0 pointer-events-auto h-full">
             <ProfileContent
               {...contentProps}
-              isMobile={false}
+              dragBinder={dragBinder()}
+              isDragging={isDragging}
+              panelState={panelState}
+            />
+          </div>
+        </motion.div>
+      );
+
+    case 'sidebar':
+      return (
+        <motion.div
+          initial={{ x: '100%', opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: '100%', opacity: 0 }}
+          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+          className="w-full h-full md:h-full md:max-h-full md:rounded-none overflow-hidden shadow-2xl shadow-black/50 md:border-l md:border-gray-300"
+        >
+          <div className="w-full h-full">
+            <ProfileContent
+              {...contentProps}
               dragBinder={null}
               isDragging={false}
               panelState={null}
             />
-          </motion.div>
-        </DialogContent>
-      </Dialog>
-    );
-  }
+          </div>
+        </motion.div>
+      );
 
-  // MOBILE BOTTOM SHEET MODE (Map view on mobile)
-  if (isMobile) {
-    return (
-      <motion.div
-        initial="closed"
-        animate={panelState}
-        exit="closed"
-        variants={panelVariants}
-        className="fixed inset-0 z-[1003] pointer-events-none"
-        style={{ y }}
-      >
-        <div className="absolute inset-0 pointer-events-auto h-full">
-          <ProfileContent
-            {...contentProps}
-            isMobile={true}
-            dragBinder={dragBinder()}
-            isDragging={isDragging}
-            panelState={panelState}
-          />
-        </div>
-      </motion.div>
-    );
+    default:
+      return null;
   }
-
-  // DESKTOP SIDEBAR MODE (Map view on desktop)
-  return (
-    <div className="w-full h-full md:h-full md:max-h-full md:rounded-none overflow-hidden shadow-2xl shadow-black/50 md:border-l md:border-gray-300">
-      <div className="w-full h-full">
-        <ProfileContent
-          {...contentProps}
-          isMobile={false}
-          dragBinder={null}
-          isDragging={false}
-          panelState={null}
-        />
-      </div>
-    </div>
-  );
 };
 
 export default ProfileView;

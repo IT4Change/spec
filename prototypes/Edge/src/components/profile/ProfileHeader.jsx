@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Navigation, User, Share2, Facebook, Twitter, Mail, Link as LinkIcon, MessageCircle, UserPlus, CalendarPlus, PlusCircle, Target, X, ArrowLeft } from 'lucide-react';
+import { MapPin, Navigation, User, Share2, Facebook, Twitter, Mail, Link as LinkIcon, MessageCircle, UserPlus, CalendarPlus, PlusCircle, Target, X, ArrowLeft, Maximize2, Minimize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { toast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
 
-const ProfileHeader = ({ data, showBanner, onClose, navigationSource }) => {
+const ProfileHeader = ({ data, showBanner, onClose, navigationSource, displayMode, onSwitchDisplayMode, isMobile }) => {
 
   const ctaConfig = {
     person: { text: 'Verbinden', icon: UserPlus },
@@ -65,8 +65,38 @@ const ProfileHeader = ({ data, showBanner, onClose, navigationSource }) => {
   };
   
 
+  // Get icon for display mode switch button
+  const getSwitchIcon = () => {
+    if (isMobile) {
+      // Mobile: draggable ↔ overlay
+      return displayMode === 'draggable' ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />;
+    } else {
+      // Desktop: overlay ↔ sidebar
+      return displayMode === 'overlay' ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />;
+    }
+  };
+
+  const getSwitchTooltip = () => {
+    if (isMobile) {
+      return displayMode === 'draggable' ? 'Vollbild' : 'Minimieren';
+    } else {
+      return displayMode === 'overlay' ? 'Seitenleiste' : 'Overlay';
+    }
+  };
+
   return (
     <div className="relative z-10">
+      {/* Display Mode Switch Button */}
+      {onSwitchDisplayMode && (
+        <button
+          onClick={onSwitchDisplayMode}
+          className="absolute top-3 right-14 z-50 bg-slate-800/90 hover:bg-slate-800 text-white shadow-md rounded-full w-10 h-10 flex items-center justify-center transition-colors"
+          title={getSwitchTooltip()}
+        >
+          {getSwitchIcon()}
+        </button>
+      )}
+
       {/* Close/Back Button */}
       {onClose && (
         <button
@@ -78,16 +108,21 @@ const ProfileHeader = ({ data, showBanner, onClose, navigationSource }) => {
       )}
 
       <motion.div
-        animate={{ height: showBanner && data.banner ? '8rem' : 0, opacity: showBanner && data.banner ? 1 : 0 }}
+        animate={{ height: showBanner && data.banner ? '8rem' : 0 }}
         initial={false}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         className="bg-gradient-to-r from-purple-500 to-pink-500 relative overflow-hidden"
       >
-        {data.banner && (
-          <>
+        {showBanner && data.banner && (
+          <motion.div
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="w-full h-full"
+          >
             <img alt="Profil Bannerbild" className="w-full h-full object-cover" src={data.banner} />
             <div className="absolute inset-0 bg-black/20"></div>
-          </>
+          </motion.div>
         )}
       </motion.div>
 

@@ -158,7 +158,7 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 450 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 right-0 h-full w-full md:w-[450px] z-[1002]"
+            className="fixed top-16 right-0 h-[calc(100vh-4rem)] w-full md:w-[450px] z-[1002]"
           >
             <ProfileView
               data={postToProfileData(selectedPost, users, posts)}
