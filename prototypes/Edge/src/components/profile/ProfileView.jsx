@@ -225,13 +225,23 @@ const ProfileView = ({
     if (isMobile) {
       // Mobile: Toggle between draggable and overlay
       const newMode = displayMode === 'draggable' ? 'overlay' : 'draggable';
-      setDisplayMode(newMode);
-      onDisplayModeChange?.(newMode);
+      if (onDisplayModeChange) {
+        // Parent is controlling the mode, just notify
+        onDisplayModeChange(newMode);
+      } else {
+        // No parent control, manage internally
+        setDisplayMode(newMode);
+      }
     } else {
       // Desktop: Toggle between overlay and sidebar
       const newMode = displayMode === 'overlay' ? 'sidebar' : 'overlay';
-      setDisplayMode(newMode);
-      onDisplayModeChange?.(newMode);
+      if (onDisplayModeChange) {
+        // Parent is controlling the mode, just notify
+        onDisplayModeChange(newMode);
+      } else {
+        // No parent control, manage internally
+        setDisplayMode(newMode);
+      }
     }
   };
 

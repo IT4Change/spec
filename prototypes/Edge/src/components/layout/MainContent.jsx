@@ -101,20 +101,22 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
           </div>
 
           {/* Sidebar profile (when in sidebar mode) */}
-          {showProfileInSidebar && (
-            <div className="w-[450px] flex-shrink-0 h-full border-l border-white/20">
-              <ProfileView
-                key="feed-sidebar"
-                data={postToProfileData(selectedPost, users, posts)}
-                config={generateProfileConfig(selectedPost)}
-                isModal={false}
-                onClose={onCloseDetail}
-                onSwitchToMap={() => onSwitchToMapView(selectedPost)}
-                navigationSource={null}
-                onDisplayModeChange={(mode) => setFeedProfileDisplayMode(mode)}
-              />
-            </div>
-          )}
+          <AnimatePresence mode="wait">
+            {showProfileInSidebar && (
+              <div className="w-[450px] flex-shrink-0 h-full border-l border-white/20">
+                <ProfileView
+                  key="feed-sidebar"
+                  data={postToProfileData(selectedPost, users, posts)}
+                  config={generateProfileConfig(selectedPost)}
+                  isModal={false}
+                  onClose={onCloseDetail}
+                  onSwitchToMap={() => onSwitchToMapView(selectedPost)}
+                  navigationSource={null}
+                  onDisplayModeChange={(mode) => setFeedProfileDisplayMode(mode)}
+                />
+              </div>
+            )}
+          </AnimatePresence>
         </div>
       ) : (
         /* Map and Calendar views - need overflow visible for map to render */
@@ -122,7 +124,7 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
       )}
 
       {/* Modal profile (when in overlay/draggable mode) - only for feed */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {showFeedProfile && feedProfileDisplayMode !== 'sidebar' && (
           <ProfileView
             key="feed-modal"
