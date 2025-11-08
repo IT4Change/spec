@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, useScroll, useMotionValueEvent, useMotionValue } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent, useMotionValue, animate } from 'framer-motion';
 import { useDrag } from '@use-gesture/react';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { Element as ScrollElement, scroller } from 'react-scroll';
@@ -46,15 +46,17 @@ const ProfileContent = ({
   displayMode,
   onSwitchDisplayMode
 }) => (
-  <div className="bg-purple-900 w-full h-full flex flex-col rounded-t-2xl md:rounded-none relative">
+  <div className={cn("bg-purple-900 w-full flex flex-col rounded-t-2xl md:rounded-none relative", displayMode === 'draggable' ? "pointer-events-auto h-screen" : "h-full")}>
     {/* Drag handle for mobile bottom sheet */}
     {isMobile && dragBinder && (
-      <div {...dragBinder} className="w-full py-6 flex justify-center items-center touch-none cursor-grab active:cursor-grabbing bg-slate-800/40 border-b border-white/20">
-        <div className={`w-12 h-1.5 rounded-full transition-all duration-200 ${
-          isDragging
-            ? 'bg-purple-400 w-16 h-2'
-            : 'bg-gray-300'
-        }`} />
+      <div {...dragBinder} className="w-full py-6 flex justify-center items-center touch-none cursor-grab active:cursor-grabbing bg-slate-800/40 border-b border-white/20" style={{ touchAction: 'none' }}>
+        <div
+          className={`w-12 h-1.5 rounded-full transition-all duration-200 ${
+            isDragging
+              ? 'bg-purple-400 w-16 h-2'
+              : 'bg-gray-300'
+          }`}
+        />
         {/* State indicator dots */}
         <div className="absolute right-4 top-6 flex space-x-1">
           {['small', 'medium', 'maximized'].map((state) => (
@@ -163,7 +165,7 @@ const ProfileView = ({
   const [displayMode, setDisplayMode] = useState(() => {
     if (typeof window === 'undefined') return isModal ? 'overlay' : 'sidebar';
     const mobile = window.innerWidth < 768;
-    if (mobile) return isModal ? 'draggable' : 'overlay';
+    if (mobile) return 'draggable'; // Always use draggable on mobile
     return isModal ? 'overlay' : 'sidebar';
   });
 
@@ -216,8 +218,18 @@ const ProfileView = ({
     setIsAnimating(true);
     setPanelState(targetState);
     const targetPosition = getStateYPosition(targetState);
-    y.set(targetPosition);
-    setTimeout(() => setIsAnimating(false), 300);
+
+    // Use smooth animation instead of instant set
+    animate(y, targetPosition, {
+      type: 'spring',
+      stiffness: 300,
+      damping: 30,
+      onComplete: () => {
+        // Ensure the final value is set as a string percentage
+        y.set(targetPosition);
+        setIsAnimating(false);
+      }
+    });
   };
 
   // Handle display mode switching
@@ -272,24 +284,39 @@ const ProfileView = ({
 
   const dragBinder = useDrag(
     ({ first, last, movement: [, my], velocity: [, vy], memo }) => {
-      if (isAnimating) return memo;
-
       if (first) {
+        // Allow interrupting animations when user starts dragging
+        if (isAnimating) {
+          setIsAnimating(false);
+        }
         setIsDragging(true);
         const currentPosition = y.get();
         let initialY;
+
+        // Handle both string ("50%") and number (0.5) formats
         if (typeof currentPosition === 'string' && currentPosition.includes('%')) {
           initialY = parseFloat(currentPosition.replace('%', ''));
+        } else if (typeof currentPosition === 'number') {
+          // If it's a number, it's likely in pixels or a fraction
+          // Calculate percentage based on viewport height
+          initialY = (currentPosition / viewportHeight) * 100;
         } else {
+          // Fallback: use the state position
           const statePosition = getStateYPosition(panelState);
           initialY = parseFloat(statePosition.replace('%', ''));
         }
+
         return { startY: initialY, startState: panelState };
       }
 
-      const startY = memo?.startY || 35;
+      // Prevent processing during animation (except on first touch)
+      if (isAnimating) {
+        return memo;
+      }
+
+      const startY = memo?.startY ?? 35;
       const dragOffset = (my / viewportHeight) * 100;
-      const newY = Math.max(0, Math.min(85, startY + dragOffset));
+      const newY = Math.max(0, Math.min(100, startY + dragOffset));
 
       if (!last) {
         y.set(`${newY}%`);
@@ -298,39 +325,27 @@ const ProfileView = ({
 
       if (last) {
         setIsDragging(false);
-        const velocityThreshold = 500;
-        const isQuickSwipe = Math.abs(vy) > velocityThreshold;
 
-        let targetState = panelState;
-
-        if (newY >= 85) {
+        // Close if dragged to less than 20% visible (80% down)
+        if (newY >= 80) {
           onClose();
           return memo;
         }
 
-        if (isQuickSwipe) {
-          if (vy > 0 && newY < 10) {
-            setTimeout(() => y.set(`${newY}%`), 10);
-            return memo;
-          } else if (vy < 0 && newY > 75) {
-            targetState = 'maximized';
-          } else {
-            setTimeout(() => y.set(`${newY}%`), 10);
-            return memo;
-          }
+        // Snap to maximized only if dragging UP to the top
+        // Don't snap if already near top and just making small adjustments
+        if (newY < 10 && startY >= 10) {
+          // Dragged up from below to the top - snap to maximize
+          snapToState('maximized');
+        } else if (newY < 10) {
+          // Already at top (< 10%), just maintain position without snapping
+          setPanelState('maximized');
         } else {
-          if (newY < 5) {
-            targetState = 'maximized';
-          } else if (newY > 80) {
-            setTimeout(() => y.set(`${newY}%`), 10);
-            return memo;
-          } else {
-            setTimeout(() => y.set(`${newY}%`), 10);
-            return memo;
-          }
+          // Between 10% and 80% - stay at current position (freely sizeable)
+          // Update panel state to 'free' to indicate it's not in a named state
+          setPanelState('free');
+          // The motion value y is already set to newY% during drag
         }
-
-        snapToState(targetState);
       }
 
       return { startY, newY, startState: memo?.startState || panelState };
@@ -338,12 +353,11 @@ const ProfileView = ({
     { axis: 'y', rubberband: true }
   );
 
+  // Initialize position on mount only
   useEffect(() => {
-    if (!isDragging) {
-      const targetPosition = getStateYPosition(panelState);
-      y.set(targetPosition);
-    }
-  }, [panelState, isDragging]);
+    const targetPosition = getStateYPosition(panelState);
+    y.set(targetPosition);
+  }, []); // Only run on mount
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest <= 10) {
@@ -494,21 +508,19 @@ const ProfileView = ({
     case 'draggable':
       return (
         <motion.div
-          initial="closed"
-          animate={panelState}
-          exit="closed"
-          variants={panelVariants}
-          className="fixed inset-0 z-[1003] pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+          className="fixed inset-x-0 bottom-0 z-[1003] pointer-events-none"
           style={{ y }}
         >
-          <div className="absolute inset-0 pointer-events-auto h-full">
-            <ProfileContent
-              {...contentProps}
-              dragBinder={dragBinder()}
-              isDragging={isDragging}
-              panelState={panelState}
-            />
-          </div>
+          <ProfileContent
+            {...contentProps}
+            dragBinder={dragBinder()}
+            isDragging={isDragging}
+            panelState={panelState}
+          />
         </motion.div>
       );
 
