@@ -137,17 +137,24 @@ export const postToProfileData = (post, users, allPosts = []) => {
   const location = post.location || null;
 
   // Base data structure common to all types
+  const banner = post.type === 'person'
+    ? (author.banner || post.media?.[1]?.url)
+    : (post.media?.[0]?.url || author.banner);
+
+  // Filter out banner from gallery images
+  const galleryImages = post.media
+    ?.filter(m => m.url !== banner)
+    .map(m => m.url) || [];
+
   const baseData = {
     type: post.type,
     name: post.title,
     avatar: post.type === 'person' ? author.avatar : (post.media?.[0]?.url || author.avatar),
-    banner: post.type === 'person'
-      ? (author.banner || post.media?.[1]?.url)
-      : (post.media?.[0]?.url || author.banner),
+    banner: banner,
     address: location?.name || '',
     distance: location ? calculateDistance(location.lat, location.lon) : null,
     text: post.content,
-    images: post.media?.map(m => m.url) || [],
+    images: galleryImages,
     reactions: post.reactions || {},
     comments: convertComments(post.comments, users),
     location: location // Keep original location for map

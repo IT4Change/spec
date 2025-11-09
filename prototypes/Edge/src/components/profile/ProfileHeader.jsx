@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Navigation, User, Share2, Facebook, Twitter, Mail, Link as LinkIcon, MessageCircle, UserPlus, CalendarPlus, PlusCircle, Target, X, ArrowLeft, Maximize2, Minimize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { toast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
+import Lightbox from './components/Lightbox';
 
 const ProfileHeader = ({ data, showBanner, onClose, navigationSource, displayMode, onSwitchDisplayMode, isMobile }) => {
+  const [bannerLightboxOpen, setBannerLightboxOpen] = useState(false);
 
   const ctaConfig = {
     person: { text: 'Verbinden', icon: UserPlus },
@@ -123,13 +125,28 @@ const ProfileHeader = ({ data, showBanner, onClose, navigationSource, displayMod
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="w-full h-full"
+            className="w-full h-full cursor-pointer group"
+            onClick={() => setBannerLightboxOpen(true)}
           >
-            <img alt="Profil Bannerbild" className="w-full h-full object-cover" src={data.banner} />
-            <div className="absolute inset-0 bg-black/20"></div>
+            <img alt="Profil Bannerbild" className="w-full h-full object-cover transition-transform group-hover:scale-105" src={data.banner} />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
           </motion.div>
         )}
       </motion.div>
+
+      {/* Banner Lightbox - separate from gallery */}
+      {data.banner && (
+        <Lightbox
+          isOpen={bannerLightboxOpen}
+          onClose={() => setBannerLightboxOpen(false)}
+          images={[{
+            src: data.banner,
+            alt: 'Banner Bild',
+            description: data.bannerDescription
+          }]}
+          initialIndex={0}
+        />
+      )}
 
       <div className="p-6 pb-4 bg-slate-800/40 backdrop-blur-sm border-b border-white/20">
         <div className="flex items-start gap-4">

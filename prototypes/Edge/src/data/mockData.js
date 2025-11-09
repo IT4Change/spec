@@ -82,7 +82,10 @@ const mockPosts = [
       { id: 'c-q1-1', authorId: 'user-2', text: 'Ich kann donnerstags helfen!', createdAt: subHours(new Date(), 3).toISOString(), replies: [] },
     ],
     media: [
-      { type: 'image', url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80' }
+      { type: 'image', url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?w=500&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=500&q=80' }
     ],
     questDetails: {
       difficulty: 'Einfach',
@@ -103,7 +106,11 @@ const mockPosts = [
     reactions: { '💪': 5, '👍': 7 },
     comments: [],
     media: [
-      { type: 'image', url: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&q=80' }
+      { type: 'image', url: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=500&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=500&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=500&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=500&q=80' }
     ],
     questDetails: {
       difficulty: 'Mittel',
