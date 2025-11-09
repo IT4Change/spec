@@ -236,6 +236,11 @@ const ProfileView = ({
 
   // Handle display mode switching
   const handleSwitchDisplayMode = () => {
+    // Reset y motion value BEFORE switching away from draggable mode
+    if (displayMode === 'draggable') {
+      y.set('0%');
+    }
+
     if (isMobile) {
       // Mobile: Toggle between draggable and overlay
       const newMode = displayMode === 'draggable' ? 'overlay' : 'draggable';
@@ -245,6 +250,13 @@ const ProfileView = ({
       } else {
         // No parent control, manage internally
         setDisplayMode(newMode);
+      }
+
+      // Set y position when entering draggable mode
+      if (newMode === 'draggable') {
+        setTimeout(() => {
+          y.set(getStateYPosition(panelState));
+        }, 0);
       }
     } else {
       // Desktop: Toggle between overlay and sidebar
@@ -486,9 +498,9 @@ const ProfileView = ({
               {data.title || data.name || 'Profile Details'}
             </DialogTitle>
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.95, y: 0 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 0 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
               className="rounded-lg overflow-hidden h-full"
             >
@@ -525,20 +537,18 @@ const ProfileView = ({
     case 'sidebar':
       return (
         <motion.div
-          initial={{ x: '100%', opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: '100%', opacity: 0 }}
+          initial={{ x: '100%', opacity: 0, y: 0 }}
+          animate={{ x: 0, opacity: 1, y: 0 }}
+          exit={{ x: '100%', opacity: 0, y: 0 }}
           transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-          className="w-full h-full md:h-full md:max-h-full md:rounded-none overflow-hidden shadow-2xl shadow-black/50 md:border-l md:border-gray-300"
+          className="w-full h-[calc(100vh-69px)] overflow-hidden shadow-2xl shadow-black/50 md:border-l md:border-gray-300"
         >
-          <div className="w-full h-full">
-            <ProfileContent
-              {...contentProps}
-              dragBinder={null}
-              isDragging={false}
-              panelState={null}
-            />
-          </div>
+          <ProfileContent
+            {...contentProps}
+            dragBinder={null}
+            isDragging={false}
+            panelState={null}
+          />
         </motion.div>
       );
 
