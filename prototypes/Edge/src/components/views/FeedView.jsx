@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import PostCard from '@/components/shared/PostCard';
 
-const FeedView = ({ posts, sortOrder, onSelectPost, onCreatePost }) => {
+const FeedView = ({ posts, sortOrder, onSelectPost, onCreatePost, onSwitchToMapView, onSwitchToCalendarView }) => {
 
   const sortedPosts = [...posts].sort((a, b) => {
     if (sortOrder === 'distance') {
@@ -12,7 +12,7 @@ const FeedView = ({ posts, sortOrder, onSelectPost, onCreatePost }) => {
   });
 
   return (
-    <motion.div 
+    <motion.div
       className="grid grid-cols-1 gap-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -40,7 +40,7 @@ const FeedView = ({ posts, sortOrder, onSelectPost, onCreatePost }) => {
           transition={{ delay: index * 0.05 }}
           onClick={() => onSelectPost(post)}
         >
-          <PostCard post={post} />
+          <PostCard post={post} onSwitchToMapView={onSwitchToMapView} onSwitchToCalendarView={onSwitchToCalendarView} />
         </motion.div>
       ))}
     </motion.div>

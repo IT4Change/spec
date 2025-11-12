@@ -9,7 +9,7 @@ import { de } from 'date-fns/locale';
 import { toast } from '@/components/ui/use-toast';
 import EmojiReactionPicker from '@/components/ui/EmojiReactionPicker';
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, onSwitchToMapView, onSwitchToCalendarView }) => {
   const [author, setAuthor] = useState(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [reactions, setReactions] = useState(post.reactions || {});
@@ -76,16 +76,28 @@ const PostCard = ({ post }) => {
 
         <div className="space-y-2 mb-4">
             {post.location && (
-              <div className="flex items-center text-sm text-white/70">
-                <MapPin className="h-4 w-4 mr-2 text-purple-300" />
-                <span>{post.location.name} (115km)</span>
-              </div>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSwitchToMapView && onSwitchToMapView(post);
+                }}
+                className="flex items-center text-sm text-white/70 hover:text-purple-400 transition-colors group"
+              >
+                <MapPin className="h-4 w-4 mr-2 text-purple-300 group-hover:text-purple-400" />
+                <span className="hover:underline decoration-purple-300/50 group-hover:decoration-purple-400">{post.location.name} (115km)</span>
+              </button>
             )}
             {post.startTime && (
-                <div className="flex items-center text-sm text-white/70">
-                    <Clock className="h-4 w-4 mr-2 text-purple-300" />
-                    <span>{new Date(post.startTime).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })} Uhr</span>
-                </div>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSwitchToCalendarView && onSwitchToCalendarView(post);
+                }}
+                className="flex items-center text-sm text-white/70 hover:text-purple-400 transition-colors group"
+              >
+                <Clock className="h-4 w-4 mr-2 text-purple-300 group-hover:text-purple-400" />
+                <span className="hover:underline decoration-purple-300/50 group-hover:decoration-purple-400">{new Date(post.startTime).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })} Uhr</span>
+              </button>
             )}
         </div>
 

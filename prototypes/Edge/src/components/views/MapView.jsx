@@ -137,7 +137,7 @@ const MapView = ({ posts, onSelectPost, postToOpen, setSelectedPost, selectedPos
         ))}
       </MapContainer>
 
-      {/* Back button - visible when profile is open and user came from feed OR calendar */}
+      {/* Back button - visible when profile is open and user came from feed or calendar */}
       <AnimatePresence>
         {selectedPost && (showBackToFeed || showBackToCalendar) && (
           <motion.div

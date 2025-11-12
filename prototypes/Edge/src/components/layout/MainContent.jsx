@@ -16,7 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, postToOpenOnMap, postToOpenOnCalendar, setSelectedPost, onCreatePost, onSwitchToMapView, onBackToFeed, onBackToCalendar, showBackToFeed, showBackToCalendar, onCreateEvent }) => {
+const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, postToOpenOnMap, postToOpenOnCalendar, setSelectedPost, onCreatePost, onSwitchToMapView, onSwitchToMapViewFromProfile, onSwitchToCalendarView, onBackToFeed, onBackToCalendar, showBackToFeed, showBackToCalendar, onCreateEvent }) => {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState({});
   const [sortOrder, setSortOrder] = useState('chronological');
@@ -45,7 +45,7 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
   const getViewContent = () => {
     switch (currentView) {
       case 'feed':
-        return <FeedView posts={posts} sortOrder={sortOrder} onSelectPost={onSelectPost} onCreatePost={onCreatePost} />;
+        return <FeedView posts={posts} sortOrder={sortOrder} onSelectPost={onSelectPost} onCreatePost={onCreatePost} onSwitchToMapView={onSwitchToMapView} onSwitchToCalendarView={onSwitchToCalendarView} />;
       case 'map':
         return <MapView posts={posts} onSelectPost={onSelectPost} postToOpen={postToOpenOnMap} setSelectedPost={setSelectedPost} selectedPost={selectedPost} onCloseDetail={onCloseDetail} onBackToFeed={onBackToFeed} onBackToCalendar={onBackToCalendar} showBackToFeed={showBackToFeed} showBackToCalendar={showBackToCalendar} />;
       case 'calendar':
@@ -110,7 +110,7 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
                   config={generateProfileConfig(selectedPost)}
                   isModal={false}
                   onClose={onCloseDetail}
-                  onSwitchToMap={() => onSwitchToMapView(selectedPost)}
+                  onSwitchToMap={() => onSwitchToMapViewFromProfile(selectedPost)}
                   navigationSource={null}
                   onDisplayModeChange={(mode) => setFeedProfileDisplayMode(mode)}
                 />
@@ -132,7 +132,7 @@ const MainContent = ({ currentView, onSelectPost, selectedPost, onCloseDetail, p
             config={generateProfileConfig(selectedPost)}
             isModal={true}
             onClose={onCloseDetail}
-            onSwitchToMap={() => onSwitchToMapView(selectedPost)}
+            onSwitchToMap={() => onSwitchToMapViewFromProfile(selectedPost)}
             navigationSource={null}
             onDisplayModeChange={(mode) => setFeedProfileDisplayMode(mode)}
           />

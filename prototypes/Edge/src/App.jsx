@@ -155,21 +155,25 @@ function App() {
   };
 
   const handleSwitchToMapView = (post) => {
-    // Switch from current view to full map view for a post with location
-    // Save current scroll position before switching
+    // Simple switch to map view and open the post (no back button)
+    setPostToOpenOnMap(post);
+    setCurrentView('map');
+  };
+
+  const handleSwitchToMapViewFromProfile = (post) => {
+    // Switch to map view from profile with navigation tracking (enables back button)
     const scrollElement = document.querySelector('.overflow-y-auto');
     if (scrollElement) {
       setPreviousScrollPosition(scrollElement.scrollTop);
     }
 
-    // Set postToOpenOnMap and switch view immediately
-    // MapView's useEffect will handle setting selectedPost
-    // Track where we came from (feed or calendar)
+    // Track where we came from to enable back button
     if (currentView === 'feed') {
       setNavigationSource('feed');
     } else if (currentView === 'calendar') {
       setNavigationSource('calendar');
     }
+
     setPostToOpenOnMap(post);
     setCurrentView('map');
   };
@@ -186,6 +190,12 @@ function App() {
     setCurrentView('calendar');
     setPostToOpenOnMap(null);
     // Keep selectedPost to show the modal in feed view
+  };
+
+  const handleSwitchToCalendarView = (post) => {
+    // Switch to calendar view and open the post
+    setPostToOpenOnCalendar(post);
+    setCurrentView('calendar');
   };
 
   const handleNotificationClick = (notification) => {
@@ -367,6 +377,8 @@ function App() {
                 onCreatePost={handleCreatePostFromFeed}
                 onCreateEvent={handleCreateEvent}
                 onSwitchToMapView={handleSwitchToMapView}
+                onSwitchToMapViewFromProfile={handleSwitchToMapViewFromProfile}
+                onSwitchToCalendarView={handleSwitchToCalendarView}
                 onBackToFeed={handleBackToFeed}
                 onBackToCalendar={handleBackToCalendar}
                 showBackToFeed={navigationSource === 'feed'}
