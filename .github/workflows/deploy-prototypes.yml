@@ -3,7 +3,7 @@ name: Deploy Prototypes
 on:
   push:
     branches:
-      - master
+      - edge
     paths:
       - 'prototypes/**'
       - '.github/workflows/deploy-prototypes.yml'
@@ -30,16 +30,12 @@ jobs:
           node-version: 18
           cache: npm
           cache-dependency-path: |
-            prototypes/AppShell/package-lock.json
-            prototypes/AppShellWithInputWidget/package-lock.json
-            prototypes/InputWidget/package-lock.json
-            prototypes/modules-hub/package-lock.json
-            prototypes/Profiles/package-lock.json
+            prototypes/Edge/package-lock.json
 
       - name: Build all prototypes
         run: |
           set -euo pipefail
-          prototypes=(AppShell AppShellWithInputWidget InputWidget modules-hub Profiles)
+          prototypes=(Edge)
           rm -rf gh-pages
           mkdir -p gh-pages
           cp index.html gh-pages/index.html
