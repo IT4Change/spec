@@ -7,7 +7,7 @@ on:
       - master
       - 'feature/**'
     paths:
-      - 'prototypes/**'
+      - 'prototype/**'
       - '.github/workflows/deploy-prototypes.yml'
 
 permissions:
@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: 18
           cache: npm
-          cache-dependency-path: prototypes/package-lock.json
+          cache-dependency-path: prototype/package-lock.json
 
       - name: Build prototype for branch
         run: |
@@ -63,13 +63,13 @@ jobs:
           # Prototype bauen
           echo "📦 Building prototype for branch $SAFE_BRANCH_NAME"
           
-          pushd "prototypes" >/dev/null
+          pushd "prototype" >/dev/null
           npm ci
           npm run build -- --base="/$SAFE_BRANCH_NAME/"
           popd >/dev/null
           
           # In branch-spezifisches Verzeichnis kopieren
-          cp -R "prototypes/dist/." "gh-pages/$SAFE_BRANCH_NAME/"
+          cp -R "prototype/dist/." "gh-pages/$SAFE_BRANCH_NAME/"
           
           echo "✅ Deployed to /$SAFE_BRANCH_NAME/"
           
