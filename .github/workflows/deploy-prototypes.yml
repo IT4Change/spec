@@ -1,9 +1,11 @@
-name: Deploy Prototypes
+name: Deploy Branch Prototypes
 
 on:
   push:
     branches:
       - edge
+      - master
+      - 'feature/**'
     paths:
       - 'prototypes/**'
       - '.github/workflows/deploy-prototypes.yml'
@@ -14,7 +16,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: deploy-prototypes
+  group: deploy-prototypes-global
   cancel-in-progress: false
 
 jobs:
@@ -24,46 +26,246 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages-existing
+        continue-on-error: true
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
-          cache-dependency-path: |
-            prototypes/Edge/package-lock.json
+          cache-dependency-path: prototypes/package-lock.json
 
-      - name: Build all prototypes
+      - name: Build prototype for branch
         run: |
           set -euo pipefail
-          prototypes=(Edge)
-          rm -rf gh-pages
-          mkdir -p gh-pages
-          cp index.html gh-pages/index.html
-          for dir in "${prototypes[@]}"; do
-            echo "\n📦 Building $dir"
-            pushd "prototypes/$dir" >/dev/null
-            npm ci
-            npm run build -- --base="/spec/${dir}/"
-            popd >/dev/null
-            mkdir -p "gh-pages/$dir"
-            cp -R "prototypes/$dir/dist/." "gh-pages/$dir/"
-          done
+          
+          # Branch-Namen normalisieren (/ durch - ersetzen)
+          BRANCH_NAME="${{ github.ref_name }}"
+          SAFE_BRANCH_NAME="${BRANCH_NAME//\//-}"
+          
+          echo "📌 Building for branch: $BRANCH_NAME (safe: $SAFE_BRANCH_NAME)"
+          
+          # Bestehende gh-pages kopieren oder neues Verzeichnis erstellen
+          if [ -d "gh-pages-existing" ]; then
+            cp -r gh-pages-existing gh-pages
+          else
+            mkdir -p gh-pages
+          fi
+          
+          # Branch-Verzeichnis erstellen
+          mkdir -p "gh-pages/$SAFE_BRANCH_NAME"
+          
+          # Prototype bauen
+          echo "📦 Building prototype for branch $SAFE_BRANCH_NAME"
+          
+          pushd "prototypes" >/dev/null
+          npm ci
+          npm run build -- --base="/$SAFE_BRANCH_NAME/"
+          popd >/dev/null
+          
+          # In branch-spezifisches Verzeichnis kopieren
+          cp -R "prototypes/dist/." "gh-pages/$SAFE_BRANCH_NAME/"
+          
+          echo "✅ Deployed to /$SAFE_BRANCH_NAME/"
+          
+          # Automatische Index-Seite generieren
+          echo "📝 Generating index.html with all branches..."
+          
+          cat > "gh-pages/index.html" << 'EOF'
+  <!DOCTYPE html>
+  <html lang="de">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype Deployments</title>
+  <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+min-height: 100vh;
+padding: 40px 20px;
+}
+  .container {
+max-width: 900px;
+margin: 0 auto;
+background: white;
+border-radius: 16px;
+box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+overflow: hidden;
+}
+  header {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: white;
+padding: 40px;
+text-align: center;
+}
+  h1 {
+font-size: 2.5em;
+margin-bottom: 10px;
+}
+  .subtitle {
+opacity: 0.9;
+font-size: 1.1em;
+}
+  .content {
+padding: 40px;
+}
+  .branch-list {
+list-style: none;
+display: grid;
+gap: 15px;
+}
+  .branch-item {
+background: #f8f9fa;
+border: 2px solid #e9ecef;
+border-radius: 12px;
+padding: 20px 25px;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+  .branch-item:hover {
+border-color: #667eea;
+background: #f0f4ff;
+transform: translateX(5px);
+box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+  .branch-name {
+font-size: 1.3em;
+font-weight: 600;
+color: #2d3748;
+}
+  .branch-link {
+background: #667eea;
+color: white;
+padding: 10px 20px;
+border-radius: 8px;
+text-decoration: none;
+font-weight: 500;
+transition: background 0.3s ease;
+}
+  .branch-link:hover {
+background: #764ba2;
+}
+  .empty-state {
+text-align: center;
+padding: 60px 20px;
+color: #718096;
+}
+  .empty-state-icon {
+font-size: 4em;
+margin-bottom: 20px;
+}
+  footer {
+text-align: center;
+padding: 20px;
+color: #718096;
+font-size: 0.9em;
+border-top: 1px solid #e9ecef;
+}
+  </style>
+  </head>
+  <body>
+  <div class="container">
+  <header>
+  <h1>🚀 Prototype Deployments</h1>
+  <p class="subtitle">Branch-basierte App-Versionen</p>
+  </header>
+  <div class="content">
+  <ul class="branch-list" id="branchList">
+  <div class="empty-state">
+  <div class="empty-state-icon">⏳</div>
+  <p>Lade Branches...</p>
+  </div>
+  </ul>
+  </div>
+  <footer>
+Automatisch generiert • Letzte Aktualisierung: <span id="timestamp"></span>
+  </footer>
+  </div>
 
-      - name: Upload static artifacts
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: gh-pages
+  <script>
+  // Timestamp setzen
+  document.getElementById('timestamp').textContent = new Date().toLocaleString('de-DE');
+  
+  // Branches aus Verzeichnissen auslesen
+  fetch(window.location.pathname)
+  .then(response => response.text())
+  .then(html => {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+  const links = Array.from(doc.querySelectorAll('a'));
+  
+  // Verzeichnisse filtern (enden mit /)
+  const branches = links
+  .map(link => link.getAttribute('href'))
+  .filter(href => href && href.endsWith('/') && href !== '../' && !href.startsWith('http'))
+  .map(href => href.replace(/\/$/, ''))
+  .filter(name => name); // Leere Namen entfernen
+  
+  const listEl = document.getElementById('branchList');
+  
+  if (branches.length === 0) {
+  listEl.innerHTML = `
+  <div class="empty-state">
+  <div class="empty-state-icon">📭</div>
+  <p>Noch keine Branches deployed</p>
+  </div>
+  `;
+  return;
+  }
+  
+  // Branches sortieren (master/edge zuerst)
+  branches.sort((a, b) => {
+  if (a === 'master') return -1;
+  if (b === 'master') return 1;
+  if (a === 'edge') return -1;
+  if (b === 'edge') return 1;
+  return a.localeCompare(b);
+  });
+  
+  listEl.innerHTML = branches.map(branch => `
+  <li class="branch-item">
+  <span class="branch-name">📌 ${branch}</span>
+  <a href="${branch}/" class="branch-link">Öffnen →</a>
+  </li>
+  `).join('');
+})
+  .catch(error => {
+  console.error('Fehler beim Laden der Branches:', error);
+  document.getElementById('branchList').innerHTML = `
+  <div class="empty-state">
+  <div class="empty-state-icon">⚠️</div>
+  <p>Fehler beim Laden der Branches</p>
+  </div>
+  `;
+});
+  </script>
+  </body>
+  </html>
+  EOF
+  
+  echo "✅ Index page generated with all available branches"
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+- name: Upload Pages artifact
+  uses: actions/upload-pages-artifact@v3
+  with:
+    path: gh-pages
+
+deploy:
+  runs-on: ubuntu-latest
+  needs: build
+  environment:
+    name: github-pages
+    url: ${{ steps.deployment.outputs.page_url }}
+  steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
