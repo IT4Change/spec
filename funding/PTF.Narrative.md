@@ -108,8 +108,12 @@ Wir sind der Meinung, dass die Kombination an Software, die uns vorschwebt in di
 Hinweis: Teile dieser Sektion sind mit Hilfe von KI entstanden.
 
 **TODO**
-- Nextcloud
-- Karrot
+- Mobilizon - Föderierte Event- und Gruppen-Plattform von Framasoft
+- Karrot - Open-Source-Tool für Food-Sharing und lokale Grassroots-Initiativen
+- Bonfire - Modulares Framework für föderierte digitale Räume
+- Nextcloud - Calendar, Contacts, Groups, Social 
+- Epicyon - Minimalistischer ActivityPub-Server - Calendar, News, Sharing-Economy-Features
+- Hubzilla - Multi-Feature-Plattform mit Blogs, Kalender, Cloud Storage
 - Mastodon
 - Noster
 
