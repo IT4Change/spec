@@ -107,17 +107,92 @@ Wir sehen den Bedarf und die Anwendung unserer bestehenden Software bestätigt u
 Wir möchten auch die Frage beantworten, warum wir der Meinung sind, dass wir die beschriebene Software entwickeln wollen und nicht Software XY verwenden.
 Wir sind der Meinung, dass die Kombination an Software, die uns vorschwebt in dieser Form noch nicht existiert, aber ein Bedarf dafür besteht. Wir möchten aber nochmals betonen, dass wir das Rad nicht neu erfinden möchten, sondern auf allen Wegabschnitten bestehende Libraries, Protokolle und Software einsetzen möchten. Uns ist darüber hinaus die Integrationsfähigkeit und die Interoperabilität unserer Software wichtig und das lässt sich nur durch das Einhalten von Standards erreichen.
 
-Hinweis: Teile dieser Sektion sind mit Hilfe von KI entstanden.
+Im folgenden haben wir Software gelistet die Teile unserer Vorstellung bereits realisieren und analysieren was diese können und was nicht.
+Grob (und vereinfacht zusammengefasst) kann man sagen, dass all die Software sehr spezifisch auf bestimmte Use-Cases zugeschnitten ist und teilweise sehr wenig Flexibilität besteht sie in andere Lösungen zu integrieren. Besonders dasjenige Werkzeuge, in dessen Rahmen Studien durchgeführt werden, die herausfinden, dass immer mehr als ein Tool benutzt wird, weist besonders wenige Schnittstellen auf (Karrot).
 
-**TODO**
-- Mobilizon - Föderierte Event- und Gruppen-Plattform von Framasoft
-- Karrot - Open-Source-Tool für Food-Sharing und lokale Grassroots-Initiativen
-- Bonfire - Modulares Framework für föderierte digitale Räume
-- Nextcloud - Calendar, Contacts, Groups, Social 
-- Epicyon - Minimalistischer ActivityPub-Server - Calendar, News, Sharing-Economy-Features
-- Hubzilla - Multi-Feature-Plattform mit Blogs, Kalender, Cloud Storage
-- nebenan.de
-- meetup
+Die meisten der gelistete Software-Entwicklungen sind in dieser Form auch als Teil unserer wahrscheinlich wenig praktikabel, da sie bereits eine Vielzahl an Anwendungen kombinieren und dabei nicht alles als Schnittstelle/Protokoll oder Standard exponiert. Mobilizon legt großen Wert auf Schnittstellen ist daher ein potentieller Kandidat.
+
+Fast alle haben gemein, dass sie versuchen mehrere Gruppen/Gemeinschaften auf eine Plattform zu bekommen. Ein diametraler Unterschied zu unserem Ansatz, der die einzelne Gruppe in den Mittelpunkt stellt.
+
+Wir tendieren dazu kleinere Anwendungen (z.B. ein Kalender/einen Cal-Dav Server) einzusetzen anstatt bereits vollständig integrierter Lösungen. Wir wünschen diese Integration ausschließlich im Frontend zu vollziehen und die bestmögliche Nutzererfahrung zu erzielen. Eine Integration von Daten kann dabei im Frontend passieren oder wahrscheinlicher in einem, für das spezielle Frontend konzipierte Backend, was die einzelnen Daten/Protokolle bedient und die Inhalte integriert und aggregiert an das Frontend liefert. Das stellt sicher, dass wir die Anwendung sehr feingranular an einzelne Communities anpassen können ohne an Usability einzubüßen.
+
+Hinweis: Teile der folgenden Sektionen (einzelne Software Analysen) sind mit Hilfe von KI entstanden.
+
+#### Mobilizon
+Mobilizon ist eine föderierte Event- und Gruppen-Plattform, entwickelt von der französischen Non-Profit-Organisation Framasoft als freie Alternative zu Facebook Events und Meetup.com.
+
+Kernfunktionen: Events, Gruppen, Federation
+
+Was Mobilizon abdeckt:
+
+✅ Events & Kalender
+✅ Gruppen
+✅ Karten-Integration
+✅ Federation (ActivityPub)
+
+Was fehlt:
+
+❌ Kein Social Feed im klassischen Sinne
+❌ Keine nahtlose Integration Feed-Karte-Kalender
+❌ Keine Gamification (bewusst!)
+❌ Keine Food-Sharing/Lebensmittelverteilung
+❌ Kein modularer Baukasten-Ansatz
+
+Anpassung ist limitiert auf:
+- White-Label: Jede Instanz hat eigene URL, Logo, Branding
+- Administrator kann entscheiden:
+  - Welche Instanzen zur Federation zugelassen werden
+  - Registrierungsregeln
+  - Moderationsrichtlinien
+
+Feature-Modularität ❌
+
+Große Limitation: Mobilizon ist monolithisch, nicht modular
+Man bekommt alle Features oder muss im Code Features herausentfernen
+Kein Baukasten-System wie bei Bonfire
+
+#### Karrot
+
+Karrot ist eine freie, Open-Source-Plattform zur Organisation von Grassroots-Initiativen, ursprünglich entwickelt für Food-Sharing-Communities, aber zunehmend für andere lokale, autonome, freiwillige Gemeinschaften genutzt.
+
+Kernfunktionen: Koordination von Face-to-Face-Aktivitäten (Food-Sharing, Verteilung, Meetings), Gruppen-Management, Aktivitäten-System.
+
+Karrot deckt ab:
+- Food-Sharing Communities (euer Lebensmittelverteilungs-Use-Case!)
+- Activity-basierte lokale Organisation
+- Demokratische, autonome Gruppen
+
+Was fehlt:
+- Multi-Purpose Community-Plattformen
+- Integration verschiedener Bedürfnisse in einem System
+- Federation zwischen Communities
+- Social-Media-Aspekte (Feed, Discovery)
+- Event-Bewerbung (öffentliche Events)
+
+#### Bonfire
+
+Bonfire ist ein modulares, Open-Source-Framework für den Aufbau föderierter digitaler Räume, das Communities ermöglicht, ihre eigenen Social-Media-ähnlichen Plattformen zu gestalten und zu betreiben.
+
+Kernfunktionen: Modulare Architektur, "Flavours" - Vorkonfigurierte Varianten:
+
+Flavors:
+- Bonfire Social 1.0 (gerade released, June 2025): Twitter/Mastodon-ähnlich
+- Bonfire Cooperation (pre-alpha): Ökonomische Aktivitäten, Ressourcen-Koordination
+- Bonfire Classic: Forum-ähnlich
+
+Was Bonfire abdeckt:
+- Community-first Philosophy
+- ActivityPub Federation
+- Lokale Autonomie
+- Kann OIDC/OAuth + weitere Identity-Typen
+
+#### Nextcloud
+
+Ist eher für kleine Firmen geeignet als für Communities
+
+#### nebenan.de
+
+Ist wieder eine Plattform für alle
 
 ## Über uns
 
