@@ -82,6 +82,8 @@ real-life-stack/
 * [Utopia Map](https://github.com/utopia-os/utopia-map/)
 * [ocelot.social](https://github.com/Ocelot-Social-Community/ocelot.social)
 
+---
+
 
 **Gemeinsam gestalten wir die Zukunft - lokal vernetzt, global gedacht.** 🌱
 
