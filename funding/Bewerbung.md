@@ -33,4 +33,4 @@ Alle Komponenten greifen auf eine gemeinsame **Daten- und Identitätsschnittstel
 
 Unterhalb dieser Ebene liegt eine schlanke **Connector-Struktur**: Wir definieren das Muster, nach dem Backends angebunden werden können, und liefern eine erste Implementierung mit. Weitere Connectoren können von Communities oder Entwickler*innen selbst erstellt werden – zum Beispiel für lokal-first-, p2p- oder E2EE-basierte Systeme.
 
-Wir liefern zudem eine **selbsthostbare Referenzimplementierung** mit einem leichtgewichtigen Open-Source-Backend und einem Docker-Setup, damit Gemeinschaften ohne technisches Know-how sofort starten können. Eine **schlüsselbasierte Identitätsebene** und ein **Web-of-Trust-Modell** schaffen die Grundlage für vertrauensbasierte Zusammenarbeit und dafür, dass sensible Inhalte bei Bedarf Ende-zu-Ende verschlüsselt geteilt werden können.
+Wir liefern zudem eine **selbsthostbare Referenzimplementierung** mit einem leichtgewichtigen Open-Source-Backend und einem Docker-Setup, damit Gemeinschaften ohne technisches Know-how sofort starten können.
