@@ -53,7 +53,7 @@ jmd., der auf Kosten anderer lebt)
 - Chaiselongue, die oder das (gepolsterte Liege mit Kopflehne, Couch, Sofa)
 - Zunft
 
-TODO: Timo fragen
+TODO: ~~Timo fragen~~
 
 ### Name für den Account
 
