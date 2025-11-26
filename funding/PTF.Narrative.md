@@ -114,8 +114,6 @@ Hinweis: Teile dieser Sektion sind mit Hilfe von KI entstanden.
 - Nextcloud - Calendar, Contacts, Groups, Social 
 - Epicyon - Minimalistischer ActivityPub-Server - Calendar, News, Sharing-Economy-Features
 - Hubzilla - Multi-Feature-Plattform mit Blogs, Kalender, Cloud Storage
-- Mastodon
-- Noster
 
 ## Über uns
 
