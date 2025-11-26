@@ -24,7 +24,9 @@ Unsere Ziele, die wir mit unserer Software verfolgen sind die folgenden:
 ### Die Annahmen
 Usere Annahmen sind die folgenden:
 - Gemeinschaften haben oft ähnliche Probleme, brauchen aber teilweise spezielle Lösungen oder nur Teile eine Komplettlösungen. So erscheinen angebotene Lösungen oft zu komplex oder unpassend für das konkrete Problem.
-- Gemeinschaften haben das Bedürfnis die Lösungen an ihre Gemeinschaft anzupassen. Sie wünschen die Lösung zu ihrer zu machen. Wir machen die Erfahrung, dass dies besonders durch die White-Label Option unserer beiden Softwares gewährleistet wird. Eine Gemeinschaft möchte nicht zur Plattform XY kommen und dort eine Gruppe betreiben, sondern eine eigene Plattform in ihren Namen, nach ihren Bedürfnissen betreiben.
+- Gemeinschaften haben das Bedürfnis die Lösungen an ihre Gemeinschaft anzupassen. Sie wünschen die Lösung zu ihrer zu machen. Wir machen die Erfahrung, dass dies besonders durch die White-Label Option unserer beiden Softwareprodukte gewährleistet wird. Eine Gemeinschaft möchte nicht zur Plattform XY kommen und dort eine Gruppe betreiben, sondern eine eigene Plattform in ihren Namen, nach ihren Bedürfnissen betreiben.
+
+Communities wollen: Datenbesitz, Selfhost
 
 ### Wohin wir möchten
 Wir möchten aus beiden Software-Lösungen ein gemeinsames Produkt machen.
@@ -59,11 +61,11 @@ Wir wollen kein neues Protokoll entwickeln, es gibt genug davon. Weder ein neues
 Im Rahmen des Prototype Funds möchten wir gerne 3 verschiedene Dinge untersuchen und Prototypen dafür entwerfen:
 
 1. Wir möchten herausfinden, wie wir Karte, Feed & Kalender in ein UI integrieren können, sodass die Bedienung intuitiv und natürlich für den Nutzer ist. Hierzu bestehen die ersten Klick-Dummys, die Lösungen für das Problem zur Diskussion stellen. Wir diskutieren aktuell zu diesen Themen.
-Ziel ist es einen Klickdummy zu produzieren, der alle Edge-Cases und alle User-Stories befriedigt (UI+UX)
+Ziel ist es einen Klick-Dummy zu produzieren, der alle Edge-Cases und alle User-Stories befriedigt (UI+UX)
 
-2. Wir möchten herausfinden, wie wir die Interaktion im echten Leben befördern. Die Grundannahme ist, dass ein spielerischer Ansatz helfen kann, um die Menschen die Verbindung zwischen Real-Life & Digital-Life leben zu lassen. Diese Arbeit soll nicht zwangsläufig ein Prototyp produzieren, sondern ein Dokument der Wirkmechanismen, die wir uns vorstellen können, wie wir die Menschen zum Spielen im echten Leben mithilfe von digitalen Mitteln bewegen. Wir möchten einen "Papierprototypen" im Rahmen dieser Arbeit entwickeln, der es uns erlaubt die Gamification einer Echt-Welt-Probe zu unterziehen und zu messen, ob unsere Annahmen objektiv zutreffen.
+2. Wir möchten herausfinden, wie wir die Interaktion im echten Leben befördern. Die Grundannahme ist, dass ein spielerischer Ansatz helfen kann, um die Menschen die Verbindung zwischen Real-Life & Digital-Life leben zu lassen. Diese Arbeit soll nicht zwangsläufig ein Prototyp produzieren, sondern ein Dokument der Wirkmechanismen, die wir uns vorstellen können, wie wir die Menschen zum Spielen im echten Leben, mithilfe von digitalen Mitteln, bewegen. Wir möchten einen "Papierprototypen" im Rahmen dieser Arbeit entwickeln, der es uns erlaubt die Gamification einer Echt-Welt-Probe zu unterziehen und zu messen, ob unsere Annahmen objektiv zutreffen.
 
-3. Untersuchung, wie wir alle Anwendungen in einem Baukasten bereitstellen können ohne zu große Barrieren für die Integration mit anderen, nicht von uns produzierten, Produkten aufzubauen. Aktuell wird OAuth+OIDC als "Kleber"/Baukasten zwischen den einzelnen Anwendungen diskutiert. Ziel dieser Aufgabe ist es zu untersuchen, welche Technologie anderweitig als "Kleber" in Frage kommt, eine davon auszuwählen und einen Prototypen für ein Setup mit dieser Technologie bereitzustellen. Hierbei soll untersucht werden welche der Angeboten Open-Source-Lösungen am besten geeignet für unseren Anwendungsfall ist. Konkreter für den Fall von OIDC möchten wir gerne die angebotenen Lösungen vergleichen (Keycloak Ory, Authentik, ...), eine auswählen und einen Prototypen für ein Setup + eine kleine Anwendung (z.B. einen Kalender (besteht bereits)) als OIDC-Client anbinden. 
+3. Untersuchung, wie wir alle Anwendungen in einem Baukasten bereitstellen können ohne zu große Barrieren für die Integration mit anderen, nicht von uns produzierten, Produkten aufzubauen. Aktuell wird OAuth+OIDC als "Kleber"/Baukasten zwischen den einzelnen Anwendungen diskutiert. Ziel dieser Aufgabe ist es zu untersuchen, welche Technologie anderweitig als "Kleber" in Frage kommt, eine davon auszuwählen und einen Prototypen für ein Setup mit dieser Technologie bereitzustellen. Hierbei soll untersucht werden welche der Angeboten Open-Source-Lösungen am besten geeignet für unseren Anwendungsfall ist. Konkreter für den Fall von OIDC möchten wir gerne die angebotenen Lösungen vergleichen (Keycloak, Ory, Authentik, ...), eine auswählen und einen Prototypen für ein Setup + eine kleine Anwendung (z.B. einen Kalender (besteht bereits)) als OIDC-Client anbinden. 
 
 Alle 3 Dinge sind jeweils ein Schritt zu dem oben beschrieben Produkt, welches wir zur Zeit entwerfen. Wir erachten die genannten 3 Prototypen/Untersuchungen für machbar und realistisch zum aktuellen Zeitpunkt umzusetzen und einen Erkenntnisgewinn und ggf. bereits eine produktiv einsetzbare Implementierung zu erzielen.
 
@@ -85,7 +87,7 @@ Erkenntnisse erwarten wir dabei in folgenden Gebieten
 - Wie sieht eine gute UX für eine Karten-Feed-Kalender Anwendung aus. Können wir diese Erkenntnisse prüfen (ggf. mit Gemeinschaften aus SII)
 - Können wir Wirkmechanismen Identifizieren, welche es uns Erlaubt digitale Interaktion in Echt-Welt-Interaktion von Menschen zu verwandeln? Können wir prüfen ob unsere getroffenen annahmen in diesem Kontext zutreffen (SII)?
 
-Das Projekt ist erfolgreich, wennmindestens einer dieser Bereiche zu einer Erkenntnis führt. Eine Erkenntnis kann auch sein, dass erkannt wird was nicht funktioniert.
+Das Projekt ist erfolgreich, wenn mindestens einer dieser Bereiche zu einer Erkenntnis führt. Eine Erkenntnis kann auch sein, dass erkannt wird was nicht funktioniert.
 
 Ein besonderer Erfolg liegt dann vor, wenn (Teile der) erstellte(n) Prototypen für eine reale Anwendung genutzt werden können.
 Weiterhin ist es ein großer Erfolg, wenn wir weitere Gruppen begeistern können unsere Software einzusetzen.
@@ -114,6 +116,8 @@ Hinweis: Teile dieser Sektion sind mit Hilfe von KI entstanden.
 - Nextcloud - Calendar, Contacts, Groups, Social 
 - Epicyon - Minimalistischer ActivityPub-Server - Calendar, News, Sharing-Economy-Features
 - Hubzilla - Multi-Feature-Plattform mit Blogs, Kalender, Cloud Storage
+- nebenan.de
+- meetup
 
 ## Über uns
 
@@ -132,4 +136,4 @@ Wenn ihr mehr über uns wissen möchtet, freuen wir uns über eine Einladung ode
 
 Wir sind im gemeinnützigen busFaktor() e.V. engagiert, benannt nach dem [Busfaktor](https://en.wikipedia.org/wiki/Bus_factor), der sich um das verbreiten des Wissens zu Software und deren Entwicklung bemüht, um besagten Faktor zu erhöhen. Mehr hierzu: https://www.busfaktor.org/
 
-Als Freelancer haben wir das ein oder andere Projekt gemeinsame bestritten und organisieren, bzw vermarkten, uns unter dem Namen IT4C (IT Team For Change). Dabei handelt es sich nicht um eine Organisation, sondern um ein loses Entwickler Kollektiv. Mehr hierzu: https://it4c.dev/
+Als Freelancer haben wir das ein oder andere Projekt gemeinsam bestritten und organisieren, bzw vermarkten, uns unter dem Namen IT4C (IT Team For Change). Dabei handelt es sich nicht um eine Organisation, sondern um ein loses Entwickler-Kollektiv. Mehr hierzu: https://it4c.dev/

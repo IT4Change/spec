@@ -25,6 +25,8 @@ TODO: Lesen lassen
 ### Projekttitel
 
 TODO
+- Real Life Stack
+- Uzel
 - Ocetopia
 - Utopelot
 - DorfOS
