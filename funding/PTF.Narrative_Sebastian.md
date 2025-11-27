@@ -1,18 +1,18 @@
 ## Die Annahmen
 
-  4. **Die Einsamkeits-Epidemie ist real:** Über 40% der Menschen in Deutschland fühlen sich
+  - **Die Einsamkeits-Epidemie ist real:** Über 40% der Menschen in Deutschland fühlen sich
   regelmäßig einsam (Rheingold Institut 2023), während die Bildschirmzeit steigt.
 
-  5. **Social Media verschlimmert das Problem:** Wir haben 500 "Freunde", kennen aber unsere
+  - **Social Media verschlimmert das Problem:** Wir haben 500 "Freunde", kennen aber unsere
   Nachbarn nicht. Apps optimieren für Engagement, nicht für Begegnungen.
 
-  6. **Der "Commitment-Gap" ist das Hauptproblem:** Menschen finden Events interessant, gehen aber
+  - **Der "Commitment-Gap" ist das Hauptproblem:** Menschen finden Events interessant, gehen aber
   nicht hin. Die Reibung zwischen "zusagen" und "erscheinen" ist zu hoch.
 
-  7. **Web-of-Trust durch physische Treffen ist fälschungssicher:** Kein Bot kann ein
+  - **Web-of-Trust durch physische Treffen ist fälschungssicher:** Kein Bot kann ein
   QR-Code-Scanning beim echten Pasta-Dinner faken. Das ist einzigartiger Schutz gegen Manipulation.
 
-  8. **Hyperlocal funktioniert besser als global:** Echte Gemeinschaft braucht < 5km Radius.
+  - **Hyperlocal funktioniert besser als global:** Echte Gemeinschaft braucht < 5km Radius.
   Bewusste Anti-Skalierung ist ein Feature, kein Bug.
 
 
@@ -42,7 +42,7 @@
 
 
 
-### 2. Gamification → Wie belohnen wir Interaktion im echten Leben
+## Gamification → Wie belohnen wir Interaktion im echten Leben
 
   **Konkrete Wirkmechanismen identifiziert:**
 
@@ -57,16 +57,15 @@
   - Unlock-Mechanik: "Ab 3 verifizierten Treffen siehst du Private-Events"
 
   **Level 3 - Rolle wechseln:**
-  - **Das ist der Kern!** Aus Gast wird Gastgeber
+  - Aus Gast wird Gastgeber
   - System schlägt vor: "Tom und 3 weitere interessieren sich für X. Event erstellen?"
   - Achievement: "Erstes selbst-organisiertes Event" → starke intrinsische Motivation
 
   **Anti-Gamification-Prinzip:**
-  - Keine Likes, keine Follower-Zahlen, keine Vanity-Metrics
   - Belohnung ist das echte Treffen, nicht digitale Punkte
   - Gamification dient nur als "Scaffolding" bis echte Gemeinschaft entsteht
 
-  ### 3. Dezentralisierung & Absicherung der Software
+  ## Dezentralisierung & Absicherung der Software
 
   - **Wie bekommen wir die verschiedenen Instanzen Federiert**
   - **Wie können wir digital ein Web-Of-Trust zwischen den Mitgliedern aufbauen** und die
@@ -81,7 +80,7 @@
   - **Privacy-by-Design:** Geo-Daten bleiben lokal, nur Bounding-Box ans Backend, Differential
   Privacy für Statistiken
 
-  ### 4. Verschiedene Bedarfe identifizieren und ausarbeiten (lokale Gemeinschaften)
+  ## Verschiedene Bedarfe identifizieren und ausarbeiten (lokale Gemeinschaften)
 
   - **Kalender** - Organisieren von Veranstaltungen innerhalb einer lokal verorteten Gemeinschaft,
   Einladungen, Online-Veranstaltungen für überregionale Gruppen.
