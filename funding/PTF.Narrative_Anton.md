@@ -7,7 +7,7 @@
 #### **1.1 Gesellschaftliche Entwicklung**
 
 * Große gesellschaftliche Herausforderungen erfordern **lokales, eigenverantwortliches Handeln**.
-* Digitale Tools sollten auf die **reale Begegnungen und Gemeinschaft** stärken – nicht ersetzen.
+* Digitale Tools sollten **reale Begegnungen und Gemeinschaft** stärken – nicht ersetzen.
 
 #### **1.2 Bedürfnisse von Initiativen & Communities**
 
@@ -31,7 +31,7 @@
 
 #### **2.1 Stand der Technik**
 
-* Communities nutzen überwiegend **zentrale Client-Server-Plattformen**, obwohl sie dezentral arbeiten.
+* Lokale Communities nutzen überwiegend **zentrale Client-Server-Plattformen**, obwohl sie dezentral arbeiten.
 * Moderne Ansätze wie **Local-first**, **p2p** und **E2EE** bieten bessere Grundlagen für lokale Selbstorganisation.
 * Diese Technologien sind jedoch **noch jung, kaum standardisiert und nicht breit erprobt**.
 * Deshalb basieren die meisten real existierenden Tools weiterhin auf **klassischer Client-Server-Infrastruktur**.
