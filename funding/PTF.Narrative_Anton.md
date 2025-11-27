@@ -86,8 +86,7 @@
 
    * **Software-Infrastruktur**
    * **Datensicherheit** (durch Identitätsschicht & E2EE-Fähigkeit)
-5. Die Architektur lässt **Weiterentwicklung in der Second Stage** zu:
-
+5. Die Architektur lässt sich langfristig Weiterentwickln für:
    * Federation
    * E2EE für mehrere Datentypen
    * CRDT / local-first
@@ -96,5 +95,4 @@
 7. Die Zielgruppen sind **real & konkret** (Urban Gardening, Repair-Cafés, Nachbarschaften, Jugendgruppen etc.).
 8. Das Projekt ist **kein Monolith**, sondern **Baukasten + Referenz-App**.
 9. Der Stack ist **wiederverwendbar** und kann Teil eines entstehenden Ökosystems werden.
-10. Das Projekt adressiert die **Aufmerksamkeitsökonomie** als gesellschaftliches Problem.
 
