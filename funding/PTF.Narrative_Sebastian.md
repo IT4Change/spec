@@ -38,3 +38,61 @@
   - Ressourcen-Sharing (Werkzeuge, Räume)
   - Governance-Tools (Konsent-basierte Entscheidungen)
   - Micro-Payments (Solidarische Ökonomie)
+
+
+
+
+### 2. Gamification → Wie belohnen wir Interaktion im echten Leben
+
+  **Konkrete Wirkmechanismen identifiziert:**
+
+  **Level 1 - Niedrigschwellig:**
+  - Badges für physische Treffen ("Erste Begegnung", "5 Events besucht")
+  - Streak-Counter ("4 Wochen in Folge aktiv")
+  - Leaderboards (lokal, nicht global: "Top 10 Nachbarn diese Woche")
+
+  **Level 2 - Web-of-Trust:**
+  - Trust-Score sichtbar machen (aber nicht zur Metrik verkommen lassen)
+  - "Vertrauenskreise" visualisieren (1. Kreis: 5 enge Nachbarn, 2. Kreis: 20 weitere)
+  - Unlock-Mechanik: "Ab 3 verifizierten Treffen siehst du Private-Events"
+
+  **Level 3 - Rolle wechseln:**
+  - **Das ist der Kern!** Aus Gast wird Gastgeber
+  - System schlägt vor: "Tom und 3 weitere interessieren sich für X. Event erstellen?"
+  - Achievement: "Erstes selbst-organisiertes Event" → starke intrinsische Motivation
+
+  **Anti-Gamification-Prinzip:**
+  - Keine Likes, keine Follower-Zahlen, keine Vanity-Metrics
+  - Belohnung ist das echte Treffen, nicht digitale Punkte
+  - Gamification dient nur als "Scaffolding" bis echte Gemeinschaft entsteht
+
+  ### 3. Dezentralisierung & Absicherung der Software
+
+  - **Wie bekommen wir die verschiedenen Instanzen Federiert**
+  - **Wie können wir digital ein Web-Of-Trust zwischen den Mitgliedern aufbauen** und die
+  Vertrauenswürdigkeit sichtbar machen/nutzen
+  - **E2E Verschlüsselung von Kommunikation**
+
+  **Erweitert durch technische Erkenntnisse:**
+  - **Federation-Use-Case:** Repair-Café-Netzwerk koordiniert Ersatzteile zwischen Städten, ohne
+  Zentralisierung
+  - **Web-of-Trust konkret:** QR/NFC-Scan bei physischem Treffen → unverifizierbare
+  Vertrauens-Kette
+  - **Privacy-by-Design:** Geo-Daten bleiben lokal, nur Bounding-Box ans Backend, Differential
+  Privacy für Statistiken
+
+  ### 4. Verschiedene Bedarfe identifizieren und ausarbeiten (lokale Gemeinschaften)
+
+  - **Kalender** - Organisieren von Veranstaltungen innerhalb einer lokal verorteten Gemeinschaft,
+  Einladungen, Online-Veranstaltungen für überregionale Gruppen.
+  - **Karte** - Verortung von Mitgliedern, Events und anderen geolokalisierter Daten für lokale und
+   globale Gemeinschaften
+  - **Feed** - Was passiert in der Gemeinschaft - Zeitliche Abfolge und personalisierte Inhalte
+  - **Dating** - (lokal verorte) Dating-Optionen anbieten
+  - **Lebensmittelverteilung und Organisationsprobleme im Allgemeinen** (Schulbus, Foodsharing,
+  Solawi)
+  - **Arbeitseinsätze organisieren**
+  - **Lokale Tauschgruppe**
+  - **Teilen von Gegenständen** (Kettensäge, Rasenmäher, ...)
+  - **Lokale (Bildungs-)Angebote**
+
