@@ -7,7 +7,7 @@
 #### **1.1 Gesellschaftliche Entwicklung**
 
 * Große gesellschaftliche Herausforderungen erfordern **lokales, eigenverantwortliches Handeln**.
-* Digitale Tools sollten **reale Begegnungen und Gemeinschaft** stärken – nicht ersetzen.
+* Digitale Tools sollten auf die **reale Begegnungen und Gemeinschaft** stärken – nicht ersetzen.
 
 #### **1.2 Bedürfnisse von Initiativen & Communities**
 
@@ -31,7 +31,7 @@
 
 #### **2.1 Stand der Technik**
 
-* Lokale Communities nutzen überwiegend **zentrale Client-Server-Plattformen**, obwohl sie dezentral arbeiten.
+* Communities nutzen überwiegend **zentrale Client-Server-Plattformen**, obwohl sie dezentral arbeiten.
 * Moderne Ansätze wie **Local-first**, **p2p** und **E2EE** bieten bessere Grundlagen für lokale Selbstorganisation.
 * Diese Technologien sind jedoch **noch jung, kaum standardisiert und nicht breit erprobt**.
 * Deshalb basieren die meisten real existierenden Tools weiterhin auf **klassischer Client-Server-Infrastruktur**.
@@ -44,30 +44,36 @@
 
 #### **2.3 Sicherheit & Identität**
 
-* Nutzer-Identitäten sollten nicht von zentralen Diensten abhängig sein → **Schlüsselbasierte IDs / DIDs**.
+* Nutzer-Identitäten dürfen nicht von zentralen Diensten abhängig sein → **Schlüsselbasierte IDs / DIDs**.
 * Private Kommunikation sollte **Ende-zu-Ende verschlüsselt** sein.
 * Daten sollen dezentral verwaltbar sein, ohne Abhängigkeit von externen Servern.
 
 #### **2.4 Nutzung & Deployment**
 
 * Communities benötigen **einfach anpassbare Whitelabel-Apps**, ohne technische Hürden.
-* Die Architektur muss flexibel sein (self-hosted, Föderation, später p2p).
+* Hosting muss flexibel sein (self-hosted, Föderation, später p2p).
 
 ---
 
 ## B) Projektziele
 
-1. **Modularer Baukasten**, aus dem Communities ihre eigenen lokalen Vernetzungs-Apps zusammenstellen können.
-2. **Flexibel anpassbare Whitelabel-App**, die sofort nutzbar ist.
-3. **Frontend-first Architektur**, unabhängig vom Backend.
-4. **Klare Daten- und Identitätsschnittstelle**, die Frontend und Backend trennt.
-5. **Connector-Modell**, mit dem verschiedene Backends angebunden werden können.
-6. **Minimaler, stabiler Prototyp** (Map, Kalender, Gruppen, Profile, Feed).
-7. **Einstiegsfreundliche Selbsteinrichtung** (Docker, einfache Konfiguration über Admin-Oberfläche).
-8. **Web of Trust** (Schlüsselpaare, Einladungen, Bestätigungen).
-9. **Zukunftsfähige Grundlage** für Local-first-, p2p- oder E2EE-Funktionen.
-10. **Offene Weiterentwicklung** durch die Community.
-11. **Plugin-Architektur**.
+1. Implementieren eines **Frontend-Baukastens** in React oder Vue.
+2. Definieren einer **einheitlichen Daten- und Identitätsschnittstelle**.
+3. Erstellen einer **Connector-Struktur** (mit 1 konkretem Referenz-Connector).
+4. Bereitstellen einer **Whitelabel-Referenz-App** (Docker).
+5. Implementierung der Kernmodule:
+   * Map
+   * Kalender
+   * Gruppen
+   * Profile
+   * Feed
+6. Basis legen für Schlüsselbasierte Identität:
+7. Basis für Trust-Graph und Web-of-Trust-Modell.
+8. Dokumentation
+   * User Docs
+   * Admin Docs 
+   * Developer Docs
+9. Testbetrieb mit Pilotgruppen
 
 ---
 
@@ -92,71 +98,3 @@
 9. Der Stack ist **wiederverwendbar** und kann Teil eines entstehenden Ökosystems werden.
 10. Das Projekt adressiert die **Aufmerksamkeitsökonomie** als gesellschaftliches Problem.
 
----
-
-## D) Technische Ziele
-
-1. Implementieren eines **Frontend-Baukastens** in React oder Vue.
-2. Definieren einer **einheitlichen Daten- und Identitätsschnittstelle**.
-3. Erstellen einer **Connector-Struktur** (mit 1 konkretem Referenz-Connector).
-4. Bereitstellen einer **Whitelabel-Referenz-App** (Docker).
-5. Implementierung der Kernmodule:
-   * Map
-   * Kalender
-   * Gruppen
-   * Profile
-   * Feed
-6. Basis legen für Schlüsselbasierte Identität:
-7. Basis für Trust-Graph und Web-of-Trust-Modell.
-8. Vorbereitung der Architektur für:
-   * Local-first
-   * Federation / Interoperabilität
-   * E2EE
-   * p2p
-9. Dokumentation
-   * User Docs
-   * Admin Docs 
-   * Developer Docs
-10. Testbetrieb mit Pilotgruppen
-
----
-
-## E) Ziele aus sicht des Nutzers
-
-1. **Einfach zu bedienen** — auch ohne Tech-Wissen.
-2. **Sofort nutzbar**, aber **frei anpassbar**.
-3. **Hilft bei echter Kooperation**, nicht nur Kommunikation.
-4. Unterstützt:
-   * Netzwerke aufbauen
-   * Menschen einladen
-   * Treffen planen
-   * Orte koordinieren
-   * Aufgaben verteilen
-   * Fortschritt sichtbar machen
-5. **Kein Vendor Lock-in** → Daten und Infrastruktur selbstbestimmt.
-6. **Vertrauensbasierte Struktur** für sensible Inhalte.
-7. Ermöglicht Gruppen, zu wachsen, statt in Tools zu stagnieren.
-8. Macht lokal-organisierte Aktionen wirklich einfacher (statt Chat-Chaos).
-
----
-
-## **F) Community- & Zukunftsziele**
-
-*(Second Stage + Beyond)*
-
-1. Aufbau einer **aktiven Maintainer- und Contributor-Community**.
-2. Vollwertiges Web-of-Trust.
-3. Implementierung von **E2EE** für mehrere Datentypen.
-4. Aufbau eines **Local-first / CRDT-Backends**.
-5. Optionaler **p2p-Connector**.
-6. Optionale **Federation** (ActivityPub, Murmurations).
-7. Governance-Konzept für:
-   * Module
-   * Connectoren
-   * Whitelabel-App
-8. Nachhaltige Weiterentwicklung (Release-Zyklen, Roadmap).
-9. Zusammenarbeit mit:
-   * Civic-Tech-Initiativen
-   * Commons-Projekten
-   * Kommunen / Bildungsprojekten
-10. Launch einer **Public Beta** mit Onboarding-Workflows.
