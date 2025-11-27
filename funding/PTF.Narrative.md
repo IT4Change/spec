@@ -24,7 +24,7 @@ Unsere Ziele, die wir mit unserer Software verfolgen sind die folgenden:
 ### Die Annahmen
 Usere Annahmen sind die folgenden:
 - Gemeinschaften haben oft ähnliche Probleme, brauchen aber teilweise spezielle Lösungen oder nur Teile eine Komplettlösungen. So erscheinen angebotene Lösungen oft zu komplex oder unpassend für das konkrete Problem.
-- Gemeinschaften haben das Bedürfnis die Lösungen an ihre Gemeinschaft anzupassen. Sie wünschen die Lösung zu ihrer zu machen. Wir machen die Erfahrung, dass dies besonders durch die White-Label Option unserer beiden Softwareprodukte gewährleistet wird. Eine Gemeinschaft möchte nicht zur Plattform XY kommen und dort eine Gruppe betreiben, sondern eine eigene Plattform in ihren Namen, nach ihren Bedürfnissen betreiben.
+- Gemeinschaften haben das Bedürfnis die Lösungen an ihre Gemeinschaft anzupassen. Sie wünschen die Lösung zu ihrer zu machen. Wir machen die Erfahrung, dass dies besonders durch die White-Label Option unserer beiden Softwareprodukte gewährleistet wird. Eine Gemeinschaft möchte nicht zu Plattform XY kommen und dort eine Gruppe betreiben, sondern eine eigene Plattform in ihren Namen, nach ihren Bedürfnissen gestalten.
 
 Communities wollen: Datenbesitz, Selfhost
 
