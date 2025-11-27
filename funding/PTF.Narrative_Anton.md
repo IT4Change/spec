@@ -51,7 +51,7 @@
 #### **2.4 Nutzung & Deployment**
 
 * Communities benötigen **einfach anpassbare Whitelabel-Apps**, ohne technische Hürden.
-* Hosting muss flexibel sein (self-hosted, Föderation, später p2p).
+* Annahmen muss flexibel sein (self-hosted, Föderation, später p2p).
 
 ---
 
