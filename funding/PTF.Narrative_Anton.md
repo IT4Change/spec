@@ -44,14 +44,14 @@
 
 #### **2.3 Sicherheit & Identität**
 
-* Nutzer-Identitäten dürfen nicht von zentralen Diensten abhängig sein → **Schlüsselbasierte IDs / DIDs**.
+* Nutzer-Identitäten sollten nicht von zentralen Diensten abhängig sein → **Schlüsselbasierte IDs / DIDs**.
 * Private Kommunikation sollte **Ende-zu-Ende verschlüsselt** sein.
 * Daten sollen dezentral verwaltbar sein, ohne Abhängigkeit von externen Servern.
 
 #### **2.4 Nutzung & Deployment**
 
 * Communities benötigen **einfach anpassbare Whitelabel-Apps**, ohne technische Hürden.
-* Annahmen muss flexibel sein (self-hosted, Föderation, später p2p).
+* Die Architektur muss flexibel sein (self-hosted, Föderation, später p2p).
 
 ---
 
