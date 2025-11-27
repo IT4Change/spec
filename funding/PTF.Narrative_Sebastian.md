@@ -32,14 +32,6 @@
   - Web-of-Trust-System (QR/NFC-Scanning)
   - Follow-up-Suggestions (aus Gast wird Gastgeber)
 
-  **Optionale Module (je nach Community):**
-  - Dating (lokal verortete Partnersuche)
-  - Zeitbank (Leistungen tauschen ohne Geld)
-  - Ressourcen-Sharing (Werkzeuge, Räume)
-  - Governance-Tools (Konsent-basierte Entscheidungen)
-  - Micro-Payments (Solidarische Ökonomie)
-
-
 
 
 ## Gamification → Wie belohnen wir Interaktion im echten Leben
