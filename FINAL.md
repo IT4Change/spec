@@ -61,20 +61,19 @@ QR-Code-Scanning beim echten Pasta-Dinner faken. Das ist einzigartiger Schutz ge
 * Diese Technologien sind jedoch **noch jung, kaum standardisiert und nicht breit erprobt**.
 * Deshalb basieren die meisten real existierenden Tools weiterhin auf **klassischer Client-Server-Infrastruktur**.
 
-#### **2.2 Architektur-Anforderungen**
+#### **2.2 Architektur-Anforderungen** 🟢🟢🟢🟢
 
-* Architektur muss **erweiterbar, modular und austauschbar** sein (Plugins, Module).
-* Ein Baukasten soll **Backend-agnostisch** sein, um verschiedene Architekturformen zu unterstützen.
-* Eine **klare Schnittstelle** zwischen Frontend und Backend ist dafür nützlich.
+* Für die Anwendung ist eine modulare Architektur hilfreich, die erweiterbar ist und Module/Plugins austauschbar sind.
+* Dafür ist eine **klare Schnittstelle** zwischen den Komponenten nötig
+* Damit wäre später sogar eine **Backend-agnostische** Entwicklung möglich, um verschiedene Architekturformen zu unterstützen.
 
-
-#### **2.3 Sicherheit & Identität**
+#### **2.3 Sicherheit & Identität**  🟡🟡🟡🟡
 
 * Nutzer-Identitäten sollten nicht von zentralen Diensten abhängig sein → **Schlüsselbasierte IDs / DIDs**.
 * Private Kommunikation sollte **Ende-zu-Ende verschlüsselt** sein.
 * Daten sollen dezentral verwaltbar sein, ohne Abhängigkeit von externen Servern.
 
-#### **2.4 Nutzung & Deployment**
+#### **2.4 Nutzung & Deployment** 🟢🟢🟢🟢
 
 * Communities benötigen **einfach anpassbare Whitelabel-Apps**, ohne technische Hürden.
 * Die Architektur muss flexibel sein (self-hosted, Föderation, später p2p).
@@ -88,30 +87,34 @@ QR-Code-Scanning beim echten Pasta-Dinner faken. Das ist einzigartiger Schutz ge
 
 ## Ziele
 
-### Für das Projekt
+### Techn. Ziele / Für das Projekt
 
-1. Implementieren eines **Frontend-Baukastens** in React oder Vue.
-2. Definieren einer **einheitlichen Daten- und Identitätsschnittstelle**.
-3. Erstellen einer **Connector-Struktur** (mit 1 konkretem Referenz-Connector).
-4. Bereitstellen einer **Whitelabel-Referenz-App** (Docker).
-5. Implementierung der Kernmodule:
+1. Implementieren eines **Frontend-Baukastens** in React oder Vue. 🟢🟢🟢🟢
+2. Definieren einer **einheitlichen Daten- und Identitätsschnittstelle**. 🟢🟢🟡🟡 
+3. Erstellen einer **Connector-Struktur** (mit 1 konkretem Referenz-Connector). 🟢🟢🟢🟢
+4. Bereitstellen einer **Whitelabel-Referenz-App** (Docker). 🟢🟢🟢🟢
+5. Implementierung der Kernmodule: 🟢🟢🟢🟢
    * Map
    * Kalender
    * Gruppen
    * Profile
    * Feed
-6. Basis legen für Schlüsselbasierte Identität:
-7. Basis für Trust-Graph und Web-of-Trust-Modell.
-8. Dokumentation
+6. Basis für Trust-Graph und Web-of-Trust-Modell. 🟢🟢🟢🟢
+7. Dokumentation 🟡🟡🟡🟡 (Ist Teilder Entwikclingsarbeit)
    * User Docs
    * Admin Docs 
    * Developer Docs
-9. Testbetrieb mit Pilotgruppen
+8. Testbetrieb mit Pilotgruppen 🟡🟡🟡🟡 (Das ist Stage2!)
 
-- Untersuchung von Gamification von Real-Life-Events
+<!-- Ende techn Ziele-->
 
-- Menschen wieder im echten Leben in Interaktion bringen
-- Unterstützung lokaler Gemeinschaften, da diese Grundlage für lokale Interaktion sind
+- Untersuchung von Gamification von Real-Life-Events 🟢🟢🟢🟢 (einer der Hauptpunkte, den es in der Arbeit herraus zu arbeiten gilt)
+
+- Menschen wieder im echten Leben in Interaktion bringen 🟢🟢🟢🟢
+- Unterstützung lokaler Gemeinschaften, da diese Grundlage für lokale Interaktion sind 🟢🟢🟢🟢 (beide Sätze können gern zusammen gefasst werden)
+
+### 
+
 
 ### Features
 
