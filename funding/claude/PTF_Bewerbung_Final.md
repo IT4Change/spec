@@ -12,12 +12,12 @@ Real Life Stack – Modularer Baukasten für lokale Vernetzung
 
 ### Name für den Account
 ```
-IT4C
+Real Life Stack
 ```
 
 ### Vorname / Name
 ```
-Ulf Gebhardt
+Anton Tranelis
 ```
 
 ### E-Mail-Adresse
@@ -27,7 +27,7 @@ ptf@it4c.dev
 
 ### GitHub-Account (optional)
 ```
-https://github.com/ulfgebhardt
+https://github.com/antontranelis
 ```
 
 ---
@@ -83,8 +83,8 @@ Für Identitäten setzen wir auf schlüsselbasierte Accounts, die optional als D
 ```
 Wir arbeiten seit mehreren Jahren an zwei Softwareprojekten mit ähnlichen Zielen:
 
-- Ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social): Ein selbsthostbares soziales Netzwerk für lokale Communities (aktuell im Einsatz bei wir.social und freilernen.social)
 - Utopia Map (https://github.com/utopia-os/utopia-map): Eine Karten-Anwendung zur Verortung von Mitgliedern und Inhalten (eingesetzt bei Ocean-Nomads und Menschlich-Wirtschaften e.G.)
+- Ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social): Ein selbsthostbares soziales Netzwerk für lokale Communities (aktuell im Einsatz bei wir.social und freilernen.social)
 
 Beide Projekte haben bewiesen, dass Bedarf besteht. Nun möchten wir die Erkenntnisse in einem gemeinsamen, modularen Baukasten vereinen. Erste Konzepte, UI-Mockups und Architekturskizzen existieren bereits. Das Fördervorhaben dient der prototypischen Entwicklung der Kernarchitektur und Module.
 ```
@@ -143,42 +143,49 @@ Erreichen der Zielgruppen:
 ## 9. MEILENSTEINE (max. 100 Wörter)
 
 ```
-M1 (Monate 1-2): Architektur & Grundlagen
+M1 (Monat 1): Architektur & Grundlagen
 - Definition der Daten- und Identitätsschnittstelle
 - Connector-Struktur mit Referenz-Connector
-- Projekt-Setup (Monorepo, TypeScript, Testing)
-- Developer Docs
+- Projekt-Setup (Monorepo, TypeScript, CI/CD Pipeline inkl. autom. Testing)
 
-M2 (Monate 3-4): Kernmodule
-- Map-Modul (Leaflet, Geo-Queries, Privacy-Zones)
-- Kalender-Modul (Events, iCal-Export)
+M2 (Monate 2-4): Kernmodule
+- Map-Modul (Leaflet, Geo-Queries, Clustering)
+- Kalender-Modul (Events, CalDAV-Integration)
 - Feed-Modul (Aktivitäten-Timeline)
-- Profile-Modul (schlüsselbasierte Identitäten)
+- Profile-Modul
 - Gruppen-Modul (Membership, Rollen)
+- regelmäßige Usability Tests
 
 M3 (Monat 5): Integration & Referenz-App
 - Whitelabel-Referenz-App mit allen Modulen
 - Docker-Setup für Selfhosting
-- Admin-Dokumentation
+- Admin Dashboard
 
-M4 (Monat 6): Testing & Dokumentation
+M4 (Monat 6): Vorbereitung für Roll-Out und Second Stage
+- Stage/Demo Umgebung einrichten
+- Website mit Dokumentation und Tutorials
 - User-Testing mit Pilotgruppen
-- Automated Testing (>80% Coverage)
-- User-Dokumentation und Tutorials
 ```
 
-**Wörter: 100** ✅
+**Wörter: 100** ?
 
 ---
 
 ## 10. TEAM (max. 30 Wörter)
 
-```
-- Mathias Lenz (https://github.com/mahula): Frontend und UX
-- Sebastian Stein (https://github.com/sebastian2357): Backend und Infrastruktur
-- Anton Tranelis (https://github.com/antontranelis): System-Architektur und Identität
-- Ulf Gebhardt (https://github.com/ulfgebhardt): DevOps und Integration
-```
+- **Anton Tranelis** — Projektkoordination, System-Architektur, Full Stack
+  https://github.com/antontranelis
+
+- **Ulf Gebhardt** — Full Stack, DevOps, Infrastruktur  
+  https://github.com/ulfgebhardt
+
+- **Sebastian Stein** — Frontend-Entwicklung, UX/UI  
+  https://github.com/sebastian2357
+  
+- **Mathias Lenz** — Qualitätssicherung, Testing, Dokumentation
+  https://github.com/mahula
+
+---
 
 **Wörter: 30** ✅
 
@@ -203,6 +210,19 @@ Ulf Gebhardt:
 - Kubernetes-Administration und Docker-Deployments
 - Self-Hosting-Infrastruktur (Authentik, Keycloak)
 - Consultant für moderne Web-Technologien (Vue 3, Nuxt, TypeScript)
+
+**Anton Tranelis:**
+- TODO
+
+**Ulf Gebhardt:**
+- TODO
+
+**Sebastian Stein:**
+- TODO
+
+**Mathias Lenz:**
+- Utopia Map (https://github.com/utopia-os/utopia-map) - Entwickling, Testautomatisierung, DevOps
+- ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwickling, Testautomatisierung, DevOps, Dokumentation
 
 Gemeinsam betreiben wir busFaktor() e.V. (https://www.busfaktor.org/) und arbeiten als IT4C-Kollektiv (https://it4c.dev/).
 ```
