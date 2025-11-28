@@ -215,14 +215,15 @@ Ulf Gebhardt:
 - TODO
 
 **Ulf Gebhardt:**
-- TODO
+- Utopia Map (https://github.com/utopia-os/utopia-map) - Entwicklung, Github-Verwaltung, Github-Workflows, Typescript & Typisierungen, Reviews, Hosting der Lösung
+- ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwicklung, Testing, Öffentlichkeitsarbeit, Hosting der Lösung, Refactoring, Bumps, Koordinierung der Entwicklung
 
 **Sebastian Stein:**
 - TODO
 
 **Mathias Lenz:**
-- Utopia Map (https://github.com/utopia-os/utopia-map) - Entwickling, Testautomatisierung, DevOps
-- ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwickling, Testautomatisierung, DevOps, Dokumentation
+- Utopia Map (https://github.com/utopia-os/utopia-map) - Entwicklung, Testautomatisierung, DevOps
+- ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwicklung, Testautomatisierung, DevOps, Dokumentation
 
 Gemeinsam betreiben wir busFaktor() e.V. (https://www.busfaktor.org/) und arbeiten als IT4C-Kollektiv (https://it4c.dev/).
 ```
