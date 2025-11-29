@@ -173,7 +173,7 @@ M4 (Monat 6): Vorbereitung für Roll-Out und Second Stage
 
 ## 10. TEAM (max. 30 Wörter)
 
-- **Anton Tranelis** — Projektkoordination, System-Architektur, Full Stack
+- **Anton Tranelis** — Projektkoordination, System-Architektur, Full Stack  
   https://github.com/antontranelis
 
 - **Ulf Gebhardt** — Full Stack, DevOps, Infrastruktur  
@@ -182,7 +182,7 @@ M4 (Monat 6): Vorbereitung für Roll-Out und Second Stage
 - **Sebastian Stein** — Frontend-Entwicklung, UX/UI  
   https://github.com/sebastian2357
   
-- **Mathias Lenz** — Qualitätssicherung, Testing, Dokumentation
+- **Mathias Lenz** — Qualitätssicherung, Testing, Dokumentation  
   https://github.com/mahula
 
 ---
@@ -193,22 +193,12 @@ M4 (Monat 6): Vorbereitung für Roll-Out und Second Stage
 
 ## 11. ERFAHRUNG (max. 100 Wörter)
 
-```
-Mathias Lenz:
-- Maintainer von Utopia Map (https://github.com/utopia-os/utopia-map)
-- Erfahrung mit Vue.js, Nuxt, Leaflet, GeoJSON
-
-Sebastian Stein:
+**Sebastian Stein**:
 - Co-Maintainer von Ocelot.social
 - Erfahrung mit Node.js, GraphQL, Neo4j
 
-Anton Tranelis:
+**Anton Tranelis**:
 - Initiator und Maintainer von [Utopia Map](https://github.com/utopia-os/utopia-map)
-
-Ulf Gebhardt:
-- Kubernetes-Administration und Docker-Deployments
-- Self-Hosting-Infrastruktur (Authentik, Keycloak)
-- Consultant für moderne Web-Technologien (Vue 3, Nuxt, TypeScript)
 
 **Ulf Gebhardt:**
 - Utopia Map (https://github.com/utopia-os/utopia-map) - Entwicklung, Github-Verwaltung, Github-Workflows, Typescript & Typisierungen, Reviews, Hosting der Lösung
@@ -218,8 +208,7 @@ Ulf Gebhardt:
 - Utopia Map (https://github.com/utopia-os/utopia-map) - Entwicklung, Testautomatisierung, DevOps
 - ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwicklung, Testautomatisierung, DevOps, Dokumentation
 
-Gemeinsam betreiben wir busFaktor() e.V. (https://www.busfaktor.org/) und arbeiten als IT4C-Kollektiv (https://it4c.dev/).
-```
+<!-- Gemeinsam betreiben wir busFaktor() e.V. (https://www.busfaktor.org/) und arbeiten als IT4C-Kollektiv (https://it4c.dev/). -->
 
 **Wörter: 75** ✅
 
