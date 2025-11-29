@@ -203,23 +203,16 @@ Sebastian Stein:
 - Erfahrung mit Node.js, GraphQL, Neo4j
 
 Anton Tranelis:
-- Beiträge zu föderierten Systemen
-- Erfahrung mit ActivityPub, OAuth/OIDC, DIDs
+- Initiator und Maintainer von [Utopia Map](https://github.com/utopia-os/utopia-map)
 
 Ulf Gebhardt:
 - Kubernetes-Administration und Docker-Deployments
 - Self-Hosting-Infrastruktur (Authentik, Keycloak)
 - Consultant für moderne Web-Technologien (Vue 3, Nuxt, TypeScript)
 
-**Anton Tranelis:**
-- TODO
-
 **Ulf Gebhardt:**
 - Utopia Map (https://github.com/utopia-os/utopia-map) - Entwicklung, Github-Verwaltung, Github-Workflows, Typescript & Typisierungen, Reviews, Hosting der Lösung
 - ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwicklung, Testing, Öffentlichkeitsarbeit, Hosting der Lösung, Refactoring, Bumps, Koordinierung der Entwicklung
-
-**Sebastian Stein:**
-- TODO
 
 **Mathias Lenz:**
 - Utopia Map (https://github.com/utopia-os/utopia-map) - Entwicklung, Testautomatisierung, DevOps
