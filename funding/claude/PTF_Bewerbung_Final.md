@@ -83,7 +83,7 @@ Das gesellschaftliche Problem besteht somit aus zwei Teilen: dem Mangel an selbs
 
 ---
 
-(*)Wolle: Software einfach nicht einsetzen ist eine Lösung. Muss enkräftet werden. Warum sollte es solche Software geben?
+(*)Wolle: Software einfach nicht einsetzen ist eine Lösung. Muss entkräftet werden. Warum sollte es solche Software geben?
 **Wolle: Unverständlich warum/was/wie unabhängig von einzelnen Plattformen. Was bedeutet das?
 
 ## 4. TECHNISCHE UMSETZUNG (max. 175 Wörter)
