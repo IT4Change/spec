@@ -198,7 +198,7 @@ M4 (Monat 6): Vorbereitung für Roll-Out und Second Stage
 - Erfahrung mit Node.js, GraphQL, Neo4j
 
 **Anton Tranelis**:
-- Initiator und Maintainer von [Utopia Map](https://github.com/utopia-os/utopia-map)
+- Initiator und Maintainer (Projektkoordination, System-Architektur, Full Stack) von [Utopia Map](https://github.com/utopia-os/utopia-map)
 
 **Ulf Gebhardt:**
 - Utopia Map (https://github.com/utopia-os/utopia-map) - Entwicklung, Github-Verwaltung, Github-Workflows, Typescript & Typisierungen, Reviews, Hosting der Lösung
