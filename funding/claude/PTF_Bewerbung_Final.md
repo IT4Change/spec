@@ -202,22 +202,22 @@ Erreichen der Zielgruppen:
 
 ## 11. ERFAHRUNG (max. 100 Wörter)
 
-**Sebastian Stein**:
-- Entwickler, UX-Verbesserung bei ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social)
-- Gründer, Fullstack, UX von Vairnana (ehemalige App mit Umkreissuche zur Förderung von Nachhaltigkeit im stationäen Einzelhandel)
-- Teil des Entwicklerteams, UX von ESD (https://www.keysight.com/de/de/product/SL1091A/sl1091a-scienlab-energy-storage-discover-software.html)
-
 **Anton Tranelis**:
-- Initiator und Maintainer (Projektkoordination, System-Architektur, Full Stack) von [Utopia Map](https://github.com/utopia-os/utopia-map)
+- [Utopia Map](https://github.com/utopia-os/utopia-map) - Initiator und Maintainer (Projektkoordination, Architektur, Entwicklung, UX)
 
 **Ulf Gebhardt:**
-- Utopia Map (https://github.com/utopia-os/utopia-map) - Entwicklung, Github-Verwaltung, Github-Workflows, Typescript & Typisierungen, Reviews, Hosting der Lösung
-- ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwicklung, Testing, Öffentlichkeitsarbeit, Hosting der Lösung, Refactoring, Bumps, Koordinierung der Entwicklung
-- DEMOCRACY App (https://github.com/demokratie-live) - Architektur & Entwicklung
+- [Utopia Map](https://github.com/utopia-os/utopia-map) - Entwicklung, Github-Verwaltung, Github-Workflows, Typescript & Typisierungen, Reviews, Hosting der Lösung
+- [ocelot.social](https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwicklung, Testing, Öffentlichkeitsarbeit, Hosting der Lösung, Refactoring, Bumps, Koordinierung der Entwicklung
+- [DEMOCRACY App](https://github.com/demokratie-live) - Architektur & Entwicklung
+
+**Sebastian Stein**:
+- [ocelot.social](https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwicklung, UX
+- Vairnana - Gründer, Entwicklung, UX (Vairnana war eine App mit Umkreissuche zur Förderung von Nachhaltigkeit im stationäen Einzelhandel)
+- [ESD](https://www.keysight.com/de/de/product/SL1091A/sl1091a-scienlab-energy-storage-discover-software.html) - Entwicklung, UX
 
 **Mathias Lenz:**
-- Utopia Map (https://github.com/utopia-os/utopia-map) - Entwicklung, Testautomatisierung, DevOps
-- ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwicklung, Testautomatisierung, DevOps, Dokumentation
+- [Utopia Map](https://github.com/utopia-os/utopia-map) - Entwicklung, Testautomatisierung, DevOps
+- [ocelot.social](https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwicklung, Testautomatisierung, DevOps, Dokumentation
 
 
 ---
