@@ -38,7 +38,7 @@ Lokale Gemeinschaften brauchen digitale Werkzeuge, die echte Begegnungen förder
 Die Whitelabel-App kann ohne technisches Know-how selbst gehostet werden. Durch eine klare Schnittstelle zwischen Frontend und Backend entsteht ein Baukasten, der heute mit klassischen Servern arbeitet und morgen dezentrale, verschlüsselte oder local-first Architekturen unterstützen kann.
 
 ----
-Echte Veränderung passiert im echten Leben. Mit dem **Real Life Stack** entwickeln wir einen modularen Baukasten, mit dem Gemeinschaften ihre eigene App für Vernetzung und Zusammenarbeit gestalten können. Bausteine wie Karte, Kalender, Gruppen und Profile lassen sich flexibel an unterschiedliche Kontexte anpassen und fördern praktische Kooperation vor Ort.
+Echte Veränderung passiert im echten Leben. Mit dem **Real Life Stack** entwickeln wir einen modularen Baukasten, mit dem Gemeinschaften ihre eigene App für Vernetzung und Zusammenarbeit gestalten können, die konsequent für Vernetzung und Kooperation im echten Leben optimiert sind.  Bausteine wie Karte, Kalender, Gruppen und Profile lassen sich flexibel an unterschiedliche Kontexte anpassen und fördern praktische Kooperation vor Ort.
 
 Gemeinschaften ohne technisches Know-how können eine selbsthostbare Whitelabel-App nutzen. Gleichzeitig bildet der Baukasten die Grundlage für zukünftige lokal betriebene oder verschlüsselte Anwendungen, sodass Gruppen Inhalte langfristig sicher und vertrauensbasiert innerhalb ihres eigenen Netzwerks teilen können.
 
@@ -95,21 +95,14 @@ Wir liefern zudem eine **selbsthostbare Referenzimplementierung** mit einem leic
 
 ## 5. AKTUELLER STAND (max. 100 Wörter)
 
-Wir arbeiten seit mehreren Jahren an zwei Softwareprojekten mit ähnlichen Zielen:
-
-- Utopia Map (https://github.com/utopia-os/utopia-map): Eine Karten-Anwendung zur Verortung von Mitgliedern und Inhalten (eingesetzt bei Ocean-Nomads und Menschlich-Wirtschaften e.G.)
-- Ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social): Ein selbsthostbares soziales Netzwerk für lokale Communities (aktuell im Einsatz bei wir.social und freilernen.social)
-
-Beide Projekte haben bewiesen, dass Bedarf besteht. Nun möchten wir die Erkenntnisse in einem gemeinsamen, modularen Baukasten vereinen. Erste Konzepte, UI-Mockups und Architekturskizzen existieren bereits. Das Fördervorhaben dient der prototypischen Entwicklung der Kernarchitektur und Module.
-
-
+Das Projekt baut auf zwei bestehenden Open-Source-Ansätzen auf: der [Utopia Map](https://github.com/utopia-os/utopia-map) (seit 2021) – einer kollaborativen Kartenanwendung für selbstorganisierte Gemeinschaften – und [Ocelot Social](https://github.com/Ocelot-Social-Community/Ocelot-Social) (seit 2018), einem selbsthostbaren sozialen Netzwerk. Beide wurden über Jahre weiterentwickelt und verfolgen das gleiche Ziel: reale Begegnungen und lokale Zusammenarbeit zu fördern. Aus diesen Erfahrungen entsteht nun der Real-Life Stack als gemeinsame, modularisierte Weiterführung. Die konzeptionelle Grundlage ist erarbeitet; es existieren bereits ein Repository mit Anforderungs- und Konzeptdokumenten sowie erste Click-Dummy-Prototypen. Der Stack selbst ist noch nicht implementiert und befindet sich in der Vorbereitungsphase.
 
 ---
 
 ## 6. LINK ZUM PROJEKT (optional)
 
 
-https://github.com/IT4Change/spec
+[https://github.com/IT4Change/spec](https://github.com/IT4Change/real-life-stack)
 
 
 ---
@@ -129,7 +122,7 @@ Der Real Life Stack vereint erstmals alle Dimensionen: modularer Baukasten + lok
 ----
 
 
-Der Real Life Stack ist der erste modulare Baukasten, der radikal auf lokale Begegnungen und gemeinschaftliche Aktivitäten im echten Leben optimiert ist. Statt eine weitere Plattform zu bauen, liefert er wiederverwendbare Komponenten (Karte, Kalender, Gruppen, Feed, Profile) und eine einheitliche Daten- und Identitätsschnittstelle. Mobilizon, Karrot und Bonfire decken einzelne Bedürfnisse ab, sind jedoch monolithisch oder sozialnetzwerk-orientiert. Der Real Life Stack unterscheidet sich durch echte Modularität, Backend-Agnostik, hyperlokalen Fokus und Real-Life-Mechanismen wie Geo-Filter und Web-of-Trust durch physische Treffen. Communities können eigene Apps bauen, selbst hosten und ihre digitale Infrastruktur vollständig kontrollieren.
+Der Real Life Stack ist der erste modulare Frontend-Baukasten, der radikal auf lokale Begegnungen und gemeinschaftliche Aktivitäten im echten Leben optimiert ist. Statt eine weitere Plattform zu bauen, liefert er wiederverwendbare Komponenten (Karte, Kalender, Gruppen, Feed, Profile) und eine einheitliche Daten- und Identitätsschnittstelle. Projekte wie Mobilizon, Karrot und Bonfire decken einzelne dieser Aspekte ab, sind jedoch monolithisch oder sozialnetzwerk-orientiert. Der Real Life Stack unterscheidet sich durch echte Modularität, Backend-Agnostik, hyperlokalen Fokus und Real-Life-Mechanismen wie Geo-Filter und Web-of-Trust durch physische Treffen. Communities können eigene Apps bauen, selbst hosten und ihre digitale Infrastruktur vollständig kontrollieren.
 
 ---
 
