@@ -37,6 +37,10 @@ Lokale Gemeinschaften brauchen digitale Werkzeuge, die echte Begegnungen förder
 
 Die Whitelabel-App kann ohne technisches Know-how selbst gehostet werden. Durch eine klare Schnittstelle zwischen Frontend und Backend entsteht ein Baukasten, der heute mit klassischen Servern arbeitet und morgen dezentrale, verschlüsselte oder local-first Architekturen unterstützen kann.
 
+----
+Echte Veränderung passiert im echten Leben. Mit dem **Real Life Stack** entwickeln wir einen modularen Baukasten, mit dem Gemeinschaften ihre eigene App für Vernetzung und Zusammenarbeit gestalten können. Bausteine wie Karte, Kalender, Gruppen und Profile lassen sich flexibel an unterschiedliche Kontexte anpassen und fördern praktische Kooperation vor Ort.
+
+Gemeinschaften ohne technisches Know-how können eine selbsthostbare Whitelabel-App nutzen. Gleichzeitig bildet der Baukasten die Grundlage für zukünftige lokal betriebene oder verschlüsselte Anwendungen, sodass Gruppen Inhalte langfristig sicher und vertrauensbasiert innerhalb ihres eigenen Netzwerks teilen können.
 
 
 ---
@@ -52,6 +56,13 @@ Das Problem ist zweifach: Erstens behindern aktuelle Tools vertrauensbasierte Be
 
 Software kann zur Lösung beitragen, indem sie lokale Vernetzung technisch unterstützt, Datenhoheit ermöglicht und echte Begegnungen fördert. Genau hier setzt der Real Life Stack an.
 
+---
+
+Viele digitale Werkzeuge fördern vor allem Online-Zeit statt lokale Begegnungen. Die meistgenutzten "sozialen" Apps sind Teil einer Aufmerksamkeitsökonomie, die darauf ausgelegt ist, Nutzer*innen möglichst lange am Bildschirm zu halten. Dadurch ersetzen Nachrichten und Chats häufig reale Treffen, und lokale Beziehungen bleiben auf der Strecke. Gleichzeitig fehlt es an offener digitaler Infrastruktur, die Zusammenarbeit, Vertrauen und reale Begegnungen unterstützt.
+
+Besonders betroffen sind kleinere Initiativen, Projekte und Nachbarschaftsnetzwerke, die weder die Ressourcen noch das technische Know-how besitzen, um eigene Infrastruktur aufzubauen. Für sie wäre ein Werkzeug notwendig, das echte Kooperation unterstützt, vertrauliche Informationen schützt und unabhängig von einzelnen Plattformen funktioniert.
+
+Das gesellschaftliche Problem besteht somit aus zwei Teilen: dem Mangel an selbstbestimmten, sicheren Werkzeugen für lokale Zusammenarbeit und der wachsenden Abhängigkeit von zentralen Netzwerken. Durch offene, anpassbare digitale Infrastruktur können Gruppen wieder selbst entscheiden, wie sie sich vernetzen und welche Daten sie teilen. Genau hier setzt unser Projekt an.
 
 ---
 
@@ -68,6 +79,16 @@ Wir stellen zudem eine selbsthostbare Referenz-Implementierung mit einem leichtg
 Für Identitäten setzen wir auf schlüsselbasierte Accounts, die optional als Decentralized Identifiers (DIDs) abgebildet werden können.
 
 
+---
+
+Der Real Life Stack wird als modularer Frontend-Baukasten in einem modernen JavaScript-Framework wie React oder Vue entwickelt. Er umfasst eigenständige Komponenten wie Karte, Kalender, Gruppen, Profile und Feed, die sowohl in der mitgelieferten Referenzanwendung als auch in eigenen Projekten eingesetzt werden können.
+
+Alle Komponenten greifen auf eine gemeinsame **Daten- und Identitätsschnittstelle** im Frontend zurück. Diese Schnittstelle definiert einheitliche Funktionen für das Laden und Speichern von Gruppen, Terminen, Profilen oder Vertrauensbeziehungen. Dadurch bleibt die Logik des Baukastens stabil, unabhängig davon, wo die Daten tatsächlich liegen oder wie Identitäten verwaltet werden.
+
+
+Unterhalb dieser Ebene liegt eine schlanke **Connector-Struktur**: Wir definieren das Muster, nach dem Backends angebunden werden können, und liefern eine erste Implementierung mit. Weitere Connectoren können von Communities oder Entwickler*innen selbst erstellt werden – zum Beispiel für lokal-first-, p2p- oder E2EE-basierte Systeme.
+
+Wir liefern zudem eine **selbsthostbare Referenzimplementierung** mit einem leichtgewichtigen Open-Source-Backend und einem Docker-Setup, damit Gemeinschaften ohne technisches Know-how sofort starten können.
 
 
 ---
