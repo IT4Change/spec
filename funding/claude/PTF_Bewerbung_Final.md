@@ -269,7 +269,27 @@ Basierend auf Pilot-Feedback entwickeln wir eine zweite Modul-Generation: Ressou
 
 ---
 
+```
 ## 16. SECOND STAGE: MEILENSTEINE (max. 100 Wörter)
+
+M1 (Monate 7-8): Community-Onboarding & Testing
+- 3 Pilot-Communities onboarden (Nachbarschaft, Bildung, Ressourcen-Sharing)
+- Stage-1-Prototypen deployen und im Real-World-Einsatz begleiten
+- Metriken erfassen: Nutzungsverhalten, Vernetzungsdynamik, reale Interaktionen, Commitment-Gap
+
+M2 (Monat 9): Iteration & Skalierung
+- Learnings aus M1 in Produkt integrieren
+- 3-5 weitere Communities onboarden (Self-Service mit Dokumentation)
+- Best-Practices dokumentieren (Admin-Guides, Community-Building-Playbooks)
+
+M3 (Monat 10): Impact & Nachhaltigkeit
+- Impact-Report: Welche Aktivierungs-Mechanismen funktionieren?
+- Sustainability-Strategie (Community-Support-Modell, Post-Förderungs-Roadmap)
+- Conference-Präsentationen (FOSDEM, GPN, Bits & Bäume)
+- Video-Tutorials für Selfhoster*innen
+
+```
+
 
 ```
 M1 (Monate 7-8): Community-Onboarding
