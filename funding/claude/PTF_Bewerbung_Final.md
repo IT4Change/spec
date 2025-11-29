@@ -200,8 +200,9 @@ M4 (Monat 6): Vorbereitung für Roll-Out und Second Stage
 ## 11. ERFAHRUNG (max. 100 Wörter)
 
 **Sebastian Stein**:
-- Co-Maintainer von Ocelot.social
-- Erfahrung mit Node.js, GraphQL, Neo4j
+- Entwickler, UX-Verbesserung bei ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social)
+- Gründer, Fullstack, UX von Vairnana (ehemalige App mit Umkreissuche zur Förderung von Nachhaltigkeit im stationäen Einzelhandel)
+- Teil des Entwicklerteams, UX von ESD (https://www.keysight.com/de/de/product/SL1091A/sl1091a-scienlab-energy-storage-discover-software.html)
 
 **Anton Tranelis**:
 - Initiator und Maintainer (Projektkoordination, System-Architektur, Full Stack) von [Utopia Map](https://github.com/utopia-os/utopia-map)
