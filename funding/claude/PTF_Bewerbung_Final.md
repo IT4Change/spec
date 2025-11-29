@@ -1,5 +1,4 @@
 # PTF Bewerbung - Formular-Format
-**Hinweis: Dieses Dokument enthält alle Antworten im exakten Format für das Bewerbungsformular**
 
 ---
 
