@@ -258,7 +258,7 @@ Dabei wollen wir verstehen, welche Funktionen echte Begegnungen, lokale Vernetzu
 
 Parallel erforschen wir, ob und wie spielerische Mechanismen wie Quests, Badges und Fortschrittsanzeigen Menschen motivieren, neue Kontakte zu knüpfen, Treffen zu organisieren oder an ihnen teilzunehmen sowie eigene Gruppen und Projekte zu starten.
 
-Wie entwickeln wir ein Playbook für neue Communities – mit Hosting-Guides, einfachen Einstiegsmaterialien und einer Roadmap, die zeigt, wie Gruppen den Stack einsetzen, anpassen und erweitern können.
+Wir entwickeln ein Playbook für neue Communities – mit Hosting-Guides, einfachen Einstiegsmaterialien und einer Roadmap, die zeigt, wie Gruppen den Stack einsetzen, anpassen und erweitern können.
 
 Wir bereiten unsere Ergebnisse in Tutorials, Blogbeiträgen, Videos und Interviews so auf, dass weitere Communities inspiriert werden. Damit schaffen wir eine stabile Grundlage, auf der Communities den Real-Life Stack eigenständig nutzen und gemeinsam mit ihm wachsen können.
 
