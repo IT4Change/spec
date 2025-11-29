@@ -98,9 +98,9 @@ Das Projekt baut auf zwei bestehenden Open-Source-Ansätzen auf: der [Utopia Map
 ## 7. INNOVATION (max. 100 Wörter)
 
 
-Projekte wie Karrot, Bonfire und Mobilizon decken einzelne Aspekte unseres Ansatzes ab: Karrot stärkt Face-to-Face-Aktivitäten, bietet aber keine modulare oder föderierbare Architektur. Bonfire ist modular, jedoch nicht auf hyperlokale Begegnungen oder Geo-Mechanismen ausgerichtet. Mobilizon ermöglicht Events und Gruppen im Fediverse, verfügt jedoch weder über modulare Komponenten noch über Geo-Logik zur lokalen Selbstorganisation.
+Projekte wie Karrot, Bonfire und Mobilizon decken einzelne Aspekte unseres Ansatzes ab: Karrot stärkt Face-to-Face-Aktivitäten, bietet aber keine modulare oder föderierbare Architektur. Bonfire ist modular, jedoch nicht auf hyperlokale Begegnungen oder Geo-Mechanismen ausgerichtet. Mobilizon ermöglicht Events und Gruppen im Fediverse und bietet Ortsfilter, verfügt aber weder über modulare Komponenten noch über eine Geo-Logik für lokale Selbstorganisation.
 
-Der Real Life Stack kombiniert diese Ansätze in einer wiederverwendbaren Infrastruktur: ein modularer Frontend-Baukasten mit einheitlicher Daten- und Identitätsschnittstelle, backend-agnostisch und auf lokale Kooperation optimiert. Geo-Filter und ein Web-of-Trust durch reale Treffen fördern vertrauensbasierte Zusammenarbeit und volle Datenhoheit.
+Der Real Life Stack kombiniert diese Ansätze in einer wiederverwendbaren Infrastruktur: ein modularer Frontend-Baukasten mit einheitlicher Daten- und Identitätsschnittstelle, backend-agnostisch und auf lokale Kooperation optimiert. Geo-Filter und ein Web-of-Trust durch reale Treffen fördern vertrauensbasierte Zusammenarbeit und Datenhoheit.
 
 ---
 
