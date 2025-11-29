@@ -113,6 +113,12 @@ Bestehende Lösungen haben jeweils Teile unserer Vision realisiert:
 Der Real Life Stack vereint erstmals alle Dimensionen: modularer Baukasten + lokaler Fokus + vertrauensbasierte Identität + offene Standards. Statt einer weiteren Plattform schaffen wir wiederverwendbare Infrastruktur. Communities können einzelne Module nutzen oder die Whitelabel-App selbst hosten – mit voller Datenhoheit und ohne Abhängigkeit von zentralen Diensten.
 ```
 
+----
+
+```
+Der Real Life Stack ist der erste modulare Baukasten, der radikal auf lokale Begegnungen und gemeinschaftliche Aktivitäten im echten Leben optimiert ist. Statt eine weitere Plattform zu bauen, liefert er wiederverwendbare Komponenten (Karte, Kalender, Gruppen, Feed, Profile) und eine einheitliche Daten- und Identitätsschnittstelle. Mobilizon, Karrot und Bonfire decken einzelne Bedürfnisse ab, sind jedoch monolithisch oder sozialnetzwerk-orientiert. Der Real Life Stack unterscheidet sich durch echte Modularität, Backend-Agnostik, hyperlokalen Fokus und Real-Life-Mechanismen wie Geo-Filter und Web-of-Trust durch physische Treffen. Communities können eigene Apps bauen, selbst hosten und ihre digitale Infrastruktur vollständig kontrollieren.
+```
+
 **Wörter: 100** ✅
 
 ---
