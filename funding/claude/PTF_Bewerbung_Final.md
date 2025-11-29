@@ -157,12 +157,12 @@ Erreichen der Zielgruppen:
 ## 9. MEILENSTEINE (max. 100 Wörter)
 
 
-#### M1 (Monat 1): Architektur & Grundlagen
+#### M1: Architektur & Grundlagen (Monat 1)
 - Definition der Daten- und Identitätsschnittstelle
 - Connector-Struktur mit Referenz-Connector
 - Projekt-Setup (Monorepo, TypeScript, CI/CD Pipeline inkl. autom. Testing)
 
-#### M2 (Monate 2-4): Kernmodule
+#### M2: Kernmodule (Monate 2-4)
 - Map-Modul (Leaflet, Geo-Queries, Clustering)
 - Kalender-Modul (Events, CalDAV-Integration)
 - Feed-Modul (Aktivitäten-Timeline)
@@ -170,12 +170,12 @@ Erreichen der Zielgruppen:
 - Gruppen-Modul (Membership, Rollen)
 - regelmäßige Usability Tests
 
-#### M3 (Monat 5): Integration & Referenz-App
+#### M3: Integration & Referenz-App (Monat 5)
 - Whitelabel-Referenz-App mit allen Modulen
 - Docker-Setup für Selfhosting
 - Admin Dashboard
 
-#### M4 (Monat 6): Vorbereitung für Roll-Out und Second Stage
+#### M4: Vorbereitung für Roll-Out und Second Stage (Monat 6)
 - Stage/Demo Umgebung einrichten
 - Website mit Dokumentation und Tutorials
 - User-Testing mit Pilotgruppen
@@ -245,56 +245,44 @@ Uns treibt die Vision einer dezentralen, selbstbestimmten digitalen Welt an, in 
 
 ## 14. SECOND-STAGE-FÖRDERUNG
 
-```
 Ja
-```
+
 
 ---
 
 ## 15. SECOND STAGE: SCHWERPUNKT (max. 175 Wörter)
 
-In der Second Stage liegt der Fokus auf Community-Onboarding und Nachhaltigkeit:
+In der Second Stage wollen wir uns intensiv auf die Zusammenarbeit mit realen Communities konzentrieren. Wir arbeiten direkt mit verschiedenen Gruppen zusammen und unterstützen sie bei der Einführung unserer Software und beobachten gemeinsam, wie sie ihn im Alltag nutzen.
 
-1. Pilot-Communities (3-5 Gruppen):
-Wir begleiten lokale Gemeinschaften aus verschiedenen Bereichen (z.B. Nachbarschaftsinitiative, Foodsharing-Gruppe, Repair-Café) beim Launch ihrer Real Life Stack-Instanz. Dabei testen wir verschiedene Anwendungsfälle und sammeln Feedback zur Usability.
+Dabei wollen wir verstehen, welche Funktionen echte Begegnungen, lokale Vernetzung und Kooperation fördern – und welche nicht. Dafür werten wir Metriken zu Aktivität, Vernetzung und Real-Life-Treffen aus, führen Interviews und übersetzen diese Erkenntnisse in weitere Optimierungen des Stacks.
 
-2. Gamification & Real-Life-Aktivierung:
-Wir entwickeln und testen Mechanismen, die digitale Interaktion in echte Begegnungen überführen. Ein "Papierprototyp" wird in den Pilot-Communities erprobt: Wie können wir Menschen motivieren, sich offline zu treffen? Welche spielerischen Elemente (Badges, Streaks, Vertrauens-Visualisierung) helfen dabei?
+Parallel erforschen wir, ob und wie spielerische Mechanismen wie Quests, Badges und Fortschrittsanzeigen Menschen motivieren, neue Kontakte zu knüpfen, Treffen zu organisieren oder an ihnen teilzunehmen sowie eigene Gruppen und Projekte zu starten.
 
-3. Advanced Features:
-Basierend auf Pilot-Feedback entwickeln wir eine zweite Modul-Generation: Ressourcen-Sharing (Werkzeuge, Räume), Lebensmittelverteilung, Zeitbank-Integration.
+Wie entwickeln wir ein Playbook für neue Communities – mit Hosting-Guides, einfachen Einstiegsmaterialien und einer Roadmap, die zeigt, wie Gruppen den Stack einsetzen, anpassen und erweitern können.
 
-4. Sustainability & Verbreitung:
-- Entwicklung eines Community-Support-Modells (Dokumentation, Video-Tutorials, FAQ)
-- Präsentation auf Konferenzen
-- Best-Practice-Guides für weitere Gruppen
-
+Wir bereiten unsere Ergebnisse in Tutorials, Blogbeiträgen, Videos und Interviews so auf, dass weitere Communities inspiriert werden. Damit schaffen wir eine stabile Grundlage, auf der Communities den Real-Life Stack eigenständig nutzen und gemeinsam mit ihm wachsen können.
 
 ---
 
 ## 16. SECOND STAGE: MEILENSTEINE (max. 100 Wörter)
 
-#### M1 (Monate 7-8): Community-Onboarding & Testing
+#### M1: Community-Onboarding & Testing (Monate 7-8)
 
 * 3 Pilot-Communities onboarden (Nachbarschaft, Bildung, Ressourcen-Sharing)
 * Stage-1-Prototypen deployen und im Real-World-Einsatz begleiten
 * Metriken erfassen: Nutzungsverhalten, Vernetzungsdynamik, Real-Life Begegnungen, Commitment-Gap
 
-#### M2 (Monat 9): Iteration & Skalierung
+#### M2: Iteration & Skalierung (Monat 9)
 
 * Learnings aus M1 in Produkt integrieren
 * 3-5 weitere Communities onboarden (Self-Service mit Dokumentation)
 * Best-Practices dokumentieren (Admin-Guides, Community-Building-Playbooks)
 
-#### M3 (Monat 10): Impact & Nachhaltigkeit
+#### M3: Impact & Nachhaltigkeit (Monat 10)
 * Impact-Report: Welche Aktivierungs-Mechanismen funktionieren?
 * Sustainability-Strategie (Community-Support-Modell, Post-Förderungs-Roadmap)
 * Conference-Präsentationen (z.B. FOSDEM, GPN, Bits & Bäume)
 * Öffentlichkeitsarbeit (Tutorials, Videos, Blog, Interviews)
-
-
-
-
 
 ---
 
@@ -310,34 +298,6 @@ Basierend auf Pilot-Feedback entwickeln wir eine zweite Modul-Generation: Ressou
 ```
 
 ---
-
-## ZUSAMMENFASSUNG ZEICHENZÄHLUNG
-
-| Feld | Max. Wörter | Verwendet | Status |
-|------|-------------|-----------|--------|
-| Projektbeschreibung | 100 | 100 | ✅ |
-| Gesellschaftliche Herausforderung | 175 | 175 | ✅ |
-| Technische Umsetzung | 175 | 170 | ✅ |
-| Aktueller Stand | 100 | 100 | ✅ |
-| Innovation | 100 | 100 | ✅ |
-| Zielgruppe | 100 | 90 | ✅ |
-| Meilensteine | 100 | 100 | ✅ |
-| Team | 30 | 30 | ✅ |
-| Erfahrung | 100 | 75 | ✅ |
-| Motivation | 100 | 100 | ✅ |
-| Second Stage: Schwerpunkt | 175 | 140 | ✅ |
-| Second Stage: Meilensteine | 100 | 80 | ✅ |
-
-**Alle Limits eingehalten! ✅**
-
----
-
-## HINWEISE FÜR DIE EINREICHUNG
-
-1. **Copy-Paste:** Die Textblöcke können direkt in das Bewerbungsformular kopiert werden
-2. **Zeichenzählung:** Das Formular zählt automatisch - diese Angaben sind zur Orientierung
-3. **Links:** Alle Links wurden getestet und funktionieren
-4. **Formatierung:** Im Formular gibt es keine Markdown-Formatierung - Textblöcke sind plain text
 
 ## LETZTE PRÜFUNG VOR EINREICHUNG
 
