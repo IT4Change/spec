@@ -203,6 +203,8 @@ M4 (Monat 6): Vorbereitung für Roll-Out und Second Stage
 **Ulf Gebhardt:**
 - Utopia Map (https://github.com/utopia-os/utopia-map) - Entwicklung, Github-Verwaltung, Github-Workflows, Typescript & Typisierungen, Reviews, Hosting der Lösung
 - ocelot.social (https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwicklung, Testing, Öffentlichkeitsarbeit, Hosting der Lösung, Refactoring, Bumps, Koordinierung der Entwicklung
+- DEMOCRACY App (https://github.com/demokratie-live) - Architektur & Entwicklung
+- Bundestag Git (https://github.com/bundestag) - Maintainer
 
 **Mathias Lenz:**
 - Utopia Map (https://github.com/utopia-os/utopia-map) - Entwicklung, Testautomatisierung, DevOps
