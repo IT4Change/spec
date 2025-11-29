@@ -21,7 +21,7 @@ Anton Tranelis
 
 ### E-Mail-Adresse
 
-ptf@it4c.dev
+???
 
 
 ### GitHub-Account (optional)
@@ -33,14 +33,11 @@ https://github.com/antontranelis
 ## 2. PROJEKTBESCHREIBUNG (max. 100 Wörter)
 
 
-Lokale Gemeinschaften brauchen digitale Werkzeuge, die echte Begegnungen fördern statt ersetzen. Der Real Life Stack ist ein modularer Baukasten, der Communities ermöglicht, ihre eigene App für Vernetzung und Zusammenarbeit zu gestalten. Bausteine wie Karte, Kalender, Feed, Gruppen und Profile lassen sich flexibel kombinieren und an unterschiedliche Kontexte anpassen – von Nachbarschaftsinitiativen über Urban Gardening bis zu Repair-Cafés.
+Lokale Gemeinschaften brauchen digitale Werkzeuge, die echte Begegnungen fördern statt ersetzen. Der Real Life Stack ist ein Baukasten, mit dem Gruppen ihre eigene App für lokale Vernetzung und Zusammenarbeit gestalten können. Bausteine wie Karte, Kalender, Gruppen, Feed und Profile lassen sich flexibel kombinieren und an Kontexte wie Nachbarschaftsinitiativen, Gemeinschaftsgärten oder Transition-Town-Projekte anpassen.
 
-Die Whitelabel-App kann ohne technisches Know-how selbst gehostet werden. Durch eine klare Schnittstelle zwischen Frontend und Backend entsteht ein Baukasten, der heute mit klassischen Servern arbeitet und morgen dezentrale, verschlüsselte oder local-first Architekturen unterstützen kann.
+Mechanismen wie Geo-Filter für den Nahbereich und ein Web-of-Trust, das durch reale Treffen entsteht, unterstützen vertrauensbasierte Kooperation und erhöhen „Meeting-Time“ statt „Screen-Time“.
 
-----
-Echte Veränderung passiert im echten Leben. Mit dem **Real Life Stack** entwickeln wir einen modularen Baukasten, mit dem Gemeinschaften ihre eigene App für Vernetzung und Zusammenarbeit gestalten können, die konsequent für Vernetzung und Kooperation im echten Leben optimiert sind.  Bausteine wie Karte, Kalender, Gruppen und Profile lassen sich flexibel an unterschiedliche Kontexte anpassen und fördern praktische Kooperation vor Ort.
-
-Gemeinschaften ohne technisches Know-how können eine selbsthostbare Whitelabel-App nutzen. Gleichzeitig bildet der Baukasten die Grundlage für zukünftige lokal betriebene oder verschlüsselte Anwendungen, sodass Gruppen Inhalte langfristig sicher und vertrauensbasiert innerhalb ihres eigenen Netzwerks teilen können.
+Die Whitelabel-App kann einfach selbst gehostet werden. Eine klare Schnittstelle zwischen Frontend und Backend ermöglicht heute klassische Server und künftig auch dezentrale, verschlüsselte oder local-first Architekturen.
 
 
 ---
@@ -54,15 +51,7 @@ Gleichzeitig fehlt es an offener digitaler Infrastruktur für lokale Selbstorgan
 
 Das Problem ist zweifach: Erstens behindern aktuelle Tools vertrauensbasierte Beziehungen und gemeinsames Handeln in der realen Welt. Zweitens fehlt eine modulare, anpassbare Infrastruktur, die Communities selbstbestimmt nutzen können.
 
-Software kann zur Lösung beitragen, indem sie lokale Vernetzung technisch unterstützt, Datenhoheit ermöglicht und echte Begegnungen fördert. Genau hier setzt der Real Life Stack an.
-
----
-
-Viele digitale Werkzeuge fördern vor allem Online-Zeit statt lokale Begegnungen. Die meistgenutzten "sozialen" Apps sind Teil einer Aufmerksamkeitsökonomie, die darauf ausgelegt ist, Nutzer*innen möglichst lange am Bildschirm zu halten. Dadurch ersetzen Nachrichten und Chats häufig reale Treffen, und lokale Beziehungen bleiben auf der Strecke. Gleichzeitig fehlt es an offener digitaler Infrastruktur, die Zusammenarbeit, Vertrauen und reale Begegnungen unterstützt.
-
-Besonders betroffen sind kleinere Initiativen, Projekte und Nachbarschaftsnetzwerke, die weder die Ressourcen noch das technische Know-how besitzen, um eigene Infrastruktur aufzubauen. Für sie wäre ein Werkzeug notwendig, das echte Kooperation unterstützt, vertrauliche Informationen schützt und unabhängig von einzelnen Plattformen funktioniert.
-
-Das gesellschaftliche Problem besteht somit aus zwei Teilen: dem Mangel an selbstbestimmten, sicheren Werkzeugen für lokale Zusammenarbeit und der wachsenden Abhängigkeit von zentralen Netzwerken. Durch offene, anpassbare digitale Infrastruktur können Gruppen wieder selbst entscheiden, wie sie sich vernetzen und welche Daten sie teilen. Genau hier setzt unser Projekt an.
+Software kann Menschen nicht ersetzen, aber sie kann lokale Gruppen dabei unterstützen, sich einfacher zu organisieren, ihre Daten zu schützen und reale Begegnungen zu fördern. Genau hier setzt der Real Life Stack an – als Werkzeug, das echte Gemeinschaft stärkt, statt sie zu ersetzen.
 
 ---
 
