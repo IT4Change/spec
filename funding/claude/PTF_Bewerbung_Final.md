@@ -99,19 +99,9 @@ Das Projekt baut auf zwei bestehenden Open-Source-Ansätzen auf: der [Utopia Map
 ## 7. INNOVATION (max. 100 Wörter)
 
 
-Bestehende Lösungen haben jeweils Teile unserer Vision realisiert:
+Projekte wie Karrot, Bonfire und Mobilizon decken einzelne Aspekte unseres Ansatzes ab: Karrot stärkt Face-to-Face-Aktivitäten, bietet aber keine modulare oder föderierbare Architektur. Bonfire ist modular, jedoch nicht auf hyperlokale Begegnungen oder Geo-Mechanismen ausgerichtet. Mobilizon ermöglicht Events und Gruppen im Fediverse, verfügt jedoch weder über modulare Komponenten noch über Geo-Logik zur lokalen Selbstorganisation.
 
-- Karrot fokussiert auf Face-to-Face-Aktivitäten, hat aber keine Federation und keinen modularen Ansatz
-- Bonfire bietet modulare Architektur, aber keinen Fokus auf lokale Begegnungen und Geo-Filter
-- Mobilizon kombiniert Events und Karte, ist aber monolithisch aufgebaut
-
-Der Real Life Stack vereint erstmals alle Dimensionen: modularer Baukasten + lokaler Fokus + vertrauensbasierte Identität + offene Standards. Statt einer weiteren Plattform schaffen wir wiederverwendbare Infrastruktur. Communities können einzelne Module nutzen oder die Whitelabel-App selbst hosten – mit voller Datenhoheit und ohne Abhängigkeit von zentralen Diensten.
-
-
-----
-
-
-Der Real Life Stack ist der erste modulare Frontend-Baukasten, der radikal auf lokale Begegnungen und gemeinschaftliche Aktivitäten im echten Leben optimiert ist. Statt eine weitere Plattform zu bauen, liefert er wiederverwendbare Komponenten (Karte, Kalender, Gruppen, Feed, Profile) und eine einheitliche Daten- und Identitätsschnittstelle. Projekte wie Mobilizon, Karrot und Bonfire decken einzelne dieser Aspekte ab, sind jedoch monolithisch oder sozialnetzwerk-orientiert. Der Real Life Stack unterscheidet sich durch echte Modularität, Backend-Agnostik, hyperlokalen Fokus und Real-Life-Mechanismen wie Geo-Filter und Web-of-Trust durch physische Treffen. Communities können eigene Apps bauen, selbst hosten und ihre digitale Infrastruktur vollständig kontrollieren.
+Der Real Life Stack kombiniert diese Ansätze in einer wiederverwendbaren Infrastruktur: ein modularer Frontend-Baukasten mit einheitlicher Daten- und Identitätsschnittstelle, backend-agnostisch und auf lokale Kooperation optimiert. Geo-Filter und ein Web-of-Trust durch reale Treffen fördern vertrauensbasierte Zusammenarbeit und volle Datenhoheit.
 
 ---
 
