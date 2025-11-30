@@ -63,7 +63,7 @@ Alle Module greifen auf eine gemeinsame Daten- und Identitätsschnittstelle im F
 
 Unterhalb dieser Ebene liegt eine schlanke Connector-Struktur. Sie legt fest, wie Backends angebunden werden, und wir liefern eine erste Implementierung mit. Weitere Connectoren (z. B. REST, GraphQL, local-first, p2p oder E2EE-basierte Systeme) können von Communities selbst entwickelt werden. Die offene Identitätsschnittstelle soll perspektivisch auch schlüsselbasierte Accounts und DIDs unterstützen.
 
-Zudem liefern wir eine selbsthostbare Referenzimplementierung: eine konfigurierbare White-Label-App kombiniert mit einem leichtgewichtigen Node.js-Backend im Docker-Setup für einen schnell lauffähigen Einstieg
+Zusätzlich entsteht eine selbsthostbare White-Label-App mit einer intuitiven Admin-Konfigurationsoberfläche, über die Gruppen ohne technisches Know-how Module aktivieren, Farben, Inhalte und Grundeinstellungen anpassen können. Ein leichtgewichtiges Node.js-Backend im Docker-Setup ermöglicht einen schnell einsatzfähigen Start.
 
 ---
 
