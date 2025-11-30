@@ -168,10 +168,7 @@ Wir erreichen sie über bestehende Netzwerke unserer Projekte, über Pilotgruppe
 
 ## 12. ARBEITSSTUNDEN
 
-```
 1900
-```
-
 
 ---
 
