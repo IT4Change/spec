@@ -43,19 +43,21 @@ Die Whitelabel-App kann einfach selbst gehostet werden. Eine klare Schnittstelle
 ---
 Old Content:
 
-Die Whitelabel-App kann ohne technisches Know-how selbst gehostet werden.* Durch eine klare Schnittstelle zwischen Frontend und Backend entsteht ein Baukasten, der heute mit klassischen Servern arbeitet und morgen dezentrale, verschlüsselte oder local-first Architekturen unterstützen kann.**
+Die Whitelabel-App kann ohne technisches Know-how selbst gehostet werden. **(1)**  
+Durch eine klare Schnittstelle zwischen Frontend und Backend entsteht ein Baukasten, der heute mit klassischen Servern arbeitet und morgen dezentrale, verschlüsselte oder local-first Architekturen unterstützen kann. **(2)**
 
 ---
 
 Echte Veränderung passiert im echten Leben. Mit dem **Real Life Stack** entwickeln wir einen modularen Baukasten, mit dem Gemeinschaften ihre eigene App für Vernetzung und Zusammenarbeit gestalten können, die konsequent für Vernetzung und Kooperation im echten Leben optimiert sind.  Bausteine wie Karte, Kalender, Gruppen und Profile lassen sich flexibel an unterschiedliche Kontexte anpassen und fördern praktische Kooperation vor Ort.
 
-Gemeinschaften ohne technisches Know-how können eine selbsthostbare Whitelabel-App nutzen.* Gleichzeitig bildet der Baukasten die Grundlage für zukünftige lokal betriebene oder verschlüsselte Anwendungen, sodass Gruppen Inhalte langfristig sicher und vertrauensbasiert innerhalb ihres eigenen Netzwerks teilen können.**
+Gemeinschaften ohne technisches Know-how können eine selbsthostbare Whitelabel-App nutzen. **(1)** Gleichzeitig bildet der Baukasten die Grundlage für zukünftige lokal betriebene oder verschlüsselte Anwendungen, sodass Gruppen Inhalte langfristig sicher und vertrauensbasiert innerhalb ihres eigenen Netzwerks teilen können.**
 
 ---
-
-*Wolle: Wie ist das ohne technisches Know-How zu hosten?
-**Wolle: Unklar - nicht verstanden. Abstraktion nicht klar. Wichtige Informationen fehlen, um das zu verstehen. Backend-Agnostisch/Austauschbarkeit benennen.
-(***)Wolle: Projektbeschreibung sollte klarer sein.
+**Feedback**
+- **Wolle**:
+  - **(1)** Wolle: Wie ist das ohne technisches Know-How zu hosten?
+  - **(2)** Wolle: Unklar - nicht verstanden. Abstraktion nicht klar. Wichtige Informationen fehlen, um das zu verstehen. Backend-Agnostisch/Austauschbarkeit benennen.
+  - Projektbeschreibung sollte klarer sein.
 
 ## 3. GESELLSCHAFTLICHE HERAUSFORDERUNG (max. 175 Wörter)
 
@@ -77,14 +79,16 @@ Software kann zur Lösung beitragen, indem sie lokale Vernetzung technisch unter
 
 Viele digitale Werkzeuge fördern vor allem Online-Zeit statt lokale Begegnungen. Die meistgenutzten "sozialen" Apps sind Teil einer Aufmerksamkeitsökonomie, die darauf ausgelegt ist, Nutzer*innen möglichst lange am Bildschirm zu halten. Dadurch ersetzen Nachrichten und Chats häufig reale Treffen, und lokale Beziehungen bleiben auf der Strecke. Gleichzeitig fehlt es an offener digitaler Infrastruktur, die Zusammenarbeit, Vertrauen und reale Begegnungen unterstützt.
 
-Besonders betroffen sind kleinere Initiativen, Projekte und Nachbarschaftsnetzwerke, die weder die Ressourcen noch das technische Know-how besitzen, um eigene Infrastruktur aufzubauen. Für sie wäre ein Werkzeug notwendig, das echte Kooperation unterstützt, vertrauliche Informationen schützt und unabhängig von einzelnen Plattformen funktioniert**.
+Besonders betroffen sind kleinere Initiativen, Projekte und Nachbarschaftsnetzwerke, die weder die Ressourcen noch das technische Know-how besitzen, um eigene Infrastruktur aufzubauen. Für sie wäre ein Werkzeug notwendig, das echte Kooperation unterstützt, vertrauliche Informationen schützt und unabhängig von einzelnen Plattformen funktioniert **(2)**.
 
 Das gesellschaftliche Problem besteht somit aus zwei Teilen: dem Mangel an selbstbestimmten, sicheren Werkzeugen für lokale Zusammenarbeit und der wachsenden Abhängigkeit von zentralen Netzwerken. Durch offene, anpassbare digitale Infrastruktur können Gruppen wieder selbst entscheiden, wie sie sich vernetzen und welche Daten sie teilen. Genau hier setzt unser Projekt an.
 
 ---
 
-(*)Wolle: Software einfach nicht einsetzen ist eine Lösung. Muss entkräftet werden. Warum sollte es solche Software geben?
-**Wolle: Unverständlich warum/was/wie unabhängig von einzelnen Plattformen. Was bedeutet das?
+**Feedback**
+- **Wolle**:
+  - **(1)** Software einfach nicht einsetzen ist eine Lösung. Muss entkräftet werden. Warum sollte es solche Software geben?
+  - **(2)** Unverständlich warum/was/wie unabhängig von einzelnen Plattformen. Was bedeutet das?
 
 ## 4. TECHNISCHE UMSETZUNG (max. 175 Wörter)
 
