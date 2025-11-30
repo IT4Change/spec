@@ -32,7 +32,7 @@ https://github.com/antontranelis
 ## 2. PROJEKTBESCHREIBUNG (max. 100 Wörter)
 
 
-Lokale Gemeinschaften brauchen digitale Werkzeuge, die echte Begegnungen fördern statt ersetzen. Real-Life Stack ist ein Baukasten, mit dem Gruppen ihre eigene App für lokale Vernetzung und Zusammenarbeit bereitstellen und an ihre Bedürfnisse anpassen können. Er besteht aus einer Frontend-Library sowie einer darauf aufbauenden White-Label-Referenz-App.
+Lokale Gemeinschaften brauchen digitale Werkzeuge, die echte Begegnungen fördern statt ersetzen. Real-Life Stack ist ein Baukasten, mit dem Gruppen ihre eigene App für lokale Vernetzung und Zusammenarbeit bereitstellen und an ihre Bedürfnisse anpassen können. Er besteht aus einer Frontend-Komponenten-Library sowie einer darauf aufbauenden White-Label-Referenz-App.
 
 Bausteine wie Karte, Kalender, Gruppen, Feed und Profile lassen sich flexibel kombinieren und für  Nachbarschaftsinitiativen, Gemeinschaftsgärten oder Transition-Town-Projekte anpassen. Geo-Filter für den Nahbereich und ein Web-of-Trust, das durch reale Treffen entsteht, unterstützen vertrauensbasierte Kooperation vor Ort.
 
@@ -45,19 +45,19 @@ Eine entkoppelte Schnittstelle zwischen Frontend und Backend ermöglicht heute k
 ## 3. GESELLSCHAFTLICHE HERAUSFORDERUNG (max. 175 Wörter)
 
 
-Große gesellschaftliche Herausforderungen erfordern lokales, eigenverantwortliches Handeln. Doch während die meisten Menschen mehr Zeit online verbringen, nimmt lokale Vernetzung ab. Über 40% der Menschen in Deutschland fühlen sich regelmäßig einsam. Bestehende digitale Plattformen sind primär auf Aufmerksamkeit und Reichweite optimiert, nicht auf lokale Zusammenarbeit und reale Begegnungen.
+Lokale Initiativen werden zu zentralen Akteuren bei der Bewältigung heutiger sozialer und ökologischer Herausforderungen. Doch während die meisten Menschen mehr Zeit online verbringen, nimmt lokale Vernetzung ab. Über 40% der Menschen in Deutschland fühlen sich regelmäßig einsam. Bestehende digitale Plattformen sind primär auf Aufmerksamkeit und Reichweite optimiert, nicht auf lokale Zusammenarbeit und reale Begegnungen.
 
 Gleichzeitig fehlt es an offener digitaler Infrastruktur für lokale Selbstorganisation. Kleine Initiativen, Nachbarschaftsprojekte und Community-Gruppen besitzen meist weder die Ressourcen noch das technische Know-how, um eigene Systeme aufzubauen. Sie sind auf zentrale Plattformen angewiesen, die ihre Daten kontrollieren, Werbung einblenden und Kommunikation nach eigenen Regeln gestalten.
 
 Das Problem ist zweifach: Erstens behindern aktuelle Tools vertrauensbasierte Beziehungen und gemeinsames Handeln in der realen Welt. Zweitens fehlt eine modulare, anpassbare Infrastruktur, die Communities selbstbestimmt nutzen können.
 
-Software kann Menschen nicht ersetzen, aber sie kann lokale Gruppen dabei unterstützen, sich einfacher zu organisieren, ihre Daten zu schützen und reale Begegnungen zu fördern. Genau hier setzt Real-Life Stack an – als Werkzeug, das echte Gemeinschaft stärkt, statt sie zu ersetzen.
+Gemeinsames Handeln kann Software nicht ersetzen, aber sie kann lokale Gruppen dabei unterstützen, sich einfacher zu organisieren, ihre Daten zu schützen und reale Begegnungen zu fördern. Genau hier setzt Real-Life Stack an – als Werkzeug, das echte Gemeinschaft stärkt, statt sie zu ersetzen.
 
 ---
 
 ## 4. TECHNISCHE UMSETZUNG (max. 175 Wörter)
 
-Real-Life Stack wird als modularer Frontend-Baukasten in TypeScript mit React oder Vue entwickelt. Er besteht aus eigenständigen Komponenten wie Karte (OpenStreetMap über MapLibre), Kalender (inkl. iCal-Import und -Export), Gruppen, Profilen und Feed, die sowohl in der Referenzanwendung als auch in eigenen Projekten verwendet werden können.
+Real-Life Stack wird als modularer Frontend-Baukasten in TypeScript mit React oder Vue entwickelt. Er besteht aus eigenständigen Komponenten wie Karte (OpenStreetMap über MapLibre), Kalender (iCal / CalDAV), Gruppen, Profilen und Feed, die sowohl in der Referenzanwendung als auch in eigenen Projekten verwendet werden können.
 
 Alle Module greifen auf eine gemeinsame Daten- und Identitätsschnittstelle im Frontend zu. Diese definiert einheitliche Funktionen zum Laden und Speichern von Gruppen, Terminen, Profilen und Vertrauensbeziehungen – unabhängig davon, welches Backend genutzt wird oder wie Identitäten verwaltet sind.
 
@@ -71,7 +71,7 @@ Zusätzlich entsteht eine selbsthostbare White-Label-App mit einer intuitiven Ad
 
 Auf Basis der Erfahrungen mit der [Utopia Map](https://github.com/utopia-os/utopia-map/) (seit 2022) und [ocelot.social](https://github.com/Ocelot-Social-Community/Ocelot-Social) (seit 2018) werden derzeit Anforderungsdokumente, User Stories und konzeptionelle Architekturüberlegungen erarbeitet. Es existiert ein React-basierter Click-Dummy, der zeigt, wie Karte, Kalender und Feed integriert werden können.
 
-Das Datenmodell, die Backend-Architektur, die Identitätslösung sowie die Integrationsschicht zwischen Frontend-Modulen und Backend sind jedoch noch nicht implementiert. In der Förderphase sollen die Architektur finalisiert, der modulare Stack als Library sowie eine White-Label-Referenz-App technisch umgesetzt werden. In der Second Stage sollen sie anschließend ausführlich getestet und veröffentlicht werden.
+Das Datenmodell, die Backend-Architektur, die Identitätslösung sowie die Integrationsschicht zwischen Frontend-Modulen und Backend sind jedoch noch nicht implementiert. In der Förderphase sollen die Architektur finalisiert, der modulare Stack als Komponenten-Library sowie eine White-Label-Referenz-App technisch umgesetzt werden.
 
 ---
 
@@ -112,7 +112,7 @@ Wir erreichen sie über bestehende Netzwerke unserer Projekte, über Pilotgruppe
 
 #### M2: Kernmodule (Monate 2-4)
 - Map-Modul (MapLibre, Geo-Queries, Clustering)
-- Kalender-Modul (Events, CalDAV-Integration)
+- Kalender-Modul (Events, iCal / CalDAV-Integration)
 - Feed-Modul (Aktivitäten-Timeline)
 - Profile-Modul
 - Gruppen-Modul (Membership, Rollen)
