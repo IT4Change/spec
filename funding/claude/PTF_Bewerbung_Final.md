@@ -201,9 +201,9 @@ In der Second Stage wollen wir uns intensiv auf die Zusammenarbeit mit realen Co
 
 Dabei wollen wir verstehen, welche Funktionen echte Begegnungen, lokale Vernetzung und Kooperation fördern – und welche nicht. Dafür werten wir Metriken zu Aktivität, Vernetzung und Real-Life-Treffen aus, führen Interviews und übersetzen diese Erkenntnisse in weitere Optimierungen des Stacks.
 
-Parallel erforschen wir, ob und wie spielerische Mechanismen wie Quests, Badges und Fortschrittsanzeigen Menschen motivieren, neue Kontakte zu knüpfen, Treffen zu organisieren oder an ihnen teilzunehmen sowie eigene Gruppen und Projekte zu starten.
+Parallel erforschen wir, wie spielerische Mechanismen wie Quests, Badges und Fortschrittsanzeigen Menschen motivieren, neue Kontakte zu knüpfen, Treffen zu organisieren oder an ihnen teilzunehmen sowie eigene Gruppen und Projekte zu starten.
 
-Wir entwickeln ein Playbook für neue Communities – mit Hosting-Guides, einfachen Einstiegsmaterialien und einer Roadmap, die zeigt, wie Gruppen den Stack einsetzen, anpassen und erweitern können.
+Wir entwickeln ein Playbook für neue Communities – mit Hosting-Guides, Einstiegsmaterialien und einer Roadmap, die zeigt, wie Gruppen den Stack einsetzen, anpassen und erweitern können.
 
 Wir bereiten unsere Ergebnisse in Tutorials, Blogbeiträgen, Videos und Interviews so auf, dass weitere Communities inspiriert werden. Damit schaffen wir eine stabile Grundlage, auf der Communities den Real-Life Stack eigenständig nutzen und gemeinsam mit ihm wachsen können.
 
