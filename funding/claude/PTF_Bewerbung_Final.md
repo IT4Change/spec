@@ -78,7 +78,7 @@ Das Datenmodell, die Backend-Architektur, die Identitätslösung sowie die Integ
 ## 6. LINK ZUM PROJEKT (optional)
 
 
-[https://github.com/IT4Change/spec](https://github.com/IT4Change/real-life-stack)
+[https://github.com/IT4Change/real-life-stack](https://github.com/IT4Change/real-life-stack)
 
 
 ---
