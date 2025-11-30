@@ -67,7 +67,9 @@ Zudem liefern wir eine selbsthostbare Referenzimplementierung: eine konfigurierb
 
 ## 5. AKTUELLER STAND (max. 100 Wörter)
 
-Das Projekt baut auf zwei bestehenden Open-Source-Ansätzen auf: der [Utopia Map](https://github.com/utopia-os/utopia-map) (seit 2021) – einer kollaborativen Kartenanwendung für selbstorganisierte Gemeinschaften – und [Ocelot Social](https://github.com/Ocelot-Social-Community/Ocelot-Social) (seit 2018), einem selbsthostbaren sozialen Netzwerk. Beide wurden über Jahre weiterentwickelt und verfolgen das gleiche Ziel: reale Begegnungen und lokale Zusammenarbeit zu fördern. Aus diesen Erfahrungen entsteht nun der Real-Life Stack als gemeinsame, modularisierte Weiterführung. Die konzeptionelle Grundlage ist erarbeitet; es existieren bereits ein Repository mit Anforderungs- und Konzeptdokumenten sowie erste Click-Dummy-Prototypen. Der Stack selbst ist noch nicht implementiert und befindet sich in der Vorbereitungsphase.
+Auf Basis der Erfahrungen mit der [Utopia Map](https://github.com/utopia-os/utopia-map/) (seit 2022) und [ocelot.social](https://github.com/Ocelot-Social-Community/Ocelot-Social) (seit 2018) werden derzeit Anforderungsdokumente, User Stories und konzeptionelle Architekturüberlegungen erarbeitet. Es existiert ein React-basierter Click-Dummy, der zeigt, wie Karte, Kalender und Feed integriert werden können.
+
+Das Datenmodell, die Backend-Architektur, die Identitätslösung sowie die Integrationsschicht zwischen Frontend-Modulen und Backend sind jedoch noch nicht implementiert. In der Förderphase sollen die Architektur finalisiert, der modulare Stack als Library sowie eine White-Label-Referenz-App technisch umgesetzt werden; in der Second Stage sollen sie anschließend ausführlich getestet und veröffentlicht werden.
 
 ---
 
