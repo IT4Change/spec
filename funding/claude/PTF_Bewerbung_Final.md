@@ -32,7 +32,7 @@ https://github.com/antontranelis
 ## 2. PROJEKTBESCHREIBUNG (max. 100 Wörter)
 
 
-Lokale Gemeinschaften brauchen digitale Werkzeuge, die echte Begegnungen fördern statt ersetzen. Der Real-Life Stack ist ein Baukasten, mit dem Gruppen ihre eigene App für lokale Vernetzung und Zusammenarbeit bereitstellen und an ihre Bedürfnisse anpassen können. Er besteht aus einer Frontend-Library sowie einer darauf aufbauenden White-Label-Referenz-App.
+Lokale Gemeinschaften brauchen digitale Werkzeuge, die echte Begegnungen fördern statt ersetzen. Real-Life Stack ist ein Baukasten, mit dem Gruppen ihre eigene App für lokale Vernetzung und Zusammenarbeit bereitstellen und an ihre Bedürfnisse anpassen können. Er besteht aus einer Frontend-Library sowie einer darauf aufbauenden White-Label-Referenz-App.
 
 Bausteine wie Karte, Kalender, Gruppen, Feed und Profile lassen sich flexibel kombinieren und für  Nachbarschaftsinitiativen, Gemeinschaftsgärten oder Transition-Town-Projekte anpassen. Geo-Filter für den Nahbereich und ein Web-of-Trust, das durch reale Treffen entsteht, unterstützen vertrauensbasierte Kooperation vor Ort.
 
@@ -51,13 +51,13 @@ Gleichzeitig fehlt es an offener digitaler Infrastruktur für lokale Selbstorgan
 
 Das Problem ist zweifach: Erstens behindern aktuelle Tools vertrauensbasierte Beziehungen und gemeinsames Handeln in der realen Welt. Zweitens fehlt eine modulare, anpassbare Infrastruktur, die Communities selbstbestimmt nutzen können.
 
-Software kann Menschen nicht ersetzen, aber sie kann lokale Gruppen dabei unterstützen, sich einfacher zu organisieren, ihre Daten zu schützen und reale Begegnungen zu fördern. Genau hier setzt der Real-Life Stack an – als Werkzeug, das echte Gemeinschaft stärkt, statt sie zu ersetzen.
+Software kann Menschen nicht ersetzen, aber sie kann lokale Gruppen dabei unterstützen, sich einfacher zu organisieren, ihre Daten zu schützen und reale Begegnungen zu fördern. Genau hier setzt Real-Life Stack an – als Werkzeug, das echte Gemeinschaft stärkt, statt sie zu ersetzen.
 
 ---
 
 ## 4. TECHNISCHE UMSETZUNG (max. 175 Wörter)
 
-Der Real-Life Stack wird als modularer Frontend-Baukasten in TypeScript mit React oder Vue entwickelt. Er besteht aus eigenständigen Komponenten wie Karte (OpenStreetMap über MapLibre), Kalender (inkl. iCal-Import und -Export), Gruppen, Profilen und Feed, die sowohl in der Referenzanwendung als auch in eigenen Projekten verwendet werden können.
+Real-Life Stack wird als modularer Frontend-Baukasten in TypeScript mit React oder Vue entwickelt. Er besteht aus eigenständigen Komponenten wie Karte (OpenStreetMap über MapLibre), Kalender (inkl. iCal-Import und -Export), Gruppen, Profilen und Feed, die sowohl in der Referenzanwendung als auch in eigenen Projekten verwendet werden können.
 
 Alle Module greifen auf eine gemeinsame Daten- und Identitätsschnittstelle im Frontend zu. Diese definiert einheitliche Funktionen zum Laden und Speichern von Gruppen, Terminen, Profilen und Vertrauensbeziehungen – unabhängig davon, welches Backend genutzt wird oder wie Identitäten verwaltet sind.
 
@@ -88,7 +88,7 @@ Das Datenmodell, die Backend-Architektur, die Identitätslösung sowie die Integ
 
 Projekte wie Karrot, Bonfire und Mobilizon decken einzelne Aspekte unseres Ansatzes ab: Karrot stärkt Face-to-Face-Aktivitäten, bietet aber keine modulare oder föderierbare Architektur. Bonfire ist modular, jedoch nicht auf hyperlokale Begegnungen oder Geo-Mechanismen ausgerichtet. Mobilizon ermöglicht Events und Gruppen im Fediverse und bietet Ortsfilter, verfügt aber weder über modulare Komponenten noch über eine Geo-Logik für lokale Selbstorganisation.
 
-Der Real-Life Stack kombiniert diese Ansätze in einer wiederverwendbaren Infrastruktur: ein modularer Frontend-Baukasten mit einheitlicher Daten- und Identitätsschnittstelle, backend-agnostisch und auf lokale Kooperation optimiert. Geo-Filter und ein Web-of-Trust durch reale Treffen fördern vertrauensbasierte Zusammenarbeit und Datenhoheit.
+Real-Life Stack kombiniert diese Ansätze in einer wiederverwendbaren Infrastruktur: ein modularer Frontend-Baukasten mit einheitlicher Daten- und Identitätsschnittstelle, backend-agnostisch und auf lokale Kooperation optimiert. Geo-Filter und ein Web-of-Trust durch reale Treffen fördern vertrauensbasierte Zusammenarbeit und Datenhoheit.
 
 ---
 
@@ -181,7 +181,7 @@ Wir erreichen sie über bestehende Netzwerke unserer Projekte, über Pilotgruppe
 
 Wir erleben täglich, wie lokale Initiativen an fehlenden digitalen Werkzeugen scheitern. Bestehende Plattformen passen nicht zu ihren Bedürfnissen, sind zu komplex oder zu unflexibel. Gleichzeitig fehlt Communities das technische Know-how, eigene Lösungen zu bauen.
 
-Mit ocelot.social und Utopia Map haben wir gesehen, dass selbsthostbare, anpassbare Tools funktionieren – aber jedes Projekt muss zu viel selbst entwickeln. Der Real-Life Stack ist unsere Antwort: Wir schaffen wiederverwendbare Infrastruktur, die anderen hilft, schneller zu starten.
+Mit ocelot.social und Utopia Map haben wir gesehen, dass selbsthostbare, anpassbare Tools funktionieren – aber jedes Projekt muss zu viel selbst entwickeln. Real-Life Stack ist unsere Antwort: Wir schaffen wiederverwendbare Infrastruktur, die anderen hilft, schneller zu starten.
 
 Uns treibt die Vision einer dezentralen, selbstbestimmten digitalen Welt an, in der Gemeinschaften Kontrolle über ihre Daten haben und Tools nutzen können, die echte Begegnungen fördern.
 
