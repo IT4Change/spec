@@ -90,22 +90,9 @@ Der Real-Life Stack kombiniert diese Ansätze in einer wiederverwendbaren Infras
 
 ## 8. ZIELGRUPPE (max. 100 Wörter)
 
-
-Primäre Zielgruppen:
-- Lokale Initiativen und Nachbarschaftsprojekte (Urban Gardening, Repair-Cafés, Foodsharing-Circles)
-- Selbstorganisierte Gemeinschaften (freie Schulen, Solidarische Landwirtschaften, Genossenschaften)
-- Progressive Vereine und Transition Towns
-
-Sekundäre Zielgruppen:
-- Entwickler*innen, die Community-Tools bauen wollen
-- Organisationen, die lokale Vernetzung ermöglichen
-
-Erreichen der Zielgruppen:
-- Direkter Kontakt zu bestehenden Nutzergruppen von ocelot.social und Utopia Map
-- Präsentation auf Open-Source-Konferenzen (FOSDEM, FOSS Backstage)
-- Dokumentation und Tutorials für Selbsthoster*innen
-- Kooperation mit busFaktor() e.V. und IT4C-Netzwerk
-
+Unsere Zielgruppen sind lokale Gemeinschaften, die ihre Umgebung selbstorganisiert gestalten: Nachbarschaftsnetzwerke, Urban-Gardening-Gruppen, Repair-Cafés, Foodsharing-Initiativen, Solawis, Gemeinschaftsgärten, Jugendgruppen und freie Lernorte. Sie brauchen digitale Werkzeuge, die nicht auf Online-Interaktion, sondern auf reale Begegnungen, lokale Kooperation und echte soziale Netzwerke im direkten Kontakt ausgelegt sind. Auch Sharing- und Tausch-Communities benötigen digitale Infrastruktur, um Ressourcen und Fähigkeiten sichtbar zu machen und gegenseitige Unterstützung zu organisieren.
+Die Sekundärzielgruppe sind Organisationen, die lokale Gruppen stärken, sowie Entwickler*innen, die Community-Tools bauen.
+Wir erreichen sie über bestehende Netzwerke unserer Projekte, über Pilotgruppen, die in den Entwicklungsprozess eingebunden sind, sowie über Workshops und Präsentationen auf Konferenzen und Community-Treffen.
 
 ---
 
