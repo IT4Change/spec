@@ -92,7 +92,7 @@ Das gesellschaftliche Problem besteht somit aus zwei Teilen: dem Mangel an selbs
 
 ## 4. TECHNISCHE UMSETZUNG (max. 175 Wörter)
 
-Der Real Life Stack wird als modularer Frontend-Baukasten in TypeScript mit React oder Vue entwickelt. Er umfasst eigenständige Komponenten für Karte (Leaflet/MapLibre), Kalender (mit iCal-Export)*, Feed, Gruppen und Profile, die sowohl in der Referenzanwendung als auch in eigenen Projekten genutzt werden können.
+Der Real Life Stack wird als modularer Frontend-Baukasten in TypeScript mit React oder Vue entwickelt. Er umfasst eigenständige Komponenten für Karte (Leaflet/MapLibre), Kalender (mit iCal-Export) **(1)**, Feed, Gruppen und Profile, die sowohl in der Referenzanwendung als auch in eigenen Projekten genutzt werden können.
 
 Alle Komponenten greifen auf eine gemeinsame Daten- und Identitätsschnittstelle im Frontend zu. Diese definiert einheitliche Funktionen zum Laden und Speichern von Daten (Gruppen, Events, Profile, Vertrauensbeziehungen) – unabhängig vom zugrundeliegenden Backend.
 
@@ -112,16 +112,18 @@ Alle Komponenten greifen auf eine gemeinsame **Daten- und Identitätsschnittstel
 
 Unterhalb dieser Ebene liegt eine schlanke **Connector-Struktur**: Wir definieren das Muster, nach dem Backends angebunden werden können, und liefern eine erste Implementierung mit. Weitere Connectoren können von Communities oder Entwickler*innen selbst erstellt werden – zum Beispiel für lokal-first-, p2p- oder E2EE-basierte Systeme.
 
-Wir liefern zudem eine **selbsthostbare Referenzimplementierung** mit einem leichtgewichtigen Open-Source-Backend und einem Docker-Setup, damit Gemeinschaften ohne technisches Know-how sofort starten können.**
+Wir liefern zudem eine **selbsthostbare Referenzimplementierung** mit einem leichtgewichtigen Open-Source-Backend und einem Docker-Setup, damit Gemeinschaften ohne technisches Know-how sofort starten können. **(2)**
 
 
 ---
 
-*Ulf: Import & Export
-*Wolle: iCal - nicht einheitlich benannt - weiter unten calDAV
-**Wolle: Nicht verstanden was Referenzanwendung meint. Warum wird ein Frontend Entwickelt und eine Referenzanwendung fürs Backend? Unklar. Explizit erklären.
-(***)Wolle: Die Anforderung an das austauschbares Backend erhöht die Komplexität und den Implementierungsaufwand? Teile der Logik sind im Backend? Ulf: Austauschbarkeit nicht gegeben?
-**Wolle: Ohne technisches Know-How -> unrealistisch
+**Feedback**
+  - **Ulf**: Import & Export
+  - **Wolle**:
+    - **(1)** iCal - nicht einheitlich benannt - weiter unten calDAV
+    - **(2)** Nicht verstanden was Referenzanwendung meint. Warum wird ein Frontend  entwickelt und eine Referenzanwendung fürs Backend? Unklar. Explizit erklären.
+    - **(3)** Die Anforderung an das austauschbares Backend erhöht die Komplexität und den Implementierungsaufwand? Teile der Logik sind im Backend? Ulf: Austauschbarkeit nicht gegeben?
+    - Ohne technisches Know-How -> unrealistisch
 
 ## 5. AKTUELLER STAND (max. 100 Wörter)
 
