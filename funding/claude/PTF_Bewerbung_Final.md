@@ -32,9 +32,11 @@ https://github.com/antontranelis
 ## 2. PROJEKTBESCHREIBUNG (max. 100 Wörter)
 
 
-Lokale Gemeinschaften brauchen digitale Werkzeuge, die echte Begegnungen fördern statt ersetzen. Der Real-Life Stack ist ein Baukasten, mit dem Gruppen ihre eigene App für lokale Vernetzung und Zusammenarbeit bauen können. Er besteht aus einer Frontend-Library sowie einer darauf aufbauenden, sofort einsetzbaren White-Label-Referenz-App. Bausteine wie Karte, Kalender, Gruppen, Feed und Profile lassen sich flexibel kombinieren und an Kontexte wie Nachbarschaftsinitiativen, Gemeinschaftsgärten oder Transition-Town-Projekte anpassen.
+Lokale Gemeinschaften brauchen digitale Werkzeuge, die echte Begegnungen fördern statt ersetzen. Der Real-Life Stack ist ein Baukasten, mit dem Gruppen ihre eigene App für lokale Vernetzung und Zusammenarbeit bereitstellen und an ihre Bedürfnisse anpassen können. Er besteht aus einer Frontend-Library sowie einer darauf aufbauenden White-Label-Referenz-App.
 
-Geo-Filter für den Nahbereich und ein Web-of-Trust, das durch reale Treffen entsteht, unterstützen vertrauensbasierte Kooperation vor Ort. Eine entkoppelte Schnittstelle zwischen Frontend und Backend ermöglicht heute klassische Serverumgebungen und künftig auch dezentrale, verschlüsselte oder local-first Architekturen.
+Bausteine wie Karte, Kalender, Gruppen, Feed und Profile lassen sich flexibel kombinieren und für  Nachbarschaftsinitiativen, Gemeinschaftsgärten oder Transition-Town-Projekte anpassen. Geo-Filter für den Nahbereich und ein Web-of-Trust, das durch reale Treffen entsteht, unterstützen vertrauensbasierte Kooperation vor Ort.
+
+Eine entkoppelte Schnittstelle zwischen Frontend und Backend ermöglicht heute klassische Serverumgebungen und künftig auch dezentrale, verschlüsselte oder local-first Architekturen.
 
 
 
