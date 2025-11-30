@@ -43,20 +43,20 @@ Die Whitelabel-App kann einfach selbst gehostet werden. Eine klare Schnittstelle
 ---
 Old Content:
 
-Die Whitelabel-App kann ohne technisches Know-how selbst gehostet werden. **(1)**  
-Durch eine klare Schnittstelle zwischen Frontend und Backend entsteht ein Baukasten, der heute mit klassischen Servern arbeitet und morgen dezentrale, verschlüsselte oder local-first Architekturen unterstützen kann. **(2)**
+Die Whitelabel-App kann ohne technisches Know-how selbst gehostet werden. **(*1)**  
+Durch eine klare Schnittstelle zwischen Frontend und Backend entsteht ein Baukasten, der heute mit klassischen Servern arbeitet und morgen dezentrale, verschlüsselte oder local-first Architekturen unterstützen kann. **(*2)**
 
 ---
 
 Echte Veränderung passiert im echten Leben. Mit dem **Real Life Stack** entwickeln wir einen modularen Baukasten, mit dem Gemeinschaften ihre eigene App für Vernetzung und Zusammenarbeit gestalten können, die konsequent für Vernetzung und Kooperation im echten Leben optimiert sind.  Bausteine wie Karte, Kalender, Gruppen und Profile lassen sich flexibel an unterschiedliche Kontexte anpassen und fördern praktische Kooperation vor Ort.
 
-Gemeinschaften ohne technisches Know-how können eine selbsthostbare Whitelabel-App nutzen. **(1)** Gleichzeitig bildet der Baukasten die Grundlage für zukünftige lokal betriebene oder verschlüsselte Anwendungen, sodass Gruppen Inhalte langfristig sicher und vertrauensbasiert innerhalb ihres eigenen Netzwerks teilen können.**
+Gemeinschaften ohne technisches Know-how können eine selbsthostbare Whitelabel-App nutzen. **(*1)** Gleichzeitig bildet der Baukasten die Grundlage für zukünftige lokal betriebene oder verschlüsselte Anwendungen, sodass Gruppen Inhalte langfristig sicher und vertrauensbasiert innerhalb ihres eigenen Netzwerks teilen können.**
 
 ---
 **Feedback**
 - **Wolle**:
-  - **(1)** Wolle: Wie ist das ohne technisches Know-How zu hosten?
-  - **(2)** Wolle: Unklar - nicht verstanden. Abstraktion nicht klar. Wichtige Informationen fehlen, um das zu verstehen. Backend-Agnostisch/Austauschbarkeit benennen.
+  - **(*1)** Wolle: Wie ist das ohne technisches Know-How zu hosten?
+  - **(*2)** Wolle: Unklar - nicht verstanden. Abstraktion nicht klar. Wichtige Informationen fehlen, um das zu verstehen. Backend-Agnostisch/Austauschbarkeit benennen.
   - Projektbeschreibung sollte klarer sein.
 
 ## 3. GESELLSCHAFTLICHE HERAUSFORDERUNG (max. 175 Wörter)
@@ -79,7 +79,7 @@ Software kann zur Lösung beitragen, indem sie lokale Vernetzung technisch unter
 
 Viele digitale Werkzeuge fördern vor allem Online-Zeit statt lokale Begegnungen. Die meistgenutzten "sozialen" Apps sind Teil einer Aufmerksamkeitsökonomie, die darauf ausgelegt ist, Nutzer*innen möglichst lange am Bildschirm zu halten. Dadurch ersetzen Nachrichten und Chats häufig reale Treffen, und lokale Beziehungen bleiben auf der Strecke. Gleichzeitig fehlt es an offener digitaler Infrastruktur, die Zusammenarbeit, Vertrauen und reale Begegnungen unterstützt.
 
-Besonders betroffen sind kleinere Initiativen, Projekte und Nachbarschaftsnetzwerke, die weder die Ressourcen noch das technische Know-how besitzen, um eigene Infrastruktur aufzubauen. Für sie wäre ein Werkzeug notwendig, das echte Kooperation unterstützt, vertrauliche Informationen schützt und unabhängig von einzelnen Plattformen funktioniert **(2)**.
+Besonders betroffen sind kleinere Initiativen, Projekte und Nachbarschaftsnetzwerke, die weder die Ressourcen noch das technische Know-how besitzen, um eigene Infrastruktur aufzubauen. Für sie wäre ein Werkzeug notwendig, das echte Kooperation unterstützt, vertrauliche Informationen schützt und unabhängig von einzelnen Plattformen funktioniert **(*2)**.
 
 Das gesellschaftliche Problem besteht somit aus zwei Teilen: dem Mangel an selbstbestimmten, sicheren Werkzeugen für lokale Zusammenarbeit und der wachsenden Abhängigkeit von zentralen Netzwerken. Durch offene, anpassbare digitale Infrastruktur können Gruppen wieder selbst entscheiden, wie sie sich vernetzen und welche Daten sie teilen. Genau hier setzt unser Projekt an.
 
@@ -87,12 +87,12 @@ Das gesellschaftliche Problem besteht somit aus zwei Teilen: dem Mangel an selbs
 
 **Feedback**
 - **Wolle**:
-  - **(1)** Software einfach nicht einsetzen ist eine Lösung. Muss entkräftet werden. Warum sollte es solche Software geben?
-  - **(2)** Unverständlich warum/was/wie unabhängig von einzelnen Plattformen. Was bedeutet das?
+  - **(*1)** Software einfach nicht einsetzen ist eine Lösung. Muss entkräftet werden. Warum sollte es solche Software geben?
+  - **(*2)** Unverständlich warum/was/wie unabhängig von einzelnen Plattformen. Was bedeutet das?
 
 ## 4. TECHNISCHE UMSETZUNG (max. 175 Wörter)
 
-Der Real Life Stack wird als modularer Frontend-Baukasten in TypeScript mit React oder Vue entwickelt. Er umfasst eigenständige Komponenten für Karte (Leaflet/MapLibre), Kalender (mit iCal-Export) **(1)**, Feed, Gruppen und Profile, die sowohl in der Referenzanwendung als auch in eigenen Projekten genutzt werden können.
+Der Real Life Stack wird als modularer Frontend-Baukasten in TypeScript mit React oder Vue entwickelt. Er umfasst eigenständige Komponenten für Karte (Leaflet/MapLibre), Kalender (mit iCal-Export) **(*1)**, Feed, Gruppen und Profile, die sowohl in der Referenzanwendung als auch in eigenen Projekten genutzt werden können.
 
 Alle Komponenten greifen auf eine gemeinsame Daten- und Identitätsschnittstelle im Frontend zu. Diese definiert einheitliche Funktionen zum Laden und Speichern von Daten (Gruppen, Events, Profile, Vertrauensbeziehungen) – unabhängig vom zugrundeliegenden Backend.
 
@@ -101,7 +101,6 @@ Darunter liegt eine schlanke Connector-Struktur: Wir definieren das Muster, nach
 Wir stellen zudem eine selbsthostbare Referenz-Implementierung mit einem leichtgewichtigen Node.js-Backend und Docker-Setup bereit, damit Communities ohne technisches Know-how sofort starten können.
 
 Für Identitäten setzen wir auf schlüsselbasierte Accounts, die optional als Decentralized Identifiers (DIDs) abgebildet werden können.
-
 
 ---
 
@@ -112,16 +111,15 @@ Alle Komponenten greifen auf eine gemeinsame **Daten- und Identitätsschnittstel
 
 Unterhalb dieser Ebene liegt eine schlanke **Connector-Struktur**: Wir definieren das Muster, nach dem Backends angebunden werden können, und liefern eine erste Implementierung mit. Weitere Connectoren können von Communities oder Entwickler*innen selbst erstellt werden – zum Beispiel für lokal-first-, p2p- oder E2EE-basierte Systeme.
 
-Wir liefern zudem eine **selbsthostbare Referenzimplementierung** mit einem leichtgewichtigen Open-Source-Backend und einem Docker-Setup, damit Gemeinschaften ohne technisches Know-how sofort starten können. **(2)**
-
+Wir liefern zudem eine **selbsthostbare Referenzimplementierung** mit einem leichtgewichtigen Open-Source-Backend und einem Docker-Setup, damit Gemeinschaften ohne technisches Know-how sofort starten können. **(*2)**
 
 ---
 
 **Feedback**
   - **Ulf**: Import & Export
   - **Wolle**:
-    - **(1)** iCal - nicht einheitlich benannt - weiter unten calDAV
-    - **(2)** Nicht verstanden was Referenzanwendung meint. Warum wird ein Frontend  entwickelt und eine Referenzanwendung fürs Backend? Unklar. Explizit erklären.
+    - **(*1)** iCal - nicht einheitlich benannt - weiter unten calDAV
+    - **(*2)** Nicht verstanden was Referenzanwendung meint. Warum wird ein Frontend  entwickelt und eine Referenzanwendung fürs Backend? Unklar. Explizit erklären.
     - **(3)** Die Anforderung an das austauschbares Backend erhöht die Komplexität und den Implementierungsaufwand? Teile der Logik sind im Backend? Ulf: Austauschbarkeit nicht gegeben?
     - Ohne technisches Know-How -> unrealistisch
 
@@ -136,7 +134,9 @@ Das Projekt baut auf zwei bestehenden Open-Source-Ansätzen auf: der [Utopia Map
 
 [https://github.com/IT4Change/spec](https://github.com/IT4Change/real-life-stack)
 
-Ulf: Link noch falsch
+**Feednack**
+  - **Ulf**:
+    - Link noch falsch
 ---
 
 ## 7. INNOVATION (max. 100 Wörter)
@@ -153,17 +153,17 @@ Old - Content
 - Bonfire bietet modulare Architektur, aber keinen Fokus auf lokale Begegnungen und Geo-Filter
 - Mobilizon kombiniert Events und Karte, ist aber monolithisch aufgebaut
 
-Der Real Life Stack vereint erstmals alle Dimensionen: modularer Baukasten + lokaler Fokus + vertrauensbasierte Identität + offene Standards. Statt einer weiteren Plattform schaffen wir wiederverwendbare Infrastruktur. Communities können einzelne Module* nutzen oder die Whitelabel-App selbst hosten – mit voller Datenhoheit und ohne Abhängigkeit von zentralen Diensten.
-
+Der Real Life Stack vereint erstmals alle Dimensionen: modularer Baukasten + lokaler Fokus + vertrauensbasierte Identität + offene Standards. Statt einer weiteren Plattform schaffen wir wiederverwendbare Infrastruktur. Communities können einzelne Module **(*1)** nutzen oder die Whitelabel-App selbst hosten – mit voller Datenhoheit und ohne Abhängigkeit von zentralen Diensten.
 
 ----
-
 
 Der Real Life Stack ist der erste modulare Frontend-Baukasten, der radikal auf lokale Begegnungen und gemeinschaftliche Aktivitäten im echten Leben optimiert ist. Statt eine weitere Plattform zu bauen, liefert er wiederverwendbare Komponenten (Karte, Kalender, Gruppen, Feed, Profile) und eine einheitliche Daten- und Identitätsschnittstelle. Projekte wie Mobilizon, Karrot und Bonfire decken einzelne dieser Aspekte ab, sind jedoch monolithisch oder sozialnetzwerk-orientiert. Der Real Life Stack unterscheidet sich durch echte Modularität, Backend-Agnostik, hyperlokalen Fokus und Real-Life-Mechanismen wie Geo-Filter und Web-of-Trust durch physische Treffen. Communities können eigene Apps bauen, selbst hosten und ihre digitale Infrastruktur vollständig kontrollieren.
 
 ---
 
-*Wolle: Was ist ein einzelnes Modul? Werden Sachen an und ausgeschaltet? Wie funktioniert das? Wie funktioniert der Baukasten?
+**Feedback**
+- **Wolle**:
+  - **(*1)** Was ist ein einzelnes Modul? Werden Sachen an und ausgeschaltet? Wie funktioniert das? Wie funktioniert der Baukasten?
 
 ## 8. ZIELGRUPPE (max. 100 Wörter)
 
@@ -171,7 +171,7 @@ Der Real Life Stack ist der erste modulare Frontend-Baukasten, der radikal auf l
 Primäre Zielgruppen:
 - Lokale Initiativen und Nachbarschaftsprojekte (Urban Gardening, Repair-Cafés, Foodsharing-Circles)
 - Selbstorganisierte Gemeinschaften (freie Schulen, Solidarische Landwirtschaften, Genossenschaften)
-- Progressive Vereine und Transition Towns*
+- Progressive Vereine und Transition Towns **(*1)**
 
 Sekundäre Zielgruppen:
 - Entwickler*innen, die Community-Tools bauen wollen
@@ -186,10 +186,11 @@ Erreichen der Zielgruppen:
 
 ---
 
-*Wolle: Völlig unklar was das ist? "Progressive Vereine und Transition Towns"
+**Feedback**
+- **Wolle**:
+  - **(*1)** Völlig unklar was das ist? "Progressive Vereine und Transition Towns"
 
 ## 9. MEILENSTEINE (max. 100 Wörter)
-
 
 #### M1: Architektur & Grundlagen (Monat 1)
 - Definition der Daten- und Identitätsschnittstelle
@@ -253,7 +254,6 @@ Erreichen der Zielgruppen:
 - [Utopia Map](https://github.com/utopia-os/utopia-map) - Entwicklung, Testautomatisierung, DevOps
 - [ocelot.social](https://github.com/Ocelot-Social-Community/Ocelot-Social) - Entwicklung, Testautomatisierung, DevOps, Dokumentation
 
-
 ---
 
 ## 12. ARBEITSSTUNDEN
@@ -267,28 +267,24 @@ Erreichen der Zielgruppen:
 
 ## 13. MOTIVATION (max. 100 Wörter)
 
-
 Wir erleben täglich, wie lokale Initiativen an fehlenden digitalen Werkzeugen scheitern. Bestehende Plattformen passen nicht zu ihren Bedürfnissen, sind zu komplex oder zu unflexibel. Gleichzeitig fehlt Communities das technische Know-how, eigene Lösungen zu bauen.
 
-Mit Ocelot.social* und Utopia Map haben wir gesehen, dass selbsthostbare, anpassbare Tools funktionieren – aber jedes Projekt muss zu viel selbst entwickeln. Der Real Life Stack ist unsere Antwort: Wir schaffen wiederverwendbare Infrastruktur, die anderen hilft, schneller zu starten.
+Mit ocelot.social und Utopia Map haben wir gesehen, dass selbsthostbare, anpassbare Tools funktionieren – aber jedes Projekt muss zu viel selbst entwickeln. Der Real Life Stack ist unsere Antwort: Wir schaffen wiederverwendbare Infrastruktur, die anderen hilft, schneller zu starten.
 
 Uns treibt die Vision einer dezentralen, selbstbestimmten digitalen Welt an, in der Gemeinschaften Kontrolle über ihre Daten haben und Tools nutzen können, die echte Begegnungen fördern.
 
 
 ---
 
-*Wolle: Ocelot.social vorne klein
-
 ## 14. SECOND-STAGE-FÖRDERUNG
 
 Ja
-
 
 ---
 
 ## 15. SECOND STAGE: SCHWERPUNKT (max. 175 Wörter)
 
-In der Second Stage wollen wir uns intensiv auf die Zusammenarbeit mit realen Communities konzentrieren. Wir arbeiten direkt mit verschiedenen Gruppen zusammen und unterstützen sie bei der Einführung unserer Software und beobachten gemeinsam, wie sie ihn im Alltag nutzen*.
+In der Second Stage wollen wir uns intensiv auf die Zusammenarbeit mit realen Communities konzentrieren. Wir arbeiten direkt mit verschiedenen Gruppen zusammen und unterstützen sie bei der Einführung unserer Software und beobachten gemeinsam, wie sie ihn im Alltag nutzen **(*1)**.
 
 Dabei wollen wir verstehen, welche Funktionen echte Begegnungen, lokale Vernetzung und Kooperation fördern – und welche nicht. Dafür werten wir Metriken zu Aktivität, Vernetzung und Real-Life-Treffen aus, führen Interviews und übersetzen diese Erkenntnisse in weitere Optimierungen des Stacks.
 
@@ -296,12 +292,14 @@ Parallel erforschen wir, ob und wie spielerische Mechanismen wie Quests, Badges 
 
 Wir entwickeln ein Playbook für neue Communities – mit Hosting-Guides, einfachen Einstiegsmaterialien und einer Roadmap, die zeigt, wie Gruppen den Stack einsetzen, anpassen und erweitern können.
 
-Wir bereiten unsere Ergebnisse in Tutorials, Blogbeiträgen, Videos und Interviews so auf, dass weitere Communities inspiriert werden. Damit schaffen wir eine stabile Grundlage, auf der Communities den Real-Life Stack** eigenständig nutzen und gemeinsam mit ihm wachsen können.
+Wir bereiten unsere Ergebnisse in Tutorials, Blogbeiträgen, Videos und Interviews so auf, dass weitere Communities inspiriert werden. Damit schaffen wir eine stabile Grundlage, auf der Communities den Real-Life Stack **(*2)** eigenständig nutzen und gemeinsam mit ihm wachsen können.
 
 ---
 
-*Wolle: "wie sie ihn im Alltag nutzen" - falschen Pronomen? "wie sie sie im Alltag nutzen"
-** Wolle: "Real-Life Stack" einheitliche Schreibweise
+**Feedback**
+- **Wolle**:
+  - **(*1)** "wie sie ihn im Alltag nutzen" - falschen Pronomen? "wie sie sie im Alltag nutzen"
+  - **(*2)** "Real-Life Stack" einheitliche Schreibweise
 
 ## 16. SECOND STAGE: MEILENSTEINE (max. 100 Wörter)
 
@@ -309,9 +307,11 @@ Wir bereiten unsere Ergebnisse in Tutorials, Blogbeiträgen, Videos und Intervie
 
 * 3 Pilot-Communities onboarden (Nachbarschaft, Bildung, Ressourcen-Sharing)
 * Stage-1-Prototypen deployen und im Real-World-Einsatz begleiten
-* Metriken erfassen: Nutzungsverhalten, Vernetzungsdynamik, Real-Life Begegnungen*, Commitment-Gap
+* Metriken erfassen: Nutzungsverhalten, Vernetzungsdynamik, Real-Life Begegnungen **(*1)**, Commitment-Gap
 
-*Wolle: Schreibweise?
+**Feedback**
+- **Wolle**:
+  - **(*1)** Schreibweise?
 
 #### M2: Iteration & Skalierung (Monat 9)
 
