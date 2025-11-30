@@ -55,28 +55,13 @@ Software kann Menschen nicht ersetzen, aber sie kann lokale Gruppen dabei unters
 
 ## 4. TECHNISCHE UMSETZUNG (max. 175 Wörter)
 
-Der Real Life Stack wird als modularer Frontend-Baukasten in TypeScript mit React oder Vue entwickelt. Er umfasst eigenständige Komponenten für Karte (Leaflet/MapLibre), Kalender (mit iCal-Export), Feed, Gruppen und Profile, die sowohl in der Referenzanwendung als auch in eigenen Projekten genutzt werden können.
+Der Real Life Stack wird als modularer Frontend-Baukasten in TypeScript mit React oder Vue entwickelt. Er besteht aus eigenständigen Komponenten wie Karte (OpenStreetMap über MapLibre), Kalender (inkl. iCal-Import und -Export), Gruppen, Profilen und Feed, die sowohl in der Referenzanwendung als auch in eigenen Projekten verwendet werden können.
 
-Alle Komponenten greifen auf eine gemeinsame Daten- und Identitätsschnittstelle im Frontend zu. Diese definiert einheitliche Funktionen zum Laden und Speichern von Daten (Gruppen, Events, Profile, Vertrauensbeziehungen) – unabhängig vom zugrundeliegenden Backend.
+Alle Module greifen auf eine gemeinsame Daten- und Identitätsschnittstelle im Frontend zu. Diese definiert einheitliche Funktionen zum Laden und Speichern von Gruppen, Terminen, Profilen und Vertrauensbeziehungen – unabhängig davon, welches Backend genutzt wird oder wie Identitäten verwaltet sind.
 
-Darunter liegt eine schlanke Connector-Struktur: Wir definieren das Muster, nach dem verschiedene Backend-Typen angebunden werden können, und liefern eine erste Implementierung mit. Weitere Connectoren (REST, GraphQL, local-first, p2p) können von der Community entwickelt werden.
+Unterhalb dieser Ebene liegt eine schlanke Connector-Struktur. Sie legt fest, wie Backends angebunden werden, und wir liefern eine erste Implementierung mit. Weitere Connectoren (z. B. REST, GraphQL, local-first, p2p oder E2EE-basierte Systeme) können von Communities selbst entwickelt werden. Die offene Identitätsschnittstelle soll perspektivisch auch schlüsselbasierte Accounts und DIDs unterstützen.
 
-Wir stellen zudem eine selbsthostbare Referenz-Implementierung mit einem leichtgewichtigen Node.js-Backend und Docker-Setup bereit, damit Communities ohne technisches Know-how sofort starten können.
-
-Für Identitäten setzen wir auf schlüsselbasierte Accounts, die optional als Decentralized Identifiers (DIDs) abgebildet werden können.
-
-
----
-
-Der Real Life Stack wird als modularer Frontend-Baukasten in einem modernen JavaScript-Framework wie React oder Vue entwickelt. Er umfasst eigenständige Komponenten wie Karte, Kalender, Gruppen, Profile und Feed, die sowohl in der mitgelieferten Referenzanwendung als auch in eigenen Projekten eingesetzt werden können.
-
-Alle Komponenten greifen auf eine gemeinsame **Daten- und Identitätsschnittstelle** im Frontend zurück. Diese Schnittstelle definiert einheitliche Funktionen für das Laden und Speichern von Gruppen, Terminen, Profilen oder Vertrauensbeziehungen. Dadurch bleibt die Logik des Baukastens stabil, unabhängig davon, wo die Daten tatsächlich liegen oder wie Identitäten verwaltet werden.
-
-
-Unterhalb dieser Ebene liegt eine schlanke **Connector-Struktur**: Wir definieren das Muster, nach dem Backends angebunden werden können, und liefern eine erste Implementierung mit. Weitere Connectoren können von Communities oder Entwickler*innen selbst erstellt werden – zum Beispiel für lokal-first-, p2p- oder E2EE-basierte Systeme.
-
-Wir liefern zudem eine **selbsthostbare Referenzimplementierung** mit einem leichtgewichtigen Open-Source-Backend und einem Docker-Setup, damit Gemeinschaften ohne technisches Know-how sofort starten können.
-
+Zudem liefern wir eine selbsthostbare Referenzimplementierung: eine konfigurierbare White-Label-App kombiniert mit einem leichtgewichtigen Node.js-Backend im Docker-Setup für einen schnell lauffähigen Einstieg
 
 ---
 
