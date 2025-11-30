@@ -50,7 +50,7 @@ Durch eine klare Schnittstelle zwischen Frontend und Backend entsteht ein Baukas
 
 Echte Veränderung passiert im echten Leben. Mit dem **Real Life Stack** entwickeln wir einen modularen Baukasten, mit dem Gemeinschaften ihre eigene App für Vernetzung und Zusammenarbeit gestalten können, die konsequent für Vernetzung und Kooperation im echten Leben optimiert sind.  Bausteine wie Karte, Kalender, Gruppen und Profile lassen sich flexibel an unterschiedliche Kontexte anpassen und fördern praktische Kooperation vor Ort.
 
-Gemeinschaften ohne technisches Know-how können eine selbsthostbare Whitelabel-App nutzen. **(*1)** Gleichzeitig bildet der Baukasten die Grundlage für zukünftige lokal betriebene oder verschlüsselte Anwendungen, sodass Gruppen Inhalte langfristig sicher und vertrauensbasiert innerhalb ihres eigenen Netzwerks teilen können.**
+Gemeinschaften ohne technisches Know-how können eine selbsthostbare Whitelabel-App nutzen. **(*1)** Gleichzeitig bildet der Baukasten die Grundlage für zukünftige lokal betriebene oder verschlüsselte Anwendungen, sodass Gruppen Inhalte langfristig sicher und vertrauensbasiert innerhalb ihres eigenen Netzwerks teilen können. **(*2)**
 
 ---
 **Feedback**
